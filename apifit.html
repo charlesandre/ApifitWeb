@@ -13,11 +13,13 @@
 		<link rel="stylesheet" href="css/ipad.css"/>
 		<link rel="stylesheet" href="css/mobile.css"/>
 		
-		<!-- Bootstrap Core CSS -->
+		<!-- Bootstrap CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-
+		<!-- END Bootstrap CSS -->
+		
 		<!-- Custom CSS -->
 		<link href="css/full-slider.css" rel="stylesheet">
+		<!-- END Custom CSS -->
 		
 		<!--POLICE-->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -36,7 +38,6 @@
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 				<li data-target="#myCarousel" data-slide-to="3"></li>
-				<li data-target="#myCarousel" data-slide-to="4"></li>
 			</ol>
 
 			<!-- Wrapper for Slides -->
@@ -54,6 +55,7 @@
 					<div class="fill" style="background-image:url('images/header-fitness.jpg');"></div>
 					<div class="carousel-caption">
 						<h2>Apifit</h2>
+						<p>Rejoignez la communauté 100% sport</p>
 					</div>
 				</div>
 				<div class="item">
@@ -61,13 +63,7 @@
 					<div class="fill" style="background-image:url('images/header-rugby.jpg');"></div>
 					<div class="carousel-caption">
 						<h2>Apifit</h2>
-					</div>
-				</div>
-				<div class="item">
-					<!-- Set the second background image using inline CSS below. -->
-					<div class="fill" style="background-image:url('images/header-tennis.jpg');"></div>
-					<div class="carousel-caption">
-						<h2>Apifit</h2>
+						<p>Rejoignez la communauté 100% sport</p>
 					</div>
 				</div>
 				<div class="item">
@@ -75,6 +71,7 @@
 					<div class="fill" style="background-image:url('images/header-foot.jpg');"></div>
 					<div class="carousel-caption">
 						<h2>Apifit</h2>
+						<p>Rejoignez la communauté 100% sport</p>
 					</div>
 				</div>
 			</div>
@@ -89,22 +86,253 @@
 
 		</header>
 		<!--END CAROUSSEL HEADER-->	
-		<footer>
 		
+		<!-- MENU-->	
+		<div class="menu">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				
+				<div class="navbar-header">
+				  <a class="navbar-brand" href="#"><img src="" alt="logo-apifit"></a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav">
+					<li><a href="#accueil">Accueil</a></li>
+					<li><a href="#services">Services</a></li>
+					<li><a href="#equipe">&Eacute;quipe</a></li>
+					<li><a href="#contact">Contact</a></li>
+				  </ul>
+				  
+				</div>
+			  </div>
+			</nav>
+		</div>
+		<!--END MENU-->	
+		
+		<!--INTRO-->
+		<div class="centrer" id="accueil">
+			<div class="espace"></div>
+			<h3>Qui sommes nous ?</h3>
+			<div class="espace"></div>
+			<p>Notre plateforme est un <span style="color:#00b9c2">coach virtuel</span> doté<br/>d’une <span style="color:#00b9c2">intelligence artificielle</span> 
+			permettant à un utilisateur<br/>de progresser dans un sport souhaité</p>
+			<div class="espace"></div>
+			<div class="espace"></div>
+			<div class="espace"></div>
+		</div>
+		<!--END INTRO-->
+		
+		<!--SERVICES-->
+		<div class="centrer service" id="services">
+			<img src="images/image-service.jpeg" alt="fond-service">
+			
+			<div class="contenu-service">
+				<h3>Nos Services</h3>
+				<div class="espace"style="width:100%; height:15px; background-color:transparent;"></div>
+			</div>
+			
+			<ul>
+				<li class="service-profil"><img src="images/icon-profil.png" alt="icon-profil"><br/><br/><h4><span style="color:#ff757c;font-weight:bold">Renseigner son profil</span></h4></li>
+				<li class="service-statistique"><img src="images/icon-statistique.png" alt="icon-statistique"><br/><br/><h4><span style="color:#313131;font-weight:bold">Analyser les statistiques</span></h4></li>
+				<li class="service-exercice"><img src="images/icon-conseil.png" alt="icon-conseil"><br/><br/><h4><span style="color:#ffca4f;font-weight:bold">Des exercices et conseils</span></h4></li>
+				<li class="service-communaute"><img src="images/icon-communaute.png" alt="icon-communaute"><br/><br/><h4><span style="color:#00b9c2;font-weight:bold">Créer sa communauté</span></h4></li>
+			</ul>
+			</div>
+		</div>
+		<!--END SERVICES-->
+		
+		<!--VIDEO-->
+		<div class="centrer video">		
+			<h3>Vidéos de présentation</h3>
+			<div class="espace"></div>
+			<img src="images/ordi-video.png" alt="ordi-video">
+			<div class="contenu-video">
+			<video width="700" height="450" controls="controls">
+				<source src="video/example-goaleo.mp4" type="video/mp4" />
+				<object type="application/x-shockwave-flash" width="700" height="450" data="https://youtu.be/FlTCAqOcqbo">
+				  <param name="movie" value="https://youtu.be/FlTCAqOcqbo" />
+				  <param name="wmode" value="transparent" />
+				  <!--[if lte IE 6 ]>
+				   <embed src="https://youtu.be/FlTCAqOcqbo" type="application/x-shockwave-flash"  allowscriptaccess="always" allowfullscreen="true" width="400" height="222">
+				   </embed>
+				  <![endif]-->
+				  Vous n'avez pas de navigateur moderne, ni Flash installé... suivez les liens ci-dessous pour télécharger les vidéos.
+				</object>
+			</video>
+			</div>
+		</div>
+		<!--END VIDEO-->
+		
+		<!--EQUIPE-->
+		<div class="centrer equipe" id="equipe">
+			<img src="images/fond-equipe.jpg" alt="fond-equipe">
+			<div class="contenu-equipe">
+				<h3><span style="color:#fff">Notre équipe</span></h3>
+				<div class="espace"></div>
+				<div class="row">
+				  <div class="col-md-1"></div>
+				  <div class="col-md-2 perso1"><img src="images/businessman.png" alt="Vincent BAS"></div>
+				  <div class="col-md-2 perso2"><img src="images/dj.png" alt="Charles ANDRE"></div>
+				  <div class="col-md-2 perso3"><img src="images/croupier.png" alt="Samuel BENAIS"></div>
+				  <div class="col-md-2 perso4"><img src="images/showman.png" alt="Fatih BAYRAM"></div>
+				  <div class="col-md-2 perso5"><img src="images/detective.png" alt="Rémi ALABADAN"></div>
+				  <div class="col-md-1"></div>
+				</div>
+			</div>
+		</div>
+		<!--END EQUIPE-->
+		
+		<!--PARTENAIRE-->
+		<div class="centrer partenaire">
+			<div class="contenu-partenaire">
+				<h3>Nos Partenaires</h3>
+				<div class="espace"></div>
+				<p>Ils nous ont fait <span style="color:#00b9c2">confiance</span> et on les en remercie</p>
+				<div class="espace"></div>
+				<div class="espace"></div>
+				<div class="row">
+				  <div class="col-md-2"></div>
+				  <div class="col-md-2"><img src="images/logo-fitbit.png" alt="logo-fitbit"></div>
+				  <div class="col-md-2"><img src="images/logo-withings.png" alt="logo-withings"></div>
+				  <div class="col-md-2"><img src="images/logo-orange-bleu.png" alt="logo-orange-bleu"></div>
+				  <div class="col-md-2"><img src="images/logo-jawbone.png" alt="logo-jawbone"></div>
+				  <div class="col-md-2"></div>
+				</div>
+				<div class="espace"></div>
+				<div class="espace"></div>
+				<div class="row">
+				  <div class="col-md-2"></div>
+				  <div class="col-md-2"><img src="images/logo-forest-hill.png" alt="logo-fitbit"></div>
+				  <div class="col-md-2"><img src="images/logo-garmin.png" alt="logo-withings"></div>
+				  <div class="col-md-2"><img src="images/logo-yo-fitness.png" alt="logo-orange-bleu"></div>
+				  <div class="col-md-2"><img src="images/logo-gopro.png" alt="logo-jawbone"></div>
+				  <div class="col-md-2"></div>
+				</div>
+				<div class="espace"></div>
+				<div class="espace"></div>
+			</div>
+		</div>
+		<!--END PARTENAIRE-->
+		
+		<!--CONTACTER-->
+		<div class="centrer contacter" id="contact">
+		<img src="images/fond-contact.jpg" alt="fond-contacter">
+		<div class="contenu-contact">
+			<h3><span style="color:#fff">Nous Contacter</span></h3>
+			<div class="espace"></div>
+			<p><span style="color:#fff">Une question, une demande, un intêret pour le projet, <span style="color:#00b9c2">contactez nous</span> !</span></p>
+			<div class="espace"></div>
+		</div>
+		<div class="form-contact">
+				<div class="container">
+
+					<form class="well form-horizontal" action=" " method="post"  id="contact_form">
+						<!-- Text input-->
+
+						<div class="form-group">  
+						  <div class="inputGroupContainer">
+							  <div class="input-group">
+								  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								  <input  name="first_name" placeholder="Prénom" class="form-control"  type="text" required>
+							  </div>
+						  </div>
+						</div>
+
+						<!-- Text input-->
+
+						<div class="form-group">
+						  <div class="inputGroupContainer">
+							<div class="input-group">
+							  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							  <input name="last_name" placeholder="Nom de famille" class="form-control"  type="text" required>
+							</div>
+						  </div>
+						</div>
+
+						<!-- Text input-->
+							<div class="form-group">
+								<div class="inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+										<input name="email" placeholder="Adresse E-Mail" class="form-control"  type="text" required>
+									</div>
+								</div>
+							</div>
+
+
+						<!-- Text input-->
+							   
+						<div class="form-group">
+							<div class="inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+						  <input name="phone" placeholder="+33" class="form-control" type="text">
+							</div>
+						  </div>
+						</div>
+
+
+						<!-- Text area -->
+						  
+						<div class="form-group">
+							<div class="inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+									<textarea class="form-control" name="comment" placeholder="Commentez..."></textarea>
+								</div>
+							</div>
+						</div>
+
+						<!-- Success message -->
+						<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+						<!-- Button -->
+						<div class="form-group">
+							<button type="submit" class="btn btn-warning" >Envoyer<span class="glyphicon glyphicon-send"></span></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.container -->
+		<!--END CONTACTER-->
+		
+		<footer>
+			<div class="centrer footer">
+				<div class="rect"><a href="#"><img src="images/retour-accueil.png" alt="flèche-accueil"></a></div>
+				<div class="espace"></div>
+				<p><span style="font-size:14px;"><a>Mentions Légales</a> - <a>Nous Suivre</a> - <a>Besoin Aide</a></span></p>
+				<div class="espace"></div>
+				<ul>
+					<li class="reseau-facebook"><img style="width:40px; height:40px;"src="images/facebook.png" alt="logo-facebook"></li>
+					<li class="reseau-linkedin"><img style="width:40px; height:40px;"src="images/linkedin.png" alt="logo-linkedin"></li>
+					<li class="reseau-twitter"><img style="width:40px; height:40px;"src="images/twitter.png" alt="logo-twitter"></li>
+					<li class="reseau-youtube"><img style="width:40px; height:40px;"src="images/youtube.png" alt="logo-youtube"></li>
+				</ul>
+				<br/><br/>
+				<p><span style="font-size:14px;">Copyright © 2016 <span style="color:#00b9c2">Apifit</span>. Tous droits réservés.</span></p>
+			</div>
 		</footer>
 		
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>
-
-		<!-- Bootstrap Core JavaScript -->
+		<!-- END jQuery -->
+		
+		<!-- Bootstrap JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
-
+		<!-- END Bootstrap JavaScript -->
+		
 		<!-- Script to Activate the Carousel -->
 		<script>
 		$('.carousel').carousel({
 			interval: 5000 //changes the speed
 		})
 		</script>
+		<!-- END Script to Activate the Carousel -->
+		
+		<!-- Custom JS -->
 		<script type="text/javascript" src="js/apifit.js"></script>
+		<!-- END Custom JS -->
+		
 	</body>
 </html>
