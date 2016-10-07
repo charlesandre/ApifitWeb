@@ -1,2 +1,2 @@
 # ApifitWeb
-Site web apifit
+Apifit | Coach virtuel et communauté sportive

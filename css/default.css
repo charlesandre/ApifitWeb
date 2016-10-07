@@ -1,0 +1,355 @@
+/*******************\
+\      OUTILS       /
+\*****************/
+
+
+@font-face{
+  font-family : "Weblysleek";
+  src : url('../fonts/weblysleek_ui/weblysleekuil.ttf');
+}
+
+@font-face{
+  font-family : "WeblysleekSL";
+  src : url('../fonts/weblysleek_ui/weblysleekuisl.ttf');
+}
+
+
+html,
+body {
+  height: 100%;
+  width:100%;
+  font-family: "Weblysleek";
+}
+
+h2
+{
+  color:#777777;
+  font-size:9em;
+}
+h3
+{
+  color:#777777;
+  font-size:3em!important;
+}
+
+li
+{
+  list-style:none;
+}
+a
+{
+  text-decoration:none;
+}
+
+p
+{
+
+  font-size:1.4em;
+  color:#777777;
+}
+
+.centrer
+{
+  text-align:center;
+}
+
+.white{
+  color:#fff;
+}
+
+.row{
+  margin:0 ;
+  padding:0 ;
+  width:100% !important;
+}
+
+.well
+{
+  padding-bottom: 0px!important;
+}
+
+/*******************\
+\ CARROUSSEL-HEADER /
+\*****************/
+
+.carousel, .item, .active {
+  height: 100%;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.carousel-caption
+{
+  top:20%;
+  left:50%!important;
+  color:#fff;
+}
+.carousel-caption>h2{
+  color:#fff;
+}
+
+.carousel-caption>p{
+  color:#e7e7e7;
+}
+/*******************\
+\       MENU        /
+\*****************/
+
+.navbar-header
+{
+  float:left;
+}
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+  padding:0;
+  margin:0;
+}
+
+
+#accueil>div>h3{
+  color:#777777;
+  padding-bottom:50px;
+}
+
+#accueil{
+  margin:10px 0 70px 0;
+}
+
+
+/*******************\
+\     SERVICE       /
+\*****************/
+
+.service
+{
+  background-image: url("../images/image-service.jpeg");
+  background-size:100%;
+  background-color:#cccccc;
+  height:10%;
+  min-height:650px;
+  margin: 30px 0 30px 0;
+
+}
+
+.service>h3{
+  padding:90px 0 60px 150px;
+  text-align: left;
+}
+
+.service>ul>li{
+  margin-botom:30px;
+}
+
+.service>ul>li>img:hover{
+  transform: scale(1.05) rotate(6deg);
+}
+
+.service>ul>li>h4{
+  text-shadow: 1px 1px #000;
+
+  color:#fff;
+  font-size:18px;
+  margin-bottom: 50px;
+}
+
+/*******************\
+\      VIDEO        /
+\*****************/
+.video
+{
+  height:700px;
+  margin-bottom: 70px;
+}
+
+.video>h3{
+  padding:40px;
+  color:#777777;
+
+}
+
+.contenu-video
+{
+  background-image: url("../images/ordi-video.png");
+  background-repeat:no-repeat;
+  background-size: contain;
+  height:auto;
+  width:750px;
+  height:800px;
+  margin:auto;
+
+}
+
+video{
+  position:relative;
+  top:32px;
+  left:2px;
+  height:auto;
+  width:665px;
+}
+/*******************\
+\      EQUIPE       /
+\*****************/
+
+.equipe
+{
+  background-image: url("../images/fond-equipe.jpg");
+  height:auto;
+  padding-bottom: 70px;
+}
+
+.equipe>h3{
+  padding:40px;
+  color:#fff;
+}
+.padding-icon{
+  padding-left:5px;
+}
+.equipe img
+{
+  width:100%;
+}
+
+.char:hover{
+  border:3px solid #777777;
+}
+
+
+/*******************\
+\    PARTENAIRE     /
+\*****************/
+
+.partenaire img
+{
+  width:100%;
+  padding:20px;
+}
+.partenaire{
+  padding-bottom: 30px;
+  padding: 20px 0 50px 0;
+}
+.partenaire > h3{
+  padding:40px 40px 10px 40px;
+}
+
+/*******************\
+\      CONTACT      /
+\*****************/
+.contacter
+{
+  background-image: url("../images/fond-contact.jpg");
+  background-size: cover;
+  height:800px;
+}
+
+.contacter>h3{
+  color:#fff;
+  padding:40px 40px 10px 40px;
+  text-shadow: 2px 2px #000;
+
+}
+
+.contacter>p{
+  color:#fff;
+  text-shadow: 2px 2px #000;
+
+}
+
+.form-contact
+{
+  position:relative;
+  top:10%;
+  left:5%;
+  width:80%;
+}
+
+#contact-form>h5{
+  color:#777777;
+}
+
+.contacter img
+{
+  width:100%;
+}
+
+#success_message
+{
+  display: none;
+}
+
+.form-group
+{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form-horizontal
+{
+  width:40%;
+}
+
+
+/*******************\
+\      FOOTER       /
+\*****************/
+footer
+{
+
+}
+footer>p{
+  margin-bottom: 20px;
+}
+.bottom-icon{
+  width:40px;
+  height:40px;
+}
+
+.rect
+{
+  position:relative;
+  padding-top:3px;
+  padding-left:2px;
+  background-color:#fff;
+  padding:20px;
+  width:60px;
+  height:60px;
+  top:-55px;
+  left:0%;
+  border: 2px solid #fff;
+}
+
+.rect>img{
+  width:60px;
+  height:60px;
+}
+#links>li{
+  margin:auto;
+  text-align: center;
+  display:inline;
+}
+#links{
+  padding-bottom: 20px;
+}
+#community{
+  padding-bottom: 20px;
+}
+#community>li{
+  display:inline;
+}
+
+
+
+/*EN CONSTRUCTION*/
+
+#showme{
+  display:none;
+}
+#profile:hover #showme{
+  display:block;
+}
