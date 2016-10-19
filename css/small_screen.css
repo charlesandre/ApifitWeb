@@ -1,6 +1,9 @@
 @media screen and (min-width:1px) and (max-width: 768px){
 
 
+    .navbar-inverse{
+      display:none;
+    }
 
   .carousel, .item, .active {
       height: auto;
