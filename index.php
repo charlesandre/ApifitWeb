@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="css/middle_screen.css"/>
 	<link rel="stylesheet" href="css/small_screen.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
@@ -142,7 +143,7 @@
 				<!-- <img src="images/ordi-video.png" alt="ordi-video"> -->
 				<div class="contenu-video">
 					<video   controls="controls">
-						<source src="video/example-goaleo.mp4" type="video/mp4" />
+						<source src="" type="video/mp4" />
 						<object type="application/x-shockwave-flash" data="https://youtu.be/FlTCAqOcqbo">
 							<param name="movie" value="https://youtu.be/FlTCAqOcqbo" />
 							<param name="wmode" value="transparent" />
@@ -167,12 +168,12 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/vincent-bas-7022bba4?authType=NAME_SEARCH&authToken=FbQP&locale=fr_FR&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CentityType%3AentityHistoryName%2CclickedEntityId%3Amynetwork_371007794%2Cidx%3A0"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="mailto:vincentbas92@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="http://somesweetphoto.smugmug.com/photos/i-VHdG3sd/0/O/i-VHdG3sd.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
@@ -185,17 +186,17 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/charles-andre-51b59485?trk=nav_responsive_tab_profile_pic"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="mailto:andrecharles4vincentbas92@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="http://somesweetphoto.smugmug.com/photos/i-VHdG3sd/0/O/i-VHdG3sd.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
 							<h5>Charles ANDRE</h5>
-							<h5><small>Systèmes Informatiques</small></h5>
+							<h5><small>Systèmes d'information</small></h5>
 						</div>
 					</div>
 				</article>
@@ -203,17 +204,17 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/samuel-bena%C3%AFs-bb1018a5?authType=NAME_SEARCH&authToken=lvui&locale=en_US&srchid=3030228231480506503594&srchindex=1&srchtotal=1&trk=vsrp_people_res_name&trkInfo=VSRPsearchId%3A3030228231480506503594%2CVSRPtargetId%3A373284277%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue%2CauthType%3ANAME_SEARCH"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="mailto:samuelbenais@outlook.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="http://somesweetphoto.smugmug.com/photos/i-VHdG3sd/0/O/i-VHdG3sd.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
 							<h5>Samuel BENAÏS</h5>
-							<h5><small>Systèmes Informatiques</small></h5>
+							<h5><small>Systèmes d'information</small></h5>
 						</div>
 					</div>
 				</article>
@@ -221,12 +222,12 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/r%C3%A9mi-alabadan-00575285?authType=NAME_SEARCH&authToken=qs8l&locale=fr_FR&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A303433349%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1480506687740%2Ctas%3Aremi%20ala"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="mailto:remialabadan@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="http://somesweetphoto.smugmug.com/photos/i-VHdG3sd/0/O/i-VHdG3sd.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
@@ -239,12 +240,12 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/bayramfatih?authType=NAME_SEARCH&authToken=eQ0O&locale=fr_FR&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A418660352%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1480506653484%2Ctas%3Afati"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="mailto:fatih.b@live.fr?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="http://somesweetphoto.smugmug.com/photos/i-VHdG3sd/0/O/i-VHdG3sd.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
@@ -353,12 +354,12 @@
 				<li><a href=""> - Nous Suivre</a></li>
 				<li><a href=""> - Besoin Aide</a></li>
 			</ul>
-			<ul class="row centrer" id="community">
-				<li><img class="footer-icon" src="images/facebook.png" alt="Apifit sur Facebook"></li>
-				<li><img class="footer-icon" src="images/linkedin.png" alt="Apifit sur Linkedin"></li>
-				<li><img class="footer-icon" src="images/twitter.png" alt="Apifit sur Twitter"></li>
-				<li><img class="footer-icon" src="images/youtube.png" alt="Apifit sur Youtube"></li>
-			</ul>
+			<div>
+                    <ul class="essai social-network social-circle row" >
+                        <li><a href="#" class="icoFacebook col-md-6" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter col-md-6" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    </ul>				
+				</div>
 			<p>Copyright © 2016 Apifit. Tous droits réservés.</p>
 		</footer>
 
