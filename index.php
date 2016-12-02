@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/small_screen.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<LINK rel="SHORTCUT ICON" href="images/logo-apifit.png">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
@@ -30,7 +31,6 @@
 		  <div class="container-fluid">
 		    <ul class="nav navbar-nav">
 		      <li><a href="#">Accueil</a></li>
-		      <li><a href="#"></a></li>
 		      <li><a class="js-scrollTo" href="#contact">Contact</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
@@ -122,16 +122,16 @@
 			<h3>Nos Services</h3>
 			<ul>
 				<li class="col-sm-3">
-					<img src="images/icon-profil.png" alt="icon-profil" id="profile">
+					<img src="images/icon-prof.png" alt="icon-profil" id="profile">
 					<h4>Un parcours constructif conforme à votre niveau</h4>
 					<p id="showme">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<img src="images/icon-statistique.png" alt="icon-statistique">
+					<img src="images/icon-stats.png" alt="icon-statistique">
 					<h4>Analysez vos statistiques</h4>
 				</li>
 				<li class="col-sm-3 col-sm-offset-6">
-					<img src="images/icon-communaute.png" alt="icon-communaute">
+					<img src="images/icon-com.png" alt="icon-communaute">
 					<h4>Rejoignez la communauté Apifit et ses défis</h4>
-					<img src="images/icon-conseil.png" alt="icon-conseil">
+					<img src="images/icon-cons.png" alt="icon-conseil">
 					<h4>Des exercices et des conseils</h4></li>
 				</ul>
 			</section>
@@ -140,20 +140,20 @@
 			<!--VIDEO-->
 			<section class="centrer video">
 				<h3>Vidéo de présentation</h3>
-				<!-- <img src="images/ordi-video.png" alt="ordi-video"> -->
-				<div class="contenu-video">
-					<video   controls="controls">
+<!-- 				<img src="images/ordi-video.png" alt="ordi-video">
+ -->				<div class="contenu-video">
+					<!-- <video   controls="controls">
 						<source src="" type="video/mp4" />
 						<object type="application/x-shockwave-flash" data="https://youtu.be/FlTCAqOcqbo">
 							<param name="movie" value="https://youtu.be/FlTCAqOcqbo" />
 							<param name="wmode" value="transparent" />
-							<!--[if lte IE 6 ]>
+							[if lte IE 6 ]>
 							<embed src="https://youtu.be/FlTCAqOcqbo" type="application/x-shockwave-flash"  allowscriptaccess="always" allowfullscreen="true" width="400" height="222">
 						</embed>
-						<![endif]-->
+						<![endif]
 						Vous n'avez pas de navigateur moderne, ni Flash installé... suivez les liens ci-dessous pour télécharger les vidéos.
 					</object>
-				</video>
+				</video> -->
 			</div>
 		</section>
 		<!--END VIDEO-->
@@ -168,7 +168,7 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="https://www.linkedin.com/in/vincent-bas-7022bba4?authType=NAME_SEARCH&authToken=FbQP&locale=fr_FR&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CentityType%3AentityHistoryName%2CclickedEntityId%3Amynetwork_371007794%2Cidx%3A0"><i class="fa fa-linkedin"></i></a></li>
+							<li><a target="_blank" href="https://www.linkedin.com/in/vincent-bas-7022bba4?authType=NAME_SEARCH&authToken=FbQP&locale=fr_FR&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CentityType%3AentityHistoryName%2CclickedEntityId%3Amynetwork_371007794%2Cidx%3A0"><i class="fa fa-linkedin"></i></a></li>
 							<li><a href="mailto:vincentbas92@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
@@ -186,8 +186,8 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="https://www.linkedin.com/in/charles-andre-51b59485?trk=nav_responsive_tab_profile_pic"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="mailto:andrecharles4vincentbas92@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
+							<li><a target="_blank" href="https://www.linkedin.com/in/charles-andre-51b59485?trk=nav_responsive_tab_profile_pic"><i class="fa fa-linkedin"></i></a></li>
+							<li><a thref="mailto:andrecharles4vincentbas92@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
 						<figure>
@@ -204,7 +204,7 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="https://www.linkedin.com/in/samuel-bena%C3%AFs-bb1018a5?authType=NAME_SEARCH&authToken=lvui&locale=en_US&srchid=3030228231480506503594&srchindex=1&srchtotal=1&trk=vsrp_people_res_name&trkInfo=VSRPsearchId%3A3030228231480506503594%2CVSRPtargetId%3A373284277%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue%2CauthType%3ANAME_SEARCH"><i class="fa fa-linkedin"></i></a></li>
+							<li><a target="_blank" href="https://www.linkedin.com/in/samuel-bena%C3%AFs-bb1018a5?authType=NAME_SEARCH&authToken=lvui&locale=en_US&srchid=3030228231480506503594&srchindex=1&srchtotal=1&trk=vsrp_people_res_name&trkInfo=VSRPsearchId%3A3030228231480506503594%2CVSRPtargetId%3A373284277%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue%2CauthType%3ANAME_SEARCH"><i class="fa fa-linkedin"></i></a></li>
 							<li><a href="mailto:samuelbenais@outlook.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
@@ -222,7 +222,7 @@
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
-							<li><a href="https://www.linkedin.com/in/r%C3%A9mi-alabadan-00575285?authType=NAME_SEARCH&authToken=qs8l&locale=fr_FR&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A303433349%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1480506687740%2Ctas%3Aremi%20ala"><i class="fa fa-linkedin"></i></a></li>
+							<li><a target="_blank" href="https://www.linkedin.com/in/r%C3%A9mi-alabadan-00575285?authType=NAME_SEARCH&authToken=qs8l&locale=fr_FR&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A303433349%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1480506687740%2Ctas%3Aremi%20ala"><i class="fa fa-linkedin"></i></a></li>
 							<li><a href="mailto:remialabadan@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
 
@@ -289,7 +289,7 @@
 			<h3>Nous Contacter</h3>
 			<p class=container>Une question, une demande, un intêret pour le projet, contactez nous !</p>
 			<section class="form-contact ">
-				<form class="well form-horizontal" method="post"  id="contact_form">
+				<form class="well form-horizontal" method="post"  id="contact_form" action ="formmail.php">
 					<div class="form-group">
 						<div class="inputGroupContainer">
 							<div class="input-group">
@@ -356,8 +356,8 @@
 			</ul>
 			<div>
                     <ul class="essai social-network social-circle row" >
-                        <li><a href="#" class="icoFacebook col-md-6" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter col-md-6" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/Apifit-166037367198199/?fref=ts" class="icoFacebook col-md-6" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://twitter.com/Apifit_Ece" class="icoTwitter col-md-6" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                     </ul>				
 				</div>
 			<p>Copyright © 2016 Apifit. Tous droits réservés.</p>

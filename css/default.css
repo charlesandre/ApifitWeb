@@ -737,11 +737,22 @@ a.socialIcon:hover, .socialHoverClass {
   transition: all 0.8s;
 }
 
-a {
- background-color: #D3D3D3;   
-}
 
 .essai{
   display: flex;
   justify-content: center;
+}
+
+.essai li {
+  padding: 0px 5px 10px 5px;
+
+}
+
+.essai a{
+  background: #b3b3b3;
+
+}
+
+textarea {
+  resize: none;
 }
