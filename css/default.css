@@ -36,8 +36,7 @@ li
 {
   list-style:none;
 }
-a
-{
+a{
   text-decoration:none;
 }
 
@@ -408,10 +407,12 @@ video{
 }
 
 .home-doctors .common-doctor li a {
-	background: #008fd5;
+	background: #7f7f7f;
 	color: white;
 	padding: 0.75em;
-	border: 5px solid rgba(255, 255, 255, 0.33);
+	border: 3px solid rgba(255, 255, 255, 0.33);
+  border-radius: 10px;
+  opacity: 0.8;
 }
 
 
@@ -757,4 +758,10 @@ textarea {
 .formsubmit {
   text-align: center;
   margin-bottom: 10px;
+}
+
+.list-inline a{
+    background: grey;
+    border-radius:10px;
+
 }
