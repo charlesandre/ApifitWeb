@@ -7,7 +7,7 @@ $Mailclient = $_POST['email'];
 $Content = $_POST['comment'];
 $CompleteName = $Name." ".$FamilyName;
 
-$mail = 'andrecharles4@gmail.com'; // Déclaration de l'adresse de destination.
+$mail = 'apifit.company@gmail.com'; // Déclaration de l'adresse de destination.
 if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
 {
 	$passage_ligne = "\r\n";

@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
 	<link href="bootstrap/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<Link rel="SHORTCUT ICON" href="images/logo-apifit.png">
 	<link rel="stylesheet" href="css/default.css"/>
 	<link rel="stylesheet" href="css/large_screen.css"/>
 	<link rel="stylesheet" href="css/middle_screen.css"/>
 	<link rel="stylesheet" href="css/small_screen.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<LINK rel="SHORTCUT ICON" href="images/logo-apifit.png">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
@@ -30,11 +30,11 @@
 				<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <ul class="nav navbar-nav">
-		      <li><a href="#">Accueil</a></li>
-		      <li><a class="js-scrollTo" href="#contact">Contact</a></li>
+		      <li><a href="#"><span class="glyphicon glyphicon-home padding-icon-right"></span>Accueil</a></li>
+		      <li><a class="js-scrollTo" href="#contact"><span class="glyphicon glyphicon-earphone padding-icon-right"></span>Contact</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="#"><span class="glyphicon glyphicon-user padding-icon-right"></span>Inscription</a></li>
+		      <li><a href="#" id ="myBtn"><span class="glyphicon glyphicon-user padding-icon-right"></span>Inscription</a></li>
 		      <li><a href="#"><span class="glyphicon glyphicon-log-in padding-icon-right"></span>Connexion</a></li>
 		    </ul>
 		  </div>
@@ -84,6 +84,8 @@
 	</header>
 	<!--END CAROUSSEL HEADER-->
 
+
+
 	<!-- MENU-->
 	<nav class="navbar navbar-default menu container-fluid">
 		<!-- <div class="navbar-header">
@@ -107,6 +109,26 @@
 	</nav>
 </nav>
 <!--END MENU-->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h4>Inscription</h4>
+    </div>
+    <div class="modal-body">
+      <p>Pour vous inscrire veuillez remplir ce formulaire :</p>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+</div>
+
+<!-- END MODAL -->
 
 <!--INTRO-->
 <section class="centrer" id="accueil">
@@ -142,6 +164,10 @@
 				<h3>Vidéo de présentation</h3>
 <!-- 				<img src="images/ordi-video.png" alt="ordi-video">
  -->				<div class="contenu-video">
+ 						<section class ="fondordi">
+ 							<img alt="LogoApifit" src="images/logo-apifit.png" height="200" width="200">
+ 							<h3>Apifit</h3>
+ 						</section>
 					<!-- <video   controls="controls">
 						<source src="" type="video/mp4" />
 						<object type="application/x-shockwave-flash" data="https://youtu.be/FlTCAqOcqbo">
@@ -289,7 +315,7 @@
 			<h3>Nous Contacter</h3>
 			<p class=container>Une question, une demande, un intêret pour le projet, contactez nous !</p>
 			<section class="form-contact ">
-				<form class="well form-horizontal" method="post"  id="contact_form" action ="formmail.php">
+				<form class="well form-horizontal" method="post"  id="contact_form" action ="php/formmail.php">
 					<div class="form-group">
 						<div class="inputGroupContainer">
 							<div class="input-group">
@@ -357,6 +383,7 @@
 			<div>
                     <ul class="essai social-network social-circle row" >
                         <li><a target="_blank" href="https://www.facebook.com/Apifit-166037367198199/?fref=ts" class="icoFacebook col-md-6" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://www.youtube.com/channel/UC0cmD6pie45Hfhj9lTXYVnA" class="icoYoutube col-md-6" title="Youtube"><i class="fa fa-youtube"></i></a></li>
                         <li><a target="_blank" href="https://twitter.com/Apifit_Ece" class="icoTwitter col-md-6" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                     </ul>				
 				</div>
@@ -378,6 +405,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="bootstrap/bootstrap.js"></script>
 		<script type="text/javascript" src="js/apifit.js"></script>
+		<script type="text/javascript" src="popup.js"></script>
 		<script>
 		$('.carousel').carousel({
 			interval: 5000 //changes the speed
