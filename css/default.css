@@ -210,7 +210,7 @@ float:right;
 }
 
 .service>ul>li>img:hover{
-  transform: scale(1.05) rotate(6deg);
+  transform: scale(1.2);
 }
 
 .service>ul>li>h4{

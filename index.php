@@ -202,6 +202,7 @@
 			<h3>Nos Services</h3>
 			<ul>
 				<li class="col-sm-3">
+				
 					<img src="images/icon-prof.png" alt="icon-profil" id="profile">
 					<h4>Un parcours constructif conforme à votre niveau</h4>
 					
@@ -211,29 +212,30 @@
 				<li class="col-sm-3 col-sm-offset-6">
 					<img src="images/icon-com.png" alt="icon-communaute">
 					<h4>Rejoignez la communauté Apifit et ses défis</h4>
+
 					<img src="images/icon-cons.png" alt="icon-conseil">
 					<h4>Des exercices et des conseils</h4></li>
-				</ul>
-			</section>
-			<!--END SERVICES-->
+			</ul>
+		</section>
+		<!--END SERVICES-->
 
-			<!--VIDEO-->
-			<section class="centrer video">
-				<h3>Vidéo de présentation</h3>
-<!-- 				<img src="images/ordi-video.png" alt="ordi-video">
- -->				<div class="contenu-video">
- 						<section class ="fondordi">
- 							<img alt="LogoApifit" src="images/logo-apifit.png" height="200" width="200">
- 							<h3>Apifit</h3>
- 						</section>
-					<!-- <video   controls="controls">
-						<source src="" type="video/mp4" />
-						<object type="application/x-shockwave-flash" data="https://youtu.be/FlTCAqOcqbo">
+		<!--VIDEO-->
+		<section class="centrer video">
+			<h3>Vidéo de présentation</h3>
+<!-- 			<img src="images/ordi-video.png" alt="ordi-video">
+ -->		<div class="contenu-video">
+ 				<section class ="fondordi">
+ 					<img alt="LogoApifit" src="images/logo-apifit.png" height="200" width="200">
+ 					<h3>Apifit</h3>
+				</section>
+				<!-- <video   controls="controls">
+					<source src="" type="video/mp4" />
+					<object type="application/x-shockwave-flash" data="https://youtu.be/FlTCAqOcqbo">
 							<param name="movie" value="https://youtu.be/FlTCAqOcqbo" />
 							<param name="wmode" value="transparent" />
 							[if lte IE 6 ]>
 							<embed src="https://youtu.be/FlTCAqOcqbo" type="application/x-shockwave-flash"  allowscriptaccess="always" allowfullscreen="true" width="400" height="222">
-						</embed>
+							</embed>
 						<![endif]
 						Vous n'avez pas de navigateur moderne, ni Flash installé... suivez les liens ci-dessous pour télécharger les vidéos.
 					</object>
