@@ -34,8 +34,8 @@
 		      <li><a class="js-scrollTo" href="#contact"><span class="glyphicon glyphicon-earphone padding-icon-right"></span>Contact</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="#" id ="myBtn"><span class="glyphicon glyphicon-user padding-icon-right"></span>Inscription</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-log-in padding-icon-right"></span>Connexion</a></li>
+		      <li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span>Inscription</a></li>
+		      <li><a href="#" data-toggle="modal" data-target="#ModalConn"><span class="glyphicon glyphicon-log-in padding-icon-right"></span>Connexion</a></li>
 		    </ul>
 		  </div>
 		</nav>
@@ -110,23 +110,81 @@
 </nav>
 <!--END MENU-->
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">×</span>
-      <h4>Inscription</h4>
-    </div>
-    <div class="modal-body">
-      <p>Pour vous inscrire veuillez remplir ce formulaire :</p>
-    </div>
-    <div class="modal-footer">
+<!-- Modal inscription-->
+  <div class="modal fade" id="ModalInsc" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title"><span class="glyphicon glyphicon-user padding-icon-right"></span> Inscription</h3>
+        </div>
+        <div class="modal-body">
+          <p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
+        </div>
+        <form>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Prenom :</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Prenom">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Nom :</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="NOM">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Adresse email :</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Adresse Email">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Mot de passe :</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Repetez le mot de passe :</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
+		  </div>
+		  <div class="formsubmit">
+		  <button type="submit" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+		  </div>
+		</form>
+      </div>
+      
     </div>
   </div>
 
-</div>
+<!-- END MODAL -->
+
+<!-- Modal connexion-->
+  <div class="modal fade" id="ModalConn" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title"><span class="glyphicon glyphicon-log-in padding-icon-right"></span> Connexion</h3>
+        </div>
+        <div>
+        	<p></p>
+        </div>
+        <form>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Adresse email :</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Adresse Email">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Mot de passe :</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
+		  </div>
+		  <div class="formsubmit">
+		  <button type="submit" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+		  </div>
+		</form>
+      </div>
+      
+    </div>
+  </div>
 
 <!-- END MODAL -->
 
@@ -146,7 +204,7 @@
 				<li class="col-sm-3">
 					<img src="images/icon-prof.png" alt="icon-profil" id="profile">
 					<h4>Un parcours constructif conforme à votre niveau</h4>
-					<p id="showme">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					
 					<img src="images/icon-stats.png" alt="icon-statistique">
 					<h4>Analysez vos statistiques</h4>
 				</li>
