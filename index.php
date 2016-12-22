@@ -7,8 +7,8 @@
 	<Link rel="SHORTCUT ICON" href="images/logo-apifit.png">
 	<link rel="stylesheet" href="css/default.css"/>
 	<link rel="stylesheet" href="css/large_screen.css"/>
-	<link rel="stylesheet" href="css/middle_screen.css"/>
-	<link rel="stylesheet" href="css/small_screen.css"/>
+	<link rel="stylesheet" media="screen and (max-width: 1280px)" href="css/middle_screen.css"/>
+	<link rel="stylesheet" media="screen and (max-width: 770px)" href="css/small_screen.css"/>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
@@ -29,13 +29,13 @@
 			<div class=banner_links>
 				<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
-		    <ul class="nav navbar-nav">
+		    <ul class="nav navbar-nav" id ="buttonleft">
 		      <li><a href="#"><span class="glyphicon glyphicon-home padding-icon-right"></span>Accueil</a></li>
 		      <li><a class="js-scrollTo" href="#contact"><span class="glyphicon glyphicon-earphone padding-icon-right"></span>Contact</a></li>
 		    </ul>
-		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span>Inscription</a></li>
-		      <li><a href="#" data-toggle="modal" data-target="#ModalConn"><span class="glyphicon glyphicon-log-in padding-icon-right"></span>Connexion</a></li>
+		    <ul class="nav navbar-nav navbar-right" id= "buttonright">
+		      <li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span><span id="legende">Inscription</span></a></li>
+		      <li><a href="#" data-toggle="modal" data-target="#ModalConn"><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>
 		    </ul>
 		  </div>
 		</nav>
@@ -88,26 +88,26 @@
 
 	<!-- MENU-->
 	<nav class="navbar navbar-default menu container-fluid">
-		<!-- <div class="navbar-header">
-		<a class="navbar-brand" href="#"><img src="" alt="logo-apifit"></a>
-	</div> -->
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bar_menu" aria-expanded="false" aria-controls="navbar" style="margin-left:20px">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-	</div>
-	<nav class="navbar-collapse collapse" id="bar_menu">
-		<ul class="nav navbar-nav">
-			<li><a class="js-scrollTo" href="#accueil" >Accueil</a></li>
-			<li><a class="js-scrollTo" href=".service">Services</a></li>
-			<li><a class="js-scrollTo" href=".equipe">&Eacute;quipe</a></li>
-			<li><a class="js-scrollTo" href="#contact">Contact</a></li>
-		</ul>
+			<!-- <div class="navbar-header">
+			<a class="navbar-brand" href="#"><img src="" alt="logo-apifit"></a>
+		</div> -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bar_menu" aria-expanded="false" aria-controls="navbar" style="margin-left:20px">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<nav class="navbar-collapse collapse" id="bar_menu">
+			<ul class="nav navbar-nav">
+				<li><a class="js-scrollTo" href="#accueil" >Accueil</a></li>
+				<li><a class="js-scrollTo" href="#service">Services</a></li>
+				<li><a class="js-scrollTo" href="#equipe">&Eacute;quipe</a></li>
+				<li><a class="js-scrollTo" href="#contact">Contact</a></li>
+			</ul>
+		</nav>
 	</nav>
-</nav>
 <!--END MENU-->
 
 <!-- Modal inscription-->
@@ -145,7 +145,7 @@
 		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
 		  </div>
 		  <div class="formsubmit">
-		  <button type="submit" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+		  <button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 		  </div>
 		</form>
       </div>
@@ -178,7 +178,7 @@
 		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
 		  </div>
 		  <div class="formsubmit">
-		  <button type="submit" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+		  <button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 		  </div>
 		</form>
       </div>
@@ -194,13 +194,79 @@
 		<h3 >Qui sommes nous ?</h3>
 		<p >Notre plateforme est un coach virtuel doté d’une intelligence artificielle
 			permettant à un utilisateur<br/>de progresser dans un sport souhaité. Un suivi et une progression adaptés à votre niveau et votre objectif vous sont proposés. Vous rejoindrez aussi la communauté Apifit et les challenges associés.</p>
-		</div>	</section>
-		<!--END INTRO-->
+	</div>	
+</section>
+<!--END INTRO-->
 
 		<!--SERVICES-->
-		<section class="centrer service">
+		<section class="centrer service" id="service">
 			<h3>Nos Services</h3>
-			<ul>
+			
+<div class="container">
+ <div class="row">
+  <div class="process">
+   <div class="process-row nav nav-tabs">
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle " data-toggle="tab" href="#menu1"><i class="fa fa-user fa-3x"></i></button>
+     <p><small>&Eacute;diter<br />votre Profil</small></p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu2"><i class="fa fa-line-chart fa-3x"></i></button>
+     <p><small>Récupérer vos Données<br />Quantify-Self</small></p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu3"><i class="fa fa-trophy fa-3x"></i></button>
+     <p><small>Coach & Programmes<br />personnalisés</small></p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu4"><i class="fa fa-spinner fa-3x"></i></button>
+     <p><small>Créer une<br />Communauté de Sportif</small></p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu5"><i class="fa fa-comments-o fa-3x"></i></button>
+     <p><small>Partager<br />votre Passion</small></p>
+    </div>
+   </div>
+  </div>
+  <div class="tab-content">
+   <div id="menu1" class="tab-pane fade active in">
+    <h3>&Eacute;dition<br />du Profil</h3> 
+    <h4>Inscription et édition<br/>
+    du profil et des attentes de l'utilisateur<br/>
+    de la plateforme (sport pratiqué, niveau)</h4>
+   </div>
+   
+   <div id="menu2" class="tab-pane fade">
+    <h3>Récupération Données<br />Quantify-Self</h3>
+    <h4>Collection et récupération des données<br/>
+    Quantify-Self de l'utilisateur via les bracelets<br/>
+    et objets connectés</h4>
+   
+   </div>
+   <div id="menu3" class="tab-pane fade">
+    <h3>Coach & Programmes<br />personnalisés</h3>
+    <h4>Algorithme intélligent qui génère<br/>
+    des programmes d'entraînements<br/>
+    et des exercices adaptées à l'utilisateur</h4>
+ 
+   </div>
+   <div id="menu4" class="tab-pane fade">
+    <h3>Création<br />Communauté de sportif</h3>
+    <h4>Gérer et construiser un réseau de sportifs.<br/>
+    Une plateforme unique permettant aux sportifs<br/>de communiquer, de challenger,<br/>
+	rechercher des partenaires qui pratiquent le même sport,<br/>
+	créer des événements.</h4>
+  
+   </div>
+   <div id="menu5" class="tab-pane fade">
+    <h3>Partager<br />votre Passion</h3>
+    <h4>On pratique pas le même sport,<br/>
+    mais on a la même passion</h4>
+   </div>
+  </div>
+ </div>
+</div>
+			<!--<ul>
 				<li class="col-sm-3">
 				
 					<img src="images/icon-prof.png" alt="icon-profil" id="profile">
@@ -215,7 +281,9 @@
 
 					<img src="images/icon-cons.png" alt="icon-conseil">
 					<h4>Des exercices et des conseils</h4></li>
-			</ul>
+			</ul>-->
+			
+			
 		</section>
 		<!--END SERVICES-->
 
@@ -246,7 +314,7 @@
 
 		<!--EQUIPE-->
 		<div class="home-doctors  clearfix">
-		<section class="centrer equipe">
+		<section class="centrer equipe" id="equipe">
 			<h3>Notre équipe</h3>
 			<aside class="row">
 				<article class="col-sm-1 text-center doc-item"></article>
@@ -457,7 +525,7 @@
  				<br/>Pour en savoir plus et savoir comment paramétrer ces cookies : <a href="#" class="white underline" >Cliquez-ici</a>
        </div>
        <div>
-         <button type="button" id="acc_cookies" class="btn btn-primary">OK</button>
+         <button type="button" id="acc_cookies" class="btn btn-info">OK</button>
        </div>
      </div>
      <?php  }?>
@@ -465,6 +533,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="bootstrap/bootstrap.js"></script>
 		<script type="text/javascript" src="js/apifit.js"></script>
+		<script type="text/javascript" src="js/service-process.js"></script>
 		<script type="text/javascript" src="popup.js"></script>
 		<script>
 		$('.carousel').carousel({
