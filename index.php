@@ -123,26 +123,30 @@
         <div class="modal-body">
           <p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
         </div>
-        <form>
+        <form method="post"  id="register_form" action ="formregister.php">
 		  <div class="form-group">
-		    <label for="exampleInputEmail1">Prenom :</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Prenom">
+		    <label for="first_name">Prenom :</label>
+		    <input type="text" class="form-control" name="first_name" placeholder="Prenom">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputEmail1">Nom :</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="NOM">
+		    <label for="family_name">Nom :</label>
+		    <input type="text" class="form-control" name="family_name" placeholder="Nom">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputEmail1">Adresse email :</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Adresse Email">
+		    <label for="phone">Telephone :</label>
+		    <input type="text" class="form-control" name="phone" placeholder="Telephone">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputPassword1">Mot de passe :</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
+		    <label for="email">Adresse email :</label>
+		    <input type="email" class="form-control" name="email" placeholder="Adresse Email">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputPassword1">Repetez le mot de passe :</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
+		    <label for="Password1">Mot de passe :</label>
+		    <input type="password" required class="form-control" id ="password" name="Password1" placeholder="******">
+		  </div>
+		  <div class="form-group">
+		    <label for="tPassword2">Repetez le mot de passe :</label>
+		    <input type="password" required class="form-control" id ="confirm_password" name="Password2" placeholder="******">
 		  </div>
 		  <div class="formsubmit">
 		  <button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
@@ -162,20 +166,19 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
           <h3 class="modal-title"><span class="glyphicon glyphicon-log-in padding-icon-right"></span> Connexion</h3>
         </div>
-        <div>
-        	<p></p>
-        </div>
-        <form>
+       
+        <form method="post"  id="register_form" action ="formconncdsection.php">
+		  
 		  <div class="form-group">
-		    <label for="exampleInputEmail1">Adresse email :</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Adresse Email">
+		    <label for="email">Adresse email :</label>
+		    <input type="email" class="form-control" name="email" placeholder="Adresse Email">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputPassword1">Mot de passe :</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******">
+		    <label for="Password1">Mot de passe :</label>
+		    <input type="password" required class="form-control" id ="password" name="Password1" placeholder="******">
 		  </div>
 		  <div class="formsubmit">
 		  <button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
@@ -531,10 +534,10 @@
      <?php  }?>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 		<script src="bootstrap/bootstrap.js"></script>
 		<script type="text/javascript" src="js/apifit.js"></script>
 		<script type="text/javascript" src="js/service-process.js"></script>
-		<script type="text/javascript" src="popup.js"></script>
 		<script>
 		$('.carousel').carousel({
 			interval: 5000 //changes the speed
