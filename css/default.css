@@ -72,9 +72,8 @@ p
 }
 
 .row{
-  margin:0 ;
-  padding:0 ;
-  width:100% !important;
+
+  
 }
 
 .well
@@ -784,4 +783,12 @@ textarea {
     background: grey;
     border-radius:10px;
 
+}
+
+#casemembres{
+  max-width: 250px;
+}
+
+#centrerequipe{
+  display: inline-block;
 }

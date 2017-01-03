@@ -319,9 +319,9 @@
 		<div class="home-doctors  clearfix">
 		<section class="centrer equipe" id="equipe">
 			<h3>Notre équipe</h3>
-			<aside class="row">
-				<article class="col-sm-1 text-center doc-item"></article>
-				<article class="col-sm-2 text-center doc-item">
+			<aside class="row" id="centrerequipe">
+				<article class ="col-md-1"></article>
+				<article class="col-sm-2 text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -339,10 +339,11 @@
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-2 text-center doc-item">
+				
+				<article class="col-md-2 text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
-						<ul class="list-inline social-lists animate">
+						<ul class="list-inline social-lists animate"">
 							<li><a target="_blank" href="https://www.linkedin.com/in/charles-andre-51b59485?trk=nav_responsive_tab_profile_pic"><i class="fa fa-linkedin"></i></a></li>
 							<li><a thref="mailto:andrecharles4vincentbas92@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 						</ul>
@@ -357,7 +358,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-2  text-center doc-item">
+				<article class="col-sm-2  text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -375,7 +376,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-2  text-center doc-item">
+				<article class="col-sm-2  text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -389,11 +390,11 @@
 
 						<div class="text-content">
 							<h5>Rémi ALABADAN</h5>
-							<h5><small>Energies et Environnements</small></h5>
+							<h5><small>Energies Environnements</small></h5>
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-2 text-center doc-item">
+				<article class="col-sm-2 text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -411,7 +412,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-1 text-center doc-item"></article>
+				<article class ="col-md-1"></article>
 				<!--<article class="col-sm-2 char"><h5><img src="images/businessman.png" alt="Vincent BAS"></h5></article>
 				<article class="col-sm-2 char"><h5><img src="images/dj.png" alt="Charles ANDRE"></h5></article>
 				<article class="col-sm-2 char"><h5><img src="images/croupier.png" alt="Samuel BENAIS"></h5></article>
