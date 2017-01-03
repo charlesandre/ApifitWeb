@@ -123,7 +123,7 @@
         <div class="modal-body">
           <p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
         </div>
-        <form method="post"  id="register_form" action ="formregister.php">
+        <form method="post"  id="register_form" action ="php/formregister.php">
 		  <div class="form-group">
 		    <label for="first_name">Prenom :</label>
 		    <input type="text" class="form-control" name="first_name" placeholder="Prenom">
@@ -170,15 +170,15 @@
           <h3 class="modal-title"><span class="glyphicon glyphicon-log-in padding-icon-right"></span> Connexion</h3>
         </div>
        
-        <form method="post"  id="register_form" action ="formconncdsection.php">
+        <form method="post"  id="register_form" action ="php/formconnection.php">
 		  
 		  <div class="form-group">
 		    <label for="email">Adresse email :</label>
 		    <input type="email" class="form-control" name="email" placeholder="Adresse Email">
 		  </div>
 		  <div class="form-group">
-		    <label for="Password1">Mot de passe :</label>
-		    <input type="password" required class="form-control" id ="password" name="Password1" placeholder="******">
+		    <label for="Password">Mot de passe :</label>
+		    <input type="password" required class="form-control" id ="Password" name="Password1" placeholder="******">
 		  </div>
 		  <div class="formsubmit">
 		  <button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
@@ -330,7 +330,7 @@
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/Vincent.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
@@ -348,7 +348,7 @@
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/Charles.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
@@ -384,7 +384,7 @@
 						</ul>
 
 						<figure>
-								<img width="670" height="500" src="images/profil.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="images/Remi.png" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 						</figure>
 
 						<div class="text-content">
@@ -442,7 +442,7 @@
 		<!--END PARTENAIRE-->
 
 		<!--CONTACTER-->
-		<section class="centrer contacter" id="contact">
+		<section class="centrer contacter col-md-12" id="contact">
 			<h3>Nous Contacter</h3>
 			<p class=container>Une question, une demande, un intêret pour le projet, contactez nous !</p>
 			<section class="form-contact ">
@@ -506,7 +506,7 @@
 			<a class="rect js-scrollTo" href=".carousel">
 				<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
 			</a>
-			<ul class="row" id="links">
+			<ul class="row col-md-12" id="links">
 				<li><a href="">Mentions Légales</a></li>
 				<li><a href=""> - Nous Suivre</a></li>
 				<li><a href=""> - Besoin Aide</a></li>
