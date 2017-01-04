@@ -47,3 +47,13 @@
 .service {
   background-image: url("../images/image-service.jpg");
 }
+
+#equipe {
+  padding-bottom: 10px;
+}
+
+#casemembres{
+  display: inline-block;
+
+}
+

@@ -321,7 +321,7 @@
 			<h3>Notre équipe</h3>
 			<aside class="row" id="centrerequipe">
 				<article class ="col-md-1"></article>
-				<article class="col-sm-2 text-center doc-item" id ="casemembres">
+				<article class="col-md-2 text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -358,7 +358,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-2  text-center doc-item" id ="casemembres">
+				<article class="col-md-2 text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -376,7 +376,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-2  text-center doc-item" id ="casemembres">
+				<article class="col-md-2 text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -394,7 +394,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="col-sm-2 text-center doc-item" id ="casemembres">
+				<article class="col-md-2 text-center doc-item" id ="casemembres">
 					<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
 						<ul class="list-inline social-lists animate">
@@ -503,8 +503,8 @@
 		</section>
 		<!--END CONTACTER-->
 
-		<footer class="centrer footer">
-			<a class="rect js-scrollTo" href=".carousel">
+		<footer class="centrer footer col-sm-12">
+			<a class="rect js-scrollTo col-sm-12" href=".carousel">
 				<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
 			</a>
 			<ul class="row col-md-12" id="links">

@@ -140,3 +140,15 @@
 .service {
   background-image: url("../images/image-service.jpg") no-repeats;
 }
+
+#casemembres{
+  display: inline-block;
+  margin: 10px 10px 10px 10px;
+
+}
+
+.equipe
+{
+  background-color: #ededed;
+  background-repeat: no-repeat;
+}
