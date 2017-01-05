@@ -26,7 +26,7 @@ $query = "INSERT INTO USERS(UFAMNAME, UFIRNAME, UPHONE, UEMAIL, UPASSWORD) VALUE
 //Execute Query
 mysql_query($query);
 
-//header('Location: index.php');
+header('Location: index.php');
 
-header('Location: http://www.apifit.fr/ApifitWeb/index.php');
+//header('Location: http://www.apifit.fr/ApifitWeb/index.php');
 ?>

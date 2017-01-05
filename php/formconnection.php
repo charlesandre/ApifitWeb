@@ -32,8 +32,8 @@ else {
 		$_SESSION['id'] = $UID;
 		$_SESSION['FamilyName'] = $row['UFAMNAME'];
 		$_SESSION['FirstName'] = $row['UFIRNAME'];
-		//header('Location: accueil.php');
-		header('Location: http://www.apifit.fr/ApifitWeb/accueil.php');
+		header('Location: ../accueil.php');
+		//header('Location: http://www.apifit.fr/ApifitWeb/accueil.php');
 		
 	}
 	else{

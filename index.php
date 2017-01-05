@@ -13,8 +13,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
 	<title>Apifit</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/controller.js"></script>
 </head>
-<body>
+<body ng-app="mainApp">
 
 	<header id="myCarousel" class="carousel slide">
 
@@ -123,33 +126,33 @@
         <div class="modal-body">
           <p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
         </div>
-        <form method="post"  id="register_form" action ="php/formregister.php">
+        <form ng-controller="signupCtrl" id="register_form" action ="/">
 		  <div class="form-group">
 		    <label for="first_name">Prenom :</label>
-		    <input type="text" class="form-control" name="first_name" placeholder="Prenom">
+		    <input type="text" class="form-control" name="first_name" placeholder="Prenom" ng-model="name">
 		  </div>
 		  <div class="form-group">
 		    <label for="family_name">Nom :</label>
-		    <input type="text" class="form-control" name="family_name" placeholder="Nom">
+		    <input type="text" class="form-control" name="family_name" placeholder="Nom"  ng-model="lastname">
 		  </div>
 		  <div class="form-group">
 		    <label for="phone">Telephone :</label>
-		    <input type="text" class="form-control" name="phone" placeholder="Telephone">
+		    <input type="text" class="form-control" name="phone" placeholder="Telephone"  ng-model="phone">
 		  </div>
 		  <div class="form-group">
 		    <label for="email">Adresse email :</label>
-		    <input type="email" class="form-control" name="email" placeholder="Adresse Email">
+		    <input type="email" class="form-control" name="email" placeholder="Adresse Email"  ng-model="email">
 		  </div>
 		  <div class="form-group">
 		    <label for="Password1">Mot de passe :</label>
-		    <input type="password" required class="form-control" id ="password" name="Password1" placeholder="******">
+		    <input type="password" required class="form-control" id ="password" name="Password1" placeholder="******" ng-model="password">
 		  </div>
 		  <div class="form-group">
-		    <label for="tPassword2">Repetez le mot de passe :</label>
-		    <input type="password" required class="form-control" id ="confirm_password" name="Password2" placeholder="******">
+		    <label for="Password2">Repetez le mot de passe :</label>
+		    <input type="password" required class="form-control" id ="confirm_password" name="Password2" placeholder="******" ng-model="password2">
 		  </div>
 		  <div class="formsubmit">
-		  <button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+		  <button ng-click="submit()" type="button" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 		  </div>
 		</form>
       </div>
@@ -169,21 +172,22 @@
           
           <h3 class="modal-title"><span class="glyphicon glyphicon-log-in padding-icon-right"></span> Connexion</h3>
         </div>
-       
-        <form method="post"  id="register_form" action ="php/formconnection.php">
+       	
+        <form ng-controller="loginCtrl" id="register_form" action ="/">
 		  
-		  <div class="form-group">
+		  <div  class="form-group">
 		    <label for="email">Adresse email :</label>
-		    <input type="email" class="form-control" name="email" placeholder="Adresse Email">
+		    <input ng-model="emailaddress" type="email" class="form-control" name="email" placeholder="Adresse Email">
 		  </div>
 		  <div class="form-group">
 		    <label for="Password">Mot de passe :</label>
-		    <input type="password" required class="form-control" id ="Password" name="Password1" placeholder="******">
+		    <input ng-model="password" type="password" required class="form-control" id ="Password" name="Password1" placeholder="******">
 		  </div>
 		  <div class="formsubmit">
-		  <button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+		  <button ng-click="submit()" type="button" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 		  </div>
 		</form>
+		
       </div>
       
     </div>
