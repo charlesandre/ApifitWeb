@@ -208,11 +208,10 @@
 					</div>
 					<div class="form-group">
 						<label for="Password">Mot de passe :</label>
-						<input ng-model="password" type="password" required class="form-control" id ="Password" name="Password1" ng-minlength="5" placeholder="******" required>
+						<input ng-model="password" type="password" required class="form-control" id ="Password" name="Password1" placeholder="******" required>
 					</div>
 					<div ng-messages="myForm2.Password1.$error" style="color:grey; margin-left: 17px;" role="alert">
 						<div ng-message="required">Entrez votre mot de passe</div>	
-						<div ng-message="minlength">Votre mot de passe est trop court</div>
 					</div>
 					<div class="formsubmit">
 						<button ng-click="submit()" type="button" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
