@@ -128,41 +128,42 @@
 				<div class="modal-body">
 					<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
 				</div>
-				<form name="myForm" id="register_form" action ="/">
+				<form name="myForm" ng-controller="signupCtrl" id="register_form" action ="/">
 					<div class="form-group">
 						<label for="first_name">Prenom :</label>
 						<input type="text" class="form-control" name="first_name" placeholder="Prenom" ng-model="name" required>
 					</div>
 					<div ng-messages="myForm.first_name.$error" style="color:grey; margin-left: 17px;" role="alert">
-						<div ng-message="required">Entrez votre prénom</div>	
+						<div ng-message="required">Veuillez entrer votre prénom</div>	
 					</div>
 					<div class="form-group">
 						<label for="family_name">Nom :</label>
 						<input type="text" class="form-control" name="family_name" placeholder="Nom"  ng-model="lastname" required>
 					</div>
 					<div ng-messages="myForm.family_name.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Entrez votre nom</div>	
+						<div ng-message="required">Veuillez entrer votre nom</div>	
 					</div>
 					<div class="form-group">
 						<label for="phone">Telephone :</label>
-						<input type="text" class="form-control" name="phone" placeholder="Telephone"  ng-model="phone">
+						<input type="text" class="form-control" name="phone" placeholder="Telephone"  ng-model="numphone" required="">
 					</div>
 					<div ng-messages="myForm.phone.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Entrez votre numéro de telephone</div>	
+						<div ng-message="required">Veuillez entrer votre numéro de téléphone.</div>	
 					</div>
 					<div class="form-group">
 						<label for="email">Adresse email :</label>
-						<input type="email" class="form-control" name="email" placeholder="Adresse Email"  ng-model="email" required="">
+						<input type="email" class="form-control" name="email" placeholder="Adresse Email" ng-pattern="emailFormat" ng-model="email" required="">
 					</div>
 					<div ng-messages="myForm.email.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Entrez votre adresse email.</div>	
+						<div ng-message="required">Veuillez entrer votre adresse email.</div>
+						<div ng-show="myForm.email.$error.pattern"> Cet email n'est pas valide ! </div>
 					</div>
 					<div class="form-group">
 						<label for="Password1">Mot de passe :</label>
 						<input type="password" required class="form-control" id ="password" name="Password1" placeholder="******" ng-model="password" ng-minlength="5" required>
 					</div>
 					<div ng-messages="myForm.Password1.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Entrez votre mot de passe</div>
+						<div ng-message="required">Veuillez entrer votre mot de passe</div>
 						<div ng-message="minlength">Votre mot de passe est trop court</div>	
 					</div>
 					<div class="form-group">
@@ -170,12 +171,13 @@
 						<input type="password" required class="form-control" id ="confirm_password" name="Password2" placeholder="******" ng-model="password2" match-password="Password1" required>
 					</div>
 					<div ng-messages="myForm.Password2.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Confirmez le mot de passe</div>	
+						<div ng-message="required">Veuillez confirmer le mot de passe</div>	
 						<div ng-message="passwordMatch">Les mots de passes ne sont pas identiques</div>
 					</div>
 					<div class="formsubmit">
-						<button ng-click="submit()" type="button" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+						<button ng-click="submit()" ng-disabled="myForm.$invalid" type="button" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 					</div>
+
 				</form>
 			</div>
 

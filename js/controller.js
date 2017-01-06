@@ -12,29 +12,28 @@ app.controller('loginCtrl', function($scope, $location) {
 
 	};
 
-
-
-s
 });
 
-app.controller('signupCtrl', function($scope, $http, $location) {
+app.controller('signupCtrl', function($window, $scope, $http, $location) {
 	$scope.submit = function() {
 		if($scope.password != $scope.password2) {
 			alert("Password don't match");
 		} else {
 
 
-			$http.post("php/register.php",{'uname':$scope.name, 'ulastname':$scope.lastname, 'uemail':$scope.email, 'password':$scope.password, 'phone':$scope.phone})
-			.success(function(data, status, headers, config){
-				alert("data inserted successfully");
-			});
+			$http.post("php/register.php",{'uname':$scope.name, 'ulastname':$scope.lastname, 'uemail':$scope.email, 'password':$scope.password, 'phone':$scope.phone});
 			
-
-
+			$window.location.href = '/ApifitWeb/';
 		};
 
 	}
+	$scope.text = 'me@example.com';
+    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
+
+}, function Ctrl($scope) {
+  $scope.text = 'me@example.com';
+  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 });
 
 
