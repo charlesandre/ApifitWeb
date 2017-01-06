@@ -545,6 +545,8 @@ video{
 {
   padding-left: 15px;
   padding-right: 15px;
+  margin-bottom:5px;
+  margin-top: 10px;
 }
 
 .form-horizontal
