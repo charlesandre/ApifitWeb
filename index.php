@@ -197,7 +197,7 @@
 					<h3 class="modal-title"><span class="glyphicon glyphicon-log-in padding-icon-right"></span> Connexion</h3>
 				</div>
 
-				<form name="myForm2" ng-controller="loginCtrl" id="register_form" action ="/">
+				<form name="myForm2" ng-controller="loginCtrl" id="register_form" action ="php/formconnection.php">
 
 					<div  class="form-group">
 						<label for="email">Adresse email :</label>
@@ -214,7 +214,7 @@
 						<div ng-message="required">Entrez votre mot de passe</div>	
 					</div>
 					<div class="formsubmit">
-						<button ng-click="submit()" type="button" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+						<button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 					</div>
 				</form>
 
@@ -490,7 +490,7 @@
 							<input type="text" class="form-control" name="first_name" placeholder="Prenom" ng-model="name" required>
 						</div>
 						<div ng-messages="myFormCont.first_name.$error" style="color:grey; margin-left: 17px;" role="alert">
-					</div>
+						</div>
 					</div>
 				</div>
 				<!-- Text input-->
@@ -501,7 +501,7 @@
 							<input type="text" class="form-control" name="family_name" placeholder="Nom"  ng-model="lastname" required>
 						</div>
 						<div ng-messages="myFormCont.family_name.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-					</div>
+						</div>
 					</div>
 				</div>
 				<!-- Text input-->
@@ -512,8 +512,8 @@
 							<input type="email" class="form-control" name="email" placeholder="Adresse Email" ng-pattern="emailFormat" ng-model="email" required="">
 						</div>
 						<div ng-messages="myFormCont.email.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-show="myFormCont.email.$error.pattern"> Cet email n'est pas valide ! </div>
-					</div>
+							<div ng-show="myFormCont.email.$error.pattern"> Cet email n'est pas valide ! </div>
+						</div>
 					</div>
 				</div>
 				<!-- Text input-->
@@ -524,8 +524,8 @@
 							<input type="text" class="form-control" name="phone" placeholder="+33"  ng-model="phone" required>
 						</div>
 						<div ng-messages="myFormCont.phone.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						
-					</div>
+
+						</div>
 					</div>
 				</div>
 				<!-- Text area -->
@@ -536,8 +536,8 @@
 							<textarea type="text" class="form-control" ng-minlength="30" name="com" placeholder="Commenter.."  ng-model="com" required></textarea>
 						</div>
 						<div ng-messages="myFormCont.com.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="minlength">Votre commentaire est trop court, minimum 30 caractères.</div>	
-					</div>
+							<div ng-message="minlength">Votre commentaire est trop court, minimum 30 caractères.</div>	
+						</div>
 					</div>
 				</div>
 				<!-- Success message -->
@@ -551,11 +551,11 @@
 	</section>
 	<!--END CONTACTER-->
 
-	<footer class="centrer footer col-sm-12">
-		<a class="rect js-scrollTo col-sm-12" href=".carousel">
+	<footer class="centrer footer">
+		<a class="rect js-scrollTo" href=".carousel">
 			<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
 		</a>
-		<ul class="row col-md-12" id="links">
+		<ul class="row" id="links">
 			<li><a href="">Mentions Légales</a></li>
 			<li><a href=""> - Nous Suivre</a></li>
 			<li><a href=""> - Besoin Aide</a></li>
@@ -571,24 +571,24 @@
 	</footer>
 
 	<?php if ($_COOKIE['accept_cookies']!="accepted"){?> <!-- if the cookie is there, the banner does not display. -->
-		<div class=row id="cookies">
-			<div>
-				En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous offrir un meilleur service.
-				<br/>Pour en savoir plus et savoir comment paramétrer ces cookies : <a href="#" class="white underline" >Cliquez-ici</a>
-			</div>
-			<div>
-				<button type="button" id="acc_cookies" class="btn btn-info">OK</button>
-			</div>
+	<div class=row id="cookies">
+		<div>
+			En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous offrir un meilleur service.
+			<br/>Pour en savoir plus et savoir comment paramétrer ces cookies : <a href="#" class="white underline" >Cliquez-ici</a>
 		</div>
-		<?php  }?>
+		<div>
+			<button type="button" id="acc_cookies" class="btn btn-info">OK</button>
+		</div>
+	</div>
+	<?php  }?>
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-		<script src="bootstrap/bootstrap.js"></script>
-		<script type="text/javascript" src="js/apifit.js"></script>
-		<script type="text/javascript" src="js/service-process.js"></script>
-		<script>
-			$('.carousel').carousel({
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+	<script src="bootstrap/bootstrap.js"></script>
+	<script type="text/javascript" src="js/apifit.js"></script>
+	<script type="text/javascript" src="js/service-process.js"></script>
+	<script>
+		$('.carousel').carousel({
 			interval: 5000 //changes the speed
 		})
 
