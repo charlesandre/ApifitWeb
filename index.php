@@ -480,14 +480,17 @@
 	<section class="centrer contacter col-md-12" id="contact">
 		<h3>Nous Contacter</h3>
 		<p class=container>Une question, une demande, un intêret pour le projet, contactez nous !</p>
-		<section class="form-contact ">
-			<form class="well form-horizontal" method="post" id="contact_form" action ="php/formmail.php">
+		<section class="form-contact" ng-controller="contactCtrl">
+			
+			<form class="well form-horizontal" name="myFormCont" ng-controller="contactCtrl" id="register_form" action ="/">
 				<div class="form-group">
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input name="first_name" placeholder="Prénom" class="form-control"  type="text" required>
+							<input type="text" class="form-control" name="first_name" placeholder="Prenom" ng-model="name" required>
 						</div>
+						<div ng-messages="myFormCont.first_name.$error" style="color:grey; margin-left: 17px;" role="alert">
+					</div>
 					</div>
 				</div>
 				<!-- Text input-->
@@ -495,8 +498,10 @@
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input name="last_name" placeholder="Nom de famille" class="form-control"  type="text" required>
+							<input type="text" class="form-control" name="family_name" placeholder="Nom"  ng-model="lastname" required>
 						</div>
+						<div ng-messages="myFormCont.family_name.$error" style="color:grey; margin-left: 17px;" role="alert" required>
+					</div>
 					</div>
 				</div>
 				<!-- Text input-->
@@ -504,8 +509,11 @@
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-							<input name="email" placeholder="Adresse E-Mail" class="form-control"  type="text" required>
+							<input type="email" class="form-control" name="email" placeholder="Adresse Email" ng-pattern="emailFormat" ng-model="email" required="">
 						</div>
+						<div ng-messages="myFormCont.email.$error" style="color:grey; margin-left: 17px;" role="alert" required>
+						<div ng-show="myFormCont.email.$error.pattern"> Cet email n'est pas valide ! </div>
+					</div>
 					</div>
 				</div>
 				<!-- Text input-->
@@ -513,8 +521,11 @@
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-							<input name="phone" placeholder="+33" class="form-control" type="text">
+							<input type="text" class="form-control" name="phone" placeholder="+33"  ng-model="phone" required>
 						</div>
+						<div ng-messages="myFormCont.phone.$error" style="color:grey; margin-left: 17px;" role="alert" required>
+						
+					</div>
 					</div>
 				</div>
 				<!-- Text area -->
@@ -522,17 +533,20 @@
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-							<textarea class="form-control" name="comment" placeholder="Commentez..."></textarea>
+							<textarea type="text" class="form-control" ng-minlength="30" name="com" placeholder="Commenter.."  ng-model="com" required></textarea>
 						</div>
+						<div ng-messages="myFormCont.com.$error" style="color:grey; margin-left: 17px;" role="alert" required>
+						<div ng-message="minlength">Votre commentaire est trop court, minimum 30 caractères.</div>	
+					</div>
 					</div>
 				</div>
 				<!-- Success message -->
-				<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+				
 				<!-- Button -->
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+					<button ng-click="submit()" ng-disabled="myFormCont.$invalid" type="button" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 				</div>
-			</form>
+			</form>			
 		</section>
 	</section>
 	<!--END CONTACTER-->

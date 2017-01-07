@@ -1,11 +1,13 @@
 <?php 
+$data=json_decode(file_get_contents("php://input"));
 
-$Name = $_POST['first_name'];
-$FamilyName = $_POST['last_name'];
-$Phone = $_POST['phone'];
-$Mailclient = $_POST['email'];
-$Content = $_POST['comment'];
+$Name=$data->uname;
+$FamilyName=mysql_real_escape_string($data->ulastname);
+$Mail=mysql_real_escape_string($data->uemail);
+$Content=mysql_real_escape_string($data->password);
+$Phone=mysql_real_escape_string($data->phone);
 $CompleteName = $Name." ".$FamilyName;
+echo $CompleteName;
 
 $mail = 'apifit.company@gmail.com'; // Déclaration de l'adresse de destination.
 if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
@@ -58,7 +60,4 @@ mail($mail,$sujet,$message,$header);
 //==========
 
 
-// header('Location: http://localhost/ApifitWeb/index.php');
-
-header('Location: http://www.apifit.fr/ApifitWeb/index.php');
 ?>

@@ -14,26 +14,39 @@ app.controller('loginCtrl', function($scope, $location) {
 
 });
 
+
 app.controller('signupCtrl', function($window, $scope, $http, $location) {
 	$scope.submit = function() {
-		if($scope.password != $scope.password2) {
-			alert("Password don't match");
-		} else {
-
-
-			$http.post("php/register.php",{'uname':$scope.name, 'ulastname':$scope.lastname, 'uemail':$scope.email, 'password':$scope.password, 'phone':$scope.phone});
+		
+			$http.post("php/register.php",{'uname':$scope.name, 'ulastname':$scope.lastname, 'uemail':$scope.email, 'password':$scope.password, 'phone':$scope.phone})
+		.success(function(data, status, headers, config){
+			alert("data inserted successfully");
+		});
 			
 			$window.location.href = '/ApifitWeb/';
-		};
+		
 
 	}
 	$scope.text = 'me@example.com';
     $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
 
-}, function Ctrl($scope) {
-  $scope.text = 'me@example.com';
-  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+});
+
+app.controller('contactCtrl', function($window, $scope, $http, $location) {
+	$scope.submit = function() {
+		
+			$http.post("php/mail.php",{'uname':$scope.first_name, 'ulastname':$scope.family_name, 'uemail':$scope.email, 'content':$scope.com, 'phone':$scope.phone})
+		.success(function(data, status, headers, config){
+			alert("Mail sent");
+		});
+		
+
+	}
+	$scope.text = 'me@example.com';
+    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+
+
 });
 
 
