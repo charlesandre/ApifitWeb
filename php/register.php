@@ -10,7 +10,7 @@ $Phone=mysql_real_escape_string($data->phone);
 
 //Variables to connect to the database
 $username="root";
-$password="root";
+$password="";
 $database="apifit";
 
 //Connection to the database

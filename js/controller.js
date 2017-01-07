@@ -19,9 +19,7 @@ app.controller('signupCtrl', function($window, $scope, $http, $location) {
 	$scope.submit = function() {
 		
 			$http.post("php/register.php",{'uname':$scope.name, 'ulastname':$scope.lastname, 'uemail':$scope.email, 'password':$scope.password, 'phone':$scope.phone})
-		.success(function(data, status, headers, config){
-			alert("data inserted successfully");
-		});
+		
 			
 			$window.location.href = '/ApifitWeb/';
 		
@@ -37,9 +35,7 @@ app.controller('contactCtrl', function($window, $scope, $http, $location) {
 	$scope.submit = function() {
 			alert("pret a envoyer le mail");
 			$http.post("php/mail.php",{'uname':$scope.first_name, 'ulastname':$scope.family_name, 'uemail':$scope.email, 'content':$scope.com, 'phone':$scope.phone})
-		.success(function(data, status, headers, config){
-			alert("Mail sent");
-		});
+		
 		
 
 	}
