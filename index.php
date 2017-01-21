@@ -17,7 +17,7 @@
 		<script src="js/angular-route.min.js"></script>
 		<script src="js/angular-messages.min.js"></script>
 		<script src="js/angular-password.js"></script>
-		<script src="js/controller.js"></script>
+		<script src="js/ControllerIndex.js"></script>
 	</head>
 	<body ng-app="mainApp">
 
@@ -130,25 +130,25 @@
 				</div>
 				<form name="myForm" ng-controller="signupCtrl" id="register_form" action ="/">
 					<div class="form-group">
-						<label for="first_name">Prenom :</label>
+						<label for="first_name">Prénom :</label>
 						<input type="text" class="form-control" name="first_name" placeholder="Prenom" ng-model="name" required>
 					</div>
 					<div ng-messages="myForm.first_name.$error" style="color:grey; margin-left: 17px;" role="alert">
-						<div ng-message="required">Veuillez entrer votre prénom</div>	
+						<div ng-message="required">Veuillez entrer votre prénom</div>
 					</div>
 					<div class="form-group">
-						<label for="family_name">Nom :</label>
-						<input type="text" class="form-control" name="family_name" placeholder="Nom"  ng-model="lastname" required>
+						<label for="first_name">Nom :</label>
+						<input type="text" class="form-control" name="last_name" placeholder="Nom" ng-model="last_name" required>
 					</div>
-					<div ng-messages="myForm.family_name.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Veuillez entrer votre nom</div>	
+					<div ng-messages="myForm.last_name.$error" style="color:grey; margin-left: 17px;" role="alert">
+						<div ng-message="required">Veuillez entrer votre nom</div>
 					</div>
 					<div class="form-group">
 						<label for="phone">Telephone :</label>
-						<input type="text" class="form-control" name="phone" placeholder="Telephone"  ng-model="numphone" required="">
+						<input type="text" class="form-control" name="phone" placeholder="Telephone"  ng-model="phone" required="">
 					</div>
 					<div ng-messages="myForm.phone.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Veuillez entrer votre numéro de téléphone.</div>	
+						<div ng-message="required">Veuillez entrer votre numéro de téléphone.</div>
 					</div>
 					<div class="form-group">
 						<label for="email">Adresse email :</label>
@@ -164,14 +164,14 @@
 					</div>
 					<div ng-messages="myForm.Password1.$error" style="color:grey; margin-left: 17px;" role="alert" required>
 						<div ng-message="required">Veuillez entrer votre mot de passe</div>
-						<div ng-message="minlength">Votre mot de passe est trop court</div>	
+						<div ng-message="minlength">Votre mot de passe est trop court</div>
 					</div>
 					<div class="form-group">
 						<label for="Password2">Repetez le mot de passe :</label>
 						<input type="password" required class="form-control" id ="confirm_password" name="Password2" placeholder="******" ng-model="password2" match-password="Password1" required>
 					</div>
 					<div ng-messages="myForm.Password2.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-						<div ng-message="required">Veuillez confirmer le mot de passe</div>	
+						<div ng-message="required">Veuillez confirmer le mot de passe</div>
 						<div ng-message="passwordMatch">Les mots de passes ne sont pas identiques</div>
 					</div>
 					<div class="formsubmit">
@@ -197,21 +197,21 @@
 					<h3 class="modal-title"><span class="glyphicon glyphicon-log-in padding-icon-right"></span> Connexion</h3>
 				</div>
 
-				<form name="myForm2" ng-controller="loginCtrl" id="register_form" action ="php/formconnection.php">
+				<form name="myForm2" ng-controller="loginCtrl" id="register_form" action="/">
 
 					<div  class="form-group">
 						<label for="email">Adresse email :</label>
 						<input ng-model="emailaddress" type="email" class="form-control" name="email" placeholder="Adresse Email" required>
 					</div>
 					<div ng-messages="myForm2.email.$error" style="color:grey; margin-left: 17px;" role="alert">
-						<div ng-message="required">Entrez votre addresse email </div>	
+						<div ng-message="required">Entrez votre addresse email </div>
 					</div>
 					<div class="form-group">
 						<label for="Password">Mot de passe :</label>
-						<input ng-model="password" type="password" required class="form-control" id ="Password" name="Password1" placeholder="******" required>
+						<input ng-model="password" type="password" required class="form-control" id ="Password" name="password" placeholder="******" required>
 					</div>
 					<div ng-messages="myForm2.Password1.$error" style="color:grey; margin-left: 17px;" role="alert">
-						<div ng-message="required">Entrez votre mot de passe</div>	
+						<div ng-message="required">Entrez votre mot de passe</div>
 					</div>
 					<div class="formsubmit">
 						<button type="submit" class="btn btn-info">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
@@ -231,14 +231,14 @@
 			<h3 >Qui sommes nous ?</h3>
 			<p >Notre plateforme est un coach virtuel doté d’une intelligence artificielle
 				permettant à un utilisateur<br/>de progresser dans un sport souhaité. Un suivi et une progression adaptés à votre niveau et votre objectif vous sont proposés. Vous rejoindrez aussi la communauté Apifit et les challenges associés.</p>
-			</div>	
+			</div>
 		</section>
 		<!--END INTRO-->
 
 		<!--SERVICES-->
 		<section class="centrer service" id="service">
 			<h3>Nos Services</h3>
-			
+
 			<div class="container">
 				<div class="row">
 					<div class="process">
@@ -267,7 +267,7 @@
 					</div>
 					<div class="tab-content">
 						<div id="menu1" class="tab-pane fade active in">
-							<h3>&Eacute;dition<br />du Profil</h3> 
+							<h3>&Eacute;dition<br />du Profil</h3>
 							<h4>Inscription et édition<br/>
 								du profil et des attentes de l'utilisateur<br/>
 								de la plateforme (sport pratiqué, niveau)</h4>
@@ -305,10 +305,10 @@
 								</div>
 			<!--<ul>
 				<li class="col-sm-3">
-				
+
 					<img src="images/icon-prof.png" alt="icon-profil" id="profile">
 					<h4>Un parcours constructif conforme à votre niveau</h4>
-					
+
 					<img src="images/icon-stats.png" alt="icon-statistique">
 					<h4>Analysez vos statistiques</h4>
 				</li>
@@ -377,7 +377,7 @@
 					<article class="col-md-2 text-center doc-item" id ="casemembres">
 						<div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
 
-							<ul class="list-inline social-lists animate"">
+							<ul class="list-inline social-lists animate">
 								<li><a target="_blank" href="https://www.linkedin.com/in/charles-andre-51b59485?trk=nav_responsive_tab_profile_pic"><i class="fa fa-linkedin"></i></a></li>
 								<li><a thref="mailto:andrecharles4vincentbas92@gmail.com?Subject=Site%20Apifit"><i class="fa fa-envelope-o"></i></a></li>
 							</ul>
@@ -481,7 +481,7 @@
 		<h3>Nous Contacter</h3>
 		<p class=container>Une question, une demande, un intêret pour le projet, contactez nous !</p>
 		<section class="form-contact" ng-controller="contactCtrl">
-			
+
 			<form class="well form-horizontal" name="myFormCont" ng-controller="contactCtrl" id="register_form" action ="/">
 				<div class="form-group">
 					<div class="inputGroupContainer">
@@ -536,17 +536,17 @@
 							<textarea type="text" class="form-control" ng-minlength="30" name="com" placeholder="Commenter.."  ng-model="com" required></textarea>
 						</div>
 						<div ng-messages="myFormCont.com.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-							<div ng-message="minlength">Votre commentaire est trop court, minimum 30 caractères.</div>	
+							<div ng-message="minlength">Votre commentaire est trop court, minimum 30 caractères.</div>
 						</div>
 					</div>
 				</div>
 				<!-- Success message -->
-				
+
 				<!-- Button -->
 				<div class="form-group">
 					<button ng-click="submit()" ng-disabled="myFormCont.$invalid" type="button" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
 				</div>
-			</form>			
+			</form>
 		</section>
 	</section>
 	<!--END CONTACTER-->
@@ -556,16 +556,16 @@
 			<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
 		</a>
 		<ul class="row" id="links">
-			<li><a href="">Mentions Légales</a></li>
-			<li><a href=""> - Nous Suivre</a></li>
-			<li><a href=""> - Besoin Aide</a></li>
+			<li><a href="#">Mentions Légales</a></li>
+			<li><a href="#"> - Nous Suivre</a></li>
+			<li><a href="#"> - Besoin Aide</a></li>
 		</ul>
 		<div>
 			<ul class="essai social-network social-circle row" >
 				<li><a target="_blank" href="https://www.facebook.com/Apifit-166037367198199/?fref=ts" class="icoFacebook col-md-6" title="Facebook"><i class="fa fa-facebook"></i></a></li>
 				<li><a target="_blank" href="https://www.youtube.com/channel/UC0cmD6pie45Hfhj9lTXYVnA" class="icoYoutube col-md-6" title="Youtube"><i class="fa fa-youtube"></i></a></li>
 				<li><a target="_blank" href="https://twitter.com/Apifit_Ece" class="icoTwitter col-md-6" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-			</ul>				
+			</ul>
 		</div>
 		<p>Copyright © 2016 Apifit. Tous droits réservés.</p>
 	</footer>
@@ -599,11 +599,12 @@
 			return false;
 		});
 	</script>
+
 	<script>
 		$('#acc_cookies').click(function(e) {
 			e.preventDefault();
 			$.ajax({
-				url: "php/setcookie_accepted.php",
+				url: "php/setcookieAccepted.php",
 				type: 'POST',
 				success: function(data) {
 					$("#cookies").hide();

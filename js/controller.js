@@ -4,48 +4,32 @@ var app = angular.module('mainApp', ['ngRoute', 'ngMessages', 'ngPassword']);
 
 app.controller('loginCtrl', function($scope, $location) {
 	$scope.submit = function() {
-		var uemail = $scope.username;
-		var password = $scope.password;
-		
-		$location.path('home.html');	
-		
-
+		//$http.post("php/loginUser.php",{'email':$scope.email, 'password':$scope.password})
 	};
-
 });
 
 
 app.controller('signupCtrl', function($window, $scope, $http, $location) {
 	$scope.submit = function() {
-		
-			$http.post("php/register.php",{'uname':$scope.name, 'ulastname':$scope.lastname, 'uemail':$scope.email, 'password':$scope.password, 'phone':$scope.phone})
-		
-			
-			$window.location.href = '/ApifitWeb/';
-		
-
+			$http.post("php/registerUser.php",{'username':$scope.name, 'email':$scope.email, 'password':$scope.password, 'phone':$scope.phone})
+		//$http.post("php/----- le mail d'envoi d'inscription ---.php",{'uname':$scope.name, 'ulastname':$scope.lastname, 'uemail':$scope.email, 'password':$scope.password, 'phone':$scope.phone})
+		//modification de la fenêtre d'inscription disant qu'il faut consulter ses mails
 	}
+
 	$scope.text = 'me@example.com';
-    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
 
 });
 
 app.controller('contactCtrl', function($window, $scope, $http, $location) {
 	$scope.submit = function() {
-			alert("pret a envoyer le mail");
-			$http.post("php/mail.php",{'uname':$scope.first_name, 'ulastname':$scope.family_name, 'uemail':$scope.email, 'content':$scope.com, 'phone':$scope.phone})
-		
-		
-
+			alert($scope.email);
+			$http.post("php/mail.php",{'name':$scope.name, 'email':$scope.email, 'content':$scope.com, 'phone':$scope.phone})
 	}
 	$scope.text = 'me@example.com';
-    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
-
-
+  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 });
 
-
-})(window.angular);
-
-
+})
+(window.angular);
