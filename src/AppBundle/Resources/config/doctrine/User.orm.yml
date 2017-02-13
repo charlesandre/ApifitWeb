@@ -1,0 +1,23 @@
+AppBundle\Entity\User:
+    type: entity
+    table: users
+    id:
+        UID:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        UNAME:
+            type: string
+            length: 15
+        ULASTNAME:
+            type: decimal
+            scale: 15
+        UPASSWORD:
+            type: string
+            length: 20
+        UEMAIL:
+            type: string
+            length: 20
+        UPHONE:
+            type: string
+            length: 20
