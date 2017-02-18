@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<link href="{{ asset('www/bootstrap/bootstrap.css')}}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<Link rel="SHORTCUT ICON" href="{{ asset('www/images/logo-apifit.png') }}">
+		<link rel="stylesheet" href="{{ asset('www/css/default.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('www/css/large_screen.css') }}"/>
+		<link rel="stylesheet" media="screen and (max-width: 1280px)" href="{{ asset('www/css/middle_screen.css') }}"/>
+		<link rel="stylesheet" media="screen and (max-width: 770px)" href="{{ asset('www/css/small_screen.css') }}"/>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
+		<title>Apifit</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<script src="{{ asset('www/js/angular-route.min.js')}}"></script>
+		<script src="{{ asset('www/js/angular-messages.min.js')}}"></script>
+		<script src="{{ asset('www/js/angular-password.min.js')}}"></script>
+		<script src="{{ asset('www/js/ControllerIndex.js')}}"></script>
+	</head>
+
+  <body>
+    <div style="background-color:#e7e7e7; padding:20px">
+      <h1 style="text-align:center">Configuration de votre programme</h1>
+      <h1 style="text-align:center">Veuillez choisir votre modèle de montre.</h2>
+   </div>
+   <div class="row container" style="margin:auto">
+      <div class=col-lg-6>
+        <button  class="btn btn-primary"><img  src="{{ asset('www/images/fitbit_logo.png') }}" width=200 alt="Fitbit"></button>
+      </div>
+      <div class=col-lg-6>
+        <button  class="btn btn-primary"><img  src="{{ asset('www/images/jawbone_logo.png') }}" width=200 alt=Jawbone></button>
+      </div>
+    </div>
+  </body>

@@ -179,11 +179,14 @@
 					</div>
 
 				</form>-->
-
-
-	{{ form_start(form) }}
-	{{ form_widget(form) }}
-	{{ form_end(form) }}
+				{{ form_start(form) }}
+				    {{ form_row(form.uemail) }}
+				    {{ form_row(form.upassword) }}
+				    {{ form_row(form.uname) }}
+						{{ form_row(form.ulastname) }}
+						{{ form_row(form.uphone) }}
+				    <button type="submit">Register!</button>
+				{{ form_end(form) }}
 			</div>
 
 		</div>

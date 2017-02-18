@@ -105,9 +105,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // app_default_index
+        // app_default_choiceapi
         if ($pathinfo === '/default/index') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'app_default_index',);
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::choiceAPI',  '_route' => 'app_default_choiceapi',);
         }
 
         // app_oauth_connectoauthfitibit
