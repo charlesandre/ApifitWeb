@@ -2,30 +2,46 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * UsersFriends
+ *
+ * @ORM\Table(name="users_friends")
+ * @ORM\Entity
  */
 class UsersFriends
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="UID_REL", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $uidRel;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="UID1", type="integer", nullable=false)
      */
     private $uid1;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="UID2", type="integer", nullable=false)
      */
     private $uid2;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="STATUT", type="string", length=30, nullable=false)
      */
     private $statut;
+
 
 
     /**
@@ -110,4 +126,3 @@ class UsersFriends
         return $this->statut;
     }
 }
-

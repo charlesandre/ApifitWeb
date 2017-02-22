@@ -793,6 +793,8 @@ use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\CacheItem;
 interface AdapterInterface extends CacheItemPoolInterface
 {
+public function getItem($key);
+public function getItems(array $keys = array());
 }
 }
 namespace Psr\Log
@@ -1172,7 +1174,6 @@ throw $e;
 }
 namespace Symfony\Component\Cache\Adapter
 {
-use Symfony\Component\Cache\Exception\CacheException;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;
 trait FilesystemAdapterTrait
 {
@@ -1246,6 +1247,7 @@ return $dir.substr($hash, 2, 20);
 }
 namespace Symfony\Component\Cache\Adapter
 {
+use Symfony\Component\Cache\Exception\CacheException;
 class FilesystemAdapter extends AbstractAdapter
 {
 use FilesystemAdapterTrait;
@@ -1381,7 +1383,7 @@ continue;
 if (!isset($tag[0])) {
 throw new InvalidArgumentException('Cache tag length must be greater than zero');
 }
-if (isset($tag[strcspn($tag,'{}()/\@:')])) {
+if (false !== strpbrk($tag,'{}()/\@:')) {
 throw new InvalidArgumentException(sprintf('Cache tag "%s" contains reserved characters {}()/\@:', $tag));
 }
 $this->tags[$tag] = $tag;
@@ -1396,7 +1398,7 @@ throw new InvalidArgumentException(sprintf('Cache key must be string, "%s" given
 if (!isset($key[0])) {
 throw new InvalidArgumentException('Cache key length must be greater than zero');
 }
-if (isset($key[strcspn($key,'{}()/\@:')])) {
+if (false !== strpbrk($key,'{}()/\@:')) {
 throw new InvalidArgumentException(sprintf('Cache key "%s" contains reserved characters {}()/\@:', $key));
 }
 }
@@ -2494,12 +2496,12 @@ yield $key => $item;
 }
 public static function throwOnRequiredClass($class)
 {
-$e = new \ReflectionException(sprintf('Class %s does not exist', $class));
+$e = new \ReflectionException("Class $class does not exist");
 $trace = $e->getTrace();
 $autoloadFrame = array('function'=>'spl_autoload_call','args'=> array($class),
 );
-$i = array_search($autoloadFrame, $trace);
-if (false !== $i++ && isset($trace[$i]['function']) && !isset($trace[$i]['class'])) {
+$i = 1 + array_search($autoloadFrame, $trace, true);
+if (isset($trace[$i]['function']) && !isset($trace[$i]['class'])) {
 switch ($trace[$i]['function']) {
 case'get_class_methods':
 case'get_class_vars':
@@ -2762,10 +2764,6 @@ return false;
 }
 if (!$this->resourceCheckers) {
 return true; }
-$metadata = $this->getMetaFile();
-if (!is_file($metadata)) {
-return true;
-}
 $metadata = $this->getMetaFile();
 if (!is_file($metadata)) {
 return false;
@@ -3644,7 +3642,9 @@ private function parseClassName()
 {
 $pos = strrpos(static::class,'\\');
 $this->namespace = false === $pos ?'': substr(static::class, 0, $pos);
+if (null === $this->name) {
 $this->name = false === $pos ? static::class : substr(static::class, $pos + 1);
+}
 }
 }
 }
@@ -9134,10 +9134,11 @@ $this->manager->apply($request, $configurations);
 private function autoConfigure(\ReflectionFunctionAbstract $r, Request $request, $configurations)
 {
 foreach ($r->getParameters() as $param) {
-if (!$param->getClass() || $param->getClass()->isInstance($request)) {
+if ($param->getClass() && $param->getClass()->isInstance($request)) {
 continue;
 }
 $name = $param->getName();
+if ($param->getClass()) {
 if (!isset($configurations[$name])) {
 $configuration = new ParamConverter(array());
 $configuration->setName($name);
@@ -9146,7 +9147,10 @@ $configurations[$name] = $configuration;
 } elseif (null === $configurations[$name]->getClass()) {
 $configurations[$name]->setClass($param->getClass()->getName());
 }
-$configurations[$name]->setIsOptional($param->isOptional() || $this->isParameterTypeSupported && $param->hasType() && $param->getType()->allowsNull());
+}
+if (isset($configurations[$name])) {
+$configurations[$name]->setIsOptional($param->isOptional() || $param->isDefaultValueAvailable() || $this->isParameterTypeSupported && $param->hasType() && $param->getType()->allowsNull());
+}
 }
 return $configurations;
 }
@@ -9190,11 +9194,11 @@ return false;
 if (isset($options['format'])) {
 $date = DateTime::createFromFormat($options['format'], $value);
 if (!$date) {
-throw new NotFoundHttpException('Invalid date given.');
+throw new NotFoundHttpException(sprintf('Invalid date given for parameter "%s".', $param));
 }
 } else {
 if (false === strtotime($value)) {
-throw new NotFoundHttpException('Invalid date given.');
+throw new NotFoundHttpException(sprintf('Invalid date given for parameter "%s".', $param));
 }
 $date = new DateTime($value);
 }
@@ -9237,7 +9241,7 @@ if (false === $object = $this->findOneBy($class, $request, $options)) {
 if ($configuration->isOptional()) {
 $object = null;
 } else {
-throw new \LogicException('Unable to guess how to get a Doctrine instance from the request information.');
+throw new \LogicException(sprintf('Unable to guess how to get a Doctrine instance from the request information for parameter "%s".', $name));
 }
 }
 }
@@ -9522,11 +9526,15 @@ if (0 === count($arguments)) {
 $r = new \ReflectionObject($controller);
 $arguments = array();
 foreach ($r->getMethod($action)->getParameters() as $param) {
-$arguments[] = $param->getName();
+$arguments[] = $param;
 }
 }
 foreach ($arguments as $argument) {
+if ($argument instanceof \ReflectionParameter) {
+$parameters[$name = $argument->getName()] = !$request->attributes->has($name) && $argument->isDefaultValueAvailable() ? $argument->getDefaultValue() : $request->attributes->get($name);
+} else {
 $parameters[$argument] = $request->attributes->get($argument);
+}
 }
 return $parameters;
 }

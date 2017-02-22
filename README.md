@@ -1,4 +1,4 @@
-api-symfony
-===========
+my_project_name
+===============
 
-A Symfony project created on January 26, 2017, 12:40 pm.
+A Symfony project created on February 22, 2017, 2:09 pm.

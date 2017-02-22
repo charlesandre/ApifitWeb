@@ -2,70 +2,102 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * UsersData
+ *
+ * @ORM\Table(name="users_data", uniqueConstraints={@ORM\UniqueConstraint(name="UID", columns={"UID"})})
+ * @ORM\Entity
  */
 class UsersData
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="UID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $uid;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="LEVEL", type="string", length=30, nullable=false)
      */
     private $level;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="WEIGHT", type="integer", nullable=false)
      */
     private $weight;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="HEIGHT", type="integer", nullable=false)
      */
     private $height;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="GENDER", type="string", length=8, nullable=false)
      */
     private $gender;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="AGE", type="integer", nullable=false)
      */
     private $age;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="DATE_OF_BIRTH", type="string", length=8, nullable=false)
      */
     private $dateOfBirth;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="TIMEZONE", type="string", length=30, nullable=false)
      */
     private $timezone;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="STRIDE_LENGHT_RUNNING", type="integer", nullable=false)
      */
     private $strideLenghtRunning;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="STRIDE_LENGHT_WALKING", type="integer", nullable=false)
      */
     private $strideLenghtWalking;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="STRIDE_LENGHT_RUNNING_TYPE", type="string", length=30, nullable=false)
      */
     private $strideLenghtRunningType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="STRIDE_LENGHT_WALKING_TYPE", type="string", length=30, nullable=false)
      */
     private $strideLenghtWalkingType;
+
 
 
     /**
@@ -342,4 +374,3 @@ class UsersData
         return $this->strideLenghtWalkingType;
     }
 }
-

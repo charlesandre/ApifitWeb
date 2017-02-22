@@ -2,35 +2,53 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * UsersDefi
+ *
+ * @ORM\Table(name="users_defi")
+ * @ORM\Entity
  */
 class UsersDefi
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="UDID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $udid;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="UID1", type="integer", nullable=false)
      */
     private $uid1;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="UID2", type="integer", nullable=false)
      */
     private $uid2;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="DID", type="integer", nullable=false)
      */
     private $did;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="STATUT", type="string", length=30, nullable=false)
      */
     private $statut;
+
 
 
     /**
@@ -139,4 +157,3 @@ class UsersDefi
         return $this->statut;
     }
 }
-

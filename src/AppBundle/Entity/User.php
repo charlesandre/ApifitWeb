@@ -2,170 +2,261 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
+
 /**
  * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $UID;
+    private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="NAME", type="string", length=30, nullable=false)
      */
-    private $UNAME;
+    private $name;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="LASTNAME", type="string", length=30, nullable=false)
      */
-    private $ULASTNAME;
+    private $lastname;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="PASSWORD", type="string", length=30, nullable=false)
      */
-    private $UPASSWORD;
+    private $password;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="EMAIL", type="string", length=40, nullable=false)
      */
-    private $UEMAIL;
+    private $email;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="PHONE", type="string", length=20, nullable=false)
      */
-    private $UPHONE;
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=20, nullable=false)
+     */
+    private $role;
+
 
 
     /**
-     * Get uID
+     * Get id
      *
      * @return integer
      */
-    public function getUID()
+    public function getId()
     {
-        return $this->UID;
+        return $this->id;
     }
 
     /**
-     * Set uNAME
+     * Set name
      *
-     * @param string $uNAME
+     * @param string $name
      *
      * @return User
      */
-    public function setUNAME($uNAME)
+    public function setName($name)
     {
-        $this->UNAME = $uNAME;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get uNAME
+     * Get name
      *
      * @return string
      */
-    public function getUNAME()
+    public function getName()
     {
-        return $this->UNAME;
+        return $this->name;
     }
 
     /**
-     * Set uLASTNAME
+     * Set lastname
      *
-     * @param string $uLASTNAME
+     * @param string $lastname
      *
      * @return User
      */
-    public function setULASTNAME($uLASTNAME)
+    public function setLastname($lastname)
     {
-        $this->ULASTNAME = $uLASTNAME;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
     /**
-     * Get uLASTNAME
+     * Get lastname
      *
      * @return string
      */
-    public function getULASTNAME()
+    public function getLastname()
     {
-        return $this->ULASTNAME;
+        return $this->lastname;
     }
 
     /**
-     * Set uPASSWORD
+     * Set password
      *
-     * @param string $uPASSWORD
+     * @param string $password
      *
      * @return User
      */
-    public function setUPASSWORD($uPASSWORD)
+    public function setPassword($password)
     {
-        $this->UPASSWORD = $uPASSWORD;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get uPASSWORD
+     * Get password
      *
      * @return string
      */
-    public function getUPASSWORD()
+    public function getPassword()
     {
-        return $this->UPASSWORD;
+        return $this->password;
     }
 
     /**
-     * Set uEMAIL
+     * Set email
      *
-     * @param string $uEMAIL
+     * @param string $email
      *
      * @return User
      */
-    public function setUEMAIL($uEMAIL)
+    public function setEmail($email)
     {
-        $this->UEMAIL = $uEMAIL;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get uEMAIL
+     * Get email
      *
      * @return string
      */
-    public function getUEMAIL()
+    public function getEmail()
     {
-        return $this->UEMAIL;
+        return $this->email;
     }
 
     /**
-     * Set uPHONE
+     * Set phone
      *
-     * @param string $uPHONE
+     * @param string $phone
      *
      * @return User
      */
-    public function setUPHONE($uPHONE)
+    public function setPhone($phone)
     {
-        $this->UPHONE = $uPHONE;
+        $this->phone = $phone;
 
         return $this;
     }
 
     /**
-     * Get uPHONE
+     * Get phone
      *
      * @return string
      */
-    public function getUPHONE()
+    public function getPhone()
     {
-        return $this->UPHONE;
+        return $this->phone;
     }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+
+
+
+        public function getPlainPassword()
+            {
+                return $this->password;
+            }
+
+            public function setPlainPassword($plainPassword)
+            {
+                $this->password = $password;
+            }
+
+
+              public function getUsername()
+              {
+                  return $this->email;
+              }
+
+              public function eraseCredentials()
+              {
+                 return null;
+              }
+
+
+              public function getRoles()
+              {
+                  return [$this->getRole()];
+              }
+
+              public function getSalt()
+              {
+               return null;
+              }
+
 }
-

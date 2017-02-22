@@ -105,14 +105,66 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // app_default_choiceapi
-        if ($pathinfo === '/default/index') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::choiceAPI',  '_route' => 'app_default_choiceapi',);
+        if (0 === strpos($pathinfo, '/configure')) {
+            // configure
+            if ($pathinfo === '/configure') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ConfigureUserController::showAction',  '_route' => 'configure',);
+            }
+
+            // fitbit
+            if ($pathinfo === '/configure/fitbit') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ConfigureUserController::getFitbitAPI',  '_route' => 'fitbit',);
+            }
+
+            // jawbone
+            if ($pathinfo === '/configure/jawbone') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ConfigureUserController::getJawboneAPI',  '_route' => 'jawbone',);
+            }
+
         }
 
-        // app_oauth_connectoauthfitibit
-        if ($pathinfo === '/oauth/connect') {
-            return array (  '_controller' => 'AppBundle\\Controller\\OauthController::connectOauthFitibit',  '_route' => 'app_oauth_connectoauthfitibit',);
+        // homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'homepage');
+            }
+
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        }
+
+        // welcome
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'welcome');
+            }
+
+            return array (  '_controller' => 'AppBundle\\Controller\\HomeController::showAction',  '_route' => 'welcome',);
+        }
+
+        // register
+        if ($pathinfo === '/register') {
+            return array (  '_controller' => 'AppBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'register',);
+        }
+
+        if (0 === strpos($pathinfo, '/log')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // login
+                if ($pathinfo === '/login') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+                }
+
+                // security_login_check
+                if ($pathinfo === '/login_check') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginCheckAction',  '_route' => 'security_login_check',);
+                }
+
+            }
+
+            // logout
+            if ($pathinfo === '/logout') {
+                return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'logout',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

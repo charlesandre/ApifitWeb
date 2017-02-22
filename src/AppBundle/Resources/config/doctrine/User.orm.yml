@@ -1,23 +1,56 @@
 AppBundle\Entity\User:
     type: entity
-    table: users
+    table: user
     id:
-        UID:
+        id:
             type: integer
-            generator: { strategy: AUTO }
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
     fields:
-        UNAME:
+        name:
             type: string
-            length: 15
-        ULASTNAME:
-            type: decimal
-            scale: 15
-        UPASSWORD:
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: NAME
+        lastname:
             type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: LASTNAME
+        password:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: PASSWORD
+        email:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: EMAIL
+        phone:
+            type: string
+            nullable: false
             length: 20
-        UEMAIL:
+            options:
+                fixed: false
+            column: PHONE
+        role:
             type: string
+            nullable: false
             length: 20
-        UPHONE:
-            type: string
-            length: 20
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

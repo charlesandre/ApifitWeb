@@ -1,0 +1,44 @@
+
+    public function getPlainPassword()
+        {
+            return $this->password;
+        }
+
+        public function setPlainPassword($plainPassword)
+        {
+            $this->password = $password;
+        }
+
+
+          public function getUsername()
+          {
+              return $this->email;
+          }
+
+          public function eraseCredentials()
+          {
+             return null;
+          }
+
+
+
+          public function getRole()
+          {
+              return $this->role;
+          }
+
+
+          public function setRole($role = null)
+          {
+              $this->role = $role;
+          }
+
+          public function getRoles()
+          {
+              return [$this->getRole()];
+          }
+
+          public function getSalt()
+          {
+           return null;
+          }

@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+<html lang="fr">
+<head>
+	<link href="{{ asset('bootstrap/bootstrap.css')}}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="favicon" href="{{ asset('images/logo-apifit.png') }}">
+		<link rel="stylesheet" href="{{ asset('css/default.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('css/large_screen.css') }}"/>
+		<link rel="stylesheet" media="screen and (max-width: 1280px)" href="{{ asset('css/middle_screen.css') }}"/>
+		<link rel="stylesheet" media="screen and (max-width: 770px)" href="{{ asset('css/small_screen.css') }}"/>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
+		<title>Apifit</title>
+</head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
