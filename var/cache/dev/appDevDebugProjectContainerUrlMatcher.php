@@ -111,25 +111,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\ConfigureUserController::showAction',  '_route' => 'configure',);
             }
 
-            // fitbit
-            if ($pathinfo === '/configure/fitbit') {
-                return array (  '_controller' => 'AppBundle\\Controller\\ConfigureUserController::getFitbitAPI',  '_route' => 'fitbit',);
-            }
-
             // jawbone
             if ($pathinfo === '/configure/jawbone') {
                 return array (  '_controller' => 'AppBundle\\Controller\\ConfigureUserController::getJawboneAPI',  '_route' => 'jawbone',);
             }
 
-        }
-
-        // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
+            // fitbit
+            if ($pathinfo === '/configure/fitbit') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ConfigureUserController::getFitbitAPI',  '_route' => 'fitbit',);
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
         // welcome
@@ -138,7 +129,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->redirect($pathinfo.'/', 'welcome');
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\HomeController::showAction',  '_route' => 'welcome',);
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::showAction',  '_route' => 'welcome',);
         }
 
         // register

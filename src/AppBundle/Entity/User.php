@@ -69,6 +69,12 @@ class User implements UserInterface
     private $role;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="api", type="string", length=10, nullable=false)
+     */
+    private $api;
 
     /**
      * Get id
@@ -223,6 +229,30 @@ class User implements UserInterface
     {
         return $this->role;
     }
+
+    /**
+     * Get api
+     *
+     * @return string
+     */
+     public function getApi()
+     {
+         return $this->api;
+     }
+
+
+     /**
+      * Set api
+      *
+      * @return string
+      */
+     public function setApi($api)
+     {
+         $this->api=$api;
+         return $this->api;
+     }
+
+
 
 
 

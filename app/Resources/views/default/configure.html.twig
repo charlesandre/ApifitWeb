@@ -7,7 +7,15 @@
     <div style="background-color:#e7e7e7; padding:20px; border-bottom: 1px solid #777777">
       <h1 style="text-align:center">Configuration de votre programme</h1>
       <h1 style="text-align:center">Veuillez choisir votre modèle de montre.</h2>
-				<p style="text-align:center">Username : {{ app.user.name }}</p>
+				<p style="text-align:center">
+            Votre montre actuelle  :
+            {% if(app.user.api != null)%}
+                {{app.user.api |title }}
+            {% endif %}
+            {% if(app.user.api == null)%}
+                Aucune
+            {% endif %}
+        </p>
    </div>
    <div class="container" style="margin:auto; margin-top:10px">
       <div style="border:1px solid #e7e7e7; margin:auto; padding:10px; display:inline-block;">

@@ -9,42 +9,40 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SecurityController extends Controller
 {
-    /**
-     * @Route("/login", name="login")
-     */
-    public function loginAction(Request $request)
-    {
-      // si déjà logged
+  /**
+  * @Route("/login", name="login")
+  */
+  public function loginAction(Request $request)
+  {
 
-      if ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
-          return $this->redirect($this->generateUrl('welcome'));
-      }
-      
-      // si préremplissage du champ email par la dernier log fourni
-       $helper = $this->get('security.authentication_utils');
+    if ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+      return $this->redirect($this->generateUrl('welcome'));
+    }
 
-       return $this->render(
-           'auth/login.html.twig',
-           array(
-               'last_username' => $helper->getLastUsername(),
-               'error'         => $helper->getLastAuthenticationError(),
-           )
-       );
+    $helper = $this->get('security.authentication_utils');
+
+    return $this->render(
+      'auth/login.html.twig',
+      array(
+        'last_username' => $helper->getLastUsername(),
+        'error'         => $helper->getLastAuthenticationError(),
+        )
+      );
     }
 
     /**
-     * @Route("/login_check", name="security_login_check")
-     */
+    * @Route("/login_check", name="security_login_check")
+    */
     public function loginCheckAction()
     {
 
     }
 
     /**
-     * @Route("/logout", name="logout")
-     */
+    * @Route("/logout", name="logout")
+    */
     public function logoutAction()
     {
 
     }
-}
+  }

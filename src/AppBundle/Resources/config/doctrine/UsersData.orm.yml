@@ -1,21 +1,27 @@
 AppBundle\Entity\UsersData:
     type: entity
     table: users_data
-    uniqueConstraints:
-        UID:
-            columns:
-                - UID
     id:
-        uid:
+        seq:
             type: integer
             nullable: false
             options:
                 unsigned: false
             id: true
-            column: UID
+            column: SEQ
             generator:
                 strategy: IDENTITY
     fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: ID
+        date:
+            type: date
+            nullable: false
+            column: DATE
         level:
             type: string
             nullable: false

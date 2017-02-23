@@ -10,13 +10,28 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ConfigureUserController extends Controller
 {
-  
+
   /**
   * @Route("/configure", name = "configure")
   */
   public function showAction(Request $request)
   {
-    return $this->render('default/configure.html.twig');
+    return $this->render('default/configure.html.twig', array(
+      'current_api' => $this->getUser()->getApi()
+    ));
+  }
+
+
+  /**
+  * @Route("/configure/jawbone", name = "jawbone")
+  */
+  public function getJawboneAPI(Request $request){
+
+    $em = $this->getDoctrine()->getManager();
+    $this->getUser()->setApi('jawbone');
+    $em->flush();
+
+    return ConfigureUserController::showAction($request);
   }
 
 
@@ -25,6 +40,13 @@ class ConfigureUserController extends Controller
   */
   public function getFitbitAPI(Request $request){
 
+    $em = $this->getDoctrine()->getManager();
+    $this->getUser()->setApi('fitbit');
+    $em->flush();
+
+    return ConfigureUserController::showAction($request);
+
+/*
     $provider = new Fitbit([
       'clientId'          => '227YW8',
       'clientSecret'      => 'b9d07a7b54e355979df0d2b2574f7d7e',
@@ -98,20 +120,7 @@ class ConfigureUserController extends Controller
 
       }
 
-    }
-
-
-  }
-
-
-
-  /**
-  * @Route("/configure/jawbone", name = "jawbone")
-  */
-  public function getJawboneAPI(Request $request){
+    }*/
 
   }
-
-
-
 }

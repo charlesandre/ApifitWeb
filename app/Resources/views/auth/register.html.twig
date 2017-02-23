@@ -39,8 +39,15 @@
 								<li><a class="js-scrollTo" href="#contact"><span class="glyphicon glyphicon-earphone padding-icon-right"></span>Contact</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right" id= "buttonright">
+
+								{% if app.user == null %}
 								<li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span><span id="legende">Inscription</span></a></li>
 								<li><a href="{{ path('login') }}" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>
+								{% endif %}
+								{% if app.user != null %}
+								<li><a href="{{ path('login') }}" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Mon Tableau de bord</span></a></li>
+								{% endif %}
+
 							</ul>
 						</div>
 					</nav>
@@ -315,7 +322,7 @@
 							</ul>
 
 							<figure>
-								<img width="670" height="500" src="{{ asset('images/profil.png') }}" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="{{ asset('images/zinedine.jpg') }}" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 							</figure>
 
 							<div class="text-content">
@@ -351,7 +358,7 @@
 							</ul>
 
 							<figure>
-								<img width="670" height="500" src="{{ asset('images/profil.png') }}" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
+								<img width="670" height="500" src="{{ asset('images/fatih.jpg') }}" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2">
 							</figure>
 
 							<div class="text-content">
@@ -425,9 +432,6 @@
 							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 							<input type="email" class="form-control" name="email" placeholder="Adresse Email" ng-pattern="emailFormat" ng-model="email" required="">
 						</div>
-						<div ng-messages="myFormCont.email.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-							<div ng-show="myFormCont.email.$error.pattern"> Cet email n'est pas valide ! </div>
-						</div>
 					</div>
 				</div>
 				<!-- Text input-->
@@ -448,9 +452,6 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 							<textarea type="text" class="form-control" ng-minlength="30" name="com" placeholder="Commenter.."  ng-model="com" required></textarea>
-						</div>
-						<div ng-messages="myFormCont.com.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-							<div ng-message="minlength">Votre commentaire est trop court, minimum 30 caractères.</div>
 						</div>
 					</div>
 				</div>

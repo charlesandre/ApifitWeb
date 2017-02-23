@@ -7,14 +7,35 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
-    }
+  /**
+  * @Route("/", name="welcome")
+  */
+  public function showAction(Request $request)
+  {
+    $repository = $this->getDoctrine()
+    ->getRepository('AppBundle:UsersData');
+
+    $a=$this->getUser()->getId();
+    $query = $repository->createQueryBuilder('d')
+    ->where('d.id = :uid')
+    ->setParameter('uid', $a)
+    ->orderBy('d.date', 'DESC')
+    ->setMaxResults(1)
+    ->getQuery();
+
+    $lastdata = $query->getResult();
+
+    $query = $repository->createQueryBuilder('d')
+    ->where('d.id = :uid')
+    ->setParameter('uid', $a)
+    ->getQuery();
+
+    
+
+
+    return $this->render('default/index.html.twig', array(
+      'lastdata' => $lastdata,
+      'id'=> $a
+    ));
+  }
 }

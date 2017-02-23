@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UsersData
  *
- * @ORM\Table(name="users_data", uniqueConstraints={@ORM\UniqueConstraint(name="UID", columns={"UID"})})
+ * @ORM\Table(name="users_data")
  * @ORM\Entity
  */
 class UsersData
@@ -15,11 +15,25 @@ class UsersData
     /**
      * @var integer
      *
-     * @ORM\Column(name="UID", type="integer")
+     * @ORM\Column(name="SEQ", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $uid;
+    private $seq;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DATE", type="date", nullable=false)
+     */
+    private $date;
 
     /**
      * @var string
@@ -101,13 +115,61 @@ class UsersData
 
 
     /**
-     * Get uid
+     * Get seq
      *
      * @return integer
      */
-    public function getUid()
+    public function getSeq()
     {
-        return $this->uid;
+        return $this->seq;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return UsersData
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return UsersData
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
