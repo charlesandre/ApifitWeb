@@ -13,11 +13,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
 		<title>Apifit</title>
+		<!--
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 		<script src="{{ asset('js/angular-route.min.js')}}"></script>
 		<script src="{{ asset('js/angular-messages.min.js')}}"></script>
 		<script src="{{ asset('js/angular-password.min.js')}}"></script>
-		<script src="{{ asset('js/ControllerIndex.js')}}"></script>
+		<script src="{{ asset('js/ControllerIndex.js')}}"></script> -->
 	</head>
 	<body ng-app="mainApp">
 
@@ -42,7 +43,7 @@
 
 								{% if app.user == null %}
 								<li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span><span id="legende">Inscription</span></a></li>
-								<li><a href="{{ path('login') }}" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>
+								<li><a href="#" data-toggle="modal" data-target="#ModalConn" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>
 								{% endif %}
 								{% if app.user != null %}
 								<li><a href="{{ path('login') }}" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Mon Tableau de bord</span></a></li>
@@ -136,14 +137,37 @@
 					<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
 				</div>
 
-				{{ form_start(form) }}
-				<button type="submit">Register!</button>
-				{{ form_end(form) }}
+				{{ form_start(formreg) }}
+				{{ form_widget(formreg) }}
+				<button class="btn btn-primary" id="btnmodal" type="submit">Register !</button>
+				{{ form_end(formreg) }}
 			</div>
 
 		</div>
 	</div>
 
+	<!-- Modal Connexion-->
+	<div class="modal fade" id="ModalConn" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title"><span class="glyphicon glyphicon-user padding-icon-right"></span> Inscription</h3>
+				</div>
+				<div class="modal-body">
+					<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
+				</div>
+
+				{{ form_start(formconn) }}
+				{{ form_widget(formconn) }}
+				<button class="btn btn-primary" id="btnmodal"  type="submit">Connect !</button>
+				{{ form_end(formconn) }}
+			</div>
+
+		</div>
+	</div>
 
 
 	<!--INTRO-->
