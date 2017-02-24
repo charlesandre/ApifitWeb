@@ -153,7 +153,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             // logout
             if ($pathinfo === '/logout') {
-                return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'logout',);
+                return array('_route' => 'logout');
             }
 
         }

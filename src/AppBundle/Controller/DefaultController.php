@@ -12,6 +12,11 @@ class DefaultController extends Controller
   */
   public function showAction(Request $request)
   {
+
+    if (!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+      return $this->redirect($this->generateUrl('register'));
+    }
+
     $repository = $this->getDoctrine()
     ->getRepository('AppBundle:UsersData');
 
@@ -30,7 +35,7 @@ class DefaultController extends Controller
     ->setParameter('uid', $a)
     ->getQuery();
 
-    
+
 
 
     return $this->render('default/index.html.twig', array(
