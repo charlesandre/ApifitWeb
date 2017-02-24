@@ -1,0 +1,11 @@
+/app/cache
+/app/logs
+/app/config
+/var/cache/*
+/var/logs/*
+/var/sessions/*
+/bin/*
+/vendor/
+/web/video
+/build/
+/composer.phar
