@@ -1,13 +1,6 @@
-*
-!.gitignore
-/app/cache
-/app/logs
 /app/config
-/var/cache/*
-/var/logs/*
-/var/sessions/*
+/var/*
 /bin/*
-/vendor/
-/web/video
-/build/
+/vendor/*
+/web/video/*
 /composer.phar
