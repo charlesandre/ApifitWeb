@@ -2,7 +2,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
-use AppBundle\Form\UserType;
+use AppBundle\Form\UserReg;
+use AppBundle\Form\UserConn;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +16,12 @@ class RegistrationController extends Controller
   public function registerAction(Request $request)
   {
     $user = new User();
-    $form = $this->createForm(UserType::class, $user);
-    $form->handleRequest($request);
+    $formreg = $this->createForm(UserReg::class, $user);
+    $formreg->handleRequest($request);
+    $formconn = $this->createForm(UserConn::class, $user);
+    $formconn->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
+    if ($formreg->isSubmitted() && $formreg->isValid()) {
 
       $encoder = $this->get('security.password_encoder');
       $password = $encoder->encodePassword($user, $user->getPlainPassword());
@@ -31,11 +34,11 @@ class RegistrationController extends Controller
       $em->persist($user);
       $em->flush();
 
-      return $this->redirectToRoute('login');
+      return $this->redirectToRoute('register');
     }
 
     return $this->render('auth/register.html.twig', [
-      'form' => $form->createView(),
+      'formreg' => $formreg->createView(), 'formconn' => $formconn->createView(),
     ]);
   }
 }
