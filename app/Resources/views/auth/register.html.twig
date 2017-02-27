@@ -154,20 +154,21 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h3 class="modal-title"><span class="glyphicon glyphicon-user padding-icon-right"></span> Inscription</h3>
+					<h3 class="modal-title"><span class="glyphicon glyphicon-user padding-icon-right"></span> Connexion</h3>
 				</div>
 				<div class="modal-body">
-					<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
+					<p>Veuillez remplir le formulaire suivant pour vous connecter</p>
 				</div>
 
-				{{ form_start(formconn) }}
-				{{ form_widget(formconn) }}
-				<button class="btn btn-primary" id="btnmodal"  type="submit">Connect !</button>
-				{{ form_end(formconn) }}
+				{{ form_start(formconn, {'action': path('security_login_check')}) }}
+				{{ form_widget(formconn, {'action': path('security_login_check')}) }}
+				<button class="btn btn-primary" id="btnmodal" type="submit">Login !</button>
+				{{ form_end(formconn, {'action': path('security_login_check')}) }}
 			</div>
 
 		</div>
 	</div>
+
 
 
 	<!--INTRO-->

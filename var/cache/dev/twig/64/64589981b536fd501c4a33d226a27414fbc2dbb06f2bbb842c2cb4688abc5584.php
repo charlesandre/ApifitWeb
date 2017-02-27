@@ -21,29 +21,29 @@ class __TwigTemplate_5668d978bca4ce4a0005ace3c7f393a2e19dc7df8534fe6e506485595bf
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5e2871294751e2aa70793b55eaadb8f50a4209823caf9ec3969c1484ddd33d25 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_5e2871294751e2aa70793b55eaadb8f50a4209823caf9ec3969c1484ddd33d25->enter($__internal_5e2871294751e2aa70793b55eaadb8f50a4209823caf9ec3969c1484ddd33d25_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
+        $__internal_e57e4a86ec9c686d4553488cda431318940f5949bf17af894082a6f4db3997eb = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_e57e4a86ec9c686d4553488cda431318940f5949bf17af894082a6f4db3997eb->enter($__internal_e57e4a86ec9c686d4553488cda431318940f5949bf17af894082a6f4db3997eb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
 
-        $__internal_cd2f97d84c1ea8ca7c41456f3f5a45a159c6db7a519c614dcbefd2bd930a729f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_cd2f97d84c1ea8ca7c41456f3f5a45a159c6db7a519c614dcbefd2bd930a729f->enter($__internal_cd2f97d84c1ea8ca7c41456f3f5a45a159c6db7a519c614dcbefd2bd930a729f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
+        $__internal_27d72298bf97752f3984765b5deff38fce362fc5df3dd8727affbc2ac135bba2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_27d72298bf97752f3984765b5deff38fce362fc5df3dd8727affbc2ac135bba2->enter($__internal_27d72298bf97752f3984765b5deff38fce362fc5df3dd8727affbc2ac135bba2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5e2871294751e2aa70793b55eaadb8f50a4209823caf9ec3969c1484ddd33d25->leave($__internal_5e2871294751e2aa70793b55eaadb8f50a4209823caf9ec3969c1484ddd33d25_prof);
+        $__internal_e57e4a86ec9c686d4553488cda431318940f5949bf17af894082a6f4db3997eb->leave($__internal_e57e4a86ec9c686d4553488cda431318940f5949bf17af894082a6f4db3997eb_prof);
 
         
-        $__internal_cd2f97d84c1ea8ca7c41456f3f5a45a159c6db7a519c614dcbefd2bd930a729f->leave($__internal_cd2f97d84c1ea8ca7c41456f3f5a45a159c6db7a519c614dcbefd2bd930a729f_prof);
+        $__internal_27d72298bf97752f3984765b5deff38fce362fc5df3dd8727affbc2ac135bba2->leave($__internal_27d72298bf97752f3984765b5deff38fce362fc5df3dd8727affbc2ac135bba2_prof);
 
     }
 
     // line 2
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ffedf4ec769102284f12e1cfd0f15c81524dafe4084f2cbf6b5acf7c1df8866e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_ffedf4ec769102284f12e1cfd0f15c81524dafe4084f2cbf6b5acf7c1df8866e->enter($__internal_ffedf4ec769102284f12e1cfd0f15c81524dafe4084f2cbf6b5acf7c1df8866e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_09615dbabd13729bf5bf58501fe23d24319101478ebf85ee797bf6e2a9ce5db2 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_09615dbabd13729bf5bf58501fe23d24319101478ebf85ee797bf6e2a9ce5db2->enter($__internal_09615dbabd13729bf5bf58501fe23d24319101478ebf85ee797bf6e2a9ce5db2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        $__internal_223be9ccaae2c3ec5ae0307138895f59aded4a567caadc783b927c098449c04e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_223be9ccaae2c3ec5ae0307138895f59aded4a567caadc783b927c098449c04e->enter($__internal_223be9ccaae2c3ec5ae0307138895f59aded4a567caadc783b927c098449c04e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_aa5557f91721b055d00ecdf55721b84fd14019d800eb2e78f87b118fb03f882e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_aa5557f91721b055d00ecdf55721b84fd14019d800eb2e78f87b118fb03f882e->enter($__internal_aa5557f91721b055d00ecdf55721b84fd14019d800eb2e78f87b118fb03f882e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
         echo "<div class=\"container\" style=\"padding-top:20px\">
@@ -65,36 +65,31 @@ class __TwigTemplate_5668d978bca4ce4a0005ace3c7f393a2e19dc7df8534fe6e506485595bf
         <a href=\"";
             // line 12
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("configure");
-            echo "\">Configurer mon profil</a>
-        <br>
-        <a href=\"";
-            // line 14
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("logout");
-            echo "\">Se déconnecter</a>
+            echo "\"> Configurer mon profil </a>
         <hr>
         ";
-            // line 16
+            // line 14
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["lastdata"]) ? $context["lastdata"] : $this->getContext($context, "lastdata")));
             foreach ($context['_seq'] as $context["_key"] => $context["data"]) {
-                // line 17
+                // line 15
                 echo "          <li><h3>Level : ";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "level", array()), "html", null, true);
                 echo "</h3></li>
           <li><h4>Taille : ";
-                // line 18
+                // line 16
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "height", array()), "html", null, true);
                 echo " cm</h4></li>
           <li><h4>Poids : ";
-                // line 19
+                // line 17
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "weight", array()), "html", null, true);
                 echo " kg </h4></li>
           <li><h4>Stride Length Running : ";
-                // line 20
+                // line 18
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "strideLenghtRunning", array()), "html", null, true);
                 echo "</h4></li>
           <li><h4>Stride Length Walking : ";
-                // line 21
+                // line 19
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "strideLenghtWalking", array()), "html", null, true);
                 echo "</li>
         ";
@@ -102,7 +97,7 @@ class __TwigTemplate_5668d978bca4ce4a0005ace3c7f393a2e19dc7df8534fe6e506485595bf
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['data'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 23
+            // line 21
             echo "        <hr>
         <h3>Courbe d'évolution</h3>
         <canvas id=\"myChart\" width=\"400\" height=\"150\"></canvas>
@@ -116,17 +111,17 @@ class __TwigTemplate_5668d978bca4ce4a0005ace3c7f393a2e19dc7df8534fe6e506485595bf
         <!-- gros du travail ici -->
         ";
         }
-        // line 35
+        // line 33
         echo "      </div>
       <!-- si on est pas identifié -->
       ";
-        // line 37
+        // line 35
         if (($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()) == null)) {
-            // line 38
+            // line 36
             echo "      <a href=\"/login\" class=\"btn btn-info\"> Vous devez vous connecter pour accéder à votre compte.>></a>
       ";
         }
-        // line 40
+        // line 38
         echo "    </div>
   </div>
  </div>
@@ -172,10 +167,10 @@ var myChart = new Chart(ctx, {
 </script>
 ";
         
-        $__internal_223be9ccaae2c3ec5ae0307138895f59aded4a567caadc783b927c098449c04e->leave($__internal_223be9ccaae2c3ec5ae0307138895f59aded4a567caadc783b927c098449c04e_prof);
+        $__internal_aa5557f91721b055d00ecdf55721b84fd14019d800eb2e78f87b118fb03f882e->leave($__internal_aa5557f91721b055d00ecdf55721b84fd14019d800eb2e78f87b118fb03f882e_prof);
 
         
-        $__internal_ffedf4ec769102284f12e1cfd0f15c81524dafe4084f2cbf6b5acf7c1df8866e->leave($__internal_ffedf4ec769102284f12e1cfd0f15c81524dafe4084f2cbf6b5acf7c1df8866e_prof);
+        $__internal_09615dbabd13729bf5bf58501fe23d24319101478ebf85ee797bf6e2a9ce5db2->leave($__internal_09615dbabd13729bf5bf58501fe23d24319101478ebf85ee797bf6e2a9ce5db2_prof);
 
     }
 
@@ -191,7 +186,7 @@ var myChart = new Chart(ctx, {
 
     public function getDebugInfo()
     {
-        return array (  130 => 40,  126 => 38,  124 => 37,  120 => 35,  106 => 23,  98 => 21,  94 => 20,  90 => 19,  86 => 18,  81 => 17,  77 => 16,  72 => 14,  67 => 12,  60 => 11,  58 => 10,  49 => 3,  40 => 2,  11 => 1,);
+        return array (  125 => 38,  121 => 36,  119 => 35,  115 => 33,  101 => 21,  93 => 19,  89 => 18,  85 => 17,  81 => 16,  76 => 15,  72 => 14,  67 => 12,  60 => 11,  58 => 10,  49 => 3,  40 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -215,9 +210,7 @@ var myChart = new Chart(ctx, {
         <div class=\"\" style=\"padding:20px\">
         {% if app.user != null %}
         <h1> Bonjour {{app.user.name}} (ID : {{id}})</h1>
-        <a href=\"{{ path('configure')}}\">Configurer mon profil</a>
-        <br>
-        <a href=\"{{ path('logout')}}\">Se déconnecter</a>
+        <a href=\"{{ path('configure')}}\"> Configurer mon profil </a>
         <hr>
         {% for data in lastdata %}
           <li><h3>Level : {{ data.level }}</h3></li>
@@ -287,6 +280,6 @@ var myChart = new Chart(ctx, {
 });
 </script>
 {% endblock %}
-", "default/index.html.twig", "/Users/Samuel/Documents/workspace/Web/API/app/Resources/views/default/index.html.twig");
+", "default/index.html.twig", "/Users/Charles/WEB/ApifitWeb/app/Resources/views/default/index.html.twig");
     }
 }

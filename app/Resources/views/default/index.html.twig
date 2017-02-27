@@ -9,9 +9,7 @@
         <div class="" style="padding:20px">
         {% if app.user != null %}
         <h1> Bonjour {{app.user.name}} (ID : {{id}})</h1>
-        <a href="{{ path('configure')}}">Configurer mon profil</a>
-        <br>
-        <a href="{{ path('logout')}}">Se déconnecter</a>
+        <a href="{{ path('configure')}}"> Configurer mon profil </a>
         <hr>
         {% for data in lastdata %}
           <li><h3>Level : {{ data.level }}</h3></li>

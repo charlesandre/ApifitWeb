@@ -14,6 +14,7 @@ class UserConn extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+        ->setMethod('POST')
         ->add('email', EmailType::class)
         ->add('password', PasswordType::class);
     }
