@@ -15,11 +15,11 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_25cca087c550ab537c49419c03926fcb1a155b264b68e598748e205b930c7d63 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_25cca087c550ab537c49419c03926fcb1a155b264b68e598748e205b930c7d63->enter($__internal_25cca087c550ab537c49419c03926fcb1a155b264b68e598748e205b930c7d63_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
+        $__internal_f467e8b3750d1f5b9d5256f0d3bf7e971747fc2389ffeb7122fcfe7f701d4397 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_f467e8b3750d1f5b9d5256f0d3bf7e971747fc2389ffeb7122fcfe7f701d4397->enter($__internal_f467e8b3750d1f5b9d5256f0d3bf7e971747fc2389ffeb7122fcfe7f701d4397_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
 
-        $__internal_f87ec4b347c60bbe0a21c3fb53a60b3119dce1c9901021c7b093d02cfe0eaee1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f87ec4b347c60bbe0a21c3fb53a60b3119dce1c9901021c7b093d02cfe0eaee1->enter($__internal_f87ec4b347c60bbe0a21c3fb53a60b3119dce1c9901021c7b093d02cfe0eaee1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
+        $__internal_e0d254328518470531b46a9ccf4aa26e6d0479da58ccf0870c8d563ad272a6d9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e0d254328518470531b46a9ccf4aa26e6d0479da58ccf0870c8d563ad272a6d9->enter($__internal_e0d254328518470531b46a9ccf4aa26e6d0479da58ccf0870c8d563ad272a6d9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -240,29 +240,30 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 \t\t\t<div class=\"modal-content\">
 \t\t\t\t<div class=\"modal-header\">
 \t\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-\t\t\t\t\t<h3 class=\"modal-title\"><span class=\"glyphicon glyphicon-user padding-icon-right\"></span> Inscription</h3>
+\t\t\t\t\t<h3 class=\"modal-title\"><span class=\"glyphicon glyphicon-user padding-icon-right\"></span> Connexion</h3>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"modal-body\">
-\t\t\t\t\t<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
+\t\t\t\t\t<p>Veuillez remplir le formulaire suivant pour vous connecter</p>
 \t\t\t\t</div>
 
 \t\t\t\t";
         // line 163
-        echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'form_start');
+        echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'form_start', array("action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("security_login_check")));
         echo "
 \t\t\t\t";
         // line 164
-        echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'widget');
+        echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'widget', array("action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("security_login_check")));
         echo "
-\t\t\t\t<button class=\"btn btn-primary\" id=\"btnmodal\"  type=\"submit\">Connect !</button>
+\t\t\t\t<button class=\"btn btn-primary\" id=\"btnmodal\" type=\"submit\">Login !</button>
 \t\t\t\t";
         // line 166
-        echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'form_end');
+        echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'form_end', array("action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("security_login_check")));
         echo "
 \t\t\t</div>
 
 \t\t</div>
 \t</div>
+
 
 
 \t<!--INTRO-->
@@ -371,7 +372,7 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 -->\t\t<div class=\"contenu-video\">
   <section class =\"fondordi\">
 \t<img alt=\"LogoApifit\" src=\"";
-        // line 278
+        // line 279
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-apifit.png"), "html", null, true);
         echo "\" height=\"200\" width=\"200\">
 \t<h3>Apifit</h3>
@@ -408,7 +409,7 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 312
+        // line 313
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/Vincent.png"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -430,7 +431,7 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 331
+        // line 332
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/Charles.png"), "html", null, true);
         echo "\"class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -451,7 +452,7 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 349
+        // line 350
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/zinedine.jpg"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -472,7 +473,7 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 367
+        // line 368
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/Remi.png"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -493,7 +494,7 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 385
+        // line 386
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/fatih.jpg"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -521,37 +522,37 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 \t\t<p>Ils nous ont fait confiance ...</p>
 \t\t<aside class=\"row logo-part\">
 \t\t\t<article class=\"col-sm-2 col-sm-offset-2\"><h5><img src=\"";
-        // line 410
+        // line 411
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-fitbit.png"), "html", null, true);
         echo "\" alt=\"logo-fitbit\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 411
+        // line 412
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-withings.png"), "html", null, true);
         echo "\" alt=\"logo-withings\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 412
+        // line 413
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-orange-bleu.png"), "html", null, true);
         echo "\" alt=\"logo-orange-bleu\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 413
+        // line 414
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-jawbone.png"), "html", null, true);
         echo "\" alt=\"logo-jawbone\"></h5></article>
 \t\t</aside>
 \t\t<aside class=\"row logo-part\">
 \t\t\t<article class=\"col-sm-2 col-sm-offset-2\"><h5><img src=\"";
-        // line 416
+        // line 417
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-forest-hill.png"), "html", null, true);
         echo "\" alt=\"logo-fitbit\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 417
+        // line 418
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-garmin.png"), "html", null, true);
         echo "\" alt=\"logo-withings\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 418
+        // line 419
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-yo-fitness.png"), "html", null, true);
         echo "\" alt=\"logo-orange-bleu\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 419
+        // line 420
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-gopro.png"), "html", null, true);
         echo "\" alt=\"logo-jawbone\"></h5></article>
 \t\t</aside>
@@ -658,15 +659,15 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 \t<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
 \t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js\"></script>
 \t<script src=\"";
-        // line 523
+        // line 524
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/bootstrap.js"), "html", null, true);
         echo "\"></script>
 \t<script type=\"text/javascript\" src=\"";
-        // line 524
+        // line 525
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/apifit.js"), "html", null, true);
         echo "\"></script>
 \t<script type=\"text/javascript\" src=\"";
-        // line 525
+        // line 526
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/service-process.js"), "html", null, true);
         echo "\"></script>
 \t<script>
@@ -685,10 +686,10 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 </html>
 ";
         
-        $__internal_25cca087c550ab537c49419c03926fcb1a155b264b68e598748e205b930c7d63->leave($__internal_25cca087c550ab537c49419c03926fcb1a155b264b68e598748e205b930c7d63_prof);
+        $__internal_f467e8b3750d1f5b9d5256f0d3bf7e971747fc2389ffeb7122fcfe7f701d4397->leave($__internal_f467e8b3750d1f5b9d5256f0d3bf7e971747fc2389ffeb7122fcfe7f701d4397_prof);
 
         
-        $__internal_f87ec4b347c60bbe0a21c3fb53a60b3119dce1c9901021c7b093d02cfe0eaee1->leave($__internal_f87ec4b347c60bbe0a21c3fb53a60b3119dce1c9901021c7b093d02cfe0eaee1_prof);
+        $__internal_e0d254328518470531b46a9ccf4aa26e6d0479da58ccf0870c8d563ad272a6d9->leave($__internal_e0d254328518470531b46a9ccf4aa26e6d0479da58ccf0870c8d563ad272a6d9_prof);
 
     }
 
@@ -704,7 +705,7 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 
     public function getDebugInfo()
     {
-        return array (  670 => 525,  666 => 524,  662 => 523,  555 => 419,  551 => 418,  547 => 417,  543 => 416,  537 => 413,  533 => 412,  529 => 411,  525 => 410,  497 => 385,  476 => 367,  455 => 349,  434 => 331,  412 => 312,  375 => 278,  260 => 166,  255 => 164,  251 => 163,  228 => 143,  223 => 141,  219 => 140,  157 => 81,  146 => 73,  135 => 65,  124 => 57,  116 => 51,  110 => 49,  107 => 48,  102 => 45,  100 => 44,  74 => 21,  70 => 20,  66 => 19,  62 => 18,  52 => 11,  48 => 10,  44 => 9,  40 => 8,  36 => 7,  30 => 4,  25 => 1,);
+        return array (  671 => 526,  667 => 525,  663 => 524,  556 => 420,  552 => 419,  548 => 418,  544 => 417,  538 => 414,  534 => 413,  530 => 412,  526 => 411,  498 => 386,  477 => 368,  456 => 350,  435 => 332,  413 => 313,  376 => 279,  260 => 166,  255 => 164,  251 => 163,  228 => 143,  223 => 141,  219 => 140,  157 => 81,  146 => 73,  135 => 65,  124 => 57,  116 => 51,  110 => 49,  107 => 48,  102 => 45,  100 => 44,  74 => 21,  70 => 20,  66 => 19,  62 => 18,  52 => 11,  48 => 10,  44 => 9,  40 => 8,  36 => 7,  30 => 4,  25 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -873,20 +874,21 @@ class __TwigTemplate_66de033fd5f82eae6eb972a524654ebb0a25cd060ee61e4d24ffb13b725
 \t\t\t<div class=\"modal-content\">
 \t\t\t\t<div class=\"modal-header\">
 \t\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-\t\t\t\t\t<h3 class=\"modal-title\"><span class=\"glyphicon glyphicon-user padding-icon-right\"></span> Inscription</h3>
+\t\t\t\t\t<h3 class=\"modal-title\"><span class=\"glyphicon glyphicon-user padding-icon-right\"></span> Connexion</h3>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"modal-body\">
-\t\t\t\t\t<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
+\t\t\t\t\t<p>Veuillez remplir le formulaire suivant pour vous connecter</p>
 \t\t\t\t</div>
 
-\t\t\t\t{{ form_start(formconn) }}
-\t\t\t\t{{ form_widget(formconn) }}
-\t\t\t\t<button class=\"btn btn-primary\" id=\"btnmodal\"  type=\"submit\">Connect !</button>
-\t\t\t\t{{ form_end(formconn) }}
+\t\t\t\t{{ form_start(formconn, {'action': path('security_login_check')}) }}
+\t\t\t\t{{ form_widget(formconn, {'action': path('security_login_check')}) }}
+\t\t\t\t<button class=\"btn btn-primary\" id=\"btnmodal\" type=\"submit\">Login !</button>
+\t\t\t\t{{ form_end(formconn, {'action': path('security_login_check')}) }}
 \t\t\t</div>
 
 \t\t</div>
 \t</div>
+
 
 
 \t<!--INTRO-->

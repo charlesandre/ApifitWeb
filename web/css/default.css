@@ -50,6 +50,35 @@ p
   color:#777777;
 }
 
+/* CLASSES TABLEAU DE BORD  */
+
+.brique{
+  border: 2px solid grey;
+  border-radius:15px;
+  padding: 10px 10px 10px 10px;
+  margin: 25px 10px 25px 10px;
+  text-align:center; 
+  transition: all .2s ease-in-out; 
+}
+.brique:hover { transform: scale(1.1); }
+
+.brique img{
+  height:150px;
+  border-radius: 30%;
+}
+
+.bienvenue{
+  width:40%;
+  margin-left: 30%;
+}
+.green{
+  color:green;
+}
+
+.red{
+  color: red;
+}
+
 
 /*CLASSES COMMUNES*/
 

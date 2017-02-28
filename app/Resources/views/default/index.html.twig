@@ -1,44 +1,69 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="container" style="padding-top:20px">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-success">
-        <div class="panel-heading" >Tableau de bord</div>
-        <!-- si on est authentifié -->
-        <div class="" style="padding:20px">
-        {% if app.user != null %}
-        <h1> Bonjour {{app.user.name}} (ID : {{id}})</h1>
-        <a href="{{ path('configure')}}"> Configurer mon profil </a>
-        <hr>
-        {% for data in lastdata %}
-          <li><h3>Level : {{ data.level }}</h3></li>
-          <li><h4>Taille : {{ data.height }} cm</h4></li>
-          <li><h4>Poids : {{ data.weight }} kg </h4></li>
-          <li><h4>Stride Length Running : {{ data.strideLenghtRunning }}</h4></li>
-          <li><h4>Stride Length Walking : {{ data.strideLenghtWalking }}</li>
-        {% endfor %}
-        <hr>
-        <h3>Courbe d'évolution</h3>
-        <canvas id="myChart" width="400" height="150"></canvas>
-        <hr>
-        <h3>Votre Entraînement</h3>
-        <hr>
-        <h3>Vos Défis</h3>
-        <hr>
-        <h3>Vos Amis</h3>
+{% if app.user != null %}
+<div class="brique bienvenue">
+    <h1> Bonjour {{app.user.name}} (ID : {{id}})</h1>
+    <h3> Voici votre tableau de bord </h3>
+    <a href="{{ path('configure')}}"> Configurer mon profil </a>
+</div>
 
-        <!-- gros du travail ici -->
-        {% endif %}
-      </div>
+                                <!-- LEFT COLUMN -->
+
+<div class="col-md-4">
+    <div class="brique col-md-12">
+        {% for data in lastdata %}
+            <img src="images/Avatar/{{id}}.png" alt="icon-profil" id="pp">
+            <li><h3>Level : {{ data.level }}</h3></li>
+            <li><h4>Taille : {{ data.height }} cm</h4></li>
+            <li><h4>Poids : {{ data.weight }} kg </h4></li>
+            <li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
+                <script>
+                    var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
+                    if(imc>25) document.getElementById('imc').className="red";
+                    else if(imc<18) document.getElementById('imc').className="red";
+                    else document.getElementById('imc').className="green";
+                </script>
+            <li><h4>Stride Length Running : {{ data.strideLenghtRunning }}</h4></li>
+            <li><h4>Stride Length Walking : {{ data.strideLenghtWalking }}</li>
+        {% endfor %}
+    </div>
+
+    <div class="brique col-md-12">
+        <h3>Vos Amis</h3>
+    </div>
+</div>
+
+<div class="col-md-1"></div>
+
+                                <!-- RIGHT COLUMN -->
+<div class="col-md-6">
+    
+
+    <div class="brique col-md-12">
+                 
+            <h3>Courbe d'évolution</h3>
+            <canvas id="myChart" width="400" height="150"></canvas>
+            <hr>
+    </div>
+
+    <div class="brique col-md-6">
+        <h3>Votre Entraînement</h3>
+    </div>
+
+    <div class="brique col-md-5">
+        <h3>Vos Défis</h3>
+    </div>
+</div>
+
+
+{% endif %}
+
+
       <!-- si on est pas identifié -->
       {% if app.user == null %}
       <a href="/login" class="btn btn-info"> Vous devez vous connecter pour accéder à votre compte.>></a>
       {% endif %}
-    </div>
-  </div>
- </div>
-</div>
+
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
