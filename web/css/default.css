@@ -53,18 +53,42 @@ p
 /* CLASSES TABLEAU DE BORD  */
 
 .brique{
-  border: 2px solid grey;
+  border: 2px solid #479ce7;
   border-radius:15px;
   padding: 10px 10px 10px 10px;
   margin: 25px 10px 25px 10px;
-  text-align:center; 
-  transition: all .2s ease-in-out; 
+  text-align:center;
+  transition: all .2s ease-in-out;
 }
-.brique:hover { transform: scale(1.1); }
+.brique:hover { transform: scale(1.05); }
 
 .brique img{
   height:150px;
   border-radius: 30%;
+}
+
+.brique a{
+  color : #479ce7;
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.brique table{
+  width: 50%;
+  text-align: left;
+  margin-left: 36%;
+}
+#miniature{
+  height:30px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+#logo{
+  height:150px;
+  margin-left: 150px;
+  margin-top: 15px;
+  position: absolute;
 }
 
 .bienvenue{

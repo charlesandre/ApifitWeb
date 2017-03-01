@@ -35,11 +35,33 @@ class DefaultController extends Controller
     ->setParameter('uid', $a)
     ->getQuery();
 
+    $repositoryUsers = $this->getDoctrine()
+    ->getRepository('AppBundle:User');
 
+
+    // $queryFriends=$repositoryUsers->createQueryBuilder('i')
+    // ->select('DISTINCT U.id, U.name, U.lastname')
+    // ->
+    // ->where('F.uid1 : :uid')
+    // ->where('U.id : f;uid2')
+    // ->setParameter('uid', $a)
+    // ->getQuery();
+    //
+    //
+    // $users = $query2->getResult();
+    // $friends = $queryFriends->getResult();
+
+    $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+    $connection = $em->getConnection();
+    $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) ");
+    $statement->bindValue('id', $a);
+    $statement->execute();
+    $friends = $statement->fetchAll();
 
 
     return $this->render('default/index.html.twig', array(
       'lastdata' => $lastdata,
+      'friends' => $friends,
       'id'=> $a
     ));
   }

@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {% if app.user != null %}
+<img src="images/logo-apifit.png" alt="logo" id="logo"></img>
 <div class="brique bienvenue">
-    <h1> Bonjour {{app.user.name}} (ID : {{id}})</h1>
+    <h3> Bonjour {{app.user.name}} </h3>
     <h3> Voici votre tableau de bord </h3>
     <a href="{{ path('configure')}}"> Configurer mon profil </a>
 </div>
@@ -30,6 +31,17 @@
 
     <div class="brique col-md-12">
         <h3>Vos Amis</h3>
+        {% for users in friends %}
+
+            <table class="">
+              <tr>
+                  <td><a href="/{{users.id}}"><img src="images/Avatar/{{users.id}}.png" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img></a>
+                  <a href="/{{users.id}}">{{ users.name }} {{ users.lastname}}</a></td>
+                  <br>
+              </tr>
+            </table>
+
+        {% endfor %}
     </div>
 </div>
 
@@ -37,10 +49,10 @@
 
                                 <!-- RIGHT COLUMN -->
 <div class="col-md-6">
-    
+
 
     <div class="brique col-md-12">
-                 
+
             <h3>Courbe d'évolution</h3>
             <canvas id="myChart" width="400" height="150"></canvas>
             <hr>

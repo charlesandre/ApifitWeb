@@ -15,11 +15,11 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_06d5fe5a45941c11b00ef2155a79365cecef4f325e9e7768a574a1560c2ee001 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_06d5fe5a45941c11b00ef2155a79365cecef4f325e9e7768a574a1560c2ee001->enter($__internal_06d5fe5a45941c11b00ef2155a79365cecef4f325e9e7768a574a1560c2ee001_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
+        $__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4->enter($__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
 
-        $__internal_c608b902190e8f1df6f66f286694da46dd34b79b9064989e702bda73cb39f851 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c608b902190e8f1df6f66f286694da46dd34b79b9064989e702bda73cb39f851->enter($__internal_c608b902190e8f1df6f66f286694da46dd34b79b9064989e702bda73cb39f851_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
+        $__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8->enter($__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -686,10 +686,10 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 </html>
 ";
         
-        $__internal_06d5fe5a45941c11b00ef2155a79365cecef4f325e9e7768a574a1560c2ee001->leave($__internal_06d5fe5a45941c11b00ef2155a79365cecef4f325e9e7768a574a1560c2ee001_prof);
+        $__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4->leave($__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4_prof);
 
         
-        $__internal_c608b902190e8f1df6f66f286694da46dd34b79b9064989e702bda73cb39f851->leave($__internal_c608b902190e8f1df6f66f286694da46dd34b79b9064989e702bda73cb39f851_prof);
+        $__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8->leave($__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8_prof);
 
     }
 
