@@ -253,19 +253,17 @@ class User implements UserInterface
      }
 
 
+// pour l'authentification
 
+              public function getPlainPassword()
+              {
+                  return $this->password;
+              }
 
-
-
-        public function getPlainPassword()
-            {
-                return $this->password;
-            }
-
-            public function setPlainPassword($plainPassword)
-            {
-                $this->password = $password;
-            }
+              public function setPlainPassword($plainPassword)
+              {
+                  $this->password = $password;
+              }
 
 
               public function getUsername()

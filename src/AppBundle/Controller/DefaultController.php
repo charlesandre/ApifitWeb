@@ -1,8 +1,10 @@
 <?php
 namespace AppBundle\Controller;
 
+/*
 use AppBundle\Entity\UsersSearch;
 use AppBundle\Form\Search;
+*/
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +20,14 @@ class DefaultController extends Controller
     if (!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
       return $this->redirect($this->generateUrl('register'));
     }
+
+
+    /*
     $Search = new UsersSearch();
 
     $formsearch = $this->createForm(Search::class, $Search);
     $formsearch->handleRequest($request);
+    */
 
     $repository = $this->getDoctrine()
     ->getRepository('AppBundle:UsersData');
@@ -41,10 +47,11 @@ class DefaultController extends Controller
     ->setParameter('uid', $a)
     ->getQuery();
 
+
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
 
-    $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+    $em = $this->getDoctrine()->getManager();
     $connection = $em->getConnection();
     $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) ");
     $statement->bindValue('id', $a);
@@ -52,7 +59,7 @@ class DefaultController extends Controller
     $friends = $statement->fetchAll();
 
 
-
+/*
     if ($formsearch->isSubmitted() && $formsearch->isValid()) {
       $keyword= $formsearch["search"]->getData();
       $queryusers = $repositoryUsers->createQueryBuilder('u')
@@ -69,13 +76,14 @@ class DefaultController extends Controller
       ));
 
     }
+    */
 
 
 
     return $this->render('default/index.html.twig', array(
-      'formsearch' => $formsearch->createView(),
-      'lastdata' => $lastdata,
+      //'formsearch' => $formsearch->createView(),
       'friends' => $friends,
+      'lastdata' => $lastdata,
       'id'=> $a
     ));
   }
@@ -83,7 +91,6 @@ class DefaultController extends Controller
   /**
   * @Route("/search", name="search")
   */
-
   public function searchresult(Request $request){
     return $this->render('default/result.html.twig');
   }

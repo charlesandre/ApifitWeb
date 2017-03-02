@@ -9,7 +9,8 @@
         <div class="brique bienvenue">
             <h3> Bonjour {{app.user.name}} </h3>
             <h3> Voici votre tableau de bord </h3>
-            <a href="{{ path('configure')}}"> Configurer mon profil </a>
+            <a href="{{ path('configure')}}"> Configurer mon profil </a><br>
+            <a href="/logout">Se déconnecter</a>
         </div>
     </div>
 
@@ -21,7 +22,6 @@
                 <div class="col-md-12">
                     <div id="custom-search-input">
                         <div class="input-group col-md-12">
-                          <form action="{{ path('search')}}">
                               <input type="text" class="form-control input-lg" placeholder="Rechercher.." />
                               <span class="input-group-btn">
 
@@ -33,9 +33,6 @@
         	</div>
         </div>
     </div> -->
-    {{ form_start(formsearch) }}
-
-    {{ form_end(formsearch) }}
 
 </div>
 
@@ -55,8 +52,8 @@
                     else if(imc<18) document.getElementById('imc').className="red";
                     else document.getElementById('imc').className="green";
                 </script>
-            <li><h4>Stride Length Running : {{ data.strideLenghtRunning }}</h4></li>
-            <li><h4>Stride Length Walking : {{ data.strideLenghtWalking }}</li>
+            <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
+            <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
         {% endfor %}
     </div>
 

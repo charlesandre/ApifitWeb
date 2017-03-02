@@ -23,7 +23,7 @@ s
 
 								{% if app.user == null %}
 								<li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span><span id="legende">Inscription</span></a></li>
-								<li><a href="#" data-toggle="modal" data-target="#ModalConn" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>
+								<li><a href="/login"></span><span id="legende">Connexion</span></a></li>
 								{% endif %}
 								{% if app.user != null %}
 								<li><a href="{{ path('login') }}" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Mon Tableau de bord</span></a></li>
@@ -116,16 +116,18 @@ s
 				<div class="modal-body">
 					<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
 				</div>
-
+				{#
 				{{ form_start(formreg) }}
 				{{ form_widget(formreg) }}
 				<button class="btn btn-primary" id="btnmodal" type="submit">Register !</button>
 				{{ form_end(formreg) }}
+				#}
 			</div>
 
 		</div>
 	</div>
 
+{# 
 	<!-- Modal Connexion-->
 	<div class="modal fade" id="ModalConn" role="dialog">
 		<div class="modal-dialog">
@@ -148,8 +150,7 @@ s
 
 		</div>
 	</div>
-
-
+	#}
 
 	<!--INTRO-->
 	<section class="centrer" id="accueil">

@@ -15,16 +15,9 @@ class UsersData
     /**
      * @var integer
      *
-     * @ORM\Column(name="SEQ", type="integer")
+     * @ORM\Column(name="ID", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $seq;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ID", type="integer", nullable=false)
      */
     private $id;
 
@@ -35,12 +28,6 @@ class UsersData
      */
     private $date;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="LEVEL", type="string", length=30, nullable=false)
-     */
-    private $level;
 
     /**
      * @var integer
@@ -77,52 +64,46 @@ class UsersData
      */
     private $dateOfBirth;
 
+
     /**
      * @var string
      *
-     * @ORM\Column(name="TIMEZONE", type="string", length=30, nullable=false)
+     * @ORM\Column(name="AVERAGEDAILYSTEPS", type="integer", nullable=false)
      */
-    private $timezone;
+     private $averageDailySteps;
+
+
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="STRIDE_LENGHT_RUNNING", type="integer", nullable=false)
+     * @ORM\Column(name="STRIDE_LENGTH_RUNNING", type="integer", nullable=false)
      */
-    private $strideLenghtRunning;
+    private $strideLengthRunning;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="STRIDE_LENGHT_WALKING", type="integer", nullable=false)
+     * @ORM\Column(name="STRIDE_LENGTH_WALKING", type="integer", nullable=false)
      */
-    private $strideLenghtWalking;
+    private $strideLengthWalking;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="STRIDE_LENGHT_RUNNING_TYPE", type="string", length=30, nullable=false)
+     * @ORM\Column(name="STRIDE_LENGTH_RUNNING_TYPE", type="string", length=30, nullable=false)
      */
-    private $strideLenghtRunningType;
+    private $strideLengthRunningType;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="STRIDE_LENGHT_WALKING_TYPE", type="string", length=30, nullable=false)
+     * @ORM\Column(name="STRIDE_LENGTH_WALKING_TYPE", type="string", length=30, nullable=false)
      */
-    private $strideLenghtWalkingType;
+    private $strideLengthWalkingType;
 
 
 
-    /**
-     * Get seq
-     *
-     * @return integer
-     */
-    public function getSeq()
-    {
-        return $this->seq;
-    }
 
     /**
      * Set id
@@ -172,29 +153,6 @@ class UsersData
         return $this->date;
     }
 
-    /**
-     * Set level
-     *
-     * @param string $level
-     *
-     * @return UsersData
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    /**
-     * Get level
-     *
-     * @return string
-     */
-    public function getLevel()
-    {
-        return $this->level;
-    }
 
     /**
      * Set weight
@@ -316,123 +274,112 @@ class UsersData
         return $this->dateOfBirth;
     }
 
+
+
+    public function getAverageDailySteps()
+    {
+        return $this->averageDailySteps;
+    }
+
+    public function setAverageDailySteps()
+    {
+        $this->averageDailySteps;
+    }
+
+
     /**
-     * Set timezone
+     * Set strideLengthRunning
      *
-     * @param string $timezone
+     * @param integer $strideLengthRunning
      *
      * @return UsersData
      */
-    public function setTimezone($timezone)
+    public function setStrideLengthRunning($strideLengthRunning)
     {
-        $this->timezone = $timezone;
+        $this->strideLengthRunning = $strideLengthRunning;
 
         return $this;
     }
 
     /**
-     * Get timezone
-     *
-     * @return string
-     */
-    public function getTimezone()
-    {
-        return $this->timezone;
-    }
-
-    /**
-     * Set strideLenghtRunning
-     *
-     * @param integer $strideLenghtRunning
-     *
-     * @return UsersData
-     */
-    public function setStrideLenghtRunning($strideLenghtRunning)
-    {
-        $this->strideLenghtRunning = $strideLenghtRunning;
-
-        return $this;
-    }
-
-    /**
-     * Get strideLenghtRunning
+     * Get strideLengthRunning
      *
      * @return integer
      */
-    public function getStrideLenghtRunning()
+    public function getStrideLengthRunning()
     {
-        return $this->strideLenghtRunning;
+        return $this->strideLengthRunning;
     }
 
     /**
-     * Set strideLenghtWalking
+     * Set strideLengthWalking
      *
-     * @param integer $strideLenghtWalking
+     * @param integer $strideLengthWalking
      *
      * @return UsersData
      */
-    public function setStrideLenghtWalking($strideLenghtWalking)
+    public function setStrideLengthWalking($strideLengthWalking)
     {
-        $this->strideLenghtWalking = $strideLenghtWalking;
+        $this->strideLengthWalking = $strideLengthWalking;
 
         return $this;
     }
 
     /**
-     * Get strideLenghtWalking
+     * Get strideLengthWalking
      *
      * @return integer
      */
-    public function getStrideLenghtWalking()
+    public function getStrideLengthWalking()
     {
-        return $this->strideLenghtWalking;
+        return $this->strideLengthWalking;
     }
 
     /**
-     * Set strideLenghtRunningType
+     * Set strideLengthRunningType
      *
-     * @param string $strideLenghtRunningType
+     * @param string $strideLengthRunningType
      *
      * @return UsersData
      */
-    public function setStrideLenghtRunningType($strideLenghtRunningType)
+    public function setStrideLengthRunningType($strideLengthRunningType)
     {
-        $this->strideLenghtRunningType = $strideLenghtRunningType;
+        $this->strideLengthRunningType = $strideLengthRunningType;
 
         return $this;
     }
 
     /**
-     * Get strideLenghtRunningType
+     * Get strideLengthRunningType
      *
      * @return string
      */
-    public function getStrideLenghtRunningType()
+    public function getStrideLengthRunningType()
     {
-        return $this->strideLenghtRunningType;
+        return $this->strideLengthRunningType;
     }
 
     /**
-     * Set strideLenghtWalkingType
+     * Set strideLengthWalkingType
      *
-     * @param string $strideLenghtWalkingType
+     * @param string $strideLengthWalkingType
      *
      * @return UsersData
      */
-    public function setStrideLenghtWalkingType($strideLenghtWalkingType)
+    public function setStrideLengthWalkingType($strideLengthWalkingType)
     {
-        $this->strideLenghtWalkingType = $strideLenghtWalkingType;
+        $this->strideLengthWalkingType = $strideLengthWalkingType;
 
         return $this;
     }
 
     /**
-     * Get strideLenghtWalkingType
+     * Get strideLengthWalkingType
      *
      * @return string
      */
-    public function getStrideLenghtWalkingType()
+    public function getStrideLengthWalkingType()
     {
-        return $this->strideLenghtWalkingType;
+        return $this->strideLengthWalkingType;
     }
 }
