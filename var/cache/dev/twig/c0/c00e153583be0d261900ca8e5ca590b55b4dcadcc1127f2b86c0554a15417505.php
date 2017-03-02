@@ -21,45 +21,84 @@ class __TwigTemplate_17e8ca90a8d3211782ad0ef0b7d01588ad18d2b49824fa73fc4a2a156f0
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_db1f9f311436f4cc2de722a9ce3562b44250b087f97e47b820d18af1360e514b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_db1f9f311436f4cc2de722a9ce3562b44250b087f97e47b820d18af1360e514b->enter($__internal_db1f9f311436f4cc2de722a9ce3562b44250b087f97e47b820d18af1360e514b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
+        $__internal_5605a408f662193ed799a5f95f572047b597aa5894f2419590f90765af9f2a02 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_5605a408f662193ed799a5f95f572047b597aa5894f2419590f90765af9f2a02->enter($__internal_5605a408f662193ed799a5f95f572047b597aa5894f2419590f90765af9f2a02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
 
-        $__internal_978f4d85107e75c06f99d8a622387e6c53c28ea1e600c7671b897b0b461f7a0d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_978f4d85107e75c06f99d8a622387e6c53c28ea1e600c7671b897b0b461f7a0d->enter($__internal_978f4d85107e75c06f99d8a622387e6c53c28ea1e600c7671b897b0b461f7a0d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
+        $__internal_8b2c8fb4564ffc66450f587fc84d4ffc5f804d49d476dc21a8f241f6bf9bbe9d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8b2c8fb4564ffc66450f587fc84d4ffc5f804d49d476dc21a8f241f6bf9bbe9d->enter($__internal_8b2c8fb4564ffc66450f587fc84d4ffc5f804d49d476dc21a8f241f6bf9bbe9d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_db1f9f311436f4cc2de722a9ce3562b44250b087f97e47b820d18af1360e514b->leave($__internal_db1f9f311436f4cc2de722a9ce3562b44250b087f97e47b820d18af1360e514b_prof);
+        $__internal_5605a408f662193ed799a5f95f572047b597aa5894f2419590f90765af9f2a02->leave($__internal_5605a408f662193ed799a5f95f572047b597aa5894f2419590f90765af9f2a02_prof);
 
         
-        $__internal_978f4d85107e75c06f99d8a622387e6c53c28ea1e600c7671b897b0b461f7a0d->leave($__internal_978f4d85107e75c06f99d8a622387e6c53c28ea1e600c7671b897b0b461f7a0d_prof);
+        $__internal_8b2c8fb4564ffc66450f587fc84d4ffc5f804d49d476dc21a8f241f6bf9bbe9d->leave($__internal_8b2c8fb4564ffc66450f587fc84d4ffc5f804d49d476dc21a8f241f6bf9bbe9d_prof);
 
     }
 
     // line 2
     public function block_body($context, array $blocks = array())
     {
-        $__internal_841d420ce6015bcf1ea4a391de62936d031b4bf4affbcad3c6d373b56abc1edf = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_841d420ce6015bcf1ea4a391de62936d031b4bf4affbcad3c6d373b56abc1edf->enter($__internal_841d420ce6015bcf1ea4a391de62936d031b4bf4affbcad3c6d373b56abc1edf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_e70627bf567dafa65e441fa9bcfddd2e35f2033766df6da3461b00495f545cfa = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_e70627bf567dafa65e441fa9bcfddd2e35f2033766df6da3461b00495f545cfa->enter($__internal_e70627bf567dafa65e441fa9bcfddd2e35f2033766df6da3461b00495f545cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        $__internal_7c5bec8f5846ae8fb95c38ae1d21d6d82b6769b8e361b0268b33fc674f6e74d9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_7c5bec8f5846ae8fb95c38ae1d21d6d82b6769b8e361b0268b33fc674f6e74d9->enter($__internal_7c5bec8f5846ae8fb95c38ae1d21d6d82b6769b8e361b0268b33fc674f6e74d9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_e9e455a1fa2f539c8c5ff3fad736fd1a91a87a5302848e20dfb51f7207e29573 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e9e455a1fa2f539c8c5ff3fad736fd1a91a87a5302848e20dfb51f7207e29573->enter($__internal_e9e455a1fa2f539c8c5ff3fad736fd1a91a87a5302848e20dfb51f7207e29573_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
         if (($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()) != null)) {
             // line 4
-            echo "<div class=\"brique bienvenue\">
-    <h1> Bonjour ";
-            // line 5
+            echo "<div class=\"col-md-12\">
+    <div class=\"col-md-3\">
+        <img src=\"images/logo-apifit.png\" alt=\"logo\" id=\"logo\"></img>
+    </div>
+    <div class=\"col-md-6\">
+        <div class=\"brique bienvenue\">
+            <h3> Bonjour ";
+            // line 10
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "name", array()), "html", null, true);
-            echo " (ID : ";
-            echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "html", null, true);
-            echo ")</h1>
-    <h3> Voici votre tableau de bord </h3>
-    <a href=\"";
-            // line 7
+            echo " </h3>
+            <h3> Voici votre tableau de bord </h3>
+            <a href=\"";
+            // line 12
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("configure");
             echo "\"> Configurer mon profil </a>
+        </div>
+    </div>
+
+                    <!-- SEARCH BAR   -->
+    <div class=\"col-md-3\">
+<!--
+      <div class=\"searchbar\">
+        \t<div class=\"row\">
+                <div class=\"col-md-12\">
+                    <div id=\"custom-search-input\">
+                        <div class=\"input-group col-md-12\">
+                          <form action=\"";
+            // line 24
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("search");
+            echo "\">
+                              <input type=\"text\" class=\"form-control input-lg\" placeholder=\"Rechercher..\" />
+                              <span class=\"input-group-btn\">
+
+                            </span>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+        \t</div>
+        </div>
+    </div> -->
+    ";
+            // line 36
+            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formsearch"]) ? $context["formsearch"] : $this->getContext($context, "formsearch")), 'form_start');
+            echo "
+    
+    ";
+            // line 38
+            echo             $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formsearch"]) ? $context["formsearch"] : $this->getContext($context, "formsearch")), 'form_end');
+            echo "
+
 </div>
 
                                 <!-- LEFT COLUMN -->
@@ -67,33 +106,33 @@ class __TwigTemplate_17e8ca90a8d3211782ad0ef0b7d01588ad18d2b49824fa73fc4a2a156f0
 <div class=\"col-md-4\">
     <div class=\"brique col-md-12\">
         ";
-            // line 14
+            // line 46
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["lastdata"]) ? $context["lastdata"] : $this->getContext($context, "lastdata")));
             foreach ($context['_seq'] as $context["_key"] => $context["data"]) {
-                // line 15
+                // line 47
                 echo "            <img src=\"images/Avatar/";
                 echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "html", null, true);
-                echo ".png\" alt=\"icon-profil\" id=\"pp\">
+                echo ".png\" class=\"img-circle\" alt=\"icon-profil\" id=\"pp\">
             <li><h3>Level : ";
-                // line 16
+                // line 48
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "level", array()), "html", null, true);
                 echo "</h3></li>
             <li><h4>Taille : ";
-                // line 17
+                // line 49
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "height", array()), "html", null, true);
                 echo " cm</h4></li>
             <li><h4>Poids : ";
-                // line 18
+                // line 50
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "weight", array()), "html", null, true);
                 echo " kg </h4></li>
             <li><h4 id=\"imc\">IMC : ";
-                // line 19
+                // line 51
                 echo twig_escape_filter($this->env, twig_round(($this->getAttribute($context["data"], "weight", array()) / (($this->getAttribute($context["data"], "height", array()) / 100) * ($this->getAttribute($context["data"], "height", array()) / 100))), 2, "common"), "html", null, true);
                 echo "</h4></li>
                 <script>
                     var imc= ";
-                // line 21
+                // line 53
                 echo twig_escape_filter($this->env, ($this->getAttribute($context["data"], "weight", array()) / (($this->getAttribute($context["data"], "height", array()) / 100) * ($this->getAttribute($context["data"], "height", array()) / 100))), "html", null, true);
                 echo ";
                     if(imc>25) document.getElementById('imc').className=\"red\";
@@ -101,11 +140,11 @@ class __TwigTemplate_17e8ca90a8d3211782ad0ef0b7d01588ad18d2b49824fa73fc4a2a156f0
                     else document.getElementById('imc').className=\"green\";
                 </script>
             <li><h4>Stride Length Running : ";
-                // line 26
+                // line 58
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "strideLenghtRunning", array()), "html", null, true);
                 echo "</h4></li>
             <li><h4>Stride Length Walking : ";
-                // line 27
+                // line 59
                 echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "strideLenghtWalking", array()), "html", null, true);
                 echo "</li>
         ";
@@ -113,11 +152,40 @@ class __TwigTemplate_17e8ca90a8d3211782ad0ef0b7d01588ad18d2b49824fa73fc4a2a156f0
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['data'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 29
+            // line 61
             echo "    </div>
 
-    <div class=\"brique col-md-12\">
+    <div class=\"brique friends col-md-12\">
         <h3>Vos Amis</h3>
+        <div class=\"scroll\">
+            ";
+            // line 66
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["friends"]) ? $context["friends"] : $this->getContext($context, "friends")));
+            foreach ($context['_seq'] as $context["_key"] => $context["users"]) {
+                // line 67
+                echo "                          <a href=\"/";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["users"], "id", array()), "html", null, true);
+                echo "\"><button class=\"btn btn-default btn-lg btn-block\"><img src=\"images/Avatar/";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["users"], "id", array()), "html", null, true);
+                echo ".png\" class=\"img-circle\" alt=\"";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["users"], "name", array()), "html", null, true);
+                echo " ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["users"], "lastname", array()), "html", null, true);
+                echo "\" id=\"miniature\"></img>
+                          ";
+                // line 68
+                echo twig_escape_filter($this->env, $this->getAttribute($context["users"], "name", array()), "html", null, true);
+                echo " ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["users"], "lastname", array()), "html", null, true);
+                echo "</button></a>
+            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['users'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 70
+            echo "        </div>
     </div>
 </div>
 
@@ -125,10 +193,10 @@ class __TwigTemplate_17e8ca90a8d3211782ad0ef0b7d01588ad18d2b49824fa73fc4a2a156f0
 
                                 <!-- RIGHT COLUMN -->
 <div class=\"col-md-6\">
-    
+
 
     <div class=\"brique col-md-12\">
-                 
+
             <h3>Courbe d'évolution</h3>
             <canvas id=\"myChart\" width=\"400\" height=\"150\"></canvas>
             <hr>
@@ -146,18 +214,18 @@ class __TwigTemplate_17e8ca90a8d3211782ad0ef0b7d01588ad18d2b49824fa73fc4a2a156f0
 
 ";
         }
-        // line 60
+        // line 98
         echo "
 
       <!-- si on est pas identifié -->
       ";
-        // line 63
+        // line 101
         if (($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()) == null)) {
-            // line 64
+            // line 102
             echo "      <a href=\"/login\" class=\"btn btn-info\"> Vous devez vous connecter pour accéder à votre compte.>></a>
       ";
         }
-        // line 66
+        // line 104
         echo "
 <script>
 var ctx = document.getElementById(\"myChart\");
@@ -200,10 +268,10 @@ var myChart = new Chart(ctx, {
 </script>
 ";
         
-        $__internal_7c5bec8f5846ae8fb95c38ae1d21d6d82b6769b8e361b0268b33fc674f6e74d9->leave($__internal_7c5bec8f5846ae8fb95c38ae1d21d6d82b6769b8e361b0268b33fc674f6e74d9_prof);
+        $__internal_e9e455a1fa2f539c8c5ff3fad736fd1a91a87a5302848e20dfb51f7207e29573->leave($__internal_e9e455a1fa2f539c8c5ff3fad736fd1a91a87a5302848e20dfb51f7207e29573_prof);
 
         
-        $__internal_841d420ce6015bcf1ea4a391de62936d031b4bf4affbcad3c6d373b56abc1edf->leave($__internal_841d420ce6015bcf1ea4a391de62936d031b4bf4affbcad3c6d373b56abc1edf_prof);
+        $__internal_e70627bf567dafa65e441fa9bcfddd2e35f2033766df6da3461b00495f545cfa->leave($__internal_e70627bf567dafa65e441fa9bcfddd2e35f2033766df6da3461b00495f545cfa_prof);
 
     }
 
@@ -219,7 +287,7 @@ var myChart = new Chart(ctx, {
 
     public function getDebugInfo()
     {
-        return array (  161 => 66,  157 => 64,  155 => 63,  150 => 60,  117 => 29,  109 => 27,  105 => 26,  97 => 21,  92 => 19,  88 => 18,  84 => 17,  80 => 16,  75 => 15,  71 => 14,  61 => 7,  54 => 5,  51 => 4,  49 => 3,  40 => 2,  11 => 1,);
+        return array (  229 => 104,  225 => 102,  223 => 101,  218 => 98,  188 => 70,  178 => 68,  167 => 67,  163 => 66,  156 => 61,  148 => 59,  144 => 58,  136 => 53,  131 => 51,  127 => 50,  123 => 49,  119 => 48,  114 => 47,  110 => 46,  99 => 38,  94 => 36,  79 => 24,  64 => 12,  59 => 10,  51 => 4,  49 => 3,  40 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -235,10 +303,42 @@ var myChart = new Chart(ctx, {
         return new Twig_Source("{% extends 'base.html.twig' %}
 {% block body %}
 {% if app.user != null %}
-<div class=\"brique bienvenue\">
-    <h1> Bonjour {{app.user.name}} (ID : {{id}})</h1>
-    <h3> Voici votre tableau de bord </h3>
-    <a href=\"{{ path('configure')}}\"> Configurer mon profil </a>
+<div class=\"col-md-12\">
+    <div class=\"col-md-3\">
+        <img src=\"images/logo-apifit.png\" alt=\"logo\" id=\"logo\"></img>
+    </div>
+    <div class=\"col-md-6\">
+        <div class=\"brique bienvenue\">
+            <h3> Bonjour {{app.user.name}} </h3>
+            <h3> Voici votre tableau de bord </h3>
+            <a href=\"{{ path('configure')}}\"> Configurer mon profil </a>
+        </div>
+    </div>
+
+                    <!-- SEARCH BAR   -->
+    <div class=\"col-md-3\">
+<!--
+      <div class=\"searchbar\">
+        \t<div class=\"row\">
+                <div class=\"col-md-12\">
+                    <div id=\"custom-search-input\">
+                        <div class=\"input-group col-md-12\">
+                          <form action=\"{{ path('search')}}\">
+                              <input type=\"text\" class=\"form-control input-lg\" placeholder=\"Rechercher..\" />
+                              <span class=\"input-group-btn\">
+
+                            </span>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+        \t</div>
+        </div>
+    </div> -->
+    {{ form_start(formsearch) }}
+    
+    {{ form_end(formsearch) }}
+
 </div>
 
                                 <!-- LEFT COLUMN -->
@@ -246,7 +346,7 @@ var myChart = new Chart(ctx, {
 <div class=\"col-md-4\">
     <div class=\"brique col-md-12\">
         {% for data in lastdata %}
-            <img src=\"images/Avatar/{{id}}.png\" alt=\"icon-profil\" id=\"pp\">
+            <img src=\"images/Avatar/{{id}}.png\" class=\"img-circle\" alt=\"icon-profil\" id=\"pp\">
             <li><h3>Level : {{ data.level }}</h3></li>
             <li><h4>Taille : {{ data.height }} cm</h4></li>
             <li><h4>Poids : {{ data.weight }} kg </h4></li>
@@ -262,8 +362,14 @@ var myChart = new Chart(ctx, {
         {% endfor %}
     </div>
 
-    <div class=\"brique col-md-12\">
+    <div class=\"brique friends col-md-12\">
         <h3>Vos Amis</h3>
+        <div class=\"scroll\">
+            {% for users in friends %}
+                          <a href=\"/{{users.id}}\"><button class=\"btn btn-default btn-lg btn-block\"><img src=\"images/Avatar/{{users.id}}.png\" class=\"img-circle\" alt=\"{{ users.name }} {{ users.lastname}}\" id=\"miniature\"></img>
+                          {{ users.name }} {{ users.lastname}}</button></a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
@@ -271,10 +377,10 @@ var myChart = new Chart(ctx, {
 
                                 <!-- RIGHT COLUMN -->
 <div class=\"col-md-6\">
-    
+
 
     <div class=\"brique col-md-12\">
-                 
+
             <h3>Courbe d'évolution</h3>
             <canvas id=\"myChart\" width=\"400\" height=\"150\"></canvas>
             <hr>

@@ -1,11 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {% if app.user != null %}
-<img src="images/logo-apifit.png" alt="logo" id="logo"></img>
-<div class="brique bienvenue">
-    <h3> Bonjour {{app.user.name}} </h3>
-    <h3> Voici votre tableau de bord </h3>
-    <a href="{{ path('configure')}}"> Configurer mon profil </a>
+<div class="col-md-12">
+    <div class="col-md-3">
+        <img src="images/logo-apifit.png" alt="logo" id="logo"></img>
+    </div>
+    <div class="col-md-6">
+        <div class="brique bienvenue">
+            <h3> Bonjour {{app.user.name}} </h3>
+            <h3> Voici votre tableau de bord </h3>
+            <a href="{{ path('configure')}}"> Configurer mon profil </a>
+        </div>
+    </div>
+
+                    <!-- SEARCH BAR   -->
+    <div class="col-md-3">
+<!--
+      <div class="searchbar">
+        	<div class="row">
+                <div class="col-md-12">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                          <form action="{{ path('search')}}">
+                              <input type="text" class="form-control input-lg" placeholder="Rechercher.." />
+                              <span class="input-group-btn">
+
+                            </span>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div> -->
+    {{ form_start(formsearch) }}
+
+    {{ form_end(formsearch) }}
+
 </div>
 
                                 <!-- LEFT COLUMN -->
@@ -13,7 +44,7 @@
 <div class="col-md-4">
     <div class="brique col-md-12">
         {% for data in lastdata %}
-            <img src="images/Avatar/{{id}}.png" alt="icon-profil" id="pp">
+            <img src="images/Avatar/{{id}}.png" class="img-circle" alt="icon-profil" id="pp">
             <li><h3>Level : {{ data.level }}</h3></li>
             <li><h4>Taille : {{ data.height }} cm</h4></li>
             <li><h4>Poids : {{ data.weight }} kg </h4></li>
@@ -29,19 +60,14 @@
         {% endfor %}
     </div>
 
-    <div class="brique col-md-12">
+    <div class="brique friends col-md-12">
         <h3>Vos Amis</h3>
-        {% for users in friends %}
-
-            <table class="">
-              <tr>
-                  <td><a href="/{{users.id}}"><img src="images/Avatar/{{users.id}}.png" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img></a>
-                  <a href="/{{users.id}}">{{ users.name }} {{ users.lastname}}</a></td>
-                  <br>
-              </tr>
-            </table>
-
-        {% endfor %}
+        <div class="scroll">
+            {% for users in friends %}
+                          <a href="/{{users.id}}"><button class="btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="img-circle" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+                          {{ users.name }} {{ users.lastname}}</button></a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

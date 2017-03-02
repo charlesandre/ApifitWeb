@@ -64,22 +64,31 @@ p
 
 .brique img{
   height:150px;
-  border-radius: 30%;
+}
+.brique button img{
+  margin-right: 15px;
 }
 
+.brique button{
+  background-color: white;
+  border: 0px;
+  width:90%;
+}
 .brique a{
   color : #479ce7;
   font-size: 15px;
   margin-left: 10px;
+  text-decoration: none;
 }
 
-.brique table{
-  width: 50%;
-  text-align: left;
-  margin-left: 36%;
+.brique button{
+  width: 70%;
+  text-align: center;
+  margin-left: 15%;
 }
+
 #miniature{
-  height:30px;
+  height:45px;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -92,8 +101,8 @@ p
 }
 
 .bienvenue{
-  width:40%;
-  margin-left: 30%;
+  width:80%;
+  margin-left: 10%;
 }
 .green{
   color:green;
@@ -103,7 +112,56 @@ p
   color: red;
 }
 
+.friends{
+  height: 300px;
+}
 
+.scroll{
+  height: 200px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/*SEARCH BAR*/
+.searchbar{
+  margin-top: 75px;
+
+}
+
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color:  #479ce7;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
 /*CLASSES COMMUNES*/
 
 .centrer

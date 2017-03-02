@@ -1,6 +1,8 @@
 <?php
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\UsersSearch;
+use AppBundle\Form\Search;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +18,10 @@ class DefaultController extends Controller
     if (!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
       return $this->redirect($this->generateUrl('register'));
     }
+    $Search = new UsersSearch();
+
+    $formsearch = $this->createForm(Search::class, $Search);
+    $formsearch->handleRequest($request);
 
     $repository = $this->getDoctrine()
     ->getRepository('AppBundle:UsersData');
@@ -39,17 +45,6 @@ class DefaultController extends Controller
     ->getRepository('AppBundle:User');
 
 
-    // $queryFriends=$repositoryUsers->createQueryBuilder('i')
-    // ->select('DISTINCT U.id, U.name, U.lastname')
-    // ->
-    // ->where('F.uid1 : :uid')
-    // ->where('U.id : f;uid2')
-    // ->setParameter('uid', $a)
-    // ->getQuery();
-    //
-    //
-    // $users = $query2->getResult();
-    // $friends = $queryFriends->getResult();
 
     $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
     $connection = $em->getConnection();
@@ -58,11 +53,27 @@ class DefaultController extends Controller
     $statement->execute();
     $friends = $statement->fetchAll();
 
+    if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+
+      return $this->render('auth/login.html.twig',array());
+
+    }
+
+
 
     return $this->render('default/index.html.twig', array(
+      'formsearch' => $formsearch->createView(),
       'lastdata' => $lastdata,
       'friends' => $friends,
       'id'=> $a
     ));
+  }
+
+  /**
+  * @Route("/search", name="search")
+  */
+
+  public function searchresult(Request $request){
+    return $this->render('default/result.html.twig');
   }
 }
