@@ -21,34 +21,34 @@ class __TwigTemplate_d949539ad2ad9926eb1c6037a464ac942764767a8c6ec5aec5935e81d3b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_162a99d7763ca67c8dc96376ea9576bd024cd7764de945c95f2a926d0a0cd351 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_162a99d7763ca67c8dc96376ea9576bd024cd7764de945c95f2a926d0a0cd351->enter($__internal_162a99d7763ca67c8dc96376ea9576bd024cd7764de945c95f2a926d0a0cd351_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/configure.html.twig"));
+        $__internal_32a86f1759efd55188a9496aa38f9b1cd9cacbbf286d1c50840e615d187c58d6 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_32a86f1759efd55188a9496aa38f9b1cd9cacbbf286d1c50840e615d187c58d6->enter($__internal_32a86f1759efd55188a9496aa38f9b1cd9cacbbf286d1c50840e615d187c58d6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/configure.html.twig"));
 
-        $__internal_1c8e10a57c55f58b7abc77d7a6e2634e44aef736603b16bcfc6d8d877654a09b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_1c8e10a57c55f58b7abc77d7a6e2634e44aef736603b16bcfc6d8d877654a09b->enter($__internal_1c8e10a57c55f58b7abc77d7a6e2634e44aef736603b16bcfc6d8d877654a09b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/configure.html.twig"));
+        $__internal_0ff9711de29cc3d31bd4b26470a26297cda3383208f089ceadcc8d1dc3fa1c60 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_0ff9711de29cc3d31bd4b26470a26297cda3383208f089ceadcc8d1dc3fa1c60->enter($__internal_0ff9711de29cc3d31bd4b26470a26297cda3383208f089ceadcc8d1dc3fa1c60_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/configure.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_162a99d7763ca67c8dc96376ea9576bd024cd7764de945c95f2a926d0a0cd351->leave($__internal_162a99d7763ca67c8dc96376ea9576bd024cd7764de945c95f2a926d0a0cd351_prof);
+        $__internal_32a86f1759efd55188a9496aa38f9b1cd9cacbbf286d1c50840e615d187c58d6->leave($__internal_32a86f1759efd55188a9496aa38f9b1cd9cacbbf286d1c50840e615d187c58d6_prof);
 
         
-        $__internal_1c8e10a57c55f58b7abc77d7a6e2634e44aef736603b16bcfc6d8d877654a09b->leave($__internal_1c8e10a57c55f58b7abc77d7a6e2634e44aef736603b16bcfc6d8d877654a09b_prof);
+        $__internal_0ff9711de29cc3d31bd4b26470a26297cda3383208f089ceadcc8d1dc3fa1c60->leave($__internal_0ff9711de29cc3d31bd4b26470a26297cda3383208f089ceadcc8d1dc3fa1c60_prof);
 
     }
 
     // line 4
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e97ca0bf297de302cc9021b0ca652cf7da677c88dbeedd2bc53547d39b9a658b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_e97ca0bf297de302cc9021b0ca652cf7da677c88dbeedd2bc53547d39b9a658b->enter($__internal_e97ca0bf297de302cc9021b0ca652cf7da677c88dbeedd2bc53547d39b9a658b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_13e50572a624d58051bace80f8045188bf1d99af9542ea25072aff52a48c975e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_13e50572a624d58051bace80f8045188bf1d99af9542ea25072aff52a48c975e->enter($__internal_13e50572a624d58051bace80f8045188bf1d99af9542ea25072aff52a48c975e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        $__internal_99284f90390b98ca71f3082ee31d7c311b8f20146d888e0f72e3fab24715ae9a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_99284f90390b98ca71f3082ee31d7c311b8f20146d888e0f72e3fab24715ae9a->enter($__internal_99284f90390b98ca71f3082ee31d7c311b8f20146d888e0f72e3fab24715ae9a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_1b50daa39d8dff7f79da5dc6fcda7220ba78aa7916dafe2d60922a14a5764b55 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1b50daa39d8dff7f79da5dc6fcda7220ba78aa7916dafe2d60922a14a5764b55->enter($__internal_1b50daa39d8dff7f79da5dc6fcda7220ba78aa7916dafe2d60922a14a5764b55_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 5
         echo "
   <body>
-    <div style=\"background-color:#e7e7e7; padding:20px; border-bottom: 1px solid #777777\">
+    <div class=\"brique\">
       <h1 style=\"text-align:center\">Configuration de votre programme</h1>
       <h1 style=\"text-align:center\">Veuillez choisir votre modèle de montre.</h2>
 \t\t\t\t<p style=\"text-align:center\">
@@ -72,32 +72,35 @@ class __TwigTemplate_d949539ad2ad9926eb1c6037a464ac942764767a8c6ec5aec5935e81d3b
         // line 18
         echo "        </p>
    </div>
-   <div class=\"container\" style=\"margin:auto; margin-top:10px\">
-      <div style=\"border:1px solid #e7e7e7; margin:auto; padding:10px; display:inline-block;\">
+   <div class=\"col-md-2\"></div>
+   <div class=col-md-8>
+      <div class=\"brique col-md-5 centrer\" style=\"padding:0\">
   \t\t<a href=\"";
-        // line 22
+        // line 23
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fitbit");
-        echo "\"><img  src=\"";
+        echo "\"><button><img  src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/fitbit_logo.png"), "html", null, true);
-        echo "\" width=200 alt=\"Fitbit\"> Je possède une montre Fitbit.</a>
+        echo "\" width=200 alt=\"Fitbit\"> <br> Je possède une montre Fitbit.</button></a>
       </div>
-      <div class=row style=\"border:1px solid #e7e7e7; margin: 10px auto auto auto; padding:10px;display:inline-block;\">
-        <a href=\"";
-        // line 25
+      <div class=\"brique col-md-5 centrer\" style=\"padding:0\">
+  \t\t<a href=\"";
+        // line 26
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("jawbone");
-        echo "\"><img  src=\"";
+        echo "\"><button><img  src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/jawbone_logo.png"), "html", null, true);
-        echo "\" width=200 alt=Jawbone> Je possède une montre Jawbone</a>
+        echo "\" width=200 alt=\"Jawbone\"> <br> Je possède une montre Jawbone.</button></a>
       </div>
     </div>
+    <div class=\"col-md-2\"></div>
+
   </body>
 
 ";
         
-        $__internal_99284f90390b98ca71f3082ee31d7c311b8f20146d888e0f72e3fab24715ae9a->leave($__internal_99284f90390b98ca71f3082ee31d7c311b8f20146d888e0f72e3fab24715ae9a_prof);
+        $__internal_1b50daa39d8dff7f79da5dc6fcda7220ba78aa7916dafe2d60922a14a5764b55->leave($__internal_1b50daa39d8dff7f79da5dc6fcda7220ba78aa7916dafe2d60922a14a5764b55_prof);
 
         
-        $__internal_e97ca0bf297de302cc9021b0ca652cf7da677c88dbeedd2bc53547d39b9a658b->leave($__internal_e97ca0bf297de302cc9021b0ca652cf7da677c88dbeedd2bc53547d39b9a658b_prof);
+        $__internal_13e50572a624d58051bace80f8045188bf1d99af9542ea25072aff52a48c975e->leave($__internal_13e50572a624d58051bace80f8045188bf1d99af9542ea25072aff52a48c975e_prof);
 
     }
 
@@ -113,7 +116,7 @@ class __TwigTemplate_d949539ad2ad9926eb1c6037a464ac942764767a8c6ec5aec5935e81d3b
 
     public function getDebugInfo()
     {
-        return array (  87 => 25,  79 => 22,  73 => 18,  69 => 16,  66 => 15,  60 => 13,  58 => 12,  49 => 5,  40 => 4,  11 => 2,);
+        return array (  88 => 26,  80 => 23,  73 => 18,  69 => 16,  66 => 15,  60 => 13,  58 => 12,  49 => 5,  40 => 4,  11 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -132,7 +135,7 @@ class __TwigTemplate_d949539ad2ad9926eb1c6037a464ac942764767a8c6ec5aec5935e81d3b
 {% block body %}
 
   <body>
-    <div style=\"background-color:#e7e7e7; padding:20px; border-bottom: 1px solid #777777\">
+    <div class=\"brique\">
       <h1 style=\"text-align:center\">Configuration de votre programme</h1>
       <h1 style=\"text-align:center\">Veuillez choisir votre modèle de montre.</h2>
 \t\t\t\t<p style=\"text-align:center\">
@@ -145,14 +148,17 @@ class __TwigTemplate_d949539ad2ad9926eb1c6037a464ac942764767a8c6ec5aec5935e81d3b
             {% endif %}
         </p>
    </div>
-   <div class=\"container\" style=\"margin:auto; margin-top:10px\">
-      <div style=\"border:1px solid #e7e7e7; margin:auto; padding:10px; display:inline-block;\">
-  \t\t<a href=\"{{path('fitbit')}}\"><img  src=\"{{ asset('images/fitbit_logo.png') }}\" width=200 alt=\"Fitbit\"> Je possède une montre Fitbit.</a>
+   <div class=\"col-md-2\"></div>
+   <div class=col-md-8>
+      <div class=\"brique col-md-5 centrer\" style=\"padding:0\">
+  \t\t<a href=\"{{path('fitbit')}}\"><button><img  src=\"{{ asset('images/fitbit_logo.png') }}\" width=200 alt=\"Fitbit\"> <br> Je possède une montre Fitbit.</button></a>
       </div>
-      <div class=row style=\"border:1px solid #e7e7e7; margin: 10px auto auto auto; padding:10px;display:inline-block;\">
-        <a href=\"{{path('jawbone')}}\"><img  src=\"{{ asset('images/jawbone_logo.png') }}\" width=200 alt=Jawbone> Je possède une montre Jawbone</a>
+      <div class=\"brique col-md-5 centrer\" style=\"padding:0\">
+  \t\t<a href=\"{{path('jawbone')}}\"><button><img  src=\"{{ asset('images/jawbone_logo.png') }}\" width=200 alt=\"Jawbone\"> <br> Je possède une montre Jawbone.</button></a>
       </div>
     </div>
+    <div class=\"col-md-2\"></div>
+
   </body>
 
 {% endblock %}

@@ -44,8 +44,6 @@ class DefaultController extends Controller
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
 
-
-
     $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
     $connection = $em->getConnection();
     $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) ");
@@ -53,9 +51,22 @@ class DefaultController extends Controller
     $statement->execute();
     $friends = $statement->fetchAll();
 
-    if ($formsearch->isSubmitted() && $formsearch->isValid()) {
 
-      return $this->render('auth/login.html.twig',array());
+
+    if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+      $keyword= $formsearch["search"]->getData();
+      $queryusers = $repositoryUsers->createQueryBuilder('u')
+      ->where('u.lastname = :key')
+      ->orWhere('u.name = :key')
+      ->setParameter('key', $keyword)
+      ->getQuery();
+
+      $resultusers=$queryusers->getResult();
+
+      return $this->render('default/result.html.twig',array(
+        'users' => $resultusers,
+        'key' => $keyword
+      ));
 
     }
 

@@ -7,75 +7,47 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
     {
         parent::__construct($env);
 
-        $this->parent = false;
-
+        // line 1
+        $this->parent = $this->loadTemplate("base.html.twig", "auth/register.html.twig", 1);
         $this->blocks = array(
+            'body' => array($this, 'block_body'),
         );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4->enter($__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
+        $__internal_74d01e67a8bb7f7b18033788d541c6ff7d4fcdc08c890ae9690aaeddcb083564 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_74d01e67a8bb7f7b18033788d541c6ff7d4fcdc08c890ae9690aaeddcb083564->enter($__internal_74d01e67a8bb7f7b18033788d541c6ff7d4fcdc08c890ae9690aaeddcb083564_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
 
-        $__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8->enter($__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
+        $__internal_483b595133f3bff258940b75f25563bec46801247b8ac7afa32192b979dda1fd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_483b595133f3bff258940b75f25563bec46801247b8ac7afa32192b979dda1fd->enter($__internal_483b595133f3bff258940b75f25563bec46801247b8ac7afa32192b979dda1fd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "auth/register.html.twig"));
 
-        // line 1
-        echo "<!DOCTYPE html>
-<html lang=\"fr\">
-<head>
-\t<link href=\"";
-        // line 4
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/bootstrap.css"), "html", null, true);
-        echo "\" rel=\"stylesheet\">
-\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css\">
-\t<link href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css\" rel=\"stylesheet\">
-\t<Link rel=\"SHORTCUT ICON\" href=\"";
-        // line 7
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-apifit.png"), "html", null, true);
-        echo "\">
-\t\t<link rel=\"stylesheet\" href=\"";
-        // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/default.css"), "html", null, true);
-        echo "\"/>
-\t\t<link rel=\"stylesheet\" href=\"";
-        // line 9
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/large_screen.css"), "html", null, true);
-        echo "\"/>
-\t\t<link rel=\"stylesheet\" media=\"screen and (max-width: 1280px)\" href=\"";
-        // line 10
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/middle_screen.css"), "html", null, true);
-        echo "\"/>
-\t\t<link rel=\"stylesheet\" media=\"screen and (max-width: 770px)\" href=\"";
-        // line 11
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/small_screen.css"), "html", null, true);
-        echo "\"/>
-\t\t<meta charset=\"utf-8\">
-\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-\t\t<meta name=\"description\" content=\"Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! \">
-\t\t<title>Apifit</title>
-\t\t<!--
-\t\t<script src=\"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js\"></script>
-\t\t<script src=\"";
-        // line 18
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/angular-route.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t<script src=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/angular-messages.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t<script src=\"";
-        // line 20
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/angular-password.min.js"), "html", null, true);
-        echo "\"></script>
-\t\t<script src=\"";
-        // line 21
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/ControllerIndex.js"), "html", null, true);
-        echo "\"></script> -->
-\t</head>
-\t<body ng-app=\"mainApp\">
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_74d01e67a8bb7f7b18033788d541c6ff7d4fcdc08c890ae9690aaeddcb083564->leave($__internal_74d01e67a8bb7f7b18033788d541c6ff7d4fcdc08c890ae9690aaeddcb083564_prof);
 
+        
+        $__internal_483b595133f3bff258940b75f25563bec46801247b8ac7afa32192b979dda1fd->leave($__internal_483b595133f3bff258940b75f25563bec46801247b8ac7afa32192b979dda1fd_prof);
+
+    }
+
+    // line 2
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_e4299b425e4240939b9d161fd2f75f950bc69b45474924b6530a5dc930fe3e9b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_e4299b425e4240939b9d161fd2f75f950bc69b45474924b6530a5dc930fe3e9b->enter($__internal_e4299b425e4240939b9d161fd2f75f950bc69b45474924b6530a5dc930fe3e9b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_aea79f8b94cfb2752a66ebc7eaa3fdc52dc6258130987c0941ff0ab85d82b5fb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_aea79f8b94cfb2752a66ebc7eaa3fdc52dc6258130987c0941ff0ab85d82b5fb->enter($__internal_aea79f8b94cfb2752a66ebc7eaa3fdc52dc6258130987c0941ff0ab85d82b5fb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 3
+        echo "
+s
 \t\t<header id=\"myCarousel\" class=\"carousel slide\">
 
 \t\t\t<ol class=\"carousel-indicators\">
@@ -96,23 +68,23 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t\t\t\t\t\t\t<ul class=\"nav navbar-nav navbar-right\" id= \"buttonright\">
 
 \t\t\t\t\t\t\t\t";
-        // line 44
+        // line 24
         if (($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()) == null)) {
-            // line 45
+            // line 25
             echo "\t\t\t\t\t\t\t\t<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#ModalInsc\"><span class=\"glyphicon glyphicon-user padding-icon-right\"></span><span id=\"legende\">Inscription</span></a></li>
 \t\t\t\t\t\t\t\t<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#ModalConn\" ><span class=\"glyphicon glyphicon-log-in padding-icon-right\"></span><span id=\"legende\">Connexion</span></a></li>
 \t\t\t\t\t\t\t\t";
         }
-        // line 48
+        // line 28
         echo "\t\t\t\t\t\t\t\t";
         if (($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()) != null)) {
-            // line 49
+            // line 29
             echo "\t\t\t\t\t\t\t\t<li><a href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login");
             echo "\" ><span class=\"glyphicon glyphicon-log-in padding-icon-right\"></span><span id=\"legende\">Mon Tableau de bord</span></a></li>
 \t\t\t\t\t\t\t\t";
         }
-        // line 51
+        // line 31
         echo "
 \t\t\t\t\t\t\t</ul>
 \t\t\t\t\t\t</div>
@@ -120,7 +92,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t\t\t\t</div>
 \t\t\t\t<div class=\"item active\">
 \t\t\t\t\t<img src=\"";
-        // line 57
+        // line 37
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/header-basket.jpg"), "html", null, true);
         echo "\">
 \t\t\t\t\t<div class=\"carousel-caption\">
@@ -131,7 +103,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t<div class=\"item\">
 \t\t\t\t\t<img src=\"";
-        // line 65
+        // line 45
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/header-fitness.jpg"), "html", null, true);
         echo "\" alt=\"Apifit Fitness\">
 \t\t\t\t\t<div class=\"carousel-caption\">
@@ -142,7 +114,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t<div class=\"item\">
 \t\t\t\t\t<img src=\"";
-        // line 73
+        // line 53
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/header-rugby.jpg"), "html", null, true);
         echo "\" alt=\"Apifit Rugby\">
 \t\t\t\t\t<div class=\"carousel-caption\">
@@ -153,7 +125,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t<div class=\"item\">
 \t\t\t\t\t<img src=\"";
-        // line 81
+        // line 61
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/header-foot.jpg"), "html", null, true);
         echo "\" alt=\"Apifit Foot\">
 \t\t\t\t\t<div class=\"carousel-caption\">
@@ -215,16 +187,16 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t\t\t\t</div>
 
 \t\t\t\t";
-        // line 140
+        // line 120
         echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formreg"]) ? $context["formreg"] : $this->getContext($context, "formreg")), 'form_start');
         echo "
 \t\t\t\t";
-        // line 141
+        // line 121
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock((isset($context["formreg"]) ? $context["formreg"] : $this->getContext($context, "formreg")), 'widget');
         echo "
 \t\t\t\t<button class=\"btn btn-primary\" id=\"btnmodal\" type=\"submit\">Register !</button>
 \t\t\t\t";
-        // line 143
+        // line 123
         echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formreg"]) ? $context["formreg"] : $this->getContext($context, "formreg")), 'form_end');
         echo "
 \t\t\t</div>
@@ -247,16 +219,16 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t\t\t\t</div>
 
 \t\t\t\t";
-        // line 163
+        // line 143
         echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'form_start', array("action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("security_login_check")));
         echo "
 \t\t\t\t";
-        // line 164
+        // line 144
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'widget', array("action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("security_login_check")));
         echo "
 \t\t\t\t<button class=\"btn btn-primary\" id=\"btnmodal\" type=\"submit\">Login !</button>
 \t\t\t\t";
-        // line 166
+        // line 146
         echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["formconn"]) ? $context["formconn"] : $this->getContext($context, "formconn")), 'form_end', array("action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("security_login_check")));
         echo "
 \t\t\t</div>
@@ -372,7 +344,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 -->\t\t<div class=\"contenu-video\">
   <section class =\"fondordi\">
 \t<img alt=\"LogoApifit\" src=\"";
-        // line 279
+        // line 259
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-apifit.png"), "html", null, true);
         echo "\" height=\"200\" width=\"200\">
 \t<h3>Apifit</h3>
@@ -409,7 +381,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 313
+        // line 293
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/Vincent.png"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -431,7 +403,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 332
+        // line 312
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/Charles.png"), "html", null, true);
         echo "\"class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -452,7 +424,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 350
+        // line 330
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/zinedine.jpg"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -473,7 +445,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 368
+        // line 348
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/Remi.png"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -494,7 +466,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
 \t\t\t\t\t\t\t<figure>
 \t\t\t\t\t\t\t\t<img width=\"670\" height=\"500\" src=\"";
-        // line 386
+        // line 366
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/fatih.jpg"), "html", null, true);
         echo "\" class=\"doc-img animate attachment-gallery-post-single wp-post-image\" alt=\"doctor-2\">
 \t\t\t\t\t\t\t</figure>
@@ -522,37 +494,37 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t\t<p>Ils nous ont fait confiance ...</p>
 \t\t<aside class=\"row logo-part\">
 \t\t\t<article class=\"col-sm-2 col-sm-offset-2\"><h5><img src=\"";
-        // line 411
+        // line 391
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-fitbit.png"), "html", null, true);
         echo "\" alt=\"logo-fitbit\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 412
+        // line 392
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-withings.png"), "html", null, true);
         echo "\" alt=\"logo-withings\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 413
+        // line 393
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-orange-bleu.png"), "html", null, true);
         echo "\" alt=\"logo-orange-bleu\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 414
+        // line 394
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-jawbone.png"), "html", null, true);
         echo "\" alt=\"logo-jawbone\"></h5></article>
 \t\t</aside>
 \t\t<aside class=\"row logo-part\">
 \t\t\t<article class=\"col-sm-2 col-sm-offset-2\"><h5><img src=\"";
-        // line 417
+        // line 397
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-forest-hill.png"), "html", null, true);
         echo "\" alt=\"logo-fitbit\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 418
+        // line 398
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-garmin.png"), "html", null, true);
         echo "\" alt=\"logo-withings\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 419
+        // line 399
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-yo-fitness.png"), "html", null, true);
         echo "\" alt=\"logo-orange-bleu\"></h5></article>
 \t\t\t<article class=\"col-sm-2\"><h5><img src=\"";
-        // line 420
+        // line 400
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/logo-gopro.png"), "html", null, true);
         echo "\" alt=\"logo-jawbone\"></h5></article>
 \t\t</aside>
@@ -659,15 +631,15 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
 \t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js\"></script>
 \t<script src=\"";
-        // line 524
+        // line 504
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/bootstrap.js"), "html", null, true);
         echo "\"></script>
 \t<script type=\"text/javascript\" src=\"";
-        // line 525
+        // line 505
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/apifit.js"), "html", null, true);
         echo "\"></script>
 \t<script type=\"text/javascript\" src=\"";
-        // line 526
+        // line 506
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/service-process.js"), "html", null, true);
         echo "\"></script>
 \t<script>
@@ -682,14 +654,12 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t\t\treturn false;
 \t\t});
 \t</script>
-</body>
-</html>
 ";
         
-        $__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4->leave($__internal_f4fb49ed4a42e6d3c30b8e1c56a4d9babcf5442e54aa7902b8c46a28c26b3dc4_prof);
+        $__internal_aea79f8b94cfb2752a66ebc7eaa3fdc52dc6258130987c0941ff0ab85d82b5fb->leave($__internal_aea79f8b94cfb2752a66ebc7eaa3fdc52dc6258130987c0941ff0ab85d82b5fb_prof);
 
         
-        $__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8->leave($__internal_150f65d9411c0ef9c84453e1b157183aa772b6ec10841a083ec316511b0cc4d8_prof);
+        $__internal_e4299b425e4240939b9d161fd2f75f950bc69b45474924b6530a5dc930fe3e9b->leave($__internal_e4299b425e4240939b9d161fd2f75f950bc69b45474924b6530a5dc930fe3e9b_prof);
 
     }
 
@@ -705,7 +675,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
     public function getDebugInfo()
     {
-        return array (  671 => 526,  667 => 525,  663 => 524,  556 => 420,  552 => 419,  548 => 418,  544 => 417,  538 => 414,  534 => 413,  530 => 412,  526 => 411,  498 => 386,  477 => 368,  456 => 350,  435 => 332,  413 => 313,  376 => 279,  260 => 166,  255 => 164,  251 => 163,  228 => 143,  223 => 141,  219 => 140,  157 => 81,  146 => 73,  135 => 65,  124 => 57,  116 => 51,  110 => 49,  107 => 48,  102 => 45,  100 => 44,  74 => 21,  70 => 20,  66 => 19,  62 => 18,  52 => 11,  48 => 10,  44 => 9,  40 => 8,  36 => 7,  30 => 4,  25 => 1,);
+        return array (  643 => 506,  639 => 505,  635 => 504,  528 => 400,  524 => 399,  520 => 398,  516 => 397,  510 => 394,  506 => 393,  502 => 392,  498 => 391,  470 => 366,  449 => 348,  428 => 330,  407 => 312,  385 => 293,  348 => 259,  232 => 146,  227 => 144,  223 => 143,  200 => 123,  195 => 121,  191 => 120,  129 => 61,  118 => 53,  107 => 45,  96 => 37,  88 => 31,  82 => 29,  79 => 28,  74 => 25,  72 => 24,  49 => 3,  40 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -718,30 +688,10 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 
     public function getSourceContext()
     {
-        return new Twig_Source("<!DOCTYPE html>
-<html lang=\"fr\">
-<head>
-\t<link href=\"{{ asset('bootstrap/bootstrap.css')}}\" rel=\"stylesheet\">
-\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css\">
-\t<link href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css\" rel=\"stylesheet\">
-\t<Link rel=\"SHORTCUT ICON\" href=\"{{ asset('images/logo-apifit.png') }}\">
-\t\t<link rel=\"stylesheet\" href=\"{{ asset('css/default.css') }}\"/>
-\t\t<link rel=\"stylesheet\" href=\"{{ asset('css/large_screen.css') }}\"/>
-\t\t<link rel=\"stylesheet\" media=\"screen and (max-width: 1280px)\" href=\"{{ asset('css/middle_screen.css') }}\"/>
-\t\t<link rel=\"stylesheet\" media=\"screen and (max-width: 770px)\" href=\"{{ asset('css/small_screen.css') }}\"/>
-\t\t<meta charset=\"utf-8\">
-\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-\t\t<meta name=\"description\" content=\"Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! \">
-\t\t<title>Apifit</title>
-\t\t<!--
-\t\t<script src=\"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js\"></script>
-\t\t<script src=\"{{ asset('js/angular-route.min.js')}}\"></script>
-\t\t<script src=\"{{ asset('js/angular-messages.min.js')}}\"></script>
-\t\t<script src=\"{{ asset('js/angular-password.min.js')}}\"></script>
-\t\t<script src=\"{{ asset('js/ControllerIndex.js')}}\"></script> -->
-\t</head>
-\t<body ng-app=\"mainApp\">
+        return new Twig_Source("{% extends 'base.html.twig' %}
+{% block body %}
 
+s
 \t\t<header id=\"myCarousel\" class=\"carousel slide\">
 
 \t\t\t<ol class=\"carousel-indicators\">
@@ -1256,8 +1206,7 @@ class __TwigTemplate_abc2b4dc2f9bb8830552382aecc056274b08166f1ad9ab194a2e35b9bb3
 \t\t\treturn false;
 \t\t});
 \t</script>
-</body>
-</html>
+{% endblock %}
 ", "auth/register.html.twig", "/Users/Charles/WEB/ApifitWeb/app/Resources/views/auth/register.html.twig");
     }
 }
