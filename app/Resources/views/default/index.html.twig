@@ -2,140 +2,146 @@
 {% block body %}
 {% if app.user != null %}
 <div class="col-md-12">
-    <div class="col-md-3">
-        <img src="images/logo-apifit.png" alt="logo" id="logo"></img>
+  <div class="col-md-3">
+    <img src="images/logo-apifit.png" alt="logo" id="logo"></img>
+  </div>
+  <div class="col-md-6">
+    <div class="brique bienvenue">
+      <h3> Bonjour {{app.user.name}} </h3>
+      <h3> Voici votre tableau de bord </h3>
+      <a href="{{ path('configure')}}"> Configurer mon profil </a><br>
+      <a href="/logout">Se déconnecter</a>
     </div>
-    <div class="col-md-6">
-        <div class="brique bienvenue">
-            <h3> Bonjour {{app.user.name}} </h3>
-            <h3> Voici votre tableau de bord </h3>
-            <a href="{{ path('configure')}}"> Configurer mon profil </a><br>
-            <a href="/logout">Se déconnecter</a>
-        </div>
-    </div>
+  </div>
 
-                    <!-- SEARCH BAR   -->
-    <div class="col-md-3">
-<!--
-      <div class="searchbar">
-        	<div class="row">
-                <div class="col-md-12">
-                    <div id="custom-search-input">
-                        <div class="input-group col-md-12">
-                              <input type="text" class="form-control input-lg" placeholder="Rechercher.." />
-                              <span class="input-group-btn">
+  <!-- SEARCH BAR   -->
+  <div class="col-md-3">
+    <!--
+    <div class="searchbar">
+    <div class="row">
+    <div class="col-md-12">
+    <div id="custom-search-input">
+    <div class="input-group col-md-12">
+    <input type="text" class="form-control input-lg" placeholder="Rechercher.." />
+    <span class="input-group-btn">
 
-                            </span>
-                          </form>
-                        </div>
-                    </div>
-                </div>
-        	</div>
-        </div>
-    </div> -->
+  </span>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
 
 </div>
 
-                                <!-- LEFT COLUMN -->
+<!-- LEFT COLUMN -->
 
 <div class="col-md-4">
-    <div class="brique col-md-12">
-        {% for data in lastdata %}
-            <img src="images/Avatar/{{id}}.png" class="img-circle" alt="icon-profil" id="pp">
-            <li><h3>Level : {{ data.level }}</h3></li>
-            <li><h4>Taille : {{ data.height }} cm</h4></li>
-            <li><h4>Poids : {{ data.weight }} kg </h4></li>
-            <li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
-                <script>
-                    var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
-                    if(imc>25) document.getElementById('imc').className="red";
-                    else if(imc<18) document.getElementById('imc').className="red";
-                    else document.getElementById('imc').className="green";
-                </script>
-            <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
-            <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
-        {% endfor %}
+  <div class="brique col-md-12">
+    {% for data in lastdata %}
+    <img src="images/Avatar/{{id}}.png" class="img-circle" alt="icon-profil" id="pp">
+    <li><h3>Level : </h3></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
+    <li><h4>Taille : {{ data.height }} cm</h4></li>
+    <li><h4>Poids : {{ data.weight }} kg </h4></li>
+    {#
+    <li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
+    <script>
+    var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
+    if(imc>25) document.getElementById('imc').className="red";
+    else if(imc<18) document.getElementById('imc').className="red";
+    else document.getElementById('imc').className="green";
+    </script>
+    #}
+    <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
+    <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
+      {% endfor %}
     </div>
+
 
     <div class="brique friends col-md-12">
-        <h3>Vos Amis</h3>
-        <div class="scroll">
-            {% for users in friends %}
-                          <a href="/{{users.id}}"><button class="btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="img-circle" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
-                          {{ users.name }} {{ users.lastname}}</button></a>
-            {% endfor %}
+      <h3>Vos Amis</h3>
+      <div class="scroll">
+        {% for users in friends %}
+        <a href="/{{users.id}}"><button class="btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="img-circle" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+          {{ users.name }} {{ users.lastname}}</button></a>
+          {% endfor %}
         </div>
-    </div>
-</div>
-
-<div class="col-md-1"></div>
-
-                                <!-- RIGHT COLUMN -->
-<div class="col-md-6">
-
-
-    <div class="brique col-md-12">
-
-            <h3>Courbe d'évolution</h3>
-            <canvas id="myChart" width="400" height="150"></canvas>
-            <hr>
+      </div>
     </div>
 
-    <div class="brique col-md-6">
+    <div class="col-md-1"></div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-md-6">
+
+
+      <div class="brique col-md-12">
+
+        <h3>Courbe d'évolution</h3>
+        <canvas id="myChart" width="400" height="150"></canvas>
+        <hr>
+      </div>
+
+      <div class="brique col-md-6">
         <h3>Votre Entraînement</h3>
-    </div>
+      </div>
 
-    <div class="brique col-md-5">
+      <div class="brique col-md-5">
         <h3>Vos Défis</h3>
+      </div>
     </div>
-</div>
 
 
-{% endif %}
+  {% endif %}
 
 
-      <!-- si on est pas identifié -->
-      {% if app.user == null %}
-      <a href="/login" class="btn btn-info"> Vous devez vous connecter pour accéder à votre compte.>></a>
-      {% endif %}
+  <!-- si on est pas identifié -->
+  {% if app.user == null %}
+  <a href="/login" class="btn btn-info"> Vous devez vous connecter pour accéder à votre compte.>></a>
+  {% endif %}
 
-<script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js" type="text/javascript"></script>
+  <script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
     }
-});
-</script>
+  });
+  </script>
 {% endblock %}

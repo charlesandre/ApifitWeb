@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
-s
 		<header id="myCarousel" class="carousel slide">
 
 			<ol class="carousel-indicators">
@@ -23,7 +21,8 @@ s
 
 								{% if app.user == null %}
 								<li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span><span id="legende">Inscription</span></a></li>
-								<li><a href="/login"></span><span id="legende">Connexion</span></a></li>
+								{# <li><a href="#" data-toggle="modal" data-target="#ModalConn" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>#}
+								<li><a href="/login"><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>
 								{% endif %}
 								{% if app.user != null %}
 								<li><a href="{{ path('login') }}" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Mon Tableau de bord</span></a></li>
@@ -116,18 +115,18 @@ s
 				<div class="modal-body">
 					<p>Veuillez remplir le formulaire suivant pour vous inscrire</p>
 				</div>
-				{#
+
 				{{ form_start(formreg) }}
 				{{ form_widget(formreg) }}
 				<button class="btn btn-primary" id="btnmodal" type="submit">Register !</button>
 				{{ form_end(formreg) }}
-				#}
+
 			</div>
 
 		</div>
 	</div>
 
-{# 
+
 	<!-- Modal Connexion-->
 	<div class="modal fade" id="ModalConn" role="dialog">
 		<div class="modal-dialog">
@@ -150,7 +149,7 @@ s
 
 		</div>
 	</div>
-	#}
+
 
 	<!--INTRO-->
 	<section class="centrer" id="accueil">
@@ -490,15 +489,6 @@ s
 		</div>
 		<p>Copyright © 2016 Apifit. Tous droits réservés.</p>
 	</footer>
-
-	<?php if ($_COOKIE['accept_cookies']!="accepted"){?> <!-- if the cookie is there, the banner does not display. -->
-	<div class=row id="cookies">
-		<div>
-			En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous offrir un meilleur service.
-			<br/>Pour en savoir plus et savoir comment paramétrer ces cookies : <a href="#" class="white underline" >Cliquez-ici</a>
-		</div>
-	</div>
-	<?php  }?>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>

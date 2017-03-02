@@ -9,13 +9,16 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserConn extends AbstractType
+class UserReg extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('_email', EmailType::class)
-        ->add('_password', PasswordType::class);
+        ->add('email', EmailType::class)
+        ->add('name', TextType::class)
+        ->add('lastname', TextType::class)
+        ->add('phone', TextType::class)
+        ->add('password', PasswordType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
