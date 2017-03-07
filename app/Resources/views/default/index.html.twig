@@ -55,6 +55,15 @@
     <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
     <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
       {% endfor %}
+      {% if demands %}
+      Vous avez des demandes d'amis en attente de la part de 
+      {% for d in demands %}
+      {{ d.uid1 }}
+      {% endfor %}
+      {% else %}
+      Vous n'avez pas de demande en attente
+      {% endif %}
+
     </div>
 
 

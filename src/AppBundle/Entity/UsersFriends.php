@@ -36,9 +36,9 @@ class UsersFriends
     private $uid2;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="STATUT", type="string", length=30, nullable=false)
+     * @ORM\Column(name="STATUT", type="integer")
      */
     private $statut;
 
@@ -105,7 +105,7 @@ class UsersFriends
     /**
      * Set statut
      *
-     * @param string $statut
+     * @param integer $statut
      *
      * @return UsersFriends
      */
@@ -119,7 +119,7 @@ class UsersFriends
     /**
      * Get statut
      *
-     * @return string
+     * @return integer
      */
     public function getStatut()
     {

@@ -3,6 +3,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\UsersSearch;
+use AppBundle\Entity\UsersFriends;
 use AppBundle\Form\Search;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,6 +22,18 @@ class DefaultController extends Controller
       return $this->redirect($this->generateUrl('register'));
     }
 
+    $a=$this->getUser()->getId();
+
+    /* IS THERE ANY NEW FRIEND RELATION WAITING */
+    $repositoryFriend = $this->getDoctrine()
+    ->getRepository('AppBundle:UsersFriends');
+
+    $queryFriendDemand = $repositoryFriend->createQueryBuilder('f')
+    ->where('f.uid2 = :uid')
+    ->andwhere('f.statut = 0')
+    ->setParameter('uid', $a)
+    ->getQuery();
+    $frienddemands = $queryFriendDemand->getResult();
 
 
     $Search = new UsersSearch();
@@ -35,7 +48,6 @@ class DefaultController extends Controller
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
 
-    $a=$this->getUser()->getId();
     $query = $repository->createQueryBuilder('d')
     ->where('d.id = :uid')
     ->setParameter('uid', $a)
@@ -69,9 +81,18 @@ class DefaultController extends Controller
 
 
 
-
+    /* IF THERE IS A NEW SEARCH */
     if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+
       $keyword= $formsearch["search"]->getData();
+
+      $Search->setUid($a);
+      $Search->setSearch($keyword);
+
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($Search);
+      $em->flush();
+
       $queryusers = $repositoryUsers->createQueryBuilder('u')
       ->where('u.lastname = :key')
       ->orWhere('u.name = :key')
@@ -92,6 +113,7 @@ class DefaultController extends Controller
 
     return $this->render('default/index.html.twig', array(
       'formsearch' => $formsearch->createView(),
+      'demands' => $frienddemands,
       'friends' => $friends,
       'lastdata' => $lastdata,
       'id'=> $a,
@@ -120,12 +142,23 @@ class DefaultController extends Controller
     ));
   }
 
+/* ADD A FRIEND */
+
   /**
  * @Route("/profil/{uid1}/{uid2}")
  */
   public function AddFriend(Request $request){
       $id1 = $request->attributes->get('uid1');
       $id2 = $request->attributes->get('uid2');
+
+      $relation = new UsersFriends();
+      $relation->setUid1($id2);
+      $relation->setUid2($id1);
+      $relation->setStatut(0);
+
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($relation);
+      $em->flush();
 
 
     $repositoryUsers = $this->getDoctrine()
@@ -140,6 +173,6 @@ class DefaultController extends Controller
 
     return $this->redirect("/profil/$id1");
   }
-s
+
 
 }

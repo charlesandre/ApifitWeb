@@ -1,33 +1,29 @@
-AppBundle\Entity\UsersFriends:
+AppBundle\Entity\UsersSearch:
     type: entity
-    table: users_friends
+    table: users_search
     id:
-        uidRel:
+        uidSea:
             type: integer
             nullable: false
             options:
                 unsigned: false
             id: true
-            column: UID_REL
+            column: ID
             generator:
                 strategy: IDENTITY
     fields:
-        uid1:
+        uid:
             type: integer
             nullable: false
             options:
                 unsigned: false
-            column: UID1
-        uid2:
-            type: integer
+            column: UID
+
+        search:
+            type: string
             nullable: false
-            options:
-                unsigned: false
-            column: UID2
-        statut:
-            type: integer
-            nullable: false
+            length: 30
             options:
                 fixed: false
-            column: STATUT
+            column: SEARCH
     lifecycleCallbacks: {  }
