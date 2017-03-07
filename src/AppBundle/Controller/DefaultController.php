@@ -7,6 +7,7 @@ use AppBundle\Form\Search;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class DefaultController extends Controller
 {
@@ -61,7 +62,7 @@ class DefaultController extends Controller
 
     $em = $this->getDoctrine()->getManager();
     $connection = $em->getConnection();
-    $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) ");
+    $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) AND STATUT = 1 ");
     $statement->bindValue('id', $a);
     $statement->execute();
     $friends = $statement->fetchAll();
@@ -99,9 +100,46 @@ class DefaultController extends Controller
   }
 
   /**
-  * @Route("/search", name="search")
-  */
-  public function searchresult(Request $request){
-    return $this->render('default/result.html.twig');
+ * @Route("/profil/{uid}")
+ */
+  public function displayUser(Request $request){
+      $id = $request->attributes->get('uid');
+
+    $repositoryUsers = $this->getDoctrine()
+    ->getRepository('AppBundle:User');
+
+    $queryUsers = $repositoryUsers->createQueryBuilder('u')
+    ->where('u.id = :uid')
+    ->setParameter('uid', $id)
+    ->getQuery();
+    $users = $queryUsers->getResult();
+
+
+    return $this->render('default/profil.html.twig', array(
+      'user' => $users
+    ));
   }
+
+  /**
+ * @Route("/profil/{uid1}/{uid2}")
+ */
+  public function AddFriend(Request $request){
+      $id1 = $request->attributes->get('uid1');
+      $id2 = $request->attributes->get('uid2');
+
+
+    $repositoryUsers = $this->getDoctrine()
+    ->getRepository('AppBundle:User');
+
+    $queryUsers = $repositoryUsers->createQueryBuilder('u')
+    ->where('u.id = :uid')
+    ->setParameter('uid', $id1)
+    ->getQuery();
+
+    $users = $queryUsers->getResult();
+
+    return $this->redirect("/profil/$id1");
+  }
+s
+
 }

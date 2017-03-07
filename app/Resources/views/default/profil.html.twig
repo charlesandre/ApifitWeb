@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  {% for u in user %}
+    <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
+
+          <img src="/web/images/Avatar/{{u.id}}.png" class="img-circle" alt="{{u.name}} {{ u.lastname}}">
+          <h2> {{ u.name }} {{ u.lastname }} </h2>
+          <h3> Level : {{ u.level }}</h3>
+            <a href="{{ u.id }}/{{ app.user.id }}"><button type="button" class="btn btn-primary">Ajouter {{ u.name }} à mes amis !</button></a>
+
+
+    </div>
+    <div class=" col-md-3 centrer" style="border:1px solid black;">
+      <h4> Ma discussion avec {{ u.name }}</h4>
+    </div>
+  {% endfor %}
+{% endblock %}

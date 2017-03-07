@@ -2,12 +2,15 @@
 {% block body %}
 <h2> Reultat de la recherche </h2>
 
-<div class="brique friends col-md-12">
+
+<div class="brique friends col-md-3" style="margin-left:20px;">
     <h3>Utilisateurs</h3>
     <div class="scroll">
         {% for users in users %}
-                      <a href="/{{users.id}}"><button class="btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="img-circle" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
-                      {{ users.name }} {{ users.lastname}}</button></a>
+                <a href="/profil/{{users.id}}"><button class="btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="img-circle" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+                {{ users.name }} {{ users.lastname}}</button></a>
+                
+
         {% endfor %}
     </div>
 </div>
