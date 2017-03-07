@@ -1,10 +1,9 @@
 <?php
 namespace AppBundle\Controller;
 
-/*
+
 use AppBundle\Entity\UsersSearch;
 use AppBundle\Form\Search;
-*/
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,15 +21,18 @@ class DefaultController extends Controller
     }
 
 
-    /*
+
     $Search = new UsersSearch();
 
     $formsearch = $this->createForm(Search::class, $Search);
     $formsearch->handleRequest($request);
-    */
+
 
     $repository = $this->getDoctrine()
     ->getRepository('AppBundle:UsersData');
+
+    $repositoryUsers = $this->getDoctrine()
+    ->getRepository('AppBundle:User');
 
     $a=$this->getUser()->getId();
     $query = $repository->createQueryBuilder('d')
@@ -47,6 +49,12 @@ class DefaultController extends Controller
     ->setParameter('uid', $a)
     ->getQuery();
 
+    $queryUsers = $repositoryUsers->createQueryBuilder('u')
+    ->where('u.id = :uid')
+    ->setParameter('uid', $a)
+    ->getQuery();
+
+    $users = $queryUsers->getResult();
 
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
@@ -59,7 +67,8 @@ class DefaultController extends Controller
     $friends = $statement->fetchAll();
 
 
-/*
+
+
     if ($formsearch->isSubmitted() && $formsearch->isValid()) {
       $keyword= $formsearch["search"]->getData();
       $queryusers = $repositoryUsers->createQueryBuilder('u')
@@ -76,15 +85,16 @@ class DefaultController extends Controller
       ));
 
     }
-    */
+
 
 
 
     return $this->render('default/index.html.twig', array(
-      //'formsearch' => $formsearch->createView(),
+      'formsearch' => $formsearch->createView(),
       'friends' => $friends,
       'lastdata' => $lastdata,
-      'id'=> $a
+      'id'=> $a,
+      'users' => $users
     ));
   }
 

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends Controller
 {
-  
+
   /**
   * @Route("/register", name="register")
   */

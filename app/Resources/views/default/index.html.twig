@@ -16,44 +16,42 @@
 
   <!-- SEARCH BAR   -->
   <div class="col-md-3">
-    <!--
     <div class="searchbar">
-    <div class="row">
-    <div class="col-md-12">
-    <div id="custom-search-input">
-    <div class="input-group col-md-12">
-    <input type="text" class="form-control input-lg" placeholder="Rechercher.." />
-    <span class="input-group-btn">
-
-  </span>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div> -->
-
-</div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="custom-search-input">
+            <div class="input-group col-md-12">
+              {{form_start(formsearch)}}
+              {{form_end(formsearch)}}
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- LEFT COLUMN -->
 
 <div class="col-md-4">
   <div class="brique col-md-12">
+    <img src="images/Avatar/{{app.user.id}}.png" class="img-circle" alt="{{app.user.name}} {{ app.user.lastname}}" id="pp">
+    {% for u in users %}
+      <li><h3>Level : {{ u.level }} </h3></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
+    {% endfor %}
     {% for data in lastdata %}
-    <img src="images/Avatar/{{id}}.png" class="img-circle" alt="icon-profil" id="pp">
-    <li><h3>Level : </h3></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
     <li><h4>Taille : {{ data.height }} cm</h4></li>
     <li><h4>Poids : {{ data.weight }} kg </h4></li>
-    {#
+
     <li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
     <script>
+
     var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
     if(imc>25) document.getElementById('imc').className="red";
     else if(imc<18) document.getElementById('imc').className="red";
     else document.getElementById('imc').className="green";
     </script>
-    #}
+
     <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
     <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
       {% endfor %}

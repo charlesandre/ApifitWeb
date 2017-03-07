@@ -15,7 +15,14 @@ class Search extends AbstractType
     {
         $builder
         ->setMethod('POST')
-        ->add('search', TextType::class);
+        ->add('search',TextType::class, array(
+        'attr' => array(
+             'placeholder' => 'Chercher..',
+        ),
+        'label' => false,
+     )
+);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -77,6 +77,17 @@ class User implements UserInterface
     private $api;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="level", type="integer")
+     */
+    private $level;
+
+
+
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -252,6 +263,29 @@ class User implements UserInterface
          return $this->api;
      }
 
+
+
+     /**
+      * Get level
+      *
+      * @return integer
+      */
+      public function getLevel()
+      {
+          return $this->level;
+      }
+
+
+      /**
+       * Set level
+       *
+       * @return integer
+       */
+      public function setLevel($level)
+      {
+          $this->level=$level;
+          return $this->level;
+      }
 
 // pour l'authentification
 
