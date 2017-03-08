@@ -1,18 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+{% include 'config/progress.html.twig' %}
 <h1>Félicitations {{app.user.name}}, nous avons recueilli ces données auprès de {{app.user.api |title }} :</h1>
+{{datas|json_encode()}}
+{{response|json_encode()}}
 {% for key, data in datas %}
         <li>{{ key }} : {{ data|e }}</li>
+        <hr>
 {% endfor %}
-<button id="accept">C'est bien moi</button>
-<button id="refuse">Ce n'est pas moi :( </button>
+<a href="/configure/sports">Appliquer et continuer la configuration</a>
+<a href="/">Appliquer et terminer la configuration</a>
+<a href="/configure">Annuler</a>
 <div id="check"></div>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("#accept").click(function() {
-    $('#check').load('/configure/acceptFitbit', {{ datas }});
-  });
-});
-
-</script>
 {% endblock %}

@@ -1,0 +1,39 @@
+AppBundle\Entity\UsersSports:
+    type: entity
+    table: users_sports
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        football:
+            type: boolean
+            options:
+              default: 0
+            column : FOOTBALL
+        running:
+            type: boolean
+            options:
+              default: 0
+            column : RUNNING
+        rugby:
+            type: boolean
+            options:
+              default: 0
+            column : RUGBY
+        natation:
+            type: boolean
+            options:
+              default: 0
+            column : NATATION
+        tennis:
+            type: boolean
+            options:
+              default: 0
+            column : TENNIS

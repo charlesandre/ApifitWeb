@@ -43,20 +43,20 @@
     <li><h4>Taille : {{ data.height }} cm</h4></li>
     <li><h4>Poids : {{ data.weight }} kg </h4></li>
 
-    <li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
+    {#<li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
     <script>
 
     var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
     if(imc>25) document.getElementById('imc').className="red";
     else if(imc<18) document.getElementById('imc').className="red";
     else document.getElementById('imc').className="green";
-    </script>
+    </script>#}
 
     <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
     <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
       {% endfor %}
       {% if demands %}
-      Vous avez des demandes d'amis en attente de la part de 
+      Vous avez des demandes d'amis en attente de la part de
       {% for d in demands %}
       {{ d.uid1 }}
       {% endfor %}

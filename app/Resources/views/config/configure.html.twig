@@ -2,7 +2,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+{% set vars = {'progress' : progress} %}
+{% include 'config/progress.html.twig' with vars %}
+<title> Choix de votre montre connectée </title>
   <body>
     <div class="brique">
       <h1 style="text-align:center">Configuration de votre programme</h1>

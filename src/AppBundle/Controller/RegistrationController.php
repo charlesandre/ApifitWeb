@@ -2,6 +2,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Entity\UsersData;
+use AppBundle\Entity\UsersSports;
 use AppBundle\Form\UserReg;
 use AppBundle\Form\UserConn;
 //use AppBundle\Form\UserType;
@@ -17,22 +19,28 @@ class RegistrationController extends Controller
   */
   public function registerAction(Request $request)
   {
-    $user = new User();
-    $formreg = $this->createForm(UserReg::class, $user);
+    $new_user = new User();
+    $formreg = $this->createForm(UserReg::class, $new_user);
     $formreg->handleRequest($request);
-    $formconn = $this->createForm(UserConn::class, $user);
+    $formconn = $this->createForm(UserConn::class, $new_user);
     $formconn->handleRequest($request);
 
     if ($formreg->isSubmitted() && $formreg->isValid()) {
       $encoder = $this->get('security.password_encoder');
-      $password = $encoder->encodePassword($user, $user->getPlainPassword());
-      $user->setPassword($password);
+      $password = $encoder->encodePassword($new_user, $new_user->getPlainPassword());
+      $new_user->setPassword($password);
 
-      $user->setRole('ROLE_USER');
+      $new_user->setRole('ROLE_USER');
 
+      $new_field_data = new UsersData();
+      $new_field_data->setId($new_user->getId());
+      $new_field_sports = new UsersSports();
+      $new_field_sports->setId($new_user->getId());
 
       $em = $this->getDoctrine()->getManager();
-      $em->persist($user);
+      $em->persist($new_user);
+      $em->persist($new_field_data);
+      $em->persist($new_field_sports);
       $em->flush();
 
       return $this->redirectToRoute('register');
