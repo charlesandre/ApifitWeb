@@ -4,7 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\UsersSearch;
 use AppBundle\Entity\UsersFriends;
+use AppBundle\Entity\UsersChat;
 use AppBundle\Form\Search;
+use AppBundle\Form\Chat;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +27,7 @@ class DefaultController extends Controller
     $a=$this->getUser()->getId();
 
     /* IS THERE ANY NEW FRIEND RELATION WAITING */
+
     $repositoryFriend = $this->getDoctrine()
     ->getRepository('AppBundle:UsersFriends');
 
@@ -35,12 +38,14 @@ class DefaultController extends Controller
     ->getQuery();
     $frienddemands = $queryFriendDemand->getResult();
 
+    /* CREATING SEARCH FORM */
 
     $Search = new UsersSearch();
 
     $formsearch = $this->createForm(Search::class, $Search);
     $formsearch->handleRequest($request);
 
+    /* GET USERS' DATA */
 
     $repository = $this->getDoctrine()
     ->getRepository('AppBundle:UsersData');
@@ -121,12 +126,17 @@ class DefaultController extends Controller
     ));
   }
 
+/* SEE A USER'S PROFIL */
+
   /**
  * @Route("/profil/{uid}")
  */
   public function displayUser(Request $request){
       $id = $request->attributes->get('uid');
+      $a=$this->getUser()->getId();
 
+
+      /* GET USER'S DATA */
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
 
@@ -136,40 +146,102 @@ class DefaultController extends Controller
     ->getQuery();
     $users = $queryUsers->getResult();
 
+    /* GET MESSAGES THAT HAVE BEEN SENT */
+    $repositoryChat = $this->getDoctrine()
+    ->getRepository('AppBundle:UsersChat');
+
+    $em = $this->getDoctrine()->getManager();
+    $connectionChat = $em->getConnection();
+    $statementChat = $connectionChat->prepare("SELECT C.* FROM users_chat C WHERE (C.uid1 = :id1 AND C.uid2 = :id2) OR (C.uid1 = :id2 AND C.uid2 = :id1)");
+    $statementChat->bindValue('id1', $a);
+    $statementChat->bindValue('id2', $id);
+    $statementChat->execute();
+    $messages = $statementChat->fetchAll();
+
+    /* CREATING FORM TO SEND A MESSAGE */
+    $Chat = new UsersChat();
+
+     $formchat = $this->createForm(Chat::class, $Chat);
+     $formchat->handleRequest($request);
+
+
+     /* IF THERE IS A NEW MESSAGE SENT */
+     if ($formchat->isSubmitted() && $formchat->isValid()) {
+
+       $content= $formchat["content"]->getData();
+
+       $Chat->setUid1($a);
+       $Chat->setUid2($id);
+       $Chat->setContent($content);
+
+       $em = $this->getDoctrine()->getManager();
+       $em->persist($Chat);
+       $em->flush();
+
+       return $this->redirect("/profil/$id");
+
+     }
+
+     /* IF THE USERS ARE ALREADY FRIENDS OR IF AN IVITE HAS BEEN SENT */
+     $em = $this->getDoctrine()->getManager();
+     $connectionFriend = $em->getConnection();
+     $statementFriend = $connectionFriend->prepare("SELECT F.* FROM users_friends F WHERE (F.uid1 = :id1 AND F.uid2 = :id2) OR (F.uid1 = :id2 AND F.uid2 = :id1)");
+     $statementFriend->bindValue('id1', $a);
+     $statementFriend->bindValue('id2', $id);
+     $statementFriend->execute();
+     $isfriend = $statementFriend->fetchAll();
+
 
     return $this->render('default/profil.html.twig', array(
-      'user' => $users
+      'user' => $users,
+      'isfriend' => $isfriend,
+       'formchat' => $formchat->createView(),
+       'messages' => $messages
     ));
   }
 
 /* ADD A FRIEND */
 
   /**
- * @Route("/profil/{uid1}/{uid2}")
+ * @Route("/profil/{uid1}/{uid2}/{n}")
  */
   public function AddFriend(Request $request){
       $id1 = $request->attributes->get('uid1');
       $id2 = $request->attributes->get('uid2');
+      $n = $request->attributes->get('n');
 
-      $relation = new UsersFriends();
-      $relation->setUid1($id2);
-      $relation->setUid2($id1);
-      $relation->setStatut(0);
+      /* IF IT'S A NEW REQUEST OF FRIENDSHIP */
+      if($n==-1){
+        $relation = new UsersFriends();
+        $relation->setUid1($id2);
+        $relation->setUid2($id1);
+        $relation->setStatut(0);
 
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($relation);
+        $em->flush();
+
+
+      $repositoryUsers = $this->getDoctrine()
+      ->getRepository('AppBundle:User');
+
+      $queryUsers = $repositoryUsers->createQueryBuilder('u')
+      ->where('u.id = :uid')
+      ->setParameter('uid', $id1)
+      ->getQuery();
+
+      $users = $queryUsers->getResult();
+    }
+
+    /* IF THE USER WANTS TO ACCEPT AN INVITATION */
+
+    else{
       $em = $this->getDoctrine()->getManager();
-      $em->persist($relation);
-      $em->flush();
-
-
-    $repositoryUsers = $this->getDoctrine()
-    ->getRepository('AppBundle:User');
-
-    $queryUsers = $repositoryUsers->createQueryBuilder('u')
-    ->where('u.id = :uid')
-    ->setParameter('uid', $id1)
-    ->getQuery();
-
-    $users = $queryUsers->getResult();
+      $connectionRequest = $em->getConnection();
+      $statementRequest = $connectionRequest->prepare("UPDATE users_friends F SET F.STATUT= 1 WHERE F.UID_REL = :idrel ");
+      $statementRequest->bindValue('idrel', $n);
+      $statementRequest->execute();
+    }
 
     return $this->redirect("/profil/$id1");
   }

@@ -1,0 +1,34 @@
+AppBundle\Entity\UsersChat:
+    type: entity
+    table: users_chat
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    fields:
+        uid1:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: UID1
+        uid2:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: UID2
+        content:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: CONTENT
+    lifecycleCallbacks: {  }
