@@ -91,6 +91,13 @@ class DefaultController extends Controller
     /* IF THERE IS A NEW SEARCH */
     if ($formsearch->isSubmitted() && $formsearch->isValid()) {
 
+      /* CREATING SEARCH FORM */
+
+      $Search = new UsersSearch();
+
+      $formsearch = $this->createForm(Search::class, $Search);
+      $formsearch->handleRequest($request);
+
       $keyword= $formsearch["search"]->getData();
 
       $Search->setUid($a);
@@ -109,6 +116,7 @@ class DefaultController extends Controller
       $resultusers=$queryusers->getResult();
 
       return $this->render('default/result.html.twig',array(
+        'formsearch' => $formsearch->createView(),
         'users' => $resultusers,
         'key' => $keyword
       ));
@@ -127,6 +135,9 @@ class DefaultController extends Controller
       'users' => $users
     ));
   }
+
+
+
 
 /* SEE A USER'S PROFIL */
 
@@ -237,12 +248,55 @@ class DefaultController extends Controller
         return $this->redirect("/profil/$id");
 
       }
+      /* CREATING SEARCH FORM */
+
+      $Search = new UsersSearch();
+
+      $formsearch = $this->createForm(Search::class, $Search);
+      $formsearch->handleRequest($request);
+
+
+          /* IF THERE IS A NEW SEARCH */
+          if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+
+            /* CREATING SEARCH FORM */
+
+            $Search = new UsersSearch();
+
+            $formsearch = $this->createForm(Search::class, $Search);
+            $formsearch->handleRequest($request);
+
+            $keyword= $formsearch["search"]->getData();
+
+            $Search->setUid($a);
+            $Search->setSearch($keyword);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Search);
+            $em->flush();
+
+            $queryusers = $repositoryUsers->createQueryBuilder('u')
+            ->where('u.lastname = :key')
+            ->orWhere('u.name = :key')
+            ->setParameter('key', $keyword)
+            ->getQuery();
+
+            $resultusers=$queryusers->getResult();
+
+            return $this->render('default/result.html.twig',array(
+              'formsearch' => $formsearch->createView(),
+              'users' => $resultusers,
+              'key' => $keyword
+            ));
+
+          }
 
 
     return $this->render('default/profil.html.twig', array(
       'user' => $users,
        'posts' => $posts,
       'isfriend' => $isfriend,
+      'formsearch' => $formsearch->createView(),
        'formchat' => $formchat->createView(),
        'formpost' => $formpost->createView(),
        'messages' => $messages

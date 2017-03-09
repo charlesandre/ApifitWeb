@@ -1,8 +1,9 @@
   {% extends 'base.html.twig' %}
   {% block body %}
+  {% if app.user != null %}
+
     {% for u in user %}
         <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
-          <a href='/'>Apifit</a>
 
               <img src="images/Avatar/{{u.id}}.png" class="img-circle" alt="{{u.name}} {{ u.lastname}}">
               {% if u.id == app.user.id  %}
@@ -66,4 +67,5 @@
         </div>
                 {% endif %}
       {% endfor %}
+      {% endif %}
     {% endblock %}

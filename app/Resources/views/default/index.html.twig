@@ -14,22 +14,6 @@
     </div>
   </div>
 
-  <!-- SEARCH BAR   -->
-  <div class="col-md-3">
-    <div class="searchbar">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="custom-search-input">
-            <div class="input-group col-md-12">
-              {{form_start(formsearch)}}
-              {{form_end(formsearch)}}
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 <!-- LEFT COLUMN -->
 
@@ -56,7 +40,7 @@
     <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
       {% endfor %}
       {% if demands %}
-      Vous avez des demandes d'amis en attente de la part de 
+      Vous avez des demandes d'amis en attente de la part de
       {% for d in demands %}
       {{ d.uid1 }}
       {% endfor %}
