@@ -14,9 +14,140 @@
 		<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
 		<title>Apifit</title>
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
 	</head>
+	<nav class="navbar navbar-default" role="navigation">
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+			<ul class="nav navbar-nav navbar-right">
+			<div class="col-sm-8 col-md-8">
+					<form class="navbar-form" role="search">
+					<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" name="q">
+							<div class="input-group-btn">
+									<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+							</div>
+					</div>
+					</form>
+			</div>
+		<div class="menu">
+		<div class="title" onclick="f()">Mon Profil <span class="fa fa-bars"></span>
+			<div class="arrow"></div>
+		</div>
+		<div class="dropdown">
+			<p>Configurer <span class="fa fa-inbox"></span></p>
+			<p>Paramètres <span class="fa fa-gear"></span></p>
+			<p>Aides <span class="fa fa-info"></span></p>
+		<p>Déconnexion <span class="fa fa-sign-out"></span></p>
+		</div>
+	</div>
+			</ul>
+	</nav>
+
+
+
+	<nav>
+		<aside class='sidebar'>
+			<div class='main-nav'>
+				<ul>
+					<li class='logo'>
+				<a href="/">APIFIT</a>
+				<i class=''><img alt="logo_apifit" src="images/logo_apifit1.png"/></i>
+					</li>
+					<li>
+						<a>Dashboard</a>
+						<i class='fa fa-home'></i>
+					</li>
+					<li>
+						<a>Profil</a>
+						<i class='fa fa-address-card-o'></i>
+					</li>
+					<li>
+						<a>Entraînements</a>
+						<i class='fa fa-bolt'></i>
+					</li>
+					<li>
+						<a>Défis</a>
+						<i class='fa fa-rocket'></i>
+					</li>
+					<li>
+						<a>Amis</a>
+						<i class='fa fa-user'></i>
+					</li>
+					<li>
+						<a>Localisation</a>
+						<i class='fa fa-map-marker'></i>
+					</li>
+				</ul>
+			</div>
+		</aside>
+	</nav>
+
+	<div class="v_menu">
+		<div class="v_menu_h"></div>
+		<ul class="v_menu_items">
+				<li>
+				<a href="#"><i class="fa fa-google-plus"></i></a>
+			</li>
+			<li>
+				<a href="https://www.facebook.com/ApifitEce/"><i class="fa fa-facebook"></i></a>
+			</li>
+				<li>
+				<a href="https://twitter.com/Apifit_Ece"><i class="fa fa-twitter"></i></a>
+			</li>
+				<li>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+			</li>
+			<li>
+				<a href="https://www.youtube.com/channel/UC0cmD6pie45Hfhj9lTXYVnA"><i class="fa fa-youtube"></i></a>
+			</li>
+		</ul>
+		<div class="v_menu_f"></div>
+	</div>
+
+
+	<footer class="footer-bottom">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+					<div class="copyright">
+
+						© 2017, @ApifitCompany, All rights reserved
+
+					</div>
+
+				</div>
+
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+					<div class="design">
+
+						 <a target="_blank" href="mailto:apifitcompany@gmail.com">Contact </a> | <a target="_blank" href="#">CNIL </a> | <a target="_blank" href="#">Mentions Légales</a> | <a target="_blank" href="#">FAQ</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</footer>
+
+	<script type="text/javascript" src="js/navbar.js"></script>
+
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+			{% block body %}
+			{% endblock %}
   </body>
 </html>

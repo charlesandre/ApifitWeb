@@ -1,49 +1,69 @@
-{% extends 'base.html.twig' %}
-{% block body %}
-  {% for u in user %}
-      <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
+  {% extends 'base.html.twig' %}
+  {% block body %}
+    {% for u in user %}
+        <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
+          <a href='/'>Apifit</a>
 
-            <img src="images/Avatar/{{u.id}}.png" class="img-circle" alt="{{u.name}} {{ u.lastname}}">
-            <h2> {{ u.name }} {{ u.lastname }} </h2>
-            <h3> Level : {{ u.level }}</h3>
-            {% if isfriend %}
-                  {% for f in isfriend %}
-                      {% if (f.STATUT == 1) %}
-                            <li> Vous etes amis avec {{u.name}} </li>
-                      {% elseif (f.STATUT == 0) %}
-                            {% if f.UID1 == u.id %}
-                                <a href="{{ u.id }}/{{ app.user.id }}/{{f.UID_REL}}"><button type="button" class="btn btn-primary">Accepter la demande de {{ u.name }}</button></a>
-                            {% elseif f.UID2 == u.id %}
-                              <li> Une invitation à été envoyée a {{ u.name }} ! </li>
-                            {% endif %}
-                      {% endif %}
-                  {% endfor %}
-            {% else %}
-                    <a href="{{ u.id }}/{{ app.user.id }}/-1"><button type="button" class="btn btn-primary">Ajouter {{ u.name }} à mes amis !</button></a>
+              <img src="images/Avatar/{{u.id}}.png" class="img-circle" alt="{{u.name}} {{ u.lastname}}">
+              {% if u.id == app.user.id  %}
+                <a>Modifier votre photo de profil</a>
+              {% endif %}
+              <h2> {{ u.name }} {{ u.lastname }} </h2>
+              <h3> Level : {{ u.level }}</h3>
+              {% if u.id != app.user.id %}
+                {% if isfriend %}
+                      {% for f in isfriend %}
+                          {% if (f.STATUT == 1) %}
+                                <li> Vous etes amis avec {{u.name}} </li>
+                          {% elseif (f.STATUT == 0) %}
+                                {% if f.UID1 == u.id %}
+                                    <a href="{{ u.id }}/{{ app.user.id }}/{{f.UID_REL}}"><button type="button" class="btn btn-primary">Accepter la demande de {{ u.name }}</button></a>
+                                {% elseif f.UID2 == u.id %}
+                                  <li> Une invitation à été envoyée a {{ u.name }} ! </li>
+                                {% endif %}
+                          {% endif %}
+                      {% endfor %}
+                {% else %}
+                        <a href="{{ u.id }}/{{ app.user.id }}/-1"><button type="button" class="btn btn-primary">Ajouter {{ u.name }} à mes amis !</button></a>
+                {% endif %}
+              {% endif %}
+              {{ form_start(formpost) }}
+              {{ form_end(formpost) }}
+              <button type="submit" class="btn btn-default">Submit</button>
+
+          </div>
+          <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
+            {% if posts %}
+            {% for p in posts %}
+                <li>{{u.name}} : "{{ p.content }}"</li>
+                {% if p.img %}
+                  <img src ="images/Posts/{{p.src}}" alt="post de {{ u.name }}">
+                {% endif %}
+
+            {% endfor %}
             {% endif %}
+          </div>
+          {% if u.id != app.user.id %}
+          <div class=" col-md-3 centrer" style="border:1px solid black;">
+            <h4> Ma discussion avec {{ u.name }}</h4>
+            {% if messages %}
+              {% for m in messages %}
+              <ul>
 
+                {% if m.UID1 == u.id %}
+                <li style="text-align: left;">{{ m.CONTENT }}</li>
+              {% else %}
+                <li style ="text-align: right;"> {{ m.CONTENT }}</li>
+              {% endif %}
+            </ul>
+            {% endfor %}
+            {% else %}
+            <li> Envoyez un message à {{u.name}} ! </li>
+            {% endif %}
+            {{form_start(formchat)}}
+            {{form_end(formchat)}}
 
-
-    </div>
-    <div class=" col-md-3 centrer" style="border:1px solid black;">
-      <h4> Ma discussion avec {{ u.name }}</h4>
-      {% if messages %}
-        {% for m in messages %}
-        <ul>
-
-          {% if m.UID1 == u.id %}
-            <li style="text-align: left;">{{ m.CONTENT }}</li>
-          {% else %}
-            <li style ="text-align: right;"> {{ m.CONTENT }}</li>
-          {% endif %}
-        </ul>
-        {% endfor %}
-        {% else %}
-        <li> Envoyez un message à {{u.name}} ! </li>
-        {% endif %}
-        {{form_start(formchat)}}
-        {{form_end(formchat)}}
-
-    </div>
-  {% endfor %}
-{% endblock %}
+        </div>
+                {% endif %}
+      {% endfor %}
+    {% endblock %}

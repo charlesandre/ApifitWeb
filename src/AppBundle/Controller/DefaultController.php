@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\UsersSearch;
 use AppBundle\Entity\UsersFriends;
 use AppBundle\Entity\UsersChat;
+use AppBundle\Entity\UsersPosts;
 use AppBundle\Form\Search;
+use AppBundle\Form\Post;
 use AppBundle\Form\Chat;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -191,11 +193,58 @@ class DefaultController extends Controller
      $statementFriend->execute();
      $isfriend = $statementFriend->fetchAll();
 
+     /* GET ALL THE POSTS FROM THIS USER */
+      $repositoryPosts = $this->getDoctrine()
+      ->getRepository('AppBundle:UsersPosts');
+
+     $queryPosts = $repositoryPosts->createQueryBuilder('p')
+     ->where('p.uid = :uid')
+     ->setParameter('uid', $id)
+     ->getQuery();
+     $posts = $queryPosts->getResult();
+
+     /* FORM TO ADD A NEW POST */
+     $Post = new UsersPosts();
+
+      $formpost = $this->createForm(Post::class, $Post);
+      $formpost->handleRequest($request);
+
+      /* IF THE USER POSTS SOMETHING */
+      if ($formpost->isSubmitted() && $formpost->isValid()) {
+
+        $content= $formpost["content"]->getData();
+
+        $Post->setUid($a);
+        $Post->setContent($content);
+        // $img = $formpost["src"]->getData
+        // if($img)
+        // {
+        //
+        // }
+        // else{
+          // $Post->setImg('0');
+
+        // }
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($Post);
+        $em->flush();
+
+
+        // $dir = "images/Posts";
+        // $img = $formpost["src"]->getData->move($dir, $someNewFilename);
+
+
+        return $this->redirect("/profil/$id");
+
+      }
+
 
     return $this->render('default/profil.html.twig', array(
       'user' => $users,
+       'posts' => $posts,
       'isfriend' => $isfriend,
        'formchat' => $formchat->createView(),
+       'formpost' => $formpost->createView(),
        'messages' => $messages
     ));
   }
