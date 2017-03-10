@@ -28,6 +28,25 @@
     </div>
     <div class="col-md-2"></div>
 
+    <div class="brique col-md-4" style="border: 1px solid black; margin-left:50px;">
+      <h1 style="text-align:center">Configuration de votre profil</h1>
+      {{ form_start(formpp) }}
+      {{ form_widget(formpp) }}
+      <button type="submit" class="btn btn-default">Changer ma photo de profil !</button>
+      {{ form_end(formpp) }}
+
+   </div>
+
+   <div class="brique col-md-4" style="border: 1px solid black; margin-left:50px;">
+     <h1 style="text-align:center">Configuration de votre profil</h1>
+     {{ form_start(formupdate) }}
+     {{ form_widget(formupdate) }}
+     <button type="submit" class="btn btn-default">Mettre a jour vos informations !</button>
+     {{ form_end(formupdate) }}
+
+  </div>
+
+
   </body>
 
 {% endblock %}

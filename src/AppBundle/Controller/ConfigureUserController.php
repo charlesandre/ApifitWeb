@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use djchen\OAuth2\Client\Provider\Fitbit;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\UsersSearch;
+use AppBundle\Entity\User;
+use AppBundle\Form\PP;
+use AppBundle\Form\UpdateInfo;
 use AppBundle\Form\Search;
 
 
@@ -23,7 +26,7 @@ class ConfigureUserController extends Controller
     $a=$this->getUser()->getId();
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
-    
+
     /* CREATING SEARCH FORM */
 
     $Search = new UsersSearch();
@@ -32,7 +35,7 @@ class ConfigureUserController extends Controller
     $formsearch->handleRequest($request);
 
     /* IF THERE IS A NEW SEARCH */
-    if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+    if ($formsearch->isSubmitted() ) {
 
       /* CREATING SEARCH FORM */
 
@@ -66,10 +69,38 @@ class ConfigureUserController extends Controller
 
     }
 
+    /* CREATE FORM TO CHANGE PP */
+    $PP = new User();
 
+    $formpp = $this->createForm(PP::class, $PP);
+    $formpp->handleRequest($request);
+
+    /* IF THERE IS A NEW PP */
+    if ($formpp->isSubmitted() && $formpp->isValid()) {
+
+         $dir = "images/Avatar";
+         $someNewFilename = "$a.png";
+          $img = $formpp["src"]->getData()->move($dir, $someNewFilename);
+    }
+
+
+    /* FORM FOR OTHER INFO */
+    $Update = new User();
+
+
+    /* IF THIS FORM IS SUBMITTED */
+    if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+
+
+
+    }
+    $formupdate = $this->createForm(UpdateInfo::class, $Update);
+    $formupdate->handleRequest($request);
 
     return $this->render('default/configure.html.twig', array(
       'formsearch' => $formsearch->createView(),
+      'formpp' => $formpp->createView(),
+      'formupdate' => $formupdate->createView(),
       'current_api' => $this->getUser()->getApi()
     ));
   }

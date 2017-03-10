@@ -83,6 +83,20 @@ class User implements UserInterface
      */
     private $level;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBJ", type="string", length=10, nullable=false)
+     */
+    private $obj;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SRC", type="integer")
+     */
+    private $src;
+
 
 
 
@@ -286,6 +300,52 @@ class User implements UserInterface
           $this->level=$level;
           return $this->level;
       }
+
+      /**
+       * Set obj
+       *
+       * @param string $obj
+       *
+       * @return User
+       */
+      public function setObj($obj)
+      {
+          $this->obj = $obj;
+
+          return $this;
+      }
+
+      /**
+       * Get obj
+       *
+       * @return string
+       */
+      public function getObj()
+      {
+          return $this->obj;
+      }
+
+      /**
+       * Get src
+       *
+       * @return integer
+       */
+       public function getSrc()
+       {
+           return $this->src;
+       }
+
+
+       /**
+        * Set src
+        *
+        * @return integer
+        */
+       public function setSrc($src)
+       {
+           $this->src=$src;
+           return $this->src;
+       }
 
 // pour l'authentification
 
