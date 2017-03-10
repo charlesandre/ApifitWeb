@@ -29,27 +29,21 @@ class DefaultController extends Controller
     $a=$this->getUser()->getId();
     /* GETTING ALL NOTIFICATIONS */
       /* GET NEW MESSAGES */
-      $repositoryMessages = $this->getDoctrine()
-      ->getRepository('AppBundle:UsersChat');
+      $em = $this->getDoctrine()->getManager();
+      $connectionMessage = $em->getConnection();
+      $statementMessage = $connectionMessage->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
+      $statementMessage->bindValue('id', $a);
+      $statementMessage->execute();
+      $unreadmessages = $statementMessage->fetchAll();
 
-      $queryMessages= $repositoryMessages->createQueryBuilder('m')
-      ->where('m.uid2 = :uid')
-      ->andwhere('m.vu = 0')
-      ->setParameter('uid', $a)
-      ->getQuery();
-      $unreadmessages = $queryMessages->getResult();
 
       /* GET NEW POSTS */
-      $repositoryPosts = $this->getDoctrine()
-      ->getRepository('AppBundle:UsersPosts');
-
-      $queryPosts= $repositoryPosts->createQueryBuilder('p')
-      ->where('p.uid2 = :uid')
-      ->andwhere('p.uid1 != :uid')
-      ->andwhere('p.vu = 0')
-      ->setParameter('uid', $a)
-      ->getQuery();
-      $unreadposts = $queryPosts->getResult();
+      $em = $this->getDoctrine()->getManager();
+      $connectionPosts = $em->getConnection();
+      $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
+      $statementPosts->bindValue('id', $a);
+      $statementPosts->execute();
+      $unreadposts = $statementPosts->fetchAll();
 
       /* GET NEW FRIEND REQUESTS */
     $repositoryFriend = $this->getDoctrine()

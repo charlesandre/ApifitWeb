@@ -50,6 +50,22 @@
           {% else %}
           <h6>Vous n'avez pas de demande en attente</h6>
           {% endif %}
+          {% if newmessages %}
+          <h6> Nouveaux messages privés </h6>
+            {% for m in newmessages %}
+              <h7>{{ m.name }} {{ m.lastname }} : "{{ m.content }}"</h7>
+            {% endfor %}
+          {% else %}
+            <h6> Pas de nouveaux messages </h6>
+          {% endif %}
+          {% if newposts %}
+          <h6> Nouveaux posts sur votre profil :</h6>
+            {% for p in newposts %}
+              <h7>{{ p.name }} {{ p.lastname }} : "{{ p.content }}"</h7>
+            {% endfor %}
+          {% else %}
+            <h6> Pas de nouveaux posts sur votre profil</h6>
+          {% endif %}
           <ul>
             <li><a href="{{ path('configure')}}"><i class="fa fa-inbox"></i></a></li>
             <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
