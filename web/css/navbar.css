@@ -12,10 +12,19 @@ body {
   font-size: 14px;
   line-height: 1.4;
   color: #212121;
-  background-color: #f5f5f5;
+  background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+.zone_affichage{
+  margin-left:50px!important;
+  margin-right:50px!important;
+  margin-top:70px!important;
+  margin-bottom:70px!important;
+}
+.base{
+  z-index:99!important;
 }
 .sidebar-overlay {
   visibility: hidden;
@@ -199,7 +208,7 @@ body {
   line-height: 48px;
   padding: 0;<li>
           <a href="#" tabindex="-1">
-            Défis
+            Dï¿½fis
           </a>
         </li>
   text-decoration: none;
@@ -880,13 +889,18 @@ body {
 }
 .navbar{
 	margin-bottom:0px!important;
+  position:fixed;
+  top:0;
+}
+.base.navbar{
+  width:100%!important;
 }
 .navbar-brand{
 	padding:5px 5px 5px 5px!important;
 	line-height:40px!important;
 }
 .navbar-right{
-	margin-right:0px!important;
+	margin-right:200px!important;
 }
 .navbar,.footer-bottom{
 	margin-left:50px;
@@ -910,7 +924,9 @@ body {
 nav {
   position: relative;
 }
-
+.logo_icon{
+  margin-top:-30px!important;
+}
 .sidebar {
   position: fixed;
   top: 0;
@@ -990,7 +1006,7 @@ nav {
   text-align: center;
 }
 .sidebar .main-nav ul li i img{
-	width:21px
+	width:30px
 }
 
 .sidebar .main-nav ul li i:before {
@@ -1066,13 +1082,15 @@ span{
 .down{
 	max-height:170px
 }
-
-p{
+.police_dropdown{
+  font-size:1em;
+}
+.police_dropdown p{
 	padding:8px 8px;
 	margin:0;
 	transition:all .1s
 }
-p:hover{
+.police_dropdown p:hover{
 	background:#175470;
 	color:rgba(255,255,255,0.8);
 	border:1px solid #e7e7e7;
