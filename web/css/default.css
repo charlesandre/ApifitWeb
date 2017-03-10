@@ -51,59 +51,80 @@ p
 }
 
 /* CLASSES TABLEAU DE BORD  */
+.dashboard_users
+{
+  height:450px;
+}
 
-.brique{
-  border: 2px solid #479ce7;
-  border-radius:15px;
-  padding: 10px 10px 10px 10px;
-  margin: 25px 10px 25px 10px;
+.widget
+{
+  position: relative;
+  background: #FFF;
+  padding-bottom:20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, .1);
+}
+.widget h4, .widget h6
+{
   text-align:center;
-  transition: all .2s ease-in-out;
-}
-.brique:hover { transform: scale(1.05); }
-
-.brique img{
-  height:150px;
-}
-.brique button img{
-  margin-right: 15px;
 }
 
-.brique button{
-  background-color: white;
-  border: 0px;
-  width:90%;
-}
-.brique a{
-  color : #479ce7;
-  font-size: 15px;
-  margin-left: 10px;
-  text-decoration: none;
+.widget > .cover
+{
+  height: 160px;
+  overflow: hidden;
 }
 
-.brique button{
-  width: 70%;
-  text-align: center;
-  margin-left: 15%;
+.widget > .cover > img
+{
+  width: 100%;
+  height: auto;
+  min-height: 160px;
+  border-radius: 4px 4px 0 0;
 }
 
-#miniature{
-  height:45px;
-  border-radius: 10px;
-  margin-left: 10px;
-}
-
-#logo{
-  height:150px;
-  margin-left: 150px;
-  margin-top: 15px;
+.widget > .photo
+{
   position: absolute;
+  top: 85px;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 0 0 -55px;
+  border: 5px solid #FFF;
+  border-radius: 50%;
 }
 
-.bienvenue{
-  width:80%;
-  margin-left: 10%;
+
+.widget > ul
+{
+  position: absolute;
+  top: 20px;
+  left: 100%;
+  background: #175470;
+  border-radius: 0 3px 3px 0;
 }
+
+.widget > ul > li > a
+{
+  display: block;
+  padding: 5px 6px;
+  color: #FFF;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 1px solid #2CD5CA;
+  transition: background-color .3s;
+}
+
+.widget > ul > li:hover > a { background-color: #2CD5CA }
+.widget > ul > li:first-child > a { border-radius: 0 3px 0 0 }
+
+.widget > ul > li:last-child > a
+{
+  border: none;
+  border-radius: 0 0 3px 0;
+}
+
 .green{
   color:green;
 }

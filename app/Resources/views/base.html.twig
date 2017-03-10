@@ -17,7 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}" />
 		<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
 	</head>
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class=" base navbar navbar-default" role="navigation">
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 			<ul class="nav navbar-nav navbar-right">
@@ -38,10 +38,10 @@
 			<div class="arrow"></div>
 		</div>
 		<div class="dropdown" style="z-index=5;">
-			<p>Configurer <span class="fa fa-inbox"></span></p>
-			<p>Paramètres <span class="fa fa-gear"></span></p>
-			<p>Aides <span class="fa fa-info"></span></p>
-		<a href="/logout"><p>Déconnexion <span class="fa fa-sign-out"></span></p></a>
+			<p class="police_dropdown">Configurer <span class="fa fa-inbox"></span></p>
+			<p class="police_dropdown">Paramètres <span class="fa fa-gear"></span></p>
+			<p class="police_dropdown">Aides <span class="fa fa-info"></span></p>
+		<a href="/logout"><p class="police_dropdown">Déconnexion <span class="fa fa-sign-out"></span></p></a>
 		</div>
 	</div>
 			</ul>
@@ -49,13 +49,13 @@
 
 
 
-	<nav>
+	<nav class="base">
 		<aside class='sidebar'>
 			<div class='main-nav'>
 				<ul>
 					<li class='logo'>
 				<a>APIFIT</a>
-				<i class=''><img alt="logo_apifit" src="images/logo_apifit1.png"/></i>
+				<i ><img class='logo_icon'alt="logo_apifit" src="images/logo_apifit1.png"/></i>
 					</li>
 					<li>
 						<a href="/">Dashboard</a>
@@ -63,7 +63,7 @@
 					</li>
 					<li>
 						<a href="/profil/{{ app.user.id }}">Profil</a>
-						<i class='fa fa-address-card-o'></i>
+						<i class="fa fa-suitcase"></i>
 					</li>
 					<li>
 						<a>Entraînements</a>
@@ -75,7 +75,7 @@
 					</li>
 					<li>
 						<a>Amis</a>
-						<i class='fa fa-user'></i>
+						<i class='fa fa-users'></i>
 					</li>
 					<li>
 						<a>Localisation</a>
@@ -86,7 +86,7 @@
 		</aside>
 	</nav>
 
-	<div class="v_menu">
+	<div class=" base v_menu">
 		<div class="v_menu_h"></div>
 		<ul class="v_menu_items">
 				<li>
@@ -109,7 +109,7 @@
 	</div>
 
 
-	<footer class="footer-bottom">
+	<footer class="base footer-bottom">
 
 		<div class="container">
 
@@ -148,8 +148,9 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <body>
-			{% block body %}
-			{% endblock %}
-  </body>
+
+	  <body>
+				{% block body %}
+				{% endblock %}
+	  </body>
 </html>

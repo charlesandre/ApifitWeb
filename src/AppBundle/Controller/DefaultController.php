@@ -151,8 +151,8 @@ class DefaultController extends Controller
     return $this->render('default/index.html.twig', array(
       'formsearch' => $formsearch->createView(),
       'demands' => $frienddemands,
-      'newmessages' => $newmessages,
-      'newposts' => $newposts,
+      'newmessages' => $unreadmessages,
+      'newposts' => $unreadposts,
       'friends' => $friends,
       'lastdata' => $lastdata,
       'id'=> $a,
