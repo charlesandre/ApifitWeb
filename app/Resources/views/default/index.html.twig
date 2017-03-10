@@ -23,10 +23,10 @@
     {% for u in users %}
       <li><h3>Level : {{ u.level }} </h3></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
     {% endfor %}
+    {% if lastdata %}
     {% for data in lastdata %}
     <li><h4>Taille : {{ data.height }} cm</h4></li>
     <li><h4>Poids : {{ data.weight }} kg </h4></li>
-
     <li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
     <script>
 
@@ -36,9 +36,13 @@
     else document.getElementById('imc').className="green";
     </script>
 
+
     <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
     <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
       {% endfor %}
+      {% else %}
+      <li> Vous n'avez pas de données </li>
+      {% endif %}
       {% if demands %}
       Vous avez des demandes d'amis en attente de la part de
       {% for d in demands %}

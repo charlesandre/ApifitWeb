@@ -27,9 +27,31 @@ class DefaultController extends Controller
     }
 
     $a=$this->getUser()->getId();
+    /* GETTING ALL NOTIFICATIONS */
+      /* GET NEW MESSAGES */
+      $repositoryMessages = $this->getDoctrine()
+      ->getRepository('AppBundle:UsersChat');
 
-    /* IS THERE ANY NEW FRIEND RELATION WAITING */
+      $queryMessages= $repositoryMessages->createQueryBuilder('m')
+      ->where('m.uid2 = :uid')
+      ->andwhere('m.vu = 0')
+      ->setParameter('uid', $a)
+      ->getQuery();
+      $unreadmessages = $queryMessages->getResult();
 
+      /* GET NEW POSTS */
+      $repositoryPosts = $this->getDoctrine()
+      ->getRepository('AppBundle:UsersPosts');
+
+      $queryPosts= $repositoryPosts->createQueryBuilder('p')
+      ->where('p.uid2 = :uid')
+      ->andwhere('p.uid1 != :uid')
+      ->andwhere('p.vu = 0')
+      ->setParameter('uid', $a)
+      ->getQuery();
+      $unreadposts = $queryPosts->getResult();
+
+      /* GET NEW FRIEND REQUESTS */
     $repositoryFriend = $this->getDoctrine()
     ->getRepository('AppBundle:UsersFriends');
 
@@ -129,6 +151,8 @@ class DefaultController extends Controller
     return $this->render('default/index.html.twig', array(
       'formsearch' => $formsearch->createView(),
       'demands' => $frienddemands,
+      'newmessages' => $newmessages,
+      'newposts' => $newposts,
       'friends' => $friends,
       'lastdata' => $lastdata,
       'id'=> $a,
@@ -147,6 +171,25 @@ class DefaultController extends Controller
   public function displayUser(Request $request){
       $id = $request->attributes->get('uid');
       $a=$this->getUser()->getId();
+
+
+      /* MARK ALL THE POSTS AS READ IF THE USERS GOES ON HIS OWN PROFIL */
+
+      if($id == $a){
+      $em = $this->getDoctrine()->getManager();
+      $connectionRead = $em->getConnection();
+      $statementRead = $connectionRead->prepare("UPDATE USERS_POSTS P SET P.VU = '1' WHERE P.UID2 = :id");
+      $statementRead->bindValue('id', $a);
+      $statementRead->execute();
+    }
+
+    /* MARK ALL THE MESSAGES AS READ */
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionRead = $em->getConnection();
+      $statementRead = $connectionRead->prepare("UPDATE USERS_CHAT P SET P.VU = '1' WHERE P.UID2 = :id");
+      $statementRead->bindValue('id', $a);
+      $statementRead->execute();
 
 
       /* GET USER'S DATA */
@@ -185,6 +228,7 @@ class DefaultController extends Controller
 
        $Chat->setUid1($a);
        $Chat->setUid2($id);
+       $Chat->setVU('0');
        $Chat->setContent($content);
 
        $em = $this->getDoctrine()->getManager();
@@ -204,15 +248,15 @@ class DefaultController extends Controller
      $statementFriend->execute();
      $isfriend = $statementFriend->fetchAll();
 
-     /* GET ALL THE POSTS FROM THIS USER */
-      $repositoryPosts = $this->getDoctrine()
-      ->getRepository('AppBundle:UsersPosts');
+     /* GET ALL THE POSTS ON HIS WALL */
 
-     $queryPosts = $repositoryPosts->createQueryBuilder('p')
-     ->where('p.uid = :uid')
-     ->setParameter('uid', $id)
-     ->getQuery();
-     $posts = $queryPosts->getResult();
+     $em = $this->getDoctrine()->getManager();
+     $connectionPost = $em->getConnection();
+     $statementPost = $connectionPost->prepare("SELECT DISTINCT P.ID as id, U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content, P.IMG as img FROM USER U, USERS_POSTS P WHERE (P.UID2 = :id AND P.UID1 = U.ID) ORDER BY P.ID DESC");
+     $statementPost->bindValue('id', $id);
+     $statementPost->execute();
+     $posts = $statementPost->fetchAll();
+
 
      /* FORM TO ADD A NEW POST */
      $Post = new UsersPosts();
@@ -225,8 +269,15 @@ class DefaultController extends Controller
 
         $content= $formpost["content"]->getData();
 
-        $Post->setUid($a);
+        $Post->setUid1($a);
+        $Post ->setUid2($id);
         $Post->setContent($content);
+        if($a != $id){
+        $Post->SetVu('0');
+        }
+        else{
+          $Post->setVu('1');
+        }
         // $img = $formpost["src"]->getData
         // if($img)
         // {

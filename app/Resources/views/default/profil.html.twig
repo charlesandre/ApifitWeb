@@ -1,6 +1,8 @@
   {% extends 'base.html.twig' %}
   {% block body %}
   {% if app.user != null %}
+  {% set friendship = '1' %}
+
 
     {% for u in user %}
         <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
@@ -17,6 +19,7 @@
                           {% if (f.STATUT == 1) %}
                                 <li> Vous etes amis avec {{u.name}} </li>
                           {% elseif (f.STATUT == 0) %}
+                                {% set friendship = '0' %}
                                 {% if f.UID1 == u.id %}
                                     <a href="{{ u.id }}/{{ app.user.id }}/{{f.UID_REL}}"><button type="button" class="btn btn-primary">Accepter la demande de {{ u.name }}</button></a>
                                 {% elseif f.UID2 == u.id %}
@@ -28,15 +31,30 @@
                         <a href="{{ u.id }}/{{ app.user.id }}/-1"><button type="button" class="btn btn-primary">Ajouter {{ u.name }} à mes amis !</button></a>
                 {% endif %}
               {% endif %}
+              {% for f in isfriend %}
+                  {% if (f.STATUT == 1) %}
               {{ form_start(formpost) }}
+              {{ form_widget(formpost) }}
+              {% if u.id != app.user.id %}
+              <button type="submit" class="btn btn-default">Ecrire sur le mur de {{u.name}} ! </button>
+              {% else %}
+              <button type="submit" class="btn btn-default">Partager avec mes amis !</button>
+              {% endif %}
               {{ form_end(formpost) }}
-              <button type="submit" class="btn btn-default">Submit</button>
+                  {% endif %}
+              {% endfor %}
+              {% if u.id == app.user.id %}
+              {{ form_start(formpost) }}
+              {{ form_widget(formpost) }}
+              <button type="submit" class="btn btn-default">Partager avec mes amis !</button>
+              {{ form_end(formpost) }}
+              {% endif %}
 
           </div>
           <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
             {% if posts %}
             {% for p in posts %}
-                <li>{{u.name}} : "{{ p.content }}"</li>
+                <li>{{p.name}} {{p.lastname}}: "{{ p.content }}"</li>
                 {% if p.img %}
                   <img src ="images/Posts/{{p.src}}" alt="post de {{ u.name }}">
                 {% endif %}
@@ -61,8 +79,10 @@
             {% else %}
             <li> Envoyez un message à {{u.name}} ! </li>
             {% endif %}
-            {{form_start(formchat)}}
-            {{form_end(formchat)}}
+            {{ form_start(formchat) }}
+            {{ form_widget(formchat) }}
+            <button type="submit" class="btn btn-default">Envoyer !</button>
+            {{ form_end(formchat) }}
 
         </div>
                 {% endif %}

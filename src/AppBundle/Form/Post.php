@@ -18,7 +18,7 @@ class Post extends AbstractType
         ->setMethod('POST')
         ->add('content',TextType::class, array(
         'attr' => array(
-             'placeholder' => 'Partagez quelque chose avec vos amis..',
+             'placeholder' => 'Ecrire quelque chose..',
         ),
         'label' => false,
      )

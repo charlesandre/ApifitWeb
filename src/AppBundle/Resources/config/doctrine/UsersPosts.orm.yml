@@ -12,12 +12,18 @@ AppBundle\Entity\UsersPosts:
             generator:
                 strategy: IDENTITY
     fields:
-        uid:
+        uid1:
             type: integer
             nullable: false
             options:
                 unsigned: false
-            column: UID
+            column: UID1
+        uid2:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: UID2
         content:
             type: string
             nullable: true
@@ -39,5 +45,11 @@ AppBundle\Entity\UsersPosts:
             options:
                 fixed: false
             column: SRC
+        vu:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: VU
 
     lifecycleCallbacks: {  }

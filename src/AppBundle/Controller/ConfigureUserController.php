@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use djchen\OAuth2\Client\Provider\Fitbit;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\UsersSearch;
+use AppBundle\Form\Search;
+
+
 
 
 class ConfigureUserController extends Controller
@@ -16,7 +20,56 @@ class ConfigureUserController extends Controller
   */
   public function showAction(Request $request)
   {
+    $a=$this->getUser()->getId();
+    $repositoryUsers = $this->getDoctrine()
+    ->getRepository('AppBundle:User');
+    
+    /* CREATING SEARCH FORM */
+
+    $Search = new UsersSearch();
+
+    $formsearch = $this->createForm(Search::class, $Search);
+    $formsearch->handleRequest($request);
+
+    /* IF THERE IS A NEW SEARCH */
+    if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+
+      /* CREATING SEARCH FORM */
+
+      $Search = new UsersSearch();
+
+      $formsearch = $this->createForm(Search::class, $Search);
+      $formsearch->handleRequest($request);
+
+      $keyword= $formsearch["search"]->getData();
+
+      $Search->setUid($a);
+      $Search->setSearch($keyword);
+
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($Search);
+      $em->flush();
+
+      $queryusers = $repositoryUsers->createQueryBuilder('u')
+      ->where('u.lastname = :key')
+      ->orWhere('u.name = :key')
+      ->setParameter('key', $keyword)
+      ->getQuery();
+
+      $resultusers=$queryusers->getResult();
+
+      return $this->render('default/result.html.twig',array(
+        'formsearch' => $formsearch->createView(),
+        'users' => $resultusers,
+        'key' => $keyword
+      ));
+
+    }
+
+
+
     return $this->render('default/configure.html.twig', array(
+      'formsearch' => $formsearch->createView(),
       'current_api' => $this->getUser()->getApi()
     ));
   }
