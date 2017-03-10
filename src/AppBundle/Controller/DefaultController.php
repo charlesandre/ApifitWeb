@@ -81,6 +81,13 @@ class DefaultController extends Controller
     $lastdata = $query->getResult();
 
     $query = $repository->createQueryBuilder('d')
+    ->where('d.uid = :uid')
+    ->setParameter('uid', $a)
+    ->getQuery();
+
+    $lastdatamultiple = $query->getResult();
+
+    $query = $repository->createQueryBuilder('d')
     ->where('d.id = :uid')
     ->setParameter('uid', $a)
     ->getQuery();
@@ -149,6 +156,7 @@ class DefaultController extends Controller
       'newposts' => $unreadposts,
       'friends' => $friends,
       'lastdata' => $lastdata,
+      'lastdatamultiple' => $lastdatamultiple,
       'id'=> $a,
       'users' => $users
     ));

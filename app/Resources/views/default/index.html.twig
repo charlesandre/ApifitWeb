@@ -112,6 +112,7 @@
       <div class="">
         <h3>{{app.user.name}}</h3>
         <a href="{{ path('configure')}}"> Configurer mon profil </a><br>
+
         <a href="/logout">Se déconnecter</a>
       </div>
     </div>
@@ -130,13 +131,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js" type="text/javascript"></script>
   <script>
   var ctx = document.getElementById("myChart");
+  var data = [];
+  {% for d in lastdatamultiple %}
+      data.push('{{d.averagedailysteps}}');
+  {% endfor %}
+
+  var date = [];
+
+
+
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: data,
+
+
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: '# of Steps',
+        data: data,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
