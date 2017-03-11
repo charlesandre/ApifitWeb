@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>Félicitations {{app.user.name}}, nous avons recueilli ces données auprès de {{app.user.api |title }} :</h1>
-{% for key, data in datas %}
-        <li>{{ key }} : {{ data|e }}</li>
-{% endfor %}
-<button id="accept">C'est bien moi</button>
-<button id="refuse">Ce n'est pas moi :( </button>
-<div id="check"></div>
+<div class="zone_affichage container">
+  <h1>Félicitations {{app.user.name}}, nous avons recueilli ces données auprès de {{app.user.api |title }} :</h1>
+  {% for key, data in datas %}
+          <li>{{ key }} : {{ data|e }}</li>
+  {% endfor %}
+  <button id="accept">C'est bien moi</button>
+  <button id="refuse">Ce n'est pas moi :( </button>
+  <div id="check"></div>
+</div>
 <script type="text/javascript">
 $(document).ready(function(){
   $("#accept").click(function() {

@@ -885,7 +885,7 @@ body {
 
 /*Modification style Bootstrap*/
 .btn-default{
-	height:34px!important;
+	/*height:34px!important;*/
 }
 .navbar{
 	margin-bottom:0px!important;
@@ -1046,6 +1046,15 @@ nav:hover ~ .menu {
   width: 97%;
 }
 
+.menu_notif{
+	width:197px;
+	position:fixed;
+	border: 1px solid #e7e7e7;
+	border-radius: 4px;
+	left: 60px;
+  top:0;
+	cursor:pointer;
+}
 /*dropdown*/
 .menu{
 	width:197px;
@@ -1085,15 +1094,21 @@ span{
 .police_dropdown{
   font-size:1em;
 }
-.police_dropdown p{
+.dropdown p{
 	padding:8px 8px;
 	margin:0;
 	transition:all .1s
 }
-.police_dropdown p:hover{
+.dropdown p:hover{
 	background:#175470;
 	color:rgba(255,255,255,0.8);
 	border:1px solid #e7e7e7;
 	border-radius:4px;
 }
 /*end dropdown*/
+
+/* Notif Style */
+
+
+
+/* End Notif Style */

@@ -1,11 +1,16 @@
   {% extends 'base.html.twig' %}
   {% block body %}
+
+  <div class="zone_affichage container">
+
+
+  <div class="row">
   {% if app.user != null %}
   {% set friendship = '1' %}
 
 
     {% for u in user %}
-        <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
+        <div class="col-lg-4 col-xs-4;">
 
               <img src="images/Avatar/{{u.id}}.png" class="img-circle" alt="{{u.name}} {{ u.lastname}}">
               {% if u.id == app.user.id  %}
@@ -31,14 +36,19 @@
                         <a href="{{ u.id }}/{{ app.user.id }}/-1"><button type="button" class="btn btn-primary">Ajouter {{ u.name }} à mes amis !</button></a>
                 {% endif %}
               {% endif %}
+            </div>
+
+              <div class="col-lg-8 col-xs-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
               {% for f in isfriend %}
                   {% if (f.STATUT == 1) %}
               {{ form_start(formpost) }}
               {{ form_widget(formpost) }}
               {% if u.id != app.user.id %}
-              <button type="submit" class="btn btn-default">Ecrire sur le mur de {{u.name}} ! </button>
+              <button type="submit" class="btn btn-primary">Ecrire sur le mur de {{u.name}} ! </button>
               {% else %}
-              <button type="submit" class="btn btn-default">Partager avec mes amis !</button>
+              <button type="submit" class="btn btn-primary">Partager avec mes amis !</button>
               {% endif %}
               {{ form_end(formpost) }}
                   {% endif %}
@@ -46,12 +56,10 @@
               {% if u.id == app.user.id %}
               {{ form_start(formpost) }}
               {{ form_widget(formpost) }}
-              <button type="submit" class="btn btn-default">Partager avec mes amis !</button>
+              <button type="submit" class="btn btn-primary">Partager avec mes amis !</button>
               {{ form_end(formpost) }}
               {% endif %}
 
-          </div>
-          <div class=" col-md-7 centrer" style="margin-left:10%; border:1px solid black;">
             {% if posts %}
             {% for p in posts %}
                 <li>{{p.name}} {{p.lastname}}: "{{ p.content }}"</li>
@@ -63,7 +71,6 @@
             {% endif %}
           </div>
           {% if u.id != app.user.id %}
-          <div class=" col-md-3 centrer" style="border:1px solid black;">
             <h4> Ma discussion avec {{ u.name }}</h4>
             {% if messages %}
               {% for m in messages %}
@@ -81,10 +88,13 @@
             {% endif %}
             {{ form_start(formchat) }}
             {{ form_widget(formchat) }}
-            <button type="submit" class="btn btn-default">Envoyer !</button>
+            <button type="submit" class="btn btn-primary">Envoyer !</button>
             {{ form_end(formchat) }}
-
+            </div>
         </div>
+    </div>
+</div>
+
                 {% endif %}
       {% endfor %}
       {% endif %}

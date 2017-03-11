@@ -51,6 +51,9 @@ p
 }
 
 /* CLASSES TABLEAU DE BORD  */
+
+/*----------------*\
+\------USERS------*/
 .dashboard_users
 {
   height:450px;
@@ -125,6 +128,23 @@ p
   border-radius: 0 0 3px 0;
 }
 
+/*----------------*\
+\---END USERS----*/
+
+
+/*----------------*\
+\--------Amis-----*/
+
+.photos_amis{
+  width:25px;
+  border-radius: 5%;
+}
+button .bouton_amis{
+  test-align:left!important;
+}
+/*----------------*\
+\---END Amis-----*/
+
 .green{
   color:green;
 }
@@ -145,6 +165,20 @@ p
 ::-webkit-scrollbar {
     display: none;
 }
+
+/* CLASSES CONFIG  */
+
+/*----------------*\
+\--------Config form-----*/
+
+.panel-default form{
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+/*----------------*\
+\---END Config form-----*/
 
 /*SEARCH BAR*/
 .searchbar{
