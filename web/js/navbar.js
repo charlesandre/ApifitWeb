@@ -10,7 +10,8 @@ function f() {
   }
 }
 
-function f1() {
+
+function f_notif() {
   document.getElementsByClassName('dropdown1')[0].classList.toggle('down');
   document.getElementsByClassName('arrow1')[0].classList.toggle('gone');
   if (document.getElementsByClassName('dropdown1')[0].classList.contains('down')) {

@@ -137,7 +137,8 @@ p
 
 .photos_amis{
   width:25px;
-  border-radius: 5%;
+  height:25px;
+  border-radius: 100%;
 }
 button .bouton_amis{
   test-align:left!important;
@@ -175,6 +176,10 @@ button .bouton_amis{
   text-align: center;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+
+.style_post{
+  padding:10px;
 }
 
 /*----------------*\

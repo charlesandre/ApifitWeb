@@ -82,8 +82,8 @@
         </div>
         <div class="scroll">
           {% for users in friends %}
-          <a href="/profil/{{users.id}}"><button class="bouton_amis btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
-            {{ users.name }} {{ users.lastname}}</button></a>
+          <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+            {{ users.name }} {{ users.lastname}}</button></a></li>
             {% endfor %}
         </div>
     </div>
