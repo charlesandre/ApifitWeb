@@ -47,11 +47,11 @@ doctrine:
         driver:   pdo_mysql
         # host:     apifitfrmjapifit.mysql.db
         host:     127.0.0.1
-        port:     8889
+        port:     3306
         # dbname:   apifitfrmjapifit
         dbname:   apifit
         user:     root
-        password: root
+        password: 
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml

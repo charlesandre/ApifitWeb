@@ -12,6 +12,12 @@ AppBundle\Entity\UsersData:
             generator:
                 strategy: IDENTITY
     fields:
+        uid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: UID
         date:
             type: date
             nullable: true

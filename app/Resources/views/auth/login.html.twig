@@ -1,7 +1,22 @@
-{% extends 'base.html.twig' %}
-
-
-
+{% block head %}
+<head>
+		<link href="{{ asset('bootstrap/bootstrap.css')}}" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="favicon" href="{{ asset('images/logo-apifit.png') }}">
+		<link rel="stylesheet" href="{{ asset('css/default.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('css/large_screen.css') }}"/>
+		<link rel="stylesheet" media="screen and (max-width: 1280px)" href="{{ asset('css/middle_screen.css') }}"/>
+		<link rel="stylesheet" media="screen and (max-width: 770px)" href="{{ asset('css/small_screen.css') }}"/>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Apifit. Rejoignez la communauté des sportifs. Un véritable coach virtuel adapté à votre niveau. Des challenges tout près de chez vous ! ">
+		<title>Apifit</title>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
+	</head>
+{%  endblock %}
 {% block body %}
 <div class="container" style="padding-top:20px">
     <div class="row">

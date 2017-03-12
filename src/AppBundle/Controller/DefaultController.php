@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\UsersSearch;
 use AppBundle\Entity\UsersFriends;
 use AppBundle\Entity\UsersChat;
+use AppBundle\Entity\UsersPosts;
 use AppBundle\Form\Search;
+use AppBundle\Form\Post;
 use AppBundle\Form\Chat;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,9 +27,25 @@ class DefaultController extends Controller
     }
 
     $a=$this->getUser()->getId();
+    /* GETTING ALL NOTIFICATIONS */
+      /* GET NEW MESSAGES */
+      $em = $this->getDoctrine()->getManager();
+      $connectionMessage = $em->getConnection();
+      $statementMessage = $connectionMessage->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
+      $statementMessage->bindValue('id', $a);
+      $statementMessage->execute();
+      $unreadmessages = $statementMessage->fetchAll();
 
-    /* IS THERE ANY NEW FRIEND RELATION WAITING */
 
+      /* GET NEW POSTS */
+      $em = $this->getDoctrine()->getManager();
+      $connectionPosts = $em->getConnection();
+      $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
+      $statementPosts->bindValue('id', $a);
+      $statementPosts->execute();
+      $unreadposts = $statementPosts->fetchAll();
+
+      /* GET NEW FRIEND REQUESTS */
     $repositoryFriend = $this->getDoctrine()
     ->getRepository('AppBundle:UsersFriends');
 
@@ -63,6 +81,13 @@ class DefaultController extends Controller
     $lastdata = $query->getResult();
 
     $query = $repository->createQueryBuilder('d')
+    ->where('d.uid = :uid')
+    ->setParameter('uid', $a)
+    ->getQuery();
+
+    $lastdatamultiple = $query->getResult();
+
+    $query = $repository->createQueryBuilder('d')
     ->where('d.id = :uid')
     ->setParameter('uid', $a)
     ->getQuery();
@@ -89,6 +114,13 @@ class DefaultController extends Controller
     /* IF THERE IS A NEW SEARCH */
     if ($formsearch->isSubmitted() && $formsearch->isValid()) {
 
+      /* CREATING SEARCH FORM */
+
+      $Search = new UsersSearch();
+
+      $formsearch = $this->createForm(Search::class, $Search);
+      $formsearch->handleRequest($request);
+
       $keyword= $formsearch["search"]->getData();
 
       $Search->setUid($a);
@@ -107,6 +139,7 @@ class DefaultController extends Controller
       $resultusers=$queryusers->getResult();
 
       return $this->render('default/result.html.twig',array(
+        'formsearch' => $formsearch->createView(),
         'users' => $resultusers,
         'key' => $keyword
       ));
@@ -119,12 +152,18 @@ class DefaultController extends Controller
     return $this->render('default/index.html.twig', array(
       'formsearch' => $formsearch->createView(),
       'demands' => $frienddemands,
+      'newmessages' => $unreadmessages,
+      'newposts' => $unreadposts,
       'friends' => $friends,
       'lastdata' => $lastdata,
+      'lastdatamultiple' => $lastdatamultiple,
       'id'=> $a,
       'users' => $users
     ));
   }
+
+
+
 
 /* SEE A USER'S PROFIL */
 
@@ -134,6 +173,25 @@ class DefaultController extends Controller
   public function displayUser(Request $request){
       $id = $request->attributes->get('uid');
       $a=$this->getUser()->getId();
+
+
+      /* MARK ALL THE POSTS AS READ IF THE USERS GOES ON HIS OWN PROFIL */
+
+      if($id == $a){
+      $em = $this->getDoctrine()->getManager();
+      $connectionRead = $em->getConnection();
+      $statementRead = $connectionRead->prepare("UPDATE USERS_POSTS P SET P.VU = '1' WHERE P.UID2 = :id");
+      $statementRead->bindValue('id', $a);
+      $statementRead->execute();
+    }
+
+    /* MARK ALL THE MESSAGES AS READ */
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionRead = $em->getConnection();
+      $statementRead = $connectionRead->prepare("UPDATE USERS_CHAT P SET P.VU = '1' WHERE P.UID2 = :id");
+      $statementRead->bindValue('id', $a);
+      $statementRead->execute();
 
 
       /* GET USER'S DATA */
@@ -172,6 +230,7 @@ class DefaultController extends Controller
 
        $Chat->setUid1($a);
        $Chat->setUid2($id);
+       $Chat->setVU('0');
        $Chat->setContent($content);
 
        $em = $this->getDoctrine()->getManager();
@@ -191,11 +250,108 @@ class DefaultController extends Controller
      $statementFriend->execute();
      $isfriend = $statementFriend->fetchAll();
 
+     /* GET ALL THE POSTS ON HIS WALL */
+
+     $em = $this->getDoctrine()->getManager();
+     $connectionPost = $em->getConnection();
+     $statementPost = $connectionPost->prepare("SELECT DISTINCT P.ID as id, U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content, P.IMG as img FROM USER U, USERS_POSTS P WHERE (P.UID2 = :id AND P.UID1 = U.ID) ORDER BY P.ID DESC");
+     $statementPost->bindValue('id', $id);
+     $statementPost->execute();
+     $posts = $statementPost->fetchAll();
+
+
+     /* FORM TO ADD A NEW POST */
+     $Post = new UsersPosts();
+
+      $formpost = $this->createForm(Post::class, $Post);
+      $formpost->handleRequest($request);
+
+      /* IF THE USER POSTS SOMETHING */
+      if ($formpost->isSubmitted() && $formpost->isValid()) {
+
+        $content= $formpost["content"]->getData();
+
+        $Post->setUid1($a);
+        $Post ->setUid2($id);
+        $Post->setContent($content);
+        if($a != $id){
+        $Post->SetVu('0');
+        }
+        else{
+          $Post->setVu('1');
+        }
+        // $img = $formpost["src"]->getData
+        // if($img)
+        // {
+        //
+        // }
+        // else{
+          // $Post->setImg('0');
+
+        // }
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($Post);
+        $em->flush();
+
+
+        // $dir = "images/Posts";
+        // $img = $formpost["src"]->getData->move($dir, $someNewFilename);
+
+
+        return $this->redirect("/profil/$id");
+
+      }
+      /* CREATING SEARCH FORM */
+
+      $Search = new UsersSearch();
+
+      $formsearch = $this->createForm(Search::class, $Search);
+      $formsearch->handleRequest($request);
+
+
+          /* IF THERE IS A NEW SEARCH */
+          if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+
+            /* CREATING SEARCH FORM */
+
+            $Search = new UsersSearch();
+
+            $formsearch = $this->createForm(Search::class, $Search);
+            $formsearch->handleRequest($request);
+
+            $keyword= $formsearch["search"]->getData();
+
+            $Search->setUid($a);
+            $Search->setSearch($keyword);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Search);
+            $em->flush();
+
+            $queryusers = $repositoryUsers->createQueryBuilder('u')
+            ->where('u.lastname = :key')
+            ->orWhere('u.name = :key')
+            ->setParameter('key', $keyword)
+            ->getQuery();
+
+            $resultusers=$queryusers->getResult();
+
+            return $this->render('default/result.html.twig',array(
+              'formsearch' => $formsearch->createView(),
+              'users' => $resultusers,
+              'key' => $keyword
+            ));
+
+          }
+
 
     return $this->render('default/profil.html.twig', array(
       'user' => $users,
+       'posts' => $posts,
       'isfriend' => $isfriend,
+      'formsearch' => $formsearch->createView(),
        'formchat' => $formchat->createView(),
+       'formpost' => $formpost->createView(),
        'messages' => $messages
     ));
   }

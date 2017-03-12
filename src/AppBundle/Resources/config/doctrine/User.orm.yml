@@ -65,4 +65,19 @@ AppBundle\Entity\User:
             nullable: true
             options:
                 fixed: false
+
+        obj:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+
+        src:
+            type: integer
+            nullable: true
+            options:
+                fixed: false
+
+
     lifecycleCallbacks: {  }

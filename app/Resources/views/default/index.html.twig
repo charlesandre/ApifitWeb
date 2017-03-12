@@ -1,104 +1,94 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {% if app.user != null %}
-<div class="col-md-12">
-  <div class="col-md-3">
-    <img src="images/logo-apifit.png" alt="logo" id="logo"></img>
-  </div>
-  <div class="col-md-6">
-    <div class="brique bienvenue">
-      <h3> Bonjour {{app.user.name}} </h3>
-      <h3> Voici votre tableau de bord </h3>
-      <a href="{{ path('configure')}}"> Configurer mon profil </a><br>
-      <a href="/logout">Se déconnecter</a>
-    </div>
-  </div>
+<div class="zone_affichage container">
 
-  <!-- SEARCH BAR   -->
-  <div class="col-md-3">
-    <div class="searchbar">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="custom-search-input">
-            <div class="input-group col-md-12">
-              {{form_start(formsearch)}}
-              {{form_end(formsearch)}}
-            </div>
-            </div>
-          </div>
+
+<div class="row">
+
+  <div class="col-lg-8 col-xs-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+              <i class="fa fa-bar-chart-o fsa-fw"></i> Courbe d'évolution
         </div>
-      </div>
+        <canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>
     </div>
   </div>
 
-<!-- LEFT COLUMN -->
+    <div class="col-xs-4 col-lg-4 dashboard_users">
+    <div class="widget">
+      <div class="cover">
+        <img src="images/fond_profil.jpg">
+      </div>
+        <img class="photo" src="images/Avatar/{{app.user.id}}.png" alt="{{app.user.name}} {{ app.user.lastname}}" id="pp"><br/><br/>
 
-<div class="col-md-4">
-  <div class="brique col-md-12">
-    <img src="images/Avatar/{{app.user.id}}.png" class="img-circle" alt="{{app.user.name}} {{ app.user.lastname}}" id="pp">
-    {% for u in users %}
-      <li><h3>Level : {{ u.level }} </h3></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
-    {% endfor %}
-    {% for data in lastdata %}
-    <li><h4>Taille : {{ data.height }} cm</h4></li>
-    <li><h4>Poids : {{ data.weight }} kg </h4></li>
+        {% for u in users %}
+          <li><h4>{{app.user.name}}</h4></li>
+          <li><h4>Level : {{ u.level }} </h4></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
+        {% endfor %}
+        {% for data in lastdata %}
+        <li><h6>Taille : {{ data.height }} cm</h6></li>
+        <li><h6>Poids : {{ data.weight }} kg </h6></li>
 
-    {#<li><h4 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h4></li>
-    <script>
+        <li><h6 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h6></li>
+        <script>
 
-    var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
-    if(imc>25) document.getElementById('imc').className="red";
-    else if(imc<18) document.getElementById('imc').className="red";
-    else document.getElementById('imc').className="green";
-    </script>#}
+        var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
+        if(imc>25) document.getElementById('imc').className="red";
+        else if(imc<18) document.getElementById('imc').className="red";
+        else document.getElementById('imc').className="green";
+        </script>
 
-    <li><h4>Stride Length Running : {{ data.strideLengthRunning }}</h4></li>
-    <li><h4>Stride Length Walking : {{ data.strideLengthWalking }}</li>
-      {% endfor %}
-      {% if demands %}
-      Vous avez des demandes d'amis en attente de la part de
-      {% for d in demands %}
-      {{ d.uid1 }}
-      {% endfor %}
-      {% else %}
-      Vous n'avez pas de demande en attente
-      {% endif %}
-
-    </div>
-
-
-    <div class="brique friends col-md-12">
-      <h3>Vos Amis</h3>
-      <div class="scroll">
-        {% for users in friends %}
-        <a href="/profil/{{users.id}}"><button class="btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="img-circle" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
-          {{ users.name }} {{ users.lastname}}</button></a>
+        <li><h6>Stride Length Running : {{ data.strideLengthRunning }}</h6></li>
+        <li><h6>Stride Length Walking : {{ data.strideLengthWalking }}</h6></li>
           {% endfor %}
+          {% if demands %}
+          <h6>Vous avez des demandes d'amis en attente de la part de
+          {% for d in demands %}
+          {{ d.uid1 }}<h6>
+          {% endfor %}
+          {% else %}
+          <h6>Vous n'avez pas de demande en attente</h6>
+          {% endif %}
+          <ul>
+            <li><a href="{{ path('configure')}}"><i class="fa fa-inbox"></i></a></li>
+            <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
+          </ul>
+    </div>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-4 col-xs-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bolt"></i> Entraînement
         </div>
-      </div>
     </div>
+  </div>
 
-    <div class="col-md-1"></div>
-
-    <!-- RIGHT COLUMN -->
-    <div class="col-md-6">
-
-
-      <div class="brique col-md-12">
-
-        <h3>Courbe d'évolution</h3>
-        <canvas id="myChart" width="400" height="150"></canvas>
-        <hr>
-      </div>
-
-      <div class="brique col-md-6">
-        <h3>Votre Entraînement</h3>
-      </div>
-
-      <div class="brique col-md-5">
-        <h3>Vos Défis</h3>
-      </div>
+  <div class="col-lg-4 col-xs-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-rocket"></i> Défis
+        </div>
     </div>
+  </div>
+
+  <div class="friends col-lg-4 col-xs-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-users"></i> Amis
+        </div>
+        <div class="scroll">
+          {% for users in friends %}
+          <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+            {{ users.name }} {{ users.lastname}}</button></a></li>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
 
 
   {% endif %}
@@ -151,4 +141,4 @@
     }
   });
   </script>
-{% endblock %}
+  {% endblock %}

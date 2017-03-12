@@ -42,6 +42,13 @@ class UsersChat
      */
     private $content;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="VU", type="integer", nullable=false)
+     */
+    private $vu;
+
 
 
     /**
@@ -124,5 +131,29 @@ class UsersChat
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set vu
+     *
+     * @param integer $vu
+     *
+     * @return UsersChat
+     */
+    public function setVu($vu)
+    {
+        $this->vu = $vu;
+
+        return $this;
+    }
+
+    /**
+     * Get vu
+     *
+     * @return integer
+     */
+    public function getVu()
+    {
+        return $this->vu;
     }
 }

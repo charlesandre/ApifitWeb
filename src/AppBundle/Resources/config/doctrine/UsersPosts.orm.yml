@@ -1,0 +1,55 @@
+AppBundle\Entity\UsersPosts:
+    type: entity
+    table: users_posts
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    fields:
+        uid1:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: UID1
+        uid2:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: UID2
+        content:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: CONTENT
+
+        img:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: IMG
+        src:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: SRC
+        vu:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: VU
+
+    lifecycleCallbacks: {  }

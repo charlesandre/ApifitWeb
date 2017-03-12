@@ -31,4 +31,11 @@ AppBundle\Entity\UsersChat:
             options:
                 fixed: false
             column: CONTENT
+
+        vu:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: VU
     lifecycleCallbacks: {  }

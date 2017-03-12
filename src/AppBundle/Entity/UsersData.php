@@ -22,6 +22,14 @@ class UsersData
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="UID", type="integer", nullable=false)
+     */
+    private $uid;
+
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="DATE", type="date", nullable=false)
@@ -127,6 +135,30 @@ class UsersData
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set uid
+     *
+     * @param integer $uid
+     *
+     * @return UsersData
+     */
+    public function setUid($uid)
+    {
+        $this->uidt = $uid;
+
+        return $this;
+    }
+
+    /**
+     * Get uid
+     *
+     * @return integer
+     */
+    public function getUid()
+    {
+        return $this->uid;
     }
 
     /**
