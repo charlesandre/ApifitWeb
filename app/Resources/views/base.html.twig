@@ -44,10 +44,15 @@
 					<div class="arrow1"><span class="rond_notif"><em>3</em></span></div>
 				</div>
 				<div class="dropdown1">
-					<li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/67.png"/> Vincent Bas</br></a>
-					<p>Hi,mate <em>Just now...</em></p><hr></li>
-					<li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/62.png"/> MechKour</br></a>
-					<p>Bande de clochards <em>3 min ago...</em></p></li>
+					{% if newmessages %}
+						{% for m in newmessages %}
+						<li class="position_notif"><a href="/profil/{{m.id}}"><img class="photos_amis" src="images/Avatar/{{m.id}}.png"/> {{m.name}} {{m.lastname}}</br></a>
+							<p>{{m.content}}</p><hr></li>
+						{% endfor %}
+					{% else %}
+							<li class="position_notif"> Pas de nouveaux messages </li>
+					{% endif %}
+
 				</div>
 			</div>
 			<!--End dropdown NotiF-->
