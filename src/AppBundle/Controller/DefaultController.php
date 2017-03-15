@@ -36,6 +36,8 @@ class DefaultController extends Controller
       $statementMessage->execute();
       $unreadmessages = $statementMessage->fetchAll();
 
+      $MessageCount = count($unreadmessages);
+
 
       /* GET NEW POSTS */
       $em = $this->getDoctrine()->getManager();
@@ -153,6 +155,7 @@ class DefaultController extends Controller
       'formsearch' => $formsearch->createView(),
       'demands' => $frienddemands,
       'newmessages' => $unreadmessages,
+      'numnewmessage' => $MessageCount,
       'newposts' => $unreadposts,
       'friends' => $friends,
       'lastdata' => $lastdata,
@@ -182,6 +185,7 @@ class DefaultController extends Controller
         $statementMessage->bindValue('id', $a);
         $statementMessage->execute();
         $unreadmessages = $statementMessage->fetchAll();
+        $MessageCount = count($unreadmessages);
 
 
         /* GET NEW POSTS */
@@ -373,6 +377,7 @@ class DefaultController extends Controller
               $statementMessage->bindValue('id', $a);
               $statementMessage->execute();
               $unreadmessages = $statementMessage->fetchAll();
+              $MessageCount = count($unreadmessages);
 
 
               /* GET NEW POSTS */
@@ -382,6 +387,8 @@ class DefaultController extends Controller
               $statementPosts->bindValue('id', $a);
               $statementPosts->execute();
               $unreadposts = $statementPosts->fetchAll();
+              $PostCount = count($unreadposts);
+
 
               /* GET NEW FRIEND REQUESTS */
             $repositoryFriend = $this->getDoctrine()
@@ -397,6 +404,8 @@ class DefaultController extends Controller
             return $this->render('default/result.html.twig',array(
               'formsearch' => $formsearch->createView(),
               'newmessages' => $unreadmessages,
+              'numnewmessage' => $MessageCount,
+              'numnewposts' => $PostCount,
               'newposts' => $unreadposts,
               'users' => $resultusers,
               'key' => $keyword
@@ -410,6 +419,7 @@ class DefaultController extends Controller
        'posts' => $posts,
       'isfriend' => $isfriend,
       'newmessages' => $unreadmessages,
+      'numnewmessage' => $MessageCount,
       'newposts' => $unreadposts,
       'formsearch' => $formsearch->createView(),
        'formchat' => $formchat->createView(),

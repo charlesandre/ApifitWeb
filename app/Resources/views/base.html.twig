@@ -36,12 +36,15 @@
 					<!-- </div>
 					</form> -->
 			</div>
+		
 
-			<!-- dropdown NotiF-->
+			<!-- dropdown Message-->
 			<div class="menu1">
 
-				<div class="title1" onclick="f_notif()"><span class="fa fa-bell"></span>
-					<div class="arrow1"><span class="rond_notif"><em>3</em></span></div>
+				<div class="title1" onclick="f_notif()"><span class="fa fa-mail"></span>
+					{% if numnewmessage > 0 %}
+					<div class="arrow1"><span class="rond_notif"><em>{{numnewmessage}}</em></span></div>
+					{% endif %}
 				</div>
 				<div class="dropdown1">
 					{% if newmessages %}

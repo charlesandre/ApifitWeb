@@ -18,6 +18,7 @@
               <li><h4>Level : {{ u.level }}</h4></li>
               {% if u.id != app.user.id %}
                 {% if isfriend %}
+
                       {% for f in isfriend %}
                           {% if (f.STATUT == 1) %}
                                 <li> Vous etes amis avec {{u.name}} </li>
@@ -41,8 +42,6 @@
                   <a><i class="fa fa-photo"></i></a>
                 {% endif %}
                 </li>
-                <li><a href="{{ path('configure')}}"><i class="fa fa-inbox"></i></a></li>
-                <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
               </ul>
         </div>
       </div>
