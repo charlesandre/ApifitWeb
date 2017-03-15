@@ -93,7 +93,7 @@ class ConfigureUserController extends Controller
 
       $resultusers=$queryusers->getResult();
 
-      return $this->render('default/result.html.twig',array(
+      return $this->render('config/result.html.twig',array(
         'formsearch' => $formsearch->createView(),
         'users' => $resultusers,
         'key' => $keyword
@@ -129,7 +129,7 @@ class ConfigureUserController extends Controller
     $formupdate = $this->createForm(UpdateInfo::class, $Update);
     $formupdate->handleRequest($request);
 
-    return $this->render('default/configure.html.twig', array(
+    return $this->render('config/configure.html.twig', array(
       'formsearch' => $formsearch->createView(),
       'formpp' => $formpp->createView(),
       'newmessages' => $unreadmessages,
@@ -222,7 +222,7 @@ class ConfigureUserController extends Controller
   } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
     exit($e->getMessage());
   }
-  return $this->render('default/fitbitdata.html.twig', array(
+  return $this->render('config/fitbitdata.html.twig', array(
     'datas' =>  $resourceOwner,
   ));
 }

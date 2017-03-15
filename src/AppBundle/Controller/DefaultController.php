@@ -74,7 +74,7 @@ class DefaultController extends Controller
     ->getRepository('AppBundle:User');
 
     $query = $repository->createQueryBuilder('d')
-    ->where('d.id = :uid')
+    ->where('d.uid = :uid')
     ->setParameter('uid', $a)
     ->orderBy('d.date', 'DESC')
     ->setMaxResults(1)
@@ -171,11 +171,26 @@ class DefaultController extends Controller
 /* SEE A USER'S PROFIL */
 
   /**
- * @Route("/profil/{uid}")
+ * @Route("/{uid}")
  */
   public function displayUser(Request $request){
       $id = $request->attributes->get('uid');
+
       $a=$this->getUser()->getId();
+
+      /* GET USER'S DATA */
+    $repositoryUsers = $this->getDoctrine()
+    ->getRepository('AppBundle:User');
+
+    $queryUsers = $repositoryUsers->createQueryBuilder('u')
+    ->where('u.id = :uid')
+    ->setParameter('uid', $id)
+    ->getQuery();
+    $users = $queryUsers->getResult();
+    $idisvalid = count($users);
+
+    if($idisvalid == 1) {
+
 
       /* GETTING ALL NOTIFICATIONS */
         /* GET NEW MESSAGES */
@@ -227,15 +242,7 @@ class DefaultController extends Controller
       $statementRead->execute();
 
 
-      /* GET USER'S DATA */
-    $repositoryUsers = $this->getDoctrine()
-    ->getRepository('AppBundle:User');
 
-    $queryUsers = $repositoryUsers->createQueryBuilder('u')
-    ->where('u.id = :uid')
-    ->setParameter('uid', $id)
-    ->getQuery();
-    $users = $queryUsers->getResult();
 
     /* GET MESSAGES THAT HAVE BEEN SENT */
     $repositoryChat = $this->getDoctrine()
@@ -334,6 +341,7 @@ class DefaultController extends Controller
         return $this->redirect("/profil/$id");
 
       }
+
       /* CREATING SEARCH FORM */
 
       $Search = new UsersSearch();
@@ -418,15 +426,19 @@ class DefaultController extends Controller
       'user' => $users,
        'posts' => $posts,
       'isfriend' => $isfriend,
-      'newmessages' => $unreadmessages,
-      'numnewmessage' => $MessageCount,
-      'newposts' => $unreadposts,
-      'formsearch' => $formsearch->createView(),
+       'newmessages' => $unreadmessages,
+       'numnewmessage' => $MessageCount,
+       'newposts' => $unreadposts,
+        'formsearch' => $formsearch->createView(),
        'formchat' => $formchat->createView(),
        'formpost' => $formpost->createView(),
        'messages' => $messages
     ));
   }
+  else {
+    return $this->redirect("/");
+  }
+}
 
 /* ADD A FRIEND */
 
@@ -471,8 +483,137 @@ class DefaultController extends Controller
       $statementRequest->execute();
     }
 
-    return $this->redirect("/profil/$id1");
+    return $this->redirect("/$id1");
   }
+
+
+  /*  AFFICHAGE DES DEFIS   */
+
+
+    /**
+   * @Route("/defis")
+   */
+
+   public function DisplayDefis(Request $request){
+
+     $a=$this->getUser()->getId();
+
+
+     /* GETTING ALL NOTIFICATIONS */
+       /* GET NEW MESSAGES */
+       $em = $this->getDoctrine()->getManager();
+       $connectionMessage = $em->getConnection();
+       $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
+       $statementMessage->bindValue('id', $a);
+       $statementMessage->execute();
+       $unreadmessages = $statementMessage->fetchAll();
+
+       $MessageCount = count($unreadmessages);
+
+
+       /* GET NEW POSTS */
+       $em = $this->getDoctrine()->getManager();
+       $connectionPosts = $em->getConnection();
+       $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
+       $statementPosts->bindValue('id', $a);
+       $statementPosts->execute();
+       $unreadposts = $statementPosts->fetchAll();
+
+       /* GET NEW FRIEND REQUESTS */
+     $repositoryFriend = $this->getDoctrine()
+     ->getRepository('AppBundle:UsersFriends');
+
+     $queryFriendDemand = $repositoryFriend->createQueryBuilder('f')
+     ->where('f.uid2 = :uid')
+     ->andwhere('f.statut = 0')
+     ->setParameter('uid', $a)
+     ->getQuery();
+     $frienddemands = $queryFriendDemand->getResult();
+
+     /* CREATING SEARCH FORM */
+
+     $Search = new UsersSearch();
+
+     $formsearch = $this->createForm(Search::class, $Search);
+     $formsearch->handleRequest($request);
+
+
+    return $this->render('default/defis.html.twig', array(
+      'formsearch' => $formsearch->createView(),
+      'demands' => $frienddemands,
+      'newmessages' => $unreadmessages,
+      'numnewmessage' => $MessageCount,
+      'newposts' => $unreadposts,
+
+    ));
+
+   }
+
+
+   /*  AFFICHAGE DES BADGES   */
+
+
+     /**
+    * @Route("/badges")
+    */
+
+    public function DisplayBadges(Request $request){
+
+      $a=$this->getUser()->getId();
+
+
+      /* GETTING ALL NOTIFICATIONS */
+        /* GET NEW MESSAGES */
+        $em = $this->getDoctrine()->getManager();
+        $connectionMessage = $em->getConnection();
+        $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
+        $statementMessage->bindValue('id', $a);
+        $statementMessage->execute();
+        $unreadmessages = $statementMessage->fetchAll();
+
+        $MessageCount = count($unreadmessages);
+
+
+        /* GET NEW POSTS */
+        $em = $this->getDoctrine()->getManager();
+        $connectionPosts = $em->getConnection();
+        $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
+        $statementPosts->bindValue('id', $a);
+        $statementPosts->execute();
+        $unreadposts = $statementPosts->fetchAll();
+
+        /* GET NEW FRIEND REQUESTS */
+      $repositoryFriend = $this->getDoctrine()
+      ->getRepository('AppBundle:UsersFriends');
+
+      $queryFriendDemand = $repositoryFriend->createQueryBuilder('f')
+      ->where('f.uid2 = :uid')
+      ->andwhere('f.statut = 0')
+      ->setParameter('uid', $a)
+      ->getQuery();
+      $frienddemands = $queryFriendDemand->getResult();
+
+      /* CREATING SEARCH FORM */
+
+      $Search = new UsersSearch();
+
+      $formsearch = $this->createForm(Search::class, $Search);
+      $formsearch->handleRequest($request);
+
+
+     return $this->render('default/badges.html.twig', array(
+       'formsearch' => $formsearch->createView(),
+       'demands' => $frienddemands,
+       'newmessages' => $unreadmessages,
+       'numnewmessage' => $MessageCount,
+       'newposts' => $unreadposts,
+
+     ));
+
+    }
+
+
+
 
 
 }
