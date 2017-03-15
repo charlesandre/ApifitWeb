@@ -27,6 +27,38 @@ class ConfigureUserController extends Controller
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
 
+    /* GETTING ALL NOTIFICATIONS */
+      /* GET NEW MESSAGES */
+      $em = $this->getDoctrine()->getManager();
+      $connectionMessage = $em->getConnection();
+      $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
+      $statementMessage->bindValue('id', $a);
+      $statementMessage->execute();
+      $unreadmessages = $statementMessage->fetchAll();
+      $MessageCount = count($unreadmessages);
+
+
+      /* GET NEW POSTS */
+      $em = $this->getDoctrine()->getManager();
+      $connectionPosts = $em->getConnection();
+      $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
+      $statementPosts->bindValue('id', $a);
+      $statementPosts->execute();
+      $unreadposts = $statementPosts->fetchAll();
+      $PostCount = count($unreadposts);
+
+
+      /* GET NEW FRIEND REQUESTS */
+    $repositoryFriend = $this->getDoctrine()
+    ->getRepository('AppBundle:UsersFriends');
+
+    $queryFriendDemand = $repositoryFriend->createQueryBuilder('f')
+    ->where('f.uid2 = :uid')
+    ->andwhere('f.statut = 0')
+    ->setParameter('uid', $a)
+    ->getQuery();
+    $frienddemands = $queryFriendDemand->getResult();
+
     /* CREATING SEARCH FORM */
 
     $Search = new UsersSearch();
@@ -100,6 +132,10 @@ class ConfigureUserController extends Controller
     return $this->render('default/configure.html.twig', array(
       'formsearch' => $formsearch->createView(),
       'formpp' => $formpp->createView(),
+      'newmessages' => $unreadmessages,
+      'numnewmessage' => $MessageCount,
+      'numnewposts' => $PostCount,
+      'newposts' => $unreadposts,
       'formupdate' => $formupdate->createView(),
       'current_api' => $this->getUser()->getApi()
     ));

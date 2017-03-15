@@ -1,0 +1,80 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% set vars = {'progress' : progress} %}
+{% include 'config/progress.html.twig' with vars %}
+<title> Choix de votre montre connectée </title>
+  <body>
+    <div class="zone_affichage container">
+
+      <div class="row">
+        <div class="col-lg-12 col-xs-12">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 style="text-align:center">Configuration de votre programme</h4>
+                <h5 style="text-align:center">Veuillez choisir votre modèle de montre.</h5>
+        				<p style="text-align:center">
+                    Votre montre actuelle  :
+                    {% if(app.user.api != null)%}
+                        {{app.user.api |title }}
+                    {% endif %}
+                    {% if(app.user.api == null)%}
+                        Aucune
+                    {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-clock-o"></i> Je possède une montre Fitbit
+                </div>
+          		  <a href="{{path('fitbit')}}"><button><img  src="{{ asset('images/fitbit1.png') }}" width=100% alt="Fitbit"></button></a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <i class="fa fa-clock-o"></i> Je possède une montre Jawbone
+                </div>
+                <a href="{{path('jawbone')}}"><button><img  src="{{ asset('images/jawbone1.png') }}" width=100% alt="Jawbone"></button></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-check-circle"></i> Configuration de votre profil
+                </div>
+                    {{ form_start(formpp) }}
+                    {{ form_widget(formpp) }}
+                    <button type="submit" class="btn btn-primary">Changer ma photo de profil !</button>
+                    {{ form_end(formpp) }}
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-xs-6">
+              <div class="panel panel-default form_config">
+                  <div class="panel-heading">
+                    <i class="fa fa-check-circle"></i>  Configuration de votre profil
+                  </div>
+                  <p class="form_config">
+                     {{ form_start(formupdate) }}
+                     {{ form_widget(formupdate) }}
+                     <button type="submit" class="btn btn-primary">Mettre a jour vos informations !</button>
+                     {{ form_end(formupdate) }}
+                  </p>
+                </div>
+              </div>
+          </div>
+        </div>
+  </body>
+
+{% endblock %}

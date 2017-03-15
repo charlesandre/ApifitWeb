@@ -97,4 +97,14 @@ class UsersSearch
     {
         return $this->search;
     }
+
+    /**
+     * Get uidSea
+     *
+     * @return integer
+     */
+    public function getUidSea()
+    {
+        return $this->uidSea;
+    }
 }

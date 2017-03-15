@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<title> Choix des sports </title>
+{% include 'config/progress.html.twig' %}
+<div style="padding:0 50px 50px 50px;">
+  <h1>{{app.user.name|title}}, veuillez sélectionner les sports où vous souhaitez vous perfectionner :</h1>
+    <form name="input" action="{{ path('configureSports') }}" method="post">
+      <ul>
+        <li>
+          <label><input type="checkbox" name="Football"
+         {% if(already_checked.Football is defined and already_checked.Football == 1) %}
+            checked="checked"
+         {% endif %}>
+            Football</label>
+        </li>
+        <li>
+        <label>
+        <input type="checkbox" name="Natation" value="Natation"
+        {% if(already_checked.Natation is defined and already_checked.Natation == 1) %}
+         checked="checked"
+         {% endif %}>
+        Natation
+        </label>
+        </li>
+         <li>
+        <label>
+        <input type="checkbox" name="Running" value="Running"
+        {% if(already_checked.Running is defined and already_checked.Running == 1) %}
+         checked="checked"
+         {% endif %}>
+        Running
+        </label>
+        </li>
+        <li>
+        <label>
+        <input type="checkbox" name="Rugby" value="Rugby"
+        {% if(already_checked.Rugby is defined and already_checked.Rugby == 1) %}
+         checked="checked"
+         {% endif %}>
+        Rugby
+        </label>
+        </li>
+        <li>
+        <label>
+        <input type="checkbox" name="Tennis" value="Tennis"
+        {% if(already_checked.Tennis is defined and already_checked.Tennis == 1) %}
+         checked="checked"
+         {% endif %}>
+        Tennis
+        </label>
+        </li>
+      </ul>
+      <button type="submit" class="btn btn-default">Appliquer et continuer la configuration</button>
+    </form>
+<br/>
+<a href="/configure" class="btn btn-default" role="button">Revenir au menu de configuration</a>
+<a href="/" class="btn btn-default" role="button">Annuler</a>
+</div>
+{% endblock %}

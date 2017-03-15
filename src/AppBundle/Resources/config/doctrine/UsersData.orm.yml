@@ -62,7 +62,7 @@ AppBundle\Entity\UsersData:
             column: AVERAGEDAILYSTEPS
         strideLengthRunning:
             type: float
-            nullable: false
+            nullable: true
             options:
                 unsigned: false
             column: STRIDE_LENGTH_RUNNING
