@@ -1,0 +1,23 @@
+AppBundle\Entity\Sports:
+    type: entity
+    table: users_defi
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+
+        nom:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: nom
+    lifecycleCallbacks: {  }

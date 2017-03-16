@@ -15,11 +15,18 @@ class TableTraining
     /**
      * @var integer
      *
-     * @ORM\Column(name="TID", type="integer")
+     * @ORM\Column(name="ID", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $tid;
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
+     */
+    private $nom;
 
     /**
      * @var string
@@ -45,20 +52,44 @@ class TableTraining
     /**
      * @var string
      *
-     * @ORM\Column(name="CONTENT", type="string", length=255, nullable=false)
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
-    private $content;
+    private $description;
 
 
 
     /**
-     * Get tid
+     * Get id
      *
      * @return integer
      */
-    public function getTid()
+    public function getid()
     {
-        return $this->tid;
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return TableTraining
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**
@@ -134,26 +165,26 @@ class TableTraining
     }
 
     /**
-     * Set content
+     * Set description
      *
-     * @param string $content
+     * @param string $description
      *
      * @return TableTraining
      */
-    public function setContent($content)
+    public function setDescription($description)
     {
-        $this->content = $content;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get description
      *
      * @return string
      */
-    public function getContent()
+    public function getDescription()
     {
-        return $this->content;
+        return $this->description;
     }
 }
