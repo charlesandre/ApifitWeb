@@ -2,75 +2,45 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersPosts
- *
- * @ORM\Table(name="users_posts")
- * @ORM\Entity
  */
 class UsersPosts
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="ID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID1", type="integer", nullable=false)
      */
     private $uid1;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID2", type="integer", nullable=false)
      */
     private $uid2;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="CONTENT", type="string", length=100, nullable=false)
      */
     private $content;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="DATE", type="date", nullable=false)
-     */
-    private $date;
-
-    /**
      * @var integer
-     *
-     * @ORM\Column(name="img", type="integer", nullable=false)
      */
     private $img;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="src", type="string", length=20, nullable=false)
      */
     private $src;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="VU", type="integer", nullable=false)
      */
     private $vu;
-
-
 
 
     /**
@@ -88,12 +58,12 @@ class UsersPosts
      *
      * @param integer $uid1
      *
-     * @return UsersSearch
+     * @return UsersPosts
      */
     public function setUid1($uid1)
     {
         $this->uid1 = $uid1;
-
+    
         return $this;
     }
 
@@ -112,12 +82,12 @@ class UsersPosts
      *
      * @param integer $uid2
      *
-     * @return UsersSearch
+     * @return UsersPosts
      */
     public function setUid2($uid2)
     {
         $this->uid2 = $uid2;
-
+    
         return $this;
     }
 
@@ -136,12 +106,12 @@ class UsersPosts
      *
      * @param string $content
      *
-     * @return UsersChat
+     * @return UsersPosts
      */
     public function setContent($content)
     {
         $this->content = $content;
-
+    
         return $this;
     }
 
@@ -156,27 +126,17 @@ class UsersPosts
     }
 
     /**
-     * Set date
+     * Set img
      *
-     * @param \DateTime $date
+     * @param integer $img
      *
-     * @return UsersData
+     * @return UsersPosts
      */
-    public function setDate($date)
+    public function setImg($img)
     {
-        $this->date = $date;
-
+        $this->img = $img;
+    
         return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**
@@ -190,20 +150,6 @@ class UsersPosts
     }
 
     /**
-     * Set img
-     *
-     * @param integer $img
-     *
-     * @return UsersPosts
-     */
-    public function setImg($img)
-    {
-        $this->img = $img;
-
-        return $this;
-    }
-
-    /**
      * Set src
      *
      * @param string $src
@@ -213,7 +159,7 @@ class UsersPosts
     public function setSrc($src)
     {
         $this->src = $src;
-
+    
         return $this;
     }
 
@@ -232,12 +178,12 @@ class UsersPosts
      *
      * @param integer $vu
      *
-     * @return UsersSearch
+     * @return UsersPosts
      */
     public function setVu($vu)
     {
         $this->vu = $vu;
-
+    
         return $this;
     }
 
@@ -250,7 +196,4 @@ class UsersPosts
     {
         return $this->vu;
     }
-
-
-
 }

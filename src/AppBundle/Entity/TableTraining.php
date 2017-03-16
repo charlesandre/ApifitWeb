@@ -2,53 +2,35 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * TableTraining
- *
- * @ORM\Table(name="table_training")
- * @ORM\Entity
  */
 class TableTraining
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="TID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $tid;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="SPORT", type="string", length=30, nullable=false)
      */
     private $sport;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="LEVEL", type="string", length=30, nullable=false)
      */
     private $level;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="TIME", type="integer", nullable=false)
      */
     private $time;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="CONTENT", type="string", length=255, nullable=false)
      */
     private $content;
-
 
 
     /**
@@ -71,7 +53,7 @@ class TableTraining
     public function setSport($sport)
     {
         $this->sport = $sport;
-
+    
         return $this;
     }
 
@@ -95,7 +77,7 @@ class TableTraining
     public function setLevel($level)
     {
         $this->level = $level;
-
+    
         return $this;
     }
 
@@ -119,7 +101,7 @@ class TableTraining
     public function setTime($time)
     {
         $this->time = $time;
-
+    
         return $this;
     }
 
@@ -143,7 +125,7 @@ class TableTraining
     public function setContent($content)
     {
         $this->content = $content;
-
+    
         return $this;
     }
 

@@ -23,7 +23,7 @@ AppBundle\Entity\UsersFitbitHeartrate:
             nullable: false
             options:
                 unsigned: false
-            column: aid            
+            column: aid
         date:
             type: date
             column : date

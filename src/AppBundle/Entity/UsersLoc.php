@@ -2,39 +2,25 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersLoc
- *
- * @ORM\Table(name="users_loc")
- * @ORM\Entity
  */
 class UsersLoc
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $uid;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="COORD_X", type="integer", nullable=false)
      */
     private $coordX;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="COORD_Y", type="integer", nullable=false)
      */
     private $coordY;
-
 
 
     /**
@@ -57,7 +43,7 @@ class UsersLoc
     public function setCoordX($coordX)
     {
         $this->coordX = $coordX;
-
+    
         return $this;
     }
 
@@ -81,7 +67,7 @@ class UsersLoc
     public function setCoordY($coordY)
     {
         $this->coordY = $coordY;
-
+    
         return $this;
     }
 

@@ -2,103 +2,65 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
-
-
 /**
  * User
- *
- * @ORM\Table(name="user")
- * @ORM\Entity
  */
-class User implements UserInterface
+class User
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="ID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="NAME", type="string", length=30, nullable=false)
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="LASTNAME", type="string", length=30, nullable=false)
      */
     private $lastname;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="PASSWORD", type="string", length=30, nullable=false)
      */
     private $password;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="EMAIL", type="string", length=40, nullable=false)
      */
     private $email;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="PHONE", type="string", length=20, nullable=false)
      */
     private $phone;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=20, nullable=false)
      */
     private $role;
 
-
     /**
      * @var string
-     *
-     * @ORM\Column(name="api", type="string", length=10, nullable=false)
      */
     private $api;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="level", type="integer")
      */
     private $level;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="OBJ", type="string", length=10, nullable=false)
      */
     private $obj;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="SRC", type="integer")
      */
     private $src;
-
-
-
 
 
     /**
@@ -121,7 +83,7 @@ class User implements UserInterface
     public function setName($name)
     {
         $this->name = $name;
-
+    
         return $this;
     }
 
@@ -145,7 +107,7 @@ class User implements UserInterface
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-
+    
         return $this;
     }
 
@@ -169,7 +131,7 @@ class User implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
-
+    
         return $this;
     }
 
@@ -193,7 +155,7 @@ class User implements UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
-
+    
         return $this;
     }
 
@@ -217,7 +179,7 @@ class User implements UserInterface
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
+    
         return $this;
     }
 
@@ -241,7 +203,7 @@ class User implements UserInterface
     public function setRole($role)
     {
         $this->role = $role;
-
+    
         return $this;
     }
 
@@ -256,129 +218,98 @@ class User implements UserInterface
     }
 
     /**
+     * Set api
+     *
+     * @param string $api
+     *
+     * @return User
+     */
+    public function setApi($api)
+    {
+        $this->api = $api;
+    
+        return $this;
+    }
+
+    /**
      * Get api
      *
      * @return string
      */
-     public function getApi()
-     {
-         return $this->api;
-     }
+    public function getApi()
+    {
+        return $this->api;
+    }
 
+    /**
+     * Set level
+     *
+     * @param integer $level
+     *
+     * @return User
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    
+        return $this;
+    }
 
-     /**
-      * Set api
-      *
-      * @return string
-      */
-     public function setApi($api)
-     {
-         $this->api=$api;
-         return $this->api;
-     }
+    /**
+     * Get level
+     *
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
 
+    /**
+     * Set obj
+     *
+     * @param string $obj
+     *
+     * @return User
+     */
+    public function setObj($obj)
+    {
+        $this->obj = $obj;
+    
+        return $this;
+    }
 
+    /**
+     * Get obj
+     *
+     * @return string
+     */
+    public function getObj()
+    {
+        return $this->obj;
+    }
 
-     /**
-      * Get level
-      *
-      * @return integer
-      */
-      public function getLevel()
-      {
-          return $this->level;
-      }
+    /**
+     * Set src
+     *
+     * @param integer $src
+     *
+     * @return User
+     */
+    public function setSrc($src)
+    {
+        $this->src = $src;
+    
+        return $this;
+    }
 
-
-      /**
-       * Set level
-       *
-       * @return integer
-       */
-      public function setLevel($level)
-      {
-          $this->level=$level;
-          return $this->level;
-      }
-
-      /**
-       * Set obj
-       *
-       * @param string $obj
-       *
-       * @return User
-       */
-      public function setObj($obj)
-      {
-          $this->obj = $obj;
-
-          return $this;
-      }
-
-      /**
-       * Get obj
-       *
-       * @return string
-       */
-      public function getObj()
-      {
-          return $this->obj;
-      }
-
-      /**
-       * Get src
-       *
-       * @return integer
-       */
-       public function getSrc()
-       {
-           return $this->src;
-       }
-
-
-       /**
-        * Set src
-        *
-        * @return integer
-        */
-       public function setSrc($src)
-       {
-           $this->src=$src;
-           return $this->src;
-       }
-
-// pour l'authentification
-
-              public function getPlainPassword()
-              {
-                  return $this->password;
-              }
-
-              public function setPlainPassword($plainPassword)
-              {
-                  $this->password = $password;
-              }
-
-
-              public function getUsername()
-              {
-                  return $this->email;
-              }
-
-              public function eraseCredentials()
-              {
-                 return null;
-              }
-
-
-              public function getRoles()
-              {
-                  return [$this->getRole()];
-              }
-
-              public function getSalt()
-              {
-               return null;
-              }
-
+    /**
+     * Get src
+     *
+     * @return integer
+     */
+    public function getSrc()
+    {
+        return $this->src;
+    }
 }

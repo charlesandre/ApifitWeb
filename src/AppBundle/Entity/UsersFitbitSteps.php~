@@ -139,4 +139,3 @@ class UsersFitbitSteps
         return $this->value;
     }
 }
-

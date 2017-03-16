@@ -2,40 +2,25 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersSearch
- *
- * @ORM\Table(name="users_searchs")
- * @ORM\Entity
  */
 class UsersSearch
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID_SEARCH", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $uidSea;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID", type="integer", nullable=false)
      */
     private $uid;
 
-
     /**
      * @var string
-     *
-     * @ORM\Column(name="SEARCH", type="string", length=50, nullable=false)
      */
     private $search;
-
 
 
     /**
@@ -43,7 +28,7 @@ class UsersSearch
      *
      * @return integer
      */
-    public function getUidSearch()
+    public function getUidSea()
     {
         return $this->uidSea;
     }
@@ -58,7 +43,7 @@ class UsersSearch
     public function setUid($uid)
     {
         $this->uid = $uid;
-
+    
         return $this;
     }
 
@@ -72,8 +57,6 @@ class UsersSearch
         return $this->uid;
     }
 
-
-
     /**
      * Set search
      *
@@ -84,7 +67,7 @@ class UsersSearch
     public function setSearch($search)
     {
         $this->search = $search;
-
+    
         return $this;
     }
 
@@ -96,15 +79,5 @@ class UsersSearch
     public function getSearch()
     {
         return $this->search;
-    }
-
-    /**
-     * Get uidSea
-     *
-     * @return integer
-     */
-    public function getUidSea()
-    {
-        return $this->uidSea;
     }
 }

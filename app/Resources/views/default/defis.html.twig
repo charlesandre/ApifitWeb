@@ -2,21 +2,15 @@
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
 <div class=" menu_defis panel panel-default">
-    <div class="panel-heading">
-      <i class="fa fa-bars"></i> Tri
-    </div>
-    <div class="sub_defis">
+  <div class="panel-heading">
+    <i class="fa fa-bars"></i> Tri
+  </div>
+  <div class="sub_defis">
     Sport :<br/><br/>
     <select class="form-control" id="sel1">
-      <option>Football</option>
-      <option>Running</option>
-      <option>Ski</option>
-      <option>Tennis</option>
-      <option>Basket</option>
-      <option>Rugby</option>
-      <option>Boxe</option>
-      <option>Natation</option>
-      <option>Pétanque</option>
+      {% for s in sports %}
+      <<option>{{ s.nom }}</option>
+      {% endfor %}
     </select><br/><br/>
     Niveau :<br/><br/>
     <div class="checkbox">
@@ -39,262 +33,90 @@
     <div class="checkbox disabled">
       <label><input type="checkbox" value="">30Xp</label>
     </div><br/><br/>
-    </div>
   </div>
 </div>
-
+</div>
 <div class="zone_affichage container">
-
-  <div class="row active-with-click">
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Red">
+  {% for d in defis %}
+  <div class="col-md-3 col-sm-8 col-xs-8">
+    {% if d.type == "Endurance" %}
+    <article class="material-card Light-Green">
+      {% elseif d.type == "Musculation" %}
+      <article class="material-card Light-Blue">
+        {% elseif d.type == "Tonicité" %}
+        <article class="material-card Blue-Grey">
+          {% elseif d.type == "" %}
+          <article class="material-card Indigo">
+            {% elseif d.type == "" %}
+            <article class="material-card Purple">
+              {% endif %}
               <h2>
-                  <span>Challenge Téléfoot</span>
-                  <strong>
-                      <i class="fa fa-fw fa-star"></i>
-                      <i class="fa fa-fw fa-star"></i>
-                  </strong>
+                <span>{{d.type}}</span>
+                <strong>
+                  {% for i in 1.. d.level %}
+                  <i class="fa fa-fw fa-star"></i>
+                  {% endfor %}
+                </strong>
               </h2>
               <div class="mc-content">
-                  <div class="img-container">
-                      <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
+                <div class="img-container">
+                  {% if d.type == "Endurance" %}
+                  <img class="img-responsive" src="images/defis/endurance.png">
+                  {% elseif d.type == "Musculation" %}
+                  <img class="img-responsive" src="images/defis/musculation.png">
+                  {% elseif d.type == "Tonicité" %}
+                  <img class="img-responsive" src="images/defis/course.png">
+                  {% elseif d.type == "" %}
+                  <article class="material-card Indigo">
+                    {% elseif d.type == "" %}
+                    <article class="material-card Purple">
+                      {% endif %}
+                    </div>
+                    <div class="mc-description">
+                      {{d.description}}
+                    </div>
                   </div>
-                  <div class="mc-description">
-                      Touché la barre transversale du milieu du terrain
-                  </div>
-              </div>
-              <a class="mc-btn-action">
-                  <i class="fa fa-bars"></i>
-              </a>
-              <div class="mc-footer">
-                  <i class="fa fa-rocket"></i> Sport : Football<br/>
-                  <i class="fa fa-gamepad"></i> 20Xp
-              </div>
-          </article>
-      </div>
-
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Purple">
-            <h2>
-                <span>Challenge Téléfoot</span>
-                <strong>
-                    <i class="fa fa-fw fa-star"></i>
-                    <i class="fa fa-fw fa-star"></i>
-                </strong>
-            </h2>
-            <div class="mc-content">
-                <div class="img-container">
-                    <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
-                </div>
-                <div class="mc-description">
-                    Touché la barre transversale du milieu du terrain
-                </div>
-            </div>
-            <a class="mc-btn-action">
-                <i class="fa fa-bars"></i>
+               <a class="mc-btn-action">
+               <i class="fa fa-bars"></i>
             </a>
             <div class="mc-footer">
-                <i class="fa fa-rocket"></i> Sport : Football<br/>
-                <i class="fa fa-gamepad"></i> 20Xp
+              <i class="fa fa-rocket"></i> Sport : {{d.nom}}<br/>
+              <i class="fa fa-clock-o"></i> Durée : {{d.time}} min<br/>
+              <i class="fa fa-gamepad"></i> {{ d.level * 10 }}Xp
             </div>
           </article>
+        </div>
+        {% endfor %}
       </div>
-
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Indigo">
-            <h2>
-                <span>Challenge Téléfoot</span>
-                <strong>
-                    <i class="fa fa-fw fa-star"></i>
-                    <i class="fa fa-fw fa-star"></i>
-                </strong>
-            </h2>
-            <div class="mc-content">
-                <div class="img-container">
-                    <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
-                </div>
-                <div class="mc-description">
-                    Touché la barre transversale du milieu du terrain
-                </div>
-            </div>
-            <a class="mc-btn-action">
-                <i class="fa fa-bars"></i>
-            </a>
-            <div class="mc-footer">
-                <i class="fa fa-rocket"></i> Sport : Football<br/>
-                <i class="fa fa-gamepad"></i> 20Xp
-            </div>
-          </article>
-      </div>
-    </div>
-    <div class="row active-with-click">
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Light-Blue">
-            <h2>
-                <span>Challenge Téléfoot</span>
-                <strong>
-                    <i class="fa fa-fw fa-star"></i>
-                    <i class="fa fa-fw fa-star"></i>
-                </strong>
-            </h2>
-            <div class="mc-content">
-                <div class="img-container">
-                    <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
-                </div>
-                <div class="mc-description">
-                    Touché la barre transversale du milieu du terrain
-                </div>
-            </div>
-            <a class="mc-btn-action">
-                <i class="fa fa-bars"></i>
-            </a>
-            <div class="mc-footer">
-                <i class="fa fa-rocket"></i> Sport : Football<br/>
-                <i class="fa fa-gamepad"></i> 20Xp
-            </div>
-            </article>
-      </div>
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Cyan">
-            <h2>
-                <span>Challenge Téléfoot</span>
-                <strong>
-                    <i class="fa fa-fw fa-star"></i>
-                    <i class="fa fa-fw fa-star"></i>
-                </strong>
-            </h2>
-            <div class="mc-content">
-                <div class="img-container">
-                    <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
-                </div>
-                <div class="mc-description">
-                    Touché la barre transversale du milieu du terrain
-                </div>
-            </div>
-            <a class="mc-btn-action">
-                <i class="fa fa-bars"></i>
-            </a>
-            <div class="mc-footer">
-                <i class="fa fa-rocket"></i> Sport : Football<br/>
-                <i class="fa fa-gamepad"></i> 20Xp
-            </div>
-          </article>
-      </div>
-
-
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Light-Green">
-            <h2>
-                <span>Challenge Téléfoot</span>
-                <strong>
-                    <i class="fa fa-fw fa-star"></i>
-                    <i class="fa fa-fw fa-star"></i>
-                </strong>
-            </h2>
-            <div class="mc-content">
-                <div class="img-container">
-                    <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
-                </div>
-                <div class="mc-description">
-                    Touché la barre transversale du milieu du terrain
-                </div>
-            </div>
-            <a class="mc-btn-action">
-                <i class="fa fa-bars"></i>
-            </a>
-            <div class="mc-footer">
-                <i class="fa fa-rocket"></i> Sport : Football<br/>
-                <i class="fa fa-gamepad"></i> 20Xp
-            </div>
-          </article>
-      </div>
-    </div>
-
-    <div class="row active-with-click">
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Brown">
-            <h2>
-                <span>Challenge Téléfoot</span>
-                <strong>
-                    <i class="fa fa-fw fa-star"></i>
-                    <i class="fa fa-fw fa-star"></i>
-                </strong>
-            </h2>
-            <div class="mc-content">
-                <div class="img-container">
-                    <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
-                </div>
-                <div class="mc-description">
-                    Touché la barre transversale du milieu du terrain
-                </div>
-            </div>
-            <a class="mc-btn-action">
-                <i class="fa fa-bars"></i>
-            </a>
-            <div class="mc-footer">
-                <i class="fa fa-rocket"></i> Sport : Football<br/>
-                <i class="fa fa-gamepad"></i> 20Xp
-            </div>
-          </article>
-      </div>
-
-      <div class="col-md-3 col-sm-8 col-xs-8">
-          <article class="material-card Blue-Grey">
-            <h2>
-                <span>Challenge Téléfoot</span>
-                <strong>
-                    <i class="fa fa-fw fa-star"></i>
-                    <i class="fa fa-fw fa-star"></i>
-                </strong>
-            </h2>
-            <div class="mc-content">
-                <div class="img-container">
-                    <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
-                </div>
-                <div class="mc-description">
-                    Touché la barre transversale du milieu du terrain
-                </div>
-            </div>
-            <a class="mc-btn-action">
-                <i class="fa fa-bars"></i>
-            </a>
-            <div class="mc-footer">
-                <i class="fa fa-rocket"></i> Sport : Football<br/>
-                <i class="fa fa-gamepad"></i> 20Xp
-            </div>
-          </article>
-      </div>
-  </div>
-</div>
 <script>
 $(function() {
-      $('.material-card > .mc-btn-action').click(function () {
-          var card = $(this).parent('.material-card');
-          var icon = $(this).children('i');
-          icon.addClass('fa-spin-fast');
+  $('.material-card > .mc-btn-action').click(function () {
+    var card = $(this).parent('.material-card');
+    var icon = $(this).children('i');
+    icon.addClass('fa-spin-fast');
 
-          if (card.hasClass('mc-active')) {
-              card.removeClass('mc-active');
+    if (card.hasClass('mc-active')) {
+      card.removeClass('mc-active');
 
-              window.setTimeout(function() {
-                  icon
-                      .removeClass('fa-arrow-left')
-                      .removeClass('fa-spin-fast')
-                      .addClass('fa-bars');
+      window.setTimeout(function() {
+        icon
+        .removeClass('fa-arrow-left')
+        .removeClass('fa-spin-fast')
+        .addClass('fa-bars');
 
-              }, 800);
-          } else {
-              card.addClass('mc-active');
+      }, 800);
+    } else {
+      card.addClass('mc-active');
 
-              window.setTimeout(function() {
-                  icon
-                      .removeClass('fa-bars')
-                      .removeClass('fa-spin-fast')
-                      .addClass('fa-arrow-left');
+      window.setTimeout(function() {
+        icon
+        .removeClass('fa-bars')
+        .removeClass('fa-spin-fast')
+        .addClass('fa-arrow-left');
 
-              }, 800);
-          }
-      });
+      }, 800);
+    }
   });
+});
 </script>
 {% endblock %}

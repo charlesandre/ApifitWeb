@@ -139,4 +139,3 @@ class UsersFitbitCaloriesBmr
         return $this->value;
     }
 }
-

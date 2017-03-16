@@ -139,4 +139,3 @@ class UsersFitbitDistances
         return $this->value;
     }
 }
-

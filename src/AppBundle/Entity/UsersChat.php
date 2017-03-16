@@ -2,53 +2,35 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersChat
- *
- * @ORM\Table(name="users_chat")
- * @ORM\Entity
  */
 class UsersChat
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="ID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID1", type="integer", nullable=false)
      */
     private $uid1;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID2", type="integer", nullable=false)
      */
     private $uid2;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="CONTENT", type="string", length=100, nullable=false)
      */
     private $content;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="VU", type="integer", nullable=false)
      */
     private $vu;
-
 
 
     /**
@@ -71,7 +53,7 @@ class UsersChat
     public function setUid1($uid1)
     {
         $this->uid1 = $uid1;
-
+    
         return $this;
     }
 
@@ -95,7 +77,7 @@ class UsersChat
     public function setUid2($uid2)
     {
         $this->uid2 = $uid2;
-
+    
         return $this;
     }
 
@@ -119,7 +101,7 @@ class UsersChat
     public function setContent($content)
     {
         $this->content = $content;
-
+    
         return $this;
     }
 
@@ -143,7 +125,7 @@ class UsersChat
     public function setVu($vu)
     {
         $this->vu = $vu;
-
+    
         return $this;
     }
 

@@ -2,130 +2,76 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersData
- *
- * @ORM\Table(name="users_data")
- * @ORM\Entity
  */
 class UsersData
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="ID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID", type="integer", nullable=false)
      */
     private $uid;
 
-
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="DATE", type="date", nullable=false)
      */
     private $date;
 
-
     /**
      * @var integer
-     *
-     * @ORM\Column(name="WEIGHT", type="integer", nullable=false)
      */
     private $weight;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="HEIGHT", type="integer", nullable=false)
      */
     private $height;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="GENDER", type="string", length=8, nullable=false)
      */
     private $gender;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="AGE", type="integer", nullable=false)
      */
     private $age;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="DATE_OF_BIRTH", type="string", length=8, nullable=false)
      */
     private $dateOfBirth;
 
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="AVERAGEDAILYSTEPS", type="integer", nullable=false)
-     */
-     private $averageDailySteps;
-
-
-
     /**
      * @var integer
-     *
-     * @ORM\Column(name="STRIDE_LENGTH_RUNNING", type="integer", nullable=false)
+     */
+    private $averageDailySteps;
+
+    /**
+     * @var float
      */
     private $strideLengthRunning;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="STRIDE_LENGTH_WALKING", type="integer", nullable=false)
+     * @var float
      */
     private $strideLengthWalking;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="STRIDE_LENGTH_RUNNING_TYPE", type="string", length=30, nullable=false)
      */
     private $strideLengthRunningType;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="STRIDE_LENGTH_WALKING_TYPE", type="string", length=30, nullable=false)
      */
     private $strideLengthWalkingType;
 
-
-
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return UsersData
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -146,8 +92,8 @@ class UsersData
      */
     public function setUid($uid)
     {
-        $this->uidt = $uid;
-
+        $this->uid = $uid;
+    
         return $this;
     }
 
@@ -171,7 +117,7 @@ class UsersData
     public function setDate($date)
     {
         $this->date = $date;
-
+    
         return $this;
     }
 
@@ -185,7 +131,6 @@ class UsersData
         return $this->date;
     }
 
-
     /**
      * Set weight
      *
@@ -196,7 +141,7 @@ class UsersData
     public function setWeight($weight)
     {
         $this->weight = $weight;
-
+    
         return $this;
     }
 
@@ -220,7 +165,7 @@ class UsersData
     public function setHeight($height)
     {
         $this->height = $height;
-
+    
         return $this;
     }
 
@@ -244,7 +189,7 @@ class UsersData
     public function setGender($gender)
     {
         $this->gender = $gender;
-
+    
         return $this;
     }
 
@@ -268,7 +213,7 @@ class UsersData
     public function setAge($age)
     {
         $this->age = $age;
-
+    
         return $this;
     }
 
@@ -292,7 +237,7 @@ class UsersData
     public function setDateOfBirth($dateOfBirth)
     {
         $this->dateOfBirth = $dateOfBirth;
-
+    
         return $this;
     }
 
@@ -306,37 +251,48 @@ class UsersData
         return $this->dateOfBirth;
     }
 
+    /**
+     * Set averageDailySteps
+     *
+     * @param integer $averageDailySteps
+     *
+     * @return UsersData
+     */
+    public function setAverageDailySteps($averageDailySteps)
+    {
+        $this->averageDailySteps = $averageDailySteps;
+    
+        return $this;
+    }
 
-
+    /**
+     * Get averageDailySteps
+     *
+     * @return integer
+     */
     public function getAverageDailySteps()
     {
         return $this->averageDailySteps;
     }
 
-    public function setAverageDailySteps()
-    {
-        $this->averageDailySteps;
-    }
-
-
     /**
      * Set strideLengthRunning
      *
-     * @param integer $strideLengthRunning
+     * @param float $strideLengthRunning
      *
      * @return UsersData
      */
     public function setStrideLengthRunning($strideLengthRunning)
     {
         $this->strideLengthRunning = $strideLengthRunning;
-
+    
         return $this;
     }
 
     /**
      * Get strideLengthRunning
      *
-     * @return integer
+     * @return float
      */
     public function getStrideLengthRunning()
     {
@@ -346,21 +302,21 @@ class UsersData
     /**
      * Set strideLengthWalking
      *
-     * @param integer $strideLengthWalking
+     * @param float $strideLengthWalking
      *
      * @return UsersData
      */
     public function setStrideLengthWalking($strideLengthWalking)
     {
         $this->strideLengthWalking = $strideLengthWalking;
-
+    
         return $this;
     }
 
     /**
      * Get strideLengthWalking
      *
-     * @return integer
+     * @return float
      */
     public function getStrideLengthWalking()
     {
@@ -377,7 +333,7 @@ class UsersData
     public function setStrideLengthRunningType($strideLengthRunningType)
     {
         $this->strideLengthRunningType = $strideLengthRunningType;
-
+    
         return $this;
     }
 
@@ -401,7 +357,7 @@ class UsersData
     public function setStrideLengthWalkingType($strideLengthWalkingType)
     {
         $this->strideLengthWalkingType = $strideLengthWalkingType;
-
+    
         return $this;
     }
 

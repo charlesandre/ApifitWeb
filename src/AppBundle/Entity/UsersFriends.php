@@ -2,46 +2,30 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersFriends
- *
- * @ORM\Table(name="users_friends")
- * @ORM\Entity
  */
 class UsersFriends
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID_REL", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $uidRel;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID1", type="integer", nullable=false)
      */
     private $uid1;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID2", type="integer", nullable=false)
      */
     private $uid2;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="STATUT", type="integer")
      */
     private $statut;
-
 
 
     /**
@@ -64,7 +48,7 @@ class UsersFriends
     public function setUid1($uid1)
     {
         $this->uid1 = $uid1;
-
+    
         return $this;
     }
 
@@ -88,7 +72,7 @@ class UsersFriends
     public function setUid2($uid2)
     {
         $this->uid2 = $uid2;
-
+    
         return $this;
     }
 
@@ -112,7 +96,7 @@ class UsersFriends
     public function setStatut($statut)
     {
         $this->statut = $statut;
-
+    
         return $this;
     }
 

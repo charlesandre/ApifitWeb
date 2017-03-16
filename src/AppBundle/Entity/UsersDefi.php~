@@ -2,158 +2,193 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersDefi
- *
- * @ORM\Table(name="users_defi")
- * @ORM\Entity
  */
 class UsersDefi
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UDID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $udid;
+    private $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID1", type="integer", nullable=false)
      */
-    private $uid1;
+    private $sport;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID2", type="integer", nullable=false)
      */
-    private $uid2;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="DID", type="integer", nullable=false)
-     */
-    private $did;
+    private $level;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="STATUT", type="string", length=30, nullable=false)
      */
-    private $statut;
+    private $type;
 
+    /**
+     * @var integer
+     */
+    private $time;
+
+    /**
+     * @var string
+     */
+    private $description;
 
 
     /**
-     * Get udid
+     * Get id
      *
      * @return integer
      */
-    public function getUdid()
+    public function getId()
     {
-        return $this->udid;
+        return $this->id;
     }
 
     /**
-     * Set uid1
+     * Set sport
      *
-     * @param integer $uid1
+     * @param integer $sport
      *
      * @return UsersDefi
      */
-    public function setUid1($uid1)
+    public function setSport($sport)
     {
-        $this->uid1 = $uid1;
+        $this->sport = $sport;
 
         return $this;
     }
 
     /**
-     * Get uid1
+     * Get sport
      *
      * @return integer
      */
-    public function getUid1()
+    public function getSport()
     {
-        return $this->uid1;
+        return $this->sport;
     }
 
     /**
-     * Set uid2
+     * Set level
      *
-     * @param integer $uid2
+     * @param integer $level
      *
      * @return UsersDefi
      */
-    public function setUid2($uid2)
+    public function setLevel($level)
     {
-        $this->uid2 = $uid2;
+        $this->level = $level;
 
         return $this;
     }
 
     /**
-     * Get uid2
+     * Get level
      *
      * @return integer
      */
-    public function getUid2()
+    public function getLevel()
     {
-        return $this->uid2;
+        return $this->level;
     }
 
     /**
-     * Set did
+     * Set type
      *
-     * @param integer $did
+     * @param string $type
      *
      * @return UsersDefi
      */
-    public function setDid($did)
+    public function setType($type)
     {
-        $this->did = $did;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get did
-     *
-     * @return integer
-     */
-    public function getDid()
-    {
-        return $this->did;
-    }
-
-    /**
-     * Set statut
-     *
-     * @param string $statut
-     *
-     * @return UsersDefi
-     */
-    public function setStatut($statut)
-    {
-        $this->statut = $statut;
-
-        return $this;
-    }
-
-    /**
-     * Get statut
+     * Get type
      *
      * @return string
      */
-    public function getStatut()
+    public function getType()
     {
-        return $this->statut;
+        return $this->type;
+    }
+
+    /**
+     * Set time
+     *
+     * @param integer $time
+     *
+     * @return UsersDefi
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return integer
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Set descritption
+     *
+     * @param string $descritption
+     *
+     * @return UsersDefi
+     */
+    public function setDescritption($descritption)
+    {
+        $this->descritption = $descritption;
+
+        return $this;
+    }
+
+    /**
+     * Get descritption
+     *
+     * @return string
+     */
+    public function getDescritption()
+    {
+        return $this->descritption;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return UsersDefi
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

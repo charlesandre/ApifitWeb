@@ -58,34 +58,34 @@ class RegistrationController extends Controller
 
   /*public function registerAction(Request $request)
   {
-    $user = new User();
-    $form = $this->createForm(UserType::class, $user);
-    $form->handleRequest($request);
+  $user = new User();
+  $form = $this->createForm(UserType::class, $user);
+  $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
+  if ($form->isSubmitted() && $form->isValid()) {
 
-      $em = $this->getDoctrine()->getManager();
+  $em = $this->getDoctrine()->getManager();
 
-      $encoder = $this->get('security.password_encoder');
-      $password = $encoder->encodePassword($user, $user->getPlainPassword());
-      $user->setPassword($password);
+  $encoder = $this->get('security.password_encoder');
+  $password = $encoder->encodePassword($user, $user->getPlainPassword());
+  $user->setPassword($password);
 
-      $user->setRole('ROLE_USER');
+  $user->setRole('ROLE_USER');
 
-      $em->persist($user);
-      $em->flush();
+  $em->persist($user);
+  $em->flush();
 
-    /*  $new_data = $this->getDoctrine()->getRepository('AppBundle:UsersData');
-      $new_data->setId($user->getId());
-      $em->persist($new_data);
-      return $this->redirectToRoute('login');
-    }
+  /*  $new_data = $this->getDoctrine()->getRepository('AppBundle:UsersData');
+  $new_data->setId($user->getId());
+  $em->persist($new_data);
+  return $this->redirectToRoute('login');
+}
 
-    return $this->render('auth/register.html.twig', array(
-      'formRegister' => $form->createView()
-    ));
-  }
+return $this->render('auth/register.html.twig', array(
+'formRegister' => $form->createView()
+));
+}
 
-   ===== Ton code
-   */
+===== Ton code
+*/
 }

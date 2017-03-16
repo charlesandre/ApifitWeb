@@ -2,154 +2,56 @@
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
 <div class="zone_affichage container">
-  <div class="row">
+
+{% for e in exercices %}
 
     <div class="wrapper col-xs-4 col-lg-4">
         <div class="clash-card runner">
           <div class="clash-card__image img_runner">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian.png" alt="barbarian" />
+          {% if e.sport == 1 %} // Football
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 2 %} // Running
+            <img src="images/exercices/endurance.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 3 %} < -- Ski -->
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 4 %} < -- Tennis -->
+            <img src="images/exercices/tennis.png" alt="{{e.nom}}" />
+            {% endif %}
           </div>
-          <div class="clash-card__level level_runner">Level 1</div>
-          <div class="clash-card__unit-name">Le Runkeeper</div>
+          <div class="clash-card__level level_runner">Level {{e.level}}</div>
+          <div class="clash-card__unit-name">{{e.nomexo}}</div>
           <div class="clash-card__unit-description">
-            Le runkeeper a un goût prononcé pour la course et les footings. Rien ne sert de courir vite, il faut partir à point. Il obtiendra ce badge</br>après avoir parcouru 50Km.
+            {{e.description}}
           </div>
 
           <div class="clash-card__unit-stats info_runner clearfix ">
             <div class="one-third">
+              {% if app.user.level >= (e.level * 10) %}
               <div class="stat-value">Statut : Débloqué</div>
+              {% else %}
+              <div class="stat-value">Statut : Bloqué</div>
+              {% endif %}
             </div>
 
 
             <div class="one-third">
-              <div class="stat-value">Difficulté : <i class="fa fa-star"></i></div>
+              <div class="stat-value">Difficulté :
+                {% for i in 1.. e.level %}
+                <i class="fa fa-star"></i>
+                {% endfor %}
+              </div>
             </div>
 
             <div class="one-third no-border">
-              <div class="stat-value">Sport : Running</div>
+              <div class="stat-value">Sport : {{e.nom}}</div>
             </div>
 
           </div>
         </div> <!-- end wrapper runner-->
       </div>
+  {% endfor %}
 
-      <div class="wrapper col-xs-4 col-lg-4">
-        <div class="clash-card marathonien">
-          <div class="clash-card__image img_marathonien">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer.png" alt="archer" />
-          </div>
-          <div class="clash-card__level level_marathonien">Level 2</div>
-          <div class="clash-card__unit-name">Le marathonien</div>
-          <div class="clash-card__unit-description">
-            Doté d'un potentiel physique supérieur à la moyenne, le marathonien recherche à se dépasser.Force et courage tels sont ces qualités. Ce badge est obtenu après avoir réalisé un marathon
-          </div>
 
-          <div class="clash-card__unit-stats info_marathonien clearfix">
-          <div class="one-third">
-            <div class="stat-value">Statut : Débloqué</div>
-          </div>
 
-          <div class="one-third">
-            <div class="stat-value">Difficulté : <i class="fa fa-star"></i></div>
-          </div>
-
-          <div class="one-third no-border">
-            <div class="stat-value">Sport : Running</div>
-          </div>
-
-          </div>
-
-        </div> <!-- end clash-card marathonien-->
-      </div> <!-- end wrapper -->
-
-      <div class="wrapper col-xs-4 col-lg-4">
-        <div class="clash-card explorateur">
-          <div class="clash-card__image img_explorateur">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/giant.png" alt="giant" />
-          </div>
-          <div class="clash-card__level level_explorateur">Level 5</div>
-          <div class="clash-card__unit-name">L'explorateur</div>
-          <div class="clash-card__unit-description">
-            L'explorateur sillonne le monde à la recherche de paysages et de parcours d'entraînemments toujours plus difficile. L'utilisateur a au moins réalisé 5 parcours différent.
-          </div>
-
-          <div class="clash-card__unit-stats info_explorateur clearfix">
-          <div class="one-third">
-            <div class="stat-value">Statut : Débloqué</div>
-          </div>
-
-          <div class="one-third">
-            <div class="stat-value">Difficulté : <i class="fa fa-star"></i></div>
-          </div>
-
-          <div class="one-third no-border">
-            <div class="stat-value">Sport : Running</div>
-          </div>
-
-          </div>
-
-        </div> <!-- end clash-card explorateur-->
-      </div> <!-- end wrapper -->
-    </div>
-    <div class="row">
-       <div class="bloque wrapper col-xs-4 col-lg-4">
-        <div class="clash-card fleche">
-          <div class="clash-card__image img_fleche">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/goblin.png" alt="goblin" />
-          </div>
-          <div class="clash-card__level level_fleche">Level 9</div>
-          <div class="clash-card__unit-name">La flèche</div>
-          <div class="clash-card__unit-description">
-            L'utilisateur est en quête de sensation. Spatule aux pieds, fartage et cares aiguisés, il a réussi à dépasser</br>les 100Km/heure
-          </div>
-
-          <div class="clash-card__unit-stats info_fleche clearfix">
-            <div class="one-third">
-              <div class="stat-value">Statut : Bloqué</div>
-            </div>
-
-            <div class="one-third">
-              <div class="stat-value">Difficulté : <i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            </div>
-
-            <div class="one-third no-border">
-              <div class="stat-value">Sport : Ski</div>
-            </div>
-
-          </div>
-
-        </div> <!-- end clash-card flèche-->
-      </div> <!-- end wrapper -->
-
-      <div class=" bloque wrapper col-xs-4 col-lg-4">
-        <div class="clash-card phenomene">
-          <div class="clash-card__image img_phenomene">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard.png" alt="wizard" />
-          </div>
-          <div class="clash-card__level level_phenomene">Level 6</div>
-          <div class="clash-card__unit-name">Le phénomène</div>
-          <div class="clash-card__unit-description">
-            Aussi adroit avec ses pieds qu'avec sa tête, le phénomène est capable de réaliser 50 jongles de la tête et du pied. Un vrai petit génie du ballon rond.
-          </div>
-
-          <div class="clash-card__unit-stats info_phenomene clearfix">
-            <div class="one-third">
-              <div class="stat-value">Statut : Bloqué</div>
-            </div>
-
-            <div class="one-third">
-              <div class="stat-value">Difficulté : <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            </div>
-
-            <div class="one-third no-border">
-              <div class="stat-value">Sport : Foot</div>
-            </div>
-
-          </div>
-
-        </div> <!-- end clash-card phénomène-->
-      </div> <!-- end wrapper -->
-
-    </div>
   </div>
 {% endblock %}

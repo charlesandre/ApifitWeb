@@ -460,7 +460,7 @@
                 <tag name="cache.pool" clearer="cache.default_clearer"/>
                 <argument>1ACyDaouxk</argument>
                 <argument>0</argument>
-                <argument>3u2q+ecAmO+iffXf03exSS</argument>
+                <argument>nIEFb6RI9Fl59aJD3tQq0R</argument>
                 <argument>C:\Users\Samuel\Desktop\wamp64\www\Apifit\var\cache\dev/pools</argument>
                 <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                 <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -628,7 +628,7 @@
           <tag name="monolog.logger" channel="cache"/>
           <argument>RYW1HZgEm8</argument>
           <argument>null</argument>
-          <argument>3u2q+ecAmO+iffXf03exSS</argument>
+          <argument>nIEFb6RI9Fl59aJD3tQq0R</argument>
           <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
           <factory class="Symfony\Component\PropertyAccess\PropertyAccessor" method="createCache"/>
         </service>
@@ -649,7 +649,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>FkS+i-akJz</argument>
       <argument>0</argument>
-      <argument>3u2q+ecAmO+iffXf03exSS</argument>
+      <argument>nIEFb6RI9Fl59aJD3tQq0R</argument>
       <argument>C:\Users\Samuel\Desktop\wamp64\www\Apifit\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -659,7 +659,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>Qi7dIm0a50</argument>
       <argument>0</argument>
-      <argument>3u2q+ecAmO+iffXf03exSS</argument>
+      <argument>nIEFb6RI9Fl59aJD3tQq0R</argument>
       <argument>C:\Users\Samuel\Desktop\wamp64\www\Apifit\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1664,7 +1664,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>58caa3946ddc78.23927756</argument>
+            <argument>58cac304c9f679.91013499</argument>
           </service>
         </argument>
       </argument>
@@ -1867,7 +1867,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>58caa3946ddc78.23927756</argument>
+            <argument>58cac304c9f679.91013499</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2238,7 +2238,7 @@
     <service id="doctrine.dbal.logger.profiling.default" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
     <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection">
       <argument type="collection">
-        <argument key="driver">pdo_mysql</argument>
+        <argument key="driver">pdo_sqlite</argument>
         <argument key="host">127.0.0.1</argument>
         <argument key="port">3306</argument>
         <argument key="dbname">apifit</argument>

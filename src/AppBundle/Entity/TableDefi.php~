@@ -2,60 +2,40 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * TableDefi
- *
- * @ORM\Table(name="table_defi")
- * @ORM\Entity
  */
 class TableDefi
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="DID", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $did;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="LEVEL", type="integer", nullable=false)
      */
     private $level;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="XP", type="integer", nullable=false)
      */
     private $xp;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="SPORT", type="string", length=30, nullable=false)
      */
     private $sport;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="CONTENT", type="string", length=255, nullable=false)
      */
     private $content;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="PROGRESS", type="integer", nullable=false)
      */
     private $progress;
-
 
 
     /**
@@ -78,7 +58,7 @@ class TableDefi
     public function setLevel($level)
     {
         $this->level = $level;
-
+    
         return $this;
     }
 
@@ -102,7 +82,7 @@ class TableDefi
     public function setXp($xp)
     {
         $this->xp = $xp;
-
+    
         return $this;
     }
 
@@ -126,7 +106,7 @@ class TableDefi
     public function setSport($sport)
     {
         $this->sport = $sport;
-
+    
         return $this;
     }
 
@@ -150,7 +130,7 @@ class TableDefi
     public function setContent($content)
     {
         $this->content = $content;
-
+    
         return $this;
     }
 
@@ -174,7 +154,7 @@ class TableDefi
     public function setProgress($progress)
     {
         $this->progress = $progress;
-
+    
         return $this;
     }
 
