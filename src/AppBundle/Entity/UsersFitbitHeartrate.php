@@ -284,4 +284,3 @@ class UsersFitbitHeartrate
         return $this->name;
     }
 }
-

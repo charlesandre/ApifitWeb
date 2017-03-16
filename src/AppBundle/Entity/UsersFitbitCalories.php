@@ -139,4 +139,3 @@ class UsersFitbitCalories
         return $this->value;
     }
 }
-

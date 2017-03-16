@@ -139,4 +139,3 @@ class UsersAccounts
         return $this->brand;
     }
 }
-

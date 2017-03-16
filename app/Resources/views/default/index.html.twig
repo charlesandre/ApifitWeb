@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+{{ render(controller('AppBundle:Default:menu')) }}
 {% if app.user != null %}
+
 <div class="zone_affichage container">
 
 

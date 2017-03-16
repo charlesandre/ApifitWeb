@@ -110,4 +110,3 @@ class UsersDevices
         return $this->device;
     }
 }
-

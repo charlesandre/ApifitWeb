@@ -197,4 +197,3 @@ class UsersFitbitWeight
         return $this->weight;
     }
 }
-

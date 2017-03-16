@@ -48,7 +48,7 @@ class ConfigureUserController extends Controller
     return $this->render('config/configure.html.twig', array(
       'progress' => $progress,
       'accounts' => $user_accounts,
-      'devices' => $user_devices,
+      'devices' => $devices,
     ));
   }
 
@@ -78,7 +78,6 @@ class ConfigureUserController extends Controller
     }elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
       unset($_SESSION['oauth2state']);
       exit('Invalid state');
-
     }else {
 
       try {
@@ -237,9 +236,6 @@ class ConfigureUserController extends Controller
 
           $em->persist($weight);
         }
-
-
-
 
 
         foreach($response_heart['activities-heart'] as $c)
@@ -459,7 +455,7 @@ class ConfigureUserController extends Controller
       }
 
       public function checkExist($brand, $id){
-        
+
         $accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByBrand($brand);
 
         foreach($accounts as $a){

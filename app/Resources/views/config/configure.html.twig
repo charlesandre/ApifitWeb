@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {% set vars = {'progress' : progress} %}
+
+
 {% include 'config/progress.html.twig' with vars %}
 
 <div style="display:flex">
@@ -51,7 +53,6 @@
       " style="width: 100px; height:auto;">
 
       <p style="margin:0 auto;"> {{account.nameAccount}} </p>
-      <p style="margin:0 auto; font-size:12px"> {{account.apiId}} </p>
       <a href="configure/fitbit" class="btn btn-success" role="button" style="float:right"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
       <a href="#" class="btn btn-danger" role="button" style="float:right; margin:5px"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
 
@@ -63,6 +64,7 @@
   <p style="font-size:12px; margin:20px">Vous n'avez pas encore de compte configuré. </p>
   {% endif %}
 
+</div>
 </div>
 </div>
 <br/>
