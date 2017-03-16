@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+{{ render(controller('AppBundle:Default:menu')) }}
 {% if app.user != null %}
+
 <div class="zone_affichage container">
 
 
@@ -42,14 +44,7 @@
         <li><h6>Stride Length Running : {{ data.strideLengthRunning }}</h6></li>
         <li><h6>Stride Length Walking : {{ data.strideLengthWalking }}</h6></li>
           {% endfor %}
-          {% if demands %}
-          <h6>Vous avez des demandes d'amis en attente de la part de
-          {% for d in demands %}
-          {{ d.uid1 }}<h6>
-          {% endfor %}
-          {% else %}
-          <h6>Vous n'avez pas de demande en attente</h6>
-          {% endif %}
+
           <ul>
             <li><a href="{{ path('configure')}}"><i class="fa fa-inbox"></i></a></li>
             <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
@@ -63,6 +58,10 @@
     <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-bolt"></i> Entraînement
+          {% for e in exercices %}
+            <li> {{e.nomexo}} {{e.nom}}</li>
+            <hr>
+          {% endfor %}
         </div>
     </div>
   </div>
@@ -71,6 +70,10 @@
     <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-rocket"></i> Défis
+          {% for d in defis %}
+            <li> {{d.nom}} {{d.type}}</li>
+            <hr>
+          {% endfor %}
         </div>
     </div>
   </div>

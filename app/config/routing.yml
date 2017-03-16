@@ -4,3 +4,6 @@ app:
 
 logout:
     path: /logout
+navbar:
+    path: /menu
+    defaults: { _controller: AppBundle:DefaultController:menuFunction}

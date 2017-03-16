@@ -1,7 +1,5 @@
 <?php
 namespace AppBundle\Controller;
-
-
 use AppBundle\Entity\UsersSearch;
 use AppBundle\Entity\UsersFriends;
 use AppBundle\Entity\UsersChat;
@@ -13,7 +11,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-
 class DefaultController extends Controller
 {
   /**
@@ -21,89 +18,39 @@ class DefaultController extends Controller
   */
   public function showAction(Request $request)
   {
-
     if (!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
       return $this->redirect($this->generateUrl('register'));
     }
-
     $a=$this->getUser()->getId();
-    /* GETTING ALL NOTIFICATIONS */
-      /* GET NEW MESSAGES */
-      $em = $this->getDoctrine()->getManager();
-      $connectionMessage = $em->getConnection();
-      $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
-      $statementMessage->bindValue('id', $a);
-      $statementMessage->execute();
-      $unreadmessages = $statementMessage->fetchAll();
-
-      $MessageCount = count($unreadmessages);
-
-
-      /* GET NEW POSTS */
-      $em = $this->getDoctrine()->getManager();
-      $connectionPosts = $em->getConnection();
-      $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
-      $statementPosts->bindValue('id', $a);
-      $statementPosts->execute();
-      $unreadposts = $statementPosts->fetchAll();
-
-      /* GET NEW FRIEND REQUESTS */
-    $repositoryFriend = $this->getDoctrine()
-    ->getRepository('AppBundle:UsersFriends');
-
-    $queryFriendDemand = $repositoryFriend->createQueryBuilder('f')
-    ->where('f.uid2 = :uid')
-    ->andwhere('f.statut = 0')
-    ->setParameter('uid', $a)
-    ->getQuery();
-    $frienddemands = $queryFriendDemand->getResult();
-
-    /* CREATING SEARCH FORM */
-
-    $Search = new UsersSearch();
-
-    $formsearch = $this->createForm(Search::class, $Search);
-    $formsearch->handleRequest($request);
 
     /* GET USERS' DATA */
-
     $repository = $this->getDoctrine()
     ->getRepository('AppBundle:UsersData');
-
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
-
     $query = $repository->createQueryBuilder('d')
     ->where('d.uid = :uid')
     ->setParameter('uid', $a)
     ->orderBy('d.date', 'DESC')
     ->setMaxResults(1)
     ->getQuery();
-
     $lastdata = $query->getResult();
-
     $query = $repository->createQueryBuilder('d')
     ->where('d.uid = :uid')
     ->setParameter('uid', $a)
     ->getQuery();
-
     $lastdatamultiple = $query->getResult();
-
     $query = $repository->createQueryBuilder('d')
     ->where('d.id = :uid')
     ->setParameter('uid', $a)
     ->getQuery();
-
     $queryUsers = $repositoryUsers->createQueryBuilder('u')
     ->where('u.id = :uid')
     ->setParameter('uid', $a)
     ->getQuery();
-
     $users = $queryUsers->getResult();
-
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
-
     $em = $this->getDoctrine()->getManager();
     $connection = $em->getConnection();
     $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) AND STATUT = 1 ");
@@ -111,6 +58,104 @@ class DefaultController extends Controller
     $statement->execute();
     $friends = $statement->fetchAll();
 
+    /* GET 5 LAST DEFIS */
+    $em = $this->getDoctrine()->getManager();
+    $connectionDefis = $em->getConnection();
+    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT d.nom as nom, d.type as type, d.description as description FROM defis d LIMIT 5");
+    $statementDefis->bindValue('id', $a);
+    $statementDefis->execute();
+    $defis = $statementDefis->fetchAll();
+
+    /* GET 5 LAST EXERCICES */
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s WHERE s.id = t.sport LIMIT 5");
+    $statementExercices->execute();
+    $exercices = $statementExercices->fetchAll();
+
+
+
+    return $this->render('default/index.html.twig', array(
+      'friends' => $friends,
+      'lastdata' => $lastdata,
+      'lastdatamultiple' => $lastdatamultiple,
+      'id'=> $a,
+      'users' => $users,
+      'defis' => $defis,
+      'exercices' => $exercices
+    ));
+  }
+
+  /*  AFFICHAGE DES DEFIS   */
+  /**
+  * @Route("/defis")
+  */
+  public function DisplayDefis(Request $request){
+    $a=$this->getUser()->getId();
+
+    /* GET ALL SPORTS */
+    $em = $this->getDoctrine()->getManager();
+    $connectionSports = $em->getConnection();
+    $statementSports = $connectionSports->prepare("SELECT * FROM sports");
+    $statementSports->bindValue('id', $a);
+    $statementSports->execute();
+    $sports = $statementSports->fetchAll();
+    /* GET ALL DEFIS */
+    $em = $this->getDoctrine()->getManager();
+    $connectionDefis = $em->getConnection();
+    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT s.nom as nom, d.nom as nomdefi, d.level as level, d.type as type, d.time as time, d.description as description FROM defis d, sports s WHERE d.sport = s.id");
+    $statementDefis->bindValue('id', $a);
+    $statementDefis->execute();
+    $defis = $statementDefis->fetchAll();
+
+    return $this->render('default/defis.html.twig', array(
+      'sports' => $sports,
+      'defis' => $defis,
+    ));
+  }
+
+
+
+  /*  AFFICHAGE DES BADGES   */
+  /**
+  * @Route("/badges")
+  */
+  public function DisplayBadges(Request $request){
+    $a=$this->getUser()->getId();
+
+    /* GET ALL EXERCICES */
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s WHERE s.id = t.sport");
+    $statementExercices->execute();
+    $exercices = $statementExercices->fetchAll();
+
+    return $this->render('default/badges.html.twig', array(
+      'exercices' => $exercices,
+    ));
+  }
+
+
+
+  /**
+  * @Route("/", name="navbars")
+  */
+  public function menuAction(Request $request){
+    $Search = new UsersSearch();
+
+    $formsearch = $this->createForm(Search::class, $Search);
+    $formsearch->handleRequest($request);
+    $a = $this->getUser()->getId();
+
+
+    $em = $this->getDoctrine()->getManager();
+    $connectionMessage = $em->getConnection();
+    $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
+    $statementMessage->bindValue('id', $a);
+    $statementMessage->execute();
+    $unreadmessages = $statementMessage->fetchAll();
+
+    $MessageCount = count($unreadmessages);
 
 
     /* IF THERE IS A NEW SEARCH */
@@ -141,185 +186,19 @@ class DefaultController extends Controller
       $resultusers=$queryusers->getResult();
 
       return $this->render('default/result.html.twig',array(
-        'formsearch' => $formsearch->createView(),
         'users' => $resultusers,
         'key' => $keyword
       ));
 
     }
 
-
-
-
-    return $this->render('default/index.html.twig', array(
+    return $this->render('navbars.html.twig', array(
       'formsearch' => $formsearch->createView(),
-      'demands' => $frienddemands,
-      'newmessages' => $unreadmessages,
       'numnewmessage' => $MessageCount,
-      'newposts' => $unreadposts,
-      'friends' => $friends,
-      'lastdata' => $lastdata,
-      'lastdatamultiple' => $lastdatamultiple,
-      'id'=> $a,
-      'users' => $users
+      'newmessages' =>   $unreadmessages,
     ));
   }
 
-
-  /*  AFFICHAGE DES DEFIS   */
-
-
-    /**
-   * @Route("/defis")
-   */
-
-   public function DisplayDefis(Request $request){
-
-     $a=$this->getUser()->getId();
-
-
-     /* GETTING ALL NOTIFICATIONS */
-       /* GET NEW MESSAGES */
-       $em = $this->getDoctrine()->getManager();
-       $connectionMessage = $em->getConnection();
-       $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
-       $statementMessage->bindValue('id', $a);
-       $statementMessage->execute();
-       $unreadmessages = $statementMessage->fetchAll();
-
-       $MessageCount = count($unreadmessages);
-
-
-       /* GET NEW POSTS */
-       $em = $this->getDoctrine()->getManager();
-       $connectionPosts = $em->getConnection();
-       $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
-       $statementPosts->bindValue('id', $a);
-       $statementPosts->execute();
-       $unreadposts = $statementPosts->fetchAll();
-
-       /* GET NEW FRIEND REQUESTS */
-     $repositoryFriend = $this->getDoctrine()
-     ->getRepository('AppBundle:UsersFriends');
-
-     $queryFriendDemand = $repositoryFriend->createQueryBuilder('f')
-     ->where('f.uid2 = :uid')
-     ->andwhere('f.statut = 0')
-     ->setParameter('uid', $a)
-     ->getQuery();
-     $frienddemands = $queryFriendDemand->getResult();
-
-     /* CREATING SEARCH FORM */
-
-     $Search = new UsersSearch();
-
-     $formsearch = $this->createForm(Search::class, $Search);
-     $formsearch->handleRequest($request);
-
-
-      /* GET ALL SPORTS */
-      $em = $this->getDoctrine()->getManager();
-      $connectionSports = $em->getConnection();
-      $statementSports = $connectionSports->prepare("SELECT * FROM sports");
-      $statementSports->bindValue('id', $a);
-      $statementSports->execute();
-      $sports = $statementSports->fetchAll();
-
-      /* GET ALL DEFIS */
-      $em = $this->getDoctrine()->getManager();
-      $connectionDefis = $em->getConnection();
-      $statementDefis = $connectionDefis->prepare("SELECT DISTINCT s.nom as nom, d.nom as nomdefi, d.level as level,d.type as type, d.time as time, d.description as description FROM defis d, sports s WHERE d.sport = s.id");
-      $statementDefis->bindValue('id', $a);
-      $statementDefis->execute();
-      $defis = $statementDefis->fetchAll();
-
-
-
-
-    return $this->render('default/defis.html.twig', array(
-      'formsearch' => $formsearch->createView(),
-      'demands' => $frienddemands,
-      'newmessages' => $unreadmessages,
-      'numnewmessage' => $MessageCount,
-      'newposts' => $unreadposts,
-       'sports' => $sports,
-       'defis' => $defis,
-
-    ));
-
-   }
-
-
-   /*  AFFICHAGE DES BADGES   */
-
-
-     /**
-    * @Route("/badges")
-    */
-
-    public function DisplayBadges(Request $request){
-
-      $a=$this->getUser()->getId();
-
-
-      /* GETTING ALL NOTIFICATIONS */
-        /* GET NEW MESSAGES */
-        $em = $this->getDoctrine()->getManager();
-        $connectionMessage = $em->getConnection();
-        $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
-        $statementMessage->bindValue('id', $a);
-        $statementMessage->execute();
-        $unreadmessages = $statementMessage->fetchAll();
-
-        $MessageCount = count($unreadmessages);
-
-
-        /* GET NEW POSTS */
-        $em = $this->getDoctrine()->getManager();
-        $connectionPosts = $em->getConnection();
-        $statementPosts = $connectionPosts->prepare("SELECT U.NAME as name, U.LASTNAME as lastname, P.CONTENT as content FROM USERS_POSTS P, USER U WHERE P.UID2 = :id AND P.UID1 != P.UID2 AND P.UID1 = U.ID AND P.VU = '0'");
-        $statementPosts->bindValue('id', $a);
-        $statementPosts->execute();
-        $unreadposts = $statementPosts->fetchAll();
-
-        /* GET NEW FRIEND REQUESTS */
-      $repositoryFriend = $this->getDoctrine()
-      ->getRepository('AppBundle:UsersFriends');
-
-      $queryFriendDemand = $repositoryFriend->createQueryBuilder('f')
-      ->where('f.uid2 = :uid')
-      ->andwhere('f.statut = 0')
-      ->setParameter('uid', $a)
-      ->getQuery();
-      $frienddemands = $queryFriendDemand->getResult();
-
-      /* CREATING SEARCH FORM */
-
-      $Search = new UsersSearch();
-
-      $formsearch = $this->createForm(Search::class, $Search);
-      $formsearch->handleRequest($request);
-
-      /* GET ALL EXERCICES */
-      $em = $this->getDoctrine()->getManager();
-      $connectionExercices = $em->getConnection();
-      $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s WHERE s.id = t.sport");
-      $statementExercices->execute();
-      $exercices = $statementExercices->fetchAll();
-
-
-
-     return $this->render('default/badges.html.twig', array(
-       'formsearch' => $formsearch->createView(),
-       'demands' => $frienddemands,
-       'newmessages' => $unreadmessages,
-       'numnewmessage' => $MessageCount,
-       'newposts' => $unreadposts,
-       'exercices' => $exercices,
-
-     ));
-
-    }
 
 
 }

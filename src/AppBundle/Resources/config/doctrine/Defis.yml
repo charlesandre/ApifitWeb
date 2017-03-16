@@ -44,11 +44,10 @@ AppBundle\Entity\Defis:
             options:
                 unsigned: false
             column: time
-        descritption:
+        description:
             type: string
             nullable: false
             length: 30
             options:
                 fixed: false
             column: descritption
-    lifecycleCallbacks: {  }

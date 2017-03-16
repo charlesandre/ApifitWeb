@@ -1,0 +1,54 @@
+AppBundle\Entity\UsersFitbitHeartrate:
+    type: entity
+    table: users_fitbit_heartrate
+    id:
+        sid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sid
+            generator:
+                strategy: IDENTITY
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: aid
+        date:
+            type: date
+            column : date
+        caloriesOut:
+            type: integer
+            nullable: true
+            column: caloriesOut
+        max:
+            type: integer
+            nullable: true
+            column: max
+        min:
+            type: integer
+            nullable: true
+            column: min
+        minutes:
+            type: integer
+            nullable: true
+            column: minutes
+        restingHeartRate:
+            type: integer
+            nullable: true
+            column: restingHeartRate
+        name:
+            type: string
+            nullable: true
+            length: 30
+            column: name

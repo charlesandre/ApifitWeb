@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<title> Choix des sports </title>
-{% include 'config/progress.html.twig' %}
-<div style="padding:0 50px 50px 50px;">
-  <h1>{{app.user.name|title}}, veuillez sélectionner les sports où vous souhaitez vous perfectionner :</h1>
+{% block title %} Vos sports {% endblock %}
+{% set vars = {'progress' : progress} %}
+{% include 'config/progress.html.twig' with vars %}
+  <h4>{{app.user.name|title}}, veuillez sélectionner les sports où vous souhaitez vous perfectionner :</h4>
     <form name="input" action="{{ path('configureSports') }}" method="post">
       <ul>
         <li>
