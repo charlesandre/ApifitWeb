@@ -1,0 +1,42 @@
+AppBundle\Entity\UsersFitbitWeight:
+    type: entity
+    table: users_fitbit_weight
+    id:
+        sid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sid
+            generator:
+                strategy: IDENTITY
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: aid            
+        date:
+            type: date
+            column : date
+        bmi:
+            type: integer
+            nullable: true
+            column: bmi
+        time:
+            type: string
+            nullable: true
+            length: 30
+            column: time
+        weight:
+            type: integer
+            nullable: true
+            column: weight

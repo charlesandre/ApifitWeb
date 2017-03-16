@@ -44,7 +44,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
+        driver:   pdo_sqlite
         # host:     apifitfrmjapifit.mysql.db
         host:     127.0.0.1
         port:     3306

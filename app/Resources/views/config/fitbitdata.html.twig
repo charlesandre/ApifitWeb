@@ -1,33 +1,85 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{% include 'config/progress.html.twig' %}
-<h1>Félicitations {{app.user.name}}, nous avons recueilli ces données auprès de {{app.user.api |title }} :</h1>
-{{datas|json_encode()}}
-{{response|json_encode()}}
-{% for key, data in datas %}
-        <li>{{ key }} : {{ data|e }}</li>
-        <hr>
-{% endfor %}
-<a href="/configure/sports">Appliquer et continuer la configuration</a>
-<a href="/">Appliquer et terminer la configuration</a>
-<a href="/configure">Annuler</a>
-<div id="check"></div>
+{% set vars = {'progress' : progress} %}
+{% include 'config/progress.html.twig' with vars %}
+<h3>Félicitations {{app.user.name}}, <br/>Nous avons pu récupérer vos données !</h3>
+  <ul style="padding:25px 0 15px 15px; line-height:2">
+    <li>
+      <p> Votre nom sur la plateforme : {{datas.fullName}} </p>
+    </li>
+    <hr>
+    <li>
+      <p>Votre sexe : {{(datas.gender=="MALE")? 'Masculin' : 'Féminin'}}</p>
+    </li>
+    <hr>
+    <li>
+      <p>Votre date de naissance :{{datas.dateOfBirth}}</p>
+    </li>
+  </ul>
+  <hr>
+  <ul  style="padding:25px 0 15px 15px; line-height:2">
+    <li>
+      <h3> Vos montres : </h3>
+      {% if response_devices != null %}
+      {% for response in response_devices %}
+      <p>  {{response.deviceVersion}} </p>
+      {% endfor %}
+      {% else %}
+      <p>Aucun appareil associée.</p>
+      {% endif %}
+      <br/>
+    </li>
+    <hr>
+    <li>
+      <h3> Vos Amis : </h3>
+      {% if response_friends.friends != null %}
+      {% for response in response_friends.friends.user %}
+      <p>  {{response.fullName}} </p>
+      {% endfor %}
+      {% else %}
+      <p>Aucun ami associé.</p>
+      {% endif %}
+      <br/>
+      <button class="btn btn-success" role="button">Retrouver vos amis sur Apifit</button>
+    </li>
+  </ul>
 
-<div class="zone_affichage container">
-  <h1>Félicitations {{app.user.name}}, nous avons recueilli ces données auprès de {{app.user.api |title }} :</h1>
-  {% for key, data in datas %}
-          <li>{{ key }} : {{ data|e }}</li>
-  {% endfor %}
-  <button id="accept">C'est bien moi</button>
-  <button id="refuse">Ce n'est pas moi :( </button>
-  <div id="check"></div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("#accept").click(function() {
-    $('#check').load('/configure/acceptFitbit', {{ datas }});
-  });
-});
+  {# <ul  style="padding:25px 0 15px 15px; line-height:2">
+    <li>
+      <h4> Activités d'aujourd'hui </h4>
+      {{response_activities|json_encode()}}
+    </li>
+    <hr>
+    <li>
+      <h4> Calories BMR : </h4>
+      {{response_calories_bmr|json_encode()}}
+    </li>
+    <hr>
+    <li>
+      <h4> Distances parcourues : </h4>
+      {{response_distance|json_encode()}}
+    </li>
+    <hr>
+    <li>
+      <h4> Tracker calories : </h4>
+      {{response_tracker_calories|json_encode()}}
+    </li>
+    <hr>
+    <li>
+      <h4> Tracker steps : </h4>
+      {{response_tracker_steps|json_encode()}}
+    </li>
+    <hr>
+    <li>
+      <h4> HeartRate : </h4>
+      {{response_heart|json_encode()}}
+    </li>
+  </ul>
+  <a href="/configure/data" class="btn  btn-success" role="button">Continuer</a>
+  <a href="/configure" class="btn btn-danger" role="button">Annuler</a>
+  <br/>
+  <a href="/" class="btn btn-primary" role="button">Revenir au tableau de bord</a>
+</div>#}
 
-</script>
+
 {% endblock %}

@@ -1,0 +1,28 @@
+AppBundle\Entity\UsersAccounts:
+    type: entity
+    table: users_accounts
+    id:
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: aid
+            generator:
+                strategy: IDENTITY
+    fields:
+        uid:
+            type:  integer
+        api_id:
+            type: string
+            nullable: true
+            length: 30
+        name_account:
+            type: string
+            nullable: true
+            length: 30
+        brand:
+            type: string
+            nullable: true
+            length: 30

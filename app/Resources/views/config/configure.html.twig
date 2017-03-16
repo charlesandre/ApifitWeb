@@ -1,80 +1,80 @@
-
 {% extends 'base.html.twig' %}
-
 {% block body %}
 {% set vars = {'progress' : progress} %}
 {% include 'config/progress.html.twig' with vars %}
-<title> Choix de votre montre connectée </title>
-  <body>
-    <div class="zone_affichage container">
 
-      <div class="row">
-        <div class="col-lg-12 col-xs-12">
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 style="text-align:center">Configuration de votre programme</h4>
-                <h5 style="text-align:center">Veuillez choisir votre modèle de montre.</h5>
-        				<p style="text-align:center">
-                    Votre montre actuelle  :
-                    {% if(app.user.api != null)%}
-                        {{app.user.api |title }}
-                    {% endif %}
-                    {% if(app.user.api == null)%}
-                        Aucune
-                    {% endif %}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+<div style="display:flex">
 
-        <div class="row">
-          <div class="col-lg-6 col-xs-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-clock-o"></i> Je possède une montre Fitbit
-                </div>
-          		  <a href="{{path('fitbit')}}"><button><img  src="{{ asset('images/fitbit1.png') }}" width=100% alt="Fitbit"></button></a>
-            </div>
-          </div>
-          <div class="col-lg-6 col-xs-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  <i class="fa fa-clock-o"></i> Je possède une montre Jawbone
-                </div>
-                <a href="{{path('jawbone')}}"><button><img  src="{{ asset('images/jawbone1.png') }}" width=100% alt="Jawbone"></button></a>
-            </div>
-          </div>
-        </div>
+  <div style="width:60%">
+    <h4>Ajouter un appareil</h4>
 
-        <div class="row">
-          <div class="col-lg-6 col-xs-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-check-circle"></i> Configuration de votre profil
-                </div>
-                    {{ form_start(formpp) }}
-                    {{ form_widget(formpp) }}
-                    <button type="submit" class="btn btn-primary">Changer ma photo de profil !</button>
-                    {{ form_end(formpp) }}
-              </div>
-            </div>
+    <h5>Vous allez être guidé vers le site du fabricant de votre montre pour récupérer vos données.</h5>
+    <div style="margin:50px 30px 30px 30px">
+      <a href="{{path('fitbit')}}" style="margin:auto"><img  src="{{ asset('images/fitbit_logo.png') }}" width=200 alt="Fitbit"><p class=add>Je veux ajouter un appareil Fitbit. </p></a>
+    </div>
+    <br/>
+    <div style="margin:30px">
+      <a href="{{path('jawbone')}}" style="margin:auto"><img  src="{{ asset('images/jawbone_logo.png') }}" width=200 alt="Jawbone"><p class=add>Je veux ajouter un appareil Jawbone.</p></a>
+    </div>
+    <br/>
+    <div style="margin:30px">
+      <a href="{{path('samsung')}}" style="margin:auto"><img  src="{{ asset('images/samsung_logo.png') }}" width=200 alt="Samsung"><p class=add>Je veux ajouter un appareil Samsung.</p></a>
+    </div>
+    <br/>
+    <div style="margin:30px">
+      <a href="{{path('garmin')}}" style="margin:auto"><img  src="{{ asset('images/garmin_logo.png') }}" width=200 alt="Garmin"><p class=add>Je veux ajouter un appareil Garmin.</p></a>
+    </div>
 
-            <div class="col-lg-6 col-xs-6">
-              <div class="panel panel-default form_config">
-                  <div class="panel-heading">
-                    <i class="fa fa-check-circle"></i>  Configuration de votre profil
-                  </div>
-                  <p class="form_config">
-                     {{ form_start(formupdate) }}
-                     {{ form_widget(formupdate) }}
-                     <button type="submit" class="btn btn-primary">Mettre a jour vos informations !</button>
-                     {{ form_end(formupdate) }}
-                  </p>
-                </div>
-              </div>
-          </div>
-        </div>
-  </body>
+  </div>
 
+  <div style="width:30%; border-left: 1px solid #eee;">
+
+    <h4 style="margin-left:20px">Vos comptes actuels :</h4>
+
+  {% for account in accounts %}
+
+    <div style=" padding: 20px; margin: 20px;display:flex; align-items:center; border:1px solid #eee">
+
+      <img  src="
+      {% if account.brand == "fitbit" %}
+      {{ asset('images/fitbit_logo.png') }}
+      {% endif %}
+      {% if account.brand == "jawbone" %}
+      {{ asset('images/jawbone_logo.png') }}
+      {% endif %}
+      {% if account.brand == "garmin" %}
+      {{ asset('images/garmin_logo.png') }}
+      {% endif %}
+      {% if account.brand == "samsung" %}
+      {{ asset('images/samsung_logo.png') }}
+      {% endif %}
+      " style="width: 100px; height:auto;">
+
+      <p style="margin:0 auto;"> {{account.nameAccount}} </p>
+      <p style="margin:0 auto; font-size:12px"> {{account.apiId}} </p>
+      <a href="configure/fitbit" class="btn btn-success" role="button" style="float:right"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+      <a href="#" class="btn btn-danger" role="button" style="float:right; margin:5px"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
+
+    </div>
+
+  {% endfor %}
+
+  {% if accounts == null %}
+  <p style="font-size:12px; margin:20px">Vous n'avez pas encore de compte configuré. </p>
+  {% endif %}
+
+</div>
+</div>
+<br/>
+<br/>
+<br/>
+<a href="/" class="btn btn-default" role="button">Revenir au tableau de bord</a>
+<style>
+.add{
+  display:inline;
+  font-size: 14px;
+  margin:auto auto auto 70px;
+  color:inherit;
+}
+</style>
 {% endblock %}

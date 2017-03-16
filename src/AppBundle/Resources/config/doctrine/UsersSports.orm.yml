@@ -9,8 +9,6 @@ AppBundle\Entity\UsersSports:
                 unsigned: false
             id: true
             column: ID
-            generator:
-                strategy: IDENTITY
     fields:
         football:
             type: boolean

@@ -1,0 +1,32 @@
+AppBundle\Entity\UsersFitbitSteps:
+    type: entity
+    table: users_fitbit_steps
+    id:
+        sid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sid
+            generator:
+                strategy: IDENTITY
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: aid
+        date:
+            type: date
+            column : date
+        value:
+            type: integer
+            column: value
