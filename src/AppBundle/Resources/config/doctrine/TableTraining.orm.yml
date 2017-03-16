@@ -12,6 +12,14 @@ AppBundle\Entity\TableTraining:
             generator:
                 strategy: IDENTITY
     fields:
+
+        nom:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: nom
         sport:
             type: string
             nullable: false

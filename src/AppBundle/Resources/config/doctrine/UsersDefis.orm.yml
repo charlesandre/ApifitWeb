@@ -1,0 +1,28 @@
+AppBundle\Entity\UsersDefis:
+    type: entity
+    table: users_defis
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: UID_REL
+            generator:
+                strategy: IDENTITY
+    fields:
+        uid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: UID
+
+        statut:
+            type: integer
+            nullable: false
+            options:
+                fixed: false
+            column: STATUT
+    lifecycleCallbacks: {  }

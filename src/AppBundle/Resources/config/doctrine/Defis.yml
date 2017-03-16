@@ -1,0 +1,54 @@
+AppBundle\Entity\Defis:
+    type: entity
+    table: defis
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: nom
+        sport:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: sport
+        level:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: level
+        type:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: TYPE
+        time:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: time
+        descritption:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: descritption
+    lifecycleCallbacks: {  }

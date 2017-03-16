@@ -228,7 +228,7 @@ class DefaultController extends Controller
       /* GET ALL DEFIS */
       $em = $this->getDoctrine()->getManager();
       $connectionDefis = $em->getConnection();
-      $statementDefis = $connectionDefis->prepare("SELECT DISTINCT * FROM users_defi d, sports s WHERE d.sport = s.id");
+      $statementDefis = $connectionDefis->prepare("SELECT DISTINCT s.nom as nom, d.nom as nomdefi, d.level as level,d.type as type, d.time as time, d.description as description FROM defis d, sports s WHERE d.sport = s.id");
       $statementDefis->bindValue('id', $a);
       $statementDefis->execute();
       $defis = $statementDefis->fetchAll();
