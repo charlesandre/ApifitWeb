@@ -34,7 +34,7 @@ AppBundle\Entity\UsersPosts:
 
         img:
             type: integer
-            nullable: false
+            nullable: yes
             options:
                 unsigned: false
             column: IMG
@@ -47,7 +47,7 @@ AppBundle\Entity\UsersPosts:
             column: SRC
         vu:
             type: integer
-            nullable: false
+            nullable: yes
             options:
                 unsigned: false
             column: VU

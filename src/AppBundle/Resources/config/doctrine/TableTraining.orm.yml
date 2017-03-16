@@ -2,13 +2,13 @@ AppBundle\Entity\TableTraining:
     type: entity
     table: table_training
     id:
-        tid:
+        id:
             type: integer
             nullable: false
             options:
                 unsigned: false
             id: true
-            column: TID
+            column: ID
             generator:
                 strategy: IDENTITY
     fields:
