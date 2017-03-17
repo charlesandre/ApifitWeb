@@ -86,6 +86,11 @@
                 {% endfor %}
               {% endif %}
               </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                    <i class="fa fa-bookmark"></i> Discussion
+              </div>
             {% if u.id != app.user.id %}
               <h4> Ma discussion avec {{ u.name }}</h4>
               {% if messages %}

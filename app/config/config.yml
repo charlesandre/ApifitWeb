@@ -51,7 +51,7 @@ doctrine:
         # dbname:   apifitfrmjapifit
         dbname:   apifit
         user:     root
-        password: root
+        password: 
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml

@@ -8,20 +8,43 @@
     <div class="wrapper col-xs-4 col-lg-4">
         <div class="clash-card runner">
           <div class="clash-card__image img_runner">
-          {% if e.sport == 1 %} // Football
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian.png" alt="{{e.nom}}" />
-            {% elseif e.sport == 2 %} // Running
-            <img src="images/exercices/endurance.png" alt="{{e.nom}}" />
-            {% elseif e.sport == 3 %} < -- Ski -->
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian.png" alt="{{e.nom}}" />
-            {% elseif e.sport == 4 %} < -- Tennis -->
+            {% if e.sport == 1 %}
+            <img src="images/exercices/athletisme2.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 2 %}
+            <img src="images/exercices/baseball.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 3 %}
+            <img src="images/exercices/basket.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 4 %}
+            <img src="images/exercices/cyclisme.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 5 %}
+            <img src="images/exercices/escrime.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 6 %}
+            <img src="images/exercices/foot.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 7 %}
+            <img src="images/exercices/football_americain.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 8 %}
+            <img src="images/exercices/golf.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 9 %}
+            <img src="images/exercices/gym.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 10 %}
+            <img src="images/exercices/hockey.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 11 %}
+            <img src="images/exercices/karate.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 12 %}
+            <img src="images/exercices/rugby.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 13 %}
             <img src="images/exercices/tennis.png" alt="{{e.nom}}" />
+            {% elseif e.sport == 14 %}
+            <img src="images/exercices/volley.png" alt="{{e.nom}}" />
             {% endif %}
           </div>
           <div class="clash-card__level level_runner">Level {{e.level}}</div>
           <div class="clash-card__unit-name">{{e.nomexo}}</div>
           <div class="clash-card__unit-description">
             {{e.description}}
+            <span class="switch-button">
+              <i class="switch"></i>
+            </span>
           </div>
 
           <div class="clash-card__unit-stats info_runner clearfix ">
@@ -47,11 +70,23 @@
             </div>
 
           </div>
-        </div> <!-- end wrapper runner-->
+        </div> <!-- end wrapper-->
       </div>
   {% endfor %}
 
+<script>
+window.onload = function() {
 
+var button = $('.switch-button');
+
+button.on('click', function(e) {
+  e.preventDefault();
+  $(button).toggleClass('open');
+
+});
+
+}
+</script>
 
   </div>
 {% endblock %}
