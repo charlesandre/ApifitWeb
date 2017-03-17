@@ -1,6 +1,6 @@
-AppBundle\Entity\UsersData:
+AppBundle\Entity\UsersApiIdentity:
     type: entity
-    table: users_data
+    table: users_api_identity
     id:
         id:
             type: integer

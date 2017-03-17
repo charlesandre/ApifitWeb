@@ -50,4 +50,4 @@ AppBundle\Entity\Defis:
             length: 30
             options:
                 fixed: false
-            column: descritption
+            column: description

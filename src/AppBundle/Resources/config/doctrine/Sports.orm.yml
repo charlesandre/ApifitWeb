@@ -1,6 +1,6 @@
 AppBundle\Entity\Sports:
     type: entity
-    table: users_defi
+    table: sports
     id:
         id:
             type: integer

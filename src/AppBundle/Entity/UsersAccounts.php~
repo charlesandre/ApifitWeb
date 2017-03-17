@@ -53,7 +53,7 @@ class UsersAccounts
     public function setUid($uid)
     {
         $this->uid = $uid;
-    
+
         return $this;
     }
 
@@ -77,7 +77,7 @@ class UsersAccounts
     public function setApiId($apiId)
     {
         $this->api_id = $apiId;
-    
+
         return $this;
     }
 
@@ -101,7 +101,7 @@ class UsersAccounts
     public function setNameAccount($nameAccount)
     {
         $this->name_account = $nameAccount;
-    
+
         return $this;
     }
 
@@ -125,7 +125,7 @@ class UsersAccounts
     public function setBrand($brand)
     {
         $this->brand = $brand;
-    
+
         return $this;
     }
 

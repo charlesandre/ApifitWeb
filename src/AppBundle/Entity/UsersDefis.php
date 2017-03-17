@@ -2,40 +2,25 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UsersDefis
- *
- * @ORM\Table(name="users_defis")
- * @ORM\Entity
  */
 class UsersDefis
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="UID", type="integer", nullable=false)
      */
     private $uid;
 
-
     /**
      * @var integer
-     *
-     * @ORM\Column(name="STATUT", type="integer")
      */
     private $statut;
-
 
 
     /**
@@ -71,8 +56,6 @@ class UsersDefis
     {
         return $this->uid;
     }
-
-
 
     /**
      * Set statut

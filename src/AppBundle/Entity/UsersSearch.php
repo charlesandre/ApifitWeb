@@ -43,7 +43,7 @@ class UsersSearch
     public function setUid($uid)
     {
         $this->uid = $uid;
-    
+
         return $this;
     }
 
@@ -67,7 +67,7 @@ class UsersSearch
     public function setSearch($search)
     {
         $this->search = $search;
-    
+
         return $this;
     }
 

@@ -15,6 +15,11 @@ class TableTraining
     /**
      * @var string
      */
+    private $nom;
+
+    /**
+     * @var string
+     */
     private $sport;
 
     /**
@@ -34,13 +39,37 @@ class TableTraining
 
 
     /**
-     * Get tid
+     * Get id
      *
      * @return integer
      */
-    public function getTid()
+    public function getId()
     {
-        return $this->tid;
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return TableTraining
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**
@@ -141,30 +170,30 @@ class TableTraining
     /**
      * @var string
      */
-    private $nom;
+    private $description;
 
 
     /**
-     * Set nom
+     * Set description
      *
-     * @param string $nom
+     * @param string $description
      *
      * @return TableTraining
      */
-    public function setNom($nom)
+    public function setDescription($description)
     {
-        $this->nom = $nom;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get description
      *
      * @return string
      */
-    public function getNom()
+    public function getDescription()
     {
-        return $this->nom;
+        return $this->description;
     }
 }

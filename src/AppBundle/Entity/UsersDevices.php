@@ -48,7 +48,7 @@ class UsersDevices
     public function setUid($uid)
     {
         $this->uid = $uid;
-    
+
         return $this;
     }
 
@@ -72,7 +72,7 @@ class UsersDevices
     public function setBrand($brand)
     {
         $this->brand = $brand;
-    
+
         return $this;
     }
 
@@ -96,7 +96,7 @@ class UsersDevices
     public function setDevice($device)
     {
         $this->device = $device;
-    
+
         return $this;
     }
 

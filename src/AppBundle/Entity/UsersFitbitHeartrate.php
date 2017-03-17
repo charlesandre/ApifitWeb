@@ -78,7 +78,7 @@ class UsersFitbitHeartrate
     public function setId($id)
     {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -102,7 +102,7 @@ class UsersFitbitHeartrate
     public function setAid($aid)
     {
         $this->aid = $aid;
-    
+
         return $this;
     }
 
@@ -126,7 +126,7 @@ class UsersFitbitHeartrate
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -150,7 +150,7 @@ class UsersFitbitHeartrate
     public function setCaloriesOut($caloriesOut)
     {
         $this->caloriesOut = $caloriesOut;
-    
+
         return $this;
     }
 
@@ -174,7 +174,7 @@ class UsersFitbitHeartrate
     public function setMax($max)
     {
         $this->max = $max;
-    
+
         return $this;
     }
 
@@ -198,7 +198,7 @@ class UsersFitbitHeartrate
     public function setMin($min)
     {
         $this->min = $min;
-    
+
         return $this;
     }
 
@@ -222,7 +222,7 @@ class UsersFitbitHeartrate
     public function setMinutes($minutes)
     {
         $this->minutes = $minutes;
-    
+
         return $this;
     }
 
@@ -246,7 +246,7 @@ class UsersFitbitHeartrate
     public function setRestingHeartRate($restingHeartRate)
     {
         $this->restingHeartRate = $restingHeartRate;
-    
+
         return $this;
     }
 
@@ -270,7 +270,7 @@ class UsersFitbitHeartrate
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
