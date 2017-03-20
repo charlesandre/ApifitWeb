@@ -10,7 +10,7 @@ class TableTraining
     /**
      * @var integer
      */
-    private $tid;
+    private $id;
 
     /**
      * @var string
@@ -53,7 +53,7 @@ class TableTraining
     public function setSport($sport)
     {
         $this->sport = $sport;
-    
+
         return $this;
     }
 
@@ -77,7 +77,7 @@ class TableTraining
     public function setLevel($level)
     {
         $this->level = $level;
-    
+
         return $this;
     }
 
@@ -101,7 +101,7 @@ class TableTraining
     public function setTime($time)
     {
         $this->time = $time;
-    
+
         return $this;
     }
 
@@ -125,7 +125,7 @@ class TableTraining
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
@@ -137,5 +137,34 @@ class TableTraining
     public function getContent()
     {
         return $this->content;
+    }
+    /**
+     * @var string
+     */
+    private $nom;
+
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return TableTraining
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 }

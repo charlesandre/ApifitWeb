@@ -40,11 +40,11 @@ AppBundle\Entity\TableTraining:
             options:
                 unsigned: false
             column: TIME
-        content:
+        description:
             type: string
             nullable: false
             length: 255
             options:
                 fixed: false
-            column: CONTENT
+            column: description
     lifecycleCallbacks: {  }
