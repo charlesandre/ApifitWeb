@@ -5,7 +5,6 @@
 
 <div class="zone_affichage container">
 
-
 <div class="row">
 
   <div class="col-lg-8 col-xs-8">
@@ -33,8 +32,8 @@
         <li><h6>Poids : {{ data.weight }} kg </h6></li>
 
         <li><h6 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h6></li>
-        <script>
 
+        <script>
         var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
         if(imc>25) document.getElementById('imc').className="red";
         else if(imc<18) document.getElementById('imc').className="red";
@@ -58,25 +57,35 @@
     <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-bolt"></i> Entraînement
-          {% for e in exercices %}
-            <li> {{e.nomexo}} {{e.nom}}</li>
-            <hr>
-          {% endfor %}
         </div>
+        <br/>
+        {% for e in exercices %}
+        <li>
+          <label class="control control--checkbox">{{e.nomexo}} {{e.nom}}
+            <input type="checkbox"/>
+            <div class="control__indicator"></div>
+          </label>
+        </li>
+        <hr>
+        {% endfor %}
     </div>
   </div>
 
   <div class="col-lg-4 col-xs-4">
     <div class="panel panel-default">
         <div class="panel-heading">
-          <i class="fa fa-rocket"></i> <a href = "/defis">Défis</a>
+          <i class="fa fa-rocket"></i> Défis
         </div>
-        <div class="scroll">
-          {% for d in defis %}
-            <li> {{d.nom}} {{d.type}}</li>
-            <hr>
-          {% endfor %}
-        </div>
+        <br/>
+        {% for d in defis %}
+          <li>
+            <label class="control control--checkbox">{{d.nom}} {{d.type}}
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </li>
+          <hr>
+        {% endfor %}
     </div>
   </div>
 
@@ -87,7 +96,7 @@
         </div>
         <div class="scroll">
           {% for users in friends %}
-          <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+          <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn_bootstrap_modify btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
             {{ users.name }} {{ users.lastname}}</button></a></li>
             {% endfor %}
         </div>

@@ -32,43 +32,48 @@
     </div>
     <div class="checkbox disabled">
       <label><input type="checkbox" value="">30Xp</label>
-    </div><br/><br/>
+    </div>
+    <br/><br/>
     </div>
   </div>
 </div>
 
 <div class="zone_affichage container">
 
-
+<div class="zone_defis">
     {% for d in defis %}
-      <div class="col-md-3 col-sm-8 col-xs-8">
+      <div class="col-md-4 col-sm-6 col-xs-6">
         {% if d.type == "Endurance" %}
-            <article class="material-card Light-Green">
-        {% elseif d.type == "Musculation" %}
-            <article class="material-card Light-Blue">
-        {% elseif d.type == "Tonicité" %}
-            <article class="material-card Blue-Grey">
-        {% elseif d.type == "" %}
-            <article class="material-card Indigo">
-        {% elseif d.type == "" %}
             <article class="material-card Purple">
+        {% elseif d.type == "Musculation" %}
+            <article class="material-card Blue">
+        {% elseif d.type == "Tonicité" %}
+            <article class="material-card Green">
+        {% elseif d.type == "" %}
+            <article class="material-card ">
+        {% elseif d.type == "" %}
+            <article class="material-card ">
         {% endif %}
               <h2>
-                  <span>{{d.nomdefi}}</span>
+                  <span class="switch-button">
+                    <i class="switch"></i>
+                  </span>
                   <strong>
                     {% for i in 1.. d.level %}
                       <i class="fa fa-fw fa-star"></i>
                     {% endfor %}
                   </strong>
+                  
+                  <span>{{d.nomdefi}}</span>
               </h2>
               <div class="mc-content">
                   <div class="img-container">
                     {% if d.type == "Endurance" %}
-                        <img class="img-responsive" src="images/defis/endurance.png">
+                        <img class="img-responsive" src="images/defis/defi_athletisme1.jpg">
                     {% elseif d.type == "Musculation" %}
-                    <img class="img-responsive" src="images/defis/musculation.png">
+                    <img class="img-responsive" src="images/defis/defi_fitness1.jpg">
                     {% elseif d.type == "Tonicité" %}
-                    <img class="img-responsive" src="images/defis/course.png">
+                    <img class="img-responsive" src="images/defis/defi_running1.jpg">
                     {% elseif d.type == "" %}
                         <article class="material-card Indigo">
                     {% elseif d.type == "" %}
@@ -90,7 +95,7 @@
           </article>
       </div>
       {% endfor %}
-
+    </div>
     </div>
 
 <script>
@@ -123,5 +128,18 @@ $(function() {
           }
       });
   });
+</script>
+<script>
+window.onload = function() {
+
+var button = $('.switch-button');
+
+button.on('click', function(e) {
+  e.preventDefault();
+  $(button).toggleClass('open');
+
+});
+
+}
 </script>
 {% endblock %}

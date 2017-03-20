@@ -900,7 +900,8 @@ body {
 	line-height:40px!important;
 }
 .navbar-right{
-	margin-right:350px!important;
+	margin-right:450px!important;
+  position: relative;
 }
 .navbar,.footer-bottom{
 	margin-left:50px;
@@ -1035,26 +1036,33 @@ nav:hover ~ .menu {
   position: relative;
 }
 
-.menu {
-  position: relative;
-}
+
 
 /*dropdown*/
-.menu, .menu1{
-	position:fixed;
+.menu, .menu1, .menu2, .menu3{
+	position:absolute;
 	cursor:pointer;
 }
 .menu{
   width:197px;
-  right:0;
+  top:0;
+  right:50px;
   border: 1px solid #e7e7e7;
 	border-radius: 4px;
 }
 .menu1{
   width:200px;
-  right:198px;
+  right:280px;
 }
-.title1
+.menu2{
+  width:220px;
+  right:420px;
+}
+.menu3{
+  width:200px;
+  right:250px;
+}
+.title1, .title2, .title3
 {
 	width:100%;
 	position:relative;
@@ -1125,7 +1133,10 @@ span{
   font-size:0.5em;
   color:#fff;
 }
-.dropdown, .dropdown1{
+.bouton_accept{
+  padding-left:30px;
+}
+.dropdown, .dropdown1, .dropdown2, .dropdown3{
 	background:#fff;
 	border-radius:4px;
 	box-shadow:0 0 20px -10px #333;

@@ -1,6 +1,6 @@
 <nav class=" base navbar navbar-default" role="navigation" style="border-radius: 0px ">
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-left">
 
     <div class="col-sm-8 col-md-8">
             {{form_start(formsearch)}}
@@ -10,7 +10,7 @@
 
     <!-- dropdown Message-->
     <div class="menu1">
-      <div class="title1" onclick="f_notif()"><span class="fa fa-bell"></span>
+      <div class="title1" onclick="f_message()"><span class="fa fa-comments"></span>
         {% if numnewmessage > 0 %}
         <div class="arrow1"><span class="rond_notif"><em>{{numnewmessage}}</em></span></div>
         {% endif %}
@@ -26,6 +26,45 @@
         {% endif %}
 
       </div>
+    </div>
+      <!-- dropdown Amis-->
+      <div class="menu2">
+        <div class="title2" onclick="f_amis()"><span class="fa fa-user-plus"></span>
+          <div class="arrow2"><span class="rond_notif"><em>3</em></span></div>
+        </div>
+        <div class="dropdown2">
+            <li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/67.png"/> Charles Andre</br></a>
+              <div class="bouton_accept">
+                <button class="btn btn-primary">Accepter</button>
+                <button class="btn btn-default">Rejeter</button>
+              </div>
+            </li>
+            <li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/67.png"/> Charles Andre</br></a>
+              <div class="bouton_accept">
+                <button class="btn btn-primary">Accepter</button>
+                <button class="btn btn-default">Rejeter</button>
+              </div>
+            </li>
+        </div>
+      </div>
+        <!-- dropdown notif-->
+        <div class="menu3">
+          <div class="title3" onclick="f_notif()"><span class="fa fa-bell"></span>
+            {% if numnewmessage > 0 %}
+            <div class="arrow3"><span class="rond_notif"><em>{{numnewmessage}}</em></span></div>
+            {% endif %}
+          </div>
+          <div class="dropdown3">
+            {% if newmessages %}
+              {% for m in newmessages %}
+              <li class="position_notif"><a href="/{{m.id}}"><img class="photos_amis" src="images/Avatar/{{m.id}}.png"/> {{m.name}} {{m.lastname}}</br></a>
+                <p>{{m.content}}</p><hr></li>
+              {% endfor %}
+            {% else %}
+                <li class="position_notif"> Pas de nouveaux messages </li>
+            {% endif %}
+
+          </div>
     </div>
     <!--End dropdown NotiF-->
 
