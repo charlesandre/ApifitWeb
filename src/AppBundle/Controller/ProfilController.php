@@ -66,7 +66,7 @@ class ProfilController extends Controller
   /* SEE A USER'S PROFIL */
 
   /**
-  * @Route("/{id}", requirements={"id": "\d+"})
+  * @Route("/profil/{id}", requirements={"id": "\d+"})
   */
   public function displayUser(Request $request, $id){
     $id = $request->attributes->get('id');
