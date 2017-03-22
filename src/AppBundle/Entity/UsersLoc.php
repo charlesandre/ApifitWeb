@@ -43,7 +43,7 @@ class UsersLoc
     public function setCoordX($coordX)
     {
         $this->coordX = $coordX;
-    
+
         return $this;
     }
 
@@ -67,7 +67,7 @@ class UsersLoc
     public function setCoordY($coordY)
     {
         $this->coordY = $coordY;
-    
+
         return $this;
     }
 

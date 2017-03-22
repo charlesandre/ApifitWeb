@@ -53,7 +53,7 @@ class UsersFitbitDistances
     public function setId($id)
     {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -77,7 +77,7 @@ class UsersFitbitDistances
     public function setAid($aid)
     {
         $this->aid = $aid;
-    
+
         return $this;
     }
 
@@ -101,7 +101,7 @@ class UsersFitbitDistances
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -125,7 +125,7 @@ class UsersFitbitDistances
     public function setValue($value)
     {
         $this->value = $value;
-    
+
         return $this;
     }
 

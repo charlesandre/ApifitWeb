@@ -48,7 +48,7 @@ class UsersSports
     public function setId($id)
     {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -72,7 +72,7 @@ class UsersSports
     public function setFootball($football)
     {
         $this->football = $football;
-    
+
         return $this;
     }
 
@@ -96,7 +96,7 @@ class UsersSports
     public function setRunning($running)
     {
         $this->running = $running;
-    
+
         return $this;
     }
 
@@ -120,7 +120,7 @@ class UsersSports
     public function setRugby($rugby)
     {
         $this->rugby = $rugby;
-    
+
         return $this;
     }
 
@@ -144,7 +144,7 @@ class UsersSports
     public function setNatation($natation)
     {
         $this->natation = $natation;
-    
+
         return $this;
     }
 
@@ -168,7 +168,7 @@ class UsersSports
     public function setTennis($tennis)
     {
         $this->tennis = $tennis;
-    
+
         return $this;
     }
 

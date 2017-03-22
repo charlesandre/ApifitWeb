@@ -15,6 +15,11 @@ class TableTraining
     /**
      * @var string
      */
+    private $nom;
+
+    /**
+     * @var string
+     */
     private $sport;
 
     /**
@@ -30,17 +35,41 @@ class TableTraining
     /**
      * @var string
      */
-    private $content;
+    private $description;
 
 
     /**
-     * Get tid
+     * Get id
      *
      * @return integer
      */
-    public function getTid()
+    public function getId()
     {
-        return $this->tid;
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return TableTraining
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**
@@ -113,74 +142,6 @@ class TableTraining
     public function getTime()
     {
         return $this->time;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     *
-     * @return TableTraining
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-    /**
-     * @var string
-     */
-    private $nom;
-
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return TableTraining
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-    /**
-     * @var string
-     */
-    private $description;
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

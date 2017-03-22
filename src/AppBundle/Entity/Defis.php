@@ -2,67 +2,45 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Defis
- *
- * @ORM\Table(name="defis")
- * @ORM\Entity
  */
 class Defis
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
      */
     private $nom;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="sport", type="integer", nullable=false)
      */
     private $sport;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="level", type="integer", nullable=false)
      */
     private $level;
 
     /**
-    * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=30, nullable=false)
+     * @var string
      */
     private $type;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="DID", type="integer", nullable=false)
      */
     private $time;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="STATUT", type="string", length=200, nullable=false)
      */
     private $description;
-
 
 
     /**
@@ -80,7 +58,7 @@ class Defis
      *
      * @param string $nom
      *
-     * @return TableTraining
+     * @return Defis
      */
     public function setNom($nom)
     {
@@ -104,7 +82,7 @@ class Defis
      *
      * @param integer $sport
      *
-     * @return UsersDefi
+     * @return Defis
      */
     public function setSport($sport)
     {
@@ -128,7 +106,7 @@ class Defis
      *
      * @param integer $level
      *
-     * @return UsersDefi
+     * @return Defis
      */
     public function setLevel($level)
     {
@@ -152,7 +130,7 @@ class Defis
      *
      * @param string $type
      *
-     * @return UsersDefi
+     * @return Defis
      */
     public function setType($type)
     {
@@ -176,7 +154,7 @@ class Defis
      *
      * @param integer $time
      *
-     * @return UsersDefi
+     * @return Defis
      */
     public function setTime($time)
     {
@@ -200,9 +178,9 @@ class Defis
      *
      * @param string $description
      *
-     * @return UsersDefi
+     * @return Defis
      */
-    public function setDescription($statut)
+    public function setDescription($description)
     {
         $this->description = $description;
 

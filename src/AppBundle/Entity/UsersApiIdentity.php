@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * UsersData
+ * UsersApiIdentity
  */
-class UsersData
+class UsersApiIdentity
 {
     /**
      * @var integer
@@ -88,12 +88,12 @@ class UsersData
      *
      * @param integer $uid
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setUid($uid)
     {
         $this->uid = $uid;
-    
+
         return $this;
     }
 
@@ -112,12 +112,12 @@ class UsersData
      *
      * @param \DateTime $date
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -136,12 +136,12 @@ class UsersData
      *
      * @param integer $weight
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setWeight($weight)
     {
         $this->weight = $weight;
-    
+
         return $this;
     }
 
@@ -160,12 +160,12 @@ class UsersData
      *
      * @param integer $height
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setHeight($height)
     {
         $this->height = $height;
-    
+
         return $this;
     }
 
@@ -184,12 +184,12 @@ class UsersData
      *
      * @param string $gender
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setGender($gender)
     {
         $this->gender = $gender;
-    
+
         return $this;
     }
 
@@ -208,12 +208,12 @@ class UsersData
      *
      * @param integer $age
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setAge($age)
     {
         $this->age = $age;
-    
+
         return $this;
     }
 
@@ -232,12 +232,12 @@ class UsersData
      *
      * @param string $dateOfBirth
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setDateOfBirth($dateOfBirth)
     {
         $this->dateOfBirth = $dateOfBirth;
-    
+
         return $this;
     }
 
@@ -256,12 +256,12 @@ class UsersData
      *
      * @param integer $averageDailySteps
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setAverageDailySteps($averageDailySteps)
     {
         $this->averageDailySteps = $averageDailySteps;
-    
+
         return $this;
     }
 
@@ -280,12 +280,12 @@ class UsersData
      *
      * @param float $strideLengthRunning
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setStrideLengthRunning($strideLengthRunning)
     {
         $this->strideLengthRunning = $strideLengthRunning;
-    
+
         return $this;
     }
 
@@ -304,12 +304,12 @@ class UsersData
      *
      * @param float $strideLengthWalking
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setStrideLengthWalking($strideLengthWalking)
     {
         $this->strideLengthWalking = $strideLengthWalking;
-    
+
         return $this;
     }
 
@@ -328,12 +328,12 @@ class UsersData
      *
      * @param string $strideLengthRunningType
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setStrideLengthRunningType($strideLengthRunningType)
     {
         $this->strideLengthRunningType = $strideLengthRunningType;
-    
+
         return $this;
     }
 
@@ -352,12 +352,12 @@ class UsersData
      *
      * @param string $strideLengthWalkingType
      *
-     * @return UsersData
+     * @return UsersApiIdentity
      */
     public function setStrideLengthWalkingType($strideLengthWalkingType)
     {
         $this->strideLengthWalkingType = $strideLengthWalkingType;
-    
+
         return $this;
     }
 

@@ -47,7 +47,7 @@ AppBundle\Entity\Defis:
         description:
             type: string
             nullable: false
-            length: 30
+            length: 250
             options:
                 fixed: false
-            column: descritption
+            column: description

@@ -58,7 +58,7 @@ class TableDefi
     public function setLevel($level)
     {
         $this->level = $level;
-    
+
         return $this;
     }
 
@@ -82,7 +82,7 @@ class TableDefi
     public function setXp($xp)
     {
         $this->xp = $xp;
-    
+
         return $this;
     }
 
@@ -106,7 +106,7 @@ class TableDefi
     public function setSport($sport)
     {
         $this->sport = $sport;
-    
+
         return $this;
     }
 
@@ -130,7 +130,7 @@ class TableDefi
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
@@ -154,7 +154,7 @@ class TableDefi
     public function setProgress($progress)
     {
         $this->progress = $progress;
-    
+
         return $this;
     }
 

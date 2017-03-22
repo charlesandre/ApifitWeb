@@ -1,23 +1,88 @@
 <?php
 namespace AppBundle\Controller;
+
 use AppBundle\Entity\UsersSearch;
 use AppBundle\Entity\UsersFriends;
 use AppBundle\Entity\UsersChat;
 use AppBundle\Entity\UsersPosts;
+
 use AppBundle\Form\Search;
 use AppBundle\Form\Post;
 use AppBundle\Form\Chat;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 class DefaultController extends Controller
 {
+
+  
+    public function menuAction(Request $request){
+      $Search = new UsersSearch();
+
+      $formsearch = $this->createForm(Search::class, $Search);
+      $formsearch->handleRequest($request);
+      $a = $this->getUser()->getId();
+
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionMessage = $em->getConnection();
+      $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
+      $statementMessage->bindValue('id', $a);
+      $statementMessage->execute();
+      $unreadmessages = $statementMessage->fetchAll();
+
+      $MessageCount = count($unreadmessages);
+
+
+      /* IF THERE IS A NEW SEARCH */
+      if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+        /* CREATING SEARCH FORM */
+
+        $Search = new UsersSearch();
+
+        $formsearch = $this->createForm(Search::class, $Search);
+        $formsearch->handleRequest($request);
+
+        $keyword= $formsearch["search"]->getData();
+
+        $Search->setUid($a);
+        $Search->setSearch($keyword);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($Search);
+        $em->flush();
+
+        $queryusers = $repositoryUsers->createQueryBuilder('u')
+        ->where('u.lastname = :key')
+        ->orWhere('u.name = :key')
+        ->setParameter('key', $keyword)
+        ->getQuery();
+
+        $resultusers=$queryusers->getResult();
+
+        return $this->render('default/result.html.twig',array(
+          'users' => $resultusers,
+          'key' => $keyword
+        ));
+
+      }
+
+      return $this->render('navbars.html.twig', array(
+        'formsearch' => $formsearch->createView(),
+        'numnewmessage' => $MessageCount,
+        'newmessages' =>   $unreadmessages,
+      ));
+    }
+
   /**
   * @Route("/", name="welcome")
   */
   public function showAction(Request $request)
   {
+
     if (!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
       return $this->redirect($this->generateUrl('register'));
     }
@@ -25,7 +90,7 @@ class DefaultController extends Controller
 
     /* GET USERS' DATA */
     $repository = $this->getDoctrine()
-    ->getRepository('AppBundle:UsersData');
+    ->getRepository('AppBundle:UsersApiIdentity');
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
     $query = $repository->createQueryBuilder('d')
@@ -134,71 +199,4 @@ class DefaultController extends Controller
       'exercices' => $exercices,
     ));
   }
-
-
-
-  /**
-  * @Route("/", name="navbars")
-  */
-  public function menuAction(Request $request){
-    $Search = new UsersSearch();
-
-    $formsearch = $this->createForm(Search::class, $Search);
-    $formsearch->handleRequest($request);
-    $a = $this->getUser()->getId();
-
-
-    $em = $this->getDoctrine()->getManager();
-    $connectionMessage = $em->getConnection();
-    $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
-    $statementMessage->bindValue('id', $a);
-    $statementMessage->execute();
-    $unreadmessages = $statementMessage->fetchAll();
-
-    $MessageCount = count($unreadmessages);
-
-
-    /* IF THERE IS A NEW SEARCH */
-    if ($formsearch->isSubmitted() && $formsearch->isValid()) {
-
-      /* CREATING SEARCH FORM */
-
-      $Search = new UsersSearch();
-
-      $formsearch = $this->createForm(Search::class, $Search);
-      $formsearch->handleRequest($request);
-
-      $keyword= $formsearch["search"]->getData();
-
-      $Search->setUid($a);
-      $Search->setSearch($keyword);
-
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($Search);
-      $em->flush();
-
-      $queryusers = $repositoryUsers->createQueryBuilder('u')
-      ->where('u.lastname = :key')
-      ->orWhere('u.name = :key')
-      ->setParameter('key', $keyword)
-      ->getQuery();
-
-      $resultusers=$queryusers->getResult();
-
-      return $this->render('default/result.html.twig',array(
-        'users' => $resultusers,
-        'key' => $keyword
-      ));
-
-    }
-
-    return $this->render('navbars.html.twig', array(
-      'formsearch' => $formsearch->createView(),
-      'numnewmessage' => $MessageCount,
-      'newmessages' =>   $unreadmessages,
-    ));
-  }
-
-
-
 }

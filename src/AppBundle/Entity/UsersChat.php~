@@ -53,7 +53,7 @@ class UsersChat
     public function setUid1($uid1)
     {
         $this->uid1 = $uid1;
-    
+
         return $this;
     }
 
@@ -77,7 +77,7 @@ class UsersChat
     public function setUid2($uid2)
     {
         $this->uid2 = $uid2;
-    
+
         return $this;
     }
 
@@ -101,7 +101,7 @@ class UsersChat
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
@@ -125,7 +125,7 @@ class UsersChat
     public function setVu($vu)
     {
         $this->vu = $vu;
-    
+
         return $this;
     }
 

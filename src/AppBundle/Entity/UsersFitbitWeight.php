@@ -63,7 +63,7 @@ class UsersFitbitWeight
     public function setId($id)
     {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -87,7 +87,7 @@ class UsersFitbitWeight
     public function setAid($aid)
     {
         $this->aid = $aid;
-    
+
         return $this;
     }
 
@@ -111,7 +111,7 @@ class UsersFitbitWeight
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -135,7 +135,7 @@ class UsersFitbitWeight
     public function setBmi($bmi)
     {
         $this->bmi = $bmi;
-    
+
         return $this;
     }
 
@@ -159,7 +159,7 @@ class UsersFitbitWeight
     public function setTime($time)
     {
         $this->time = $time;
-    
+
         return $this;
     }
 
@@ -183,7 +183,7 @@ class UsersFitbitWeight
     public function setWeight($weight)
     {
         $this->weight = $weight;
-    
+
         return $this;
     }
 
