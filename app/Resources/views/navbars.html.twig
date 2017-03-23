@@ -30,10 +30,10 @@
       <!-- dropdown Amis-->
       <div class="menu2">
         <div class="title2" onclick="f_amis()"><span class="fa fa-user-plus"></span>
-          <div class="arrow2"><span class="rond_notif"><em>3</em></span></div>
+          <!-- <div class="arrow2"><span class="rond_notif"><em>3</em></span></div> -->
         </div>
         <div class="dropdown2">
-            <li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/.png"/> Charles Andre</br></a>
+            <!-- <li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/.png"/> Charles Andre</br></a>
               <div class="bouton_accept">
                 <button class="btn btn-primary">Accepter</button>
                 <button class="btn btn-default">Rejeter</button>
@@ -44,7 +44,7 @@
                 <button class="btn btn-primary">Accepter</button>
                 <button class="btn btn-default">Rejeter</button>
               </div>
-            </li>
+            </li> -->
         </div>
       </div>
         <!-- dropdown notif-->
@@ -90,18 +90,18 @@
       <ul>
         <li class='logo'>
       <a>APIFIT</a>
-      <i ><img class='logo_icon'alt="logo_apifit" src="images/logo_apifit1.png"/></i>
+      <i ><img class='logo_icon'alt="logo_apifit" src="{{ asset('images/logo_apifit1.png') }}"/></i>
         </li>
         <li>
           <a href="/">Dashboard</a>
           <i class='fa fa-home'></i>
         </li>
         <li>
-          <a href="/profil/é{{ app.user.id }}">Profil</a>
+          <a href="/profil/{{ app.user.id }}">Profil</a>
           <i class="fa fa-suitcase"></i>
         </li>
         <li>
-          <a href="/badges">Entraînements</a>
+          <a href="/entrainements">Entraînements</a>
           <i class='fa fa-bolt'></i>
         </li>
         <li>

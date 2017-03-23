@@ -18,7 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class DefaultController extends Controller
 {
 
-  
+
     public function menuAction(Request $request){
       $Search = new UsersSearch();
 
@@ -138,6 +138,18 @@ class DefaultController extends Controller
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
+    /* RECUPERATION DES DONNEES POUR LE GRAPHE */
+    $em = $this->getDoctrine()->getManager();
+    $connectionData = $em->getConnection();
+    $statementData = $connectionData->prepare("SELECT s.value as value, s.date as date FROM users_fitbit_steps s WHERE s.id = $a ORDER BY s.date DESC LIMIT 5");
+    $statementData->execute();
+    $steps = $statementData->fetchAll();
+
+    $em = $this->getDoctrine()->getManager();
+    $connectionData = $em->getConnection();
+    $statementData = $connectionData->prepare("SELECT d.value as value, d.date as date FROM users_fitbit_distances d WHERE d.id = $a ORDER BY d.date DESC LIMIT 5");
+    $statementData->execute();
+    $distance = $statementData->fetchAll();
 
 
     return $this->render('default/index.html.twig', array(
@@ -147,6 +159,8 @@ class DefaultController extends Controller
       'id'=> $a,
       'users' => $users,
       'defis' => $defis,
+      'steps' => $steps,
+      'distance' => $distance,
       'exercices' => $exercices
     ));
   }
@@ -181,9 +195,9 @@ class DefaultController extends Controller
 
 
 
-  /*  AFFICHAGE DES BADGES   */
+  /*  AFFICHAGE DES ENTRAINEMENTS   */
   /**
-  * @Route("/badges")
+  * @Route("/entrainements")
   */
   public function DisplayBadges(Request $request){
     $a=$this->getUser()->getId();
@@ -195,7 +209,7 @@ class DefaultController extends Controller
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
-    return $this->render('default/badges.html.twig', array(
+    return $this->render('default/entrainements.html.twig', array(
       'exercices' => $exercices,
     ));
   }
