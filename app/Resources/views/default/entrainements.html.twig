@@ -42,7 +42,16 @@
           <div class="clash-card__unit-name">{{e.nomexo}}</div>
           <div class="clash-card__unit-description">
             {{e.description}}
-            <span class="switch-button">
+            {% set tmp = 0 %}
+            {% for r in abonnementexo %}
+              {% if e.id == r.tid %}
+            <span class="open switch-button" id="{{ e.id }}">
+              {% set tmp = 1 %}
+              {% endif %}
+            {% endfor %}
+            {% if tmp == 0 %}
+            <span class="switch-button" id="{{ e.id }}">
+            {% endif %}
               <i class="switch"></i>
             </span>
           </div>
@@ -75,17 +84,12 @@
   {% endfor %}
 
 <script>
-window.onload = function() {
 
-var button = $('.switch-button');
-
-button.on('click', function(e) {
-  e.preventDefault();
+$("span").click(function() {
+  var button = $("#"+this.id);
   $(button).toggleClass('open');
-
 });
 
-}
 </script>
 
   </div>

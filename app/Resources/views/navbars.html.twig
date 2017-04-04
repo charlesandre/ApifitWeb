@@ -3,8 +3,10 @@
     <ul class="nav navbar-nav navbar-left">
 
     <div class="col-sm-8 col-md-8">
+
             {{form_start(formsearch)}}
             {{form_end(formsearch)}}
+
     </div>
 
 
@@ -53,18 +55,18 @@
         <!-- dropdown notif-->
         <div class="menu3">
           <div class="title3" onclick="f_notif()"><span class="fa fa-bell"></span>
-            {% if numnewmessage > 0 %}
-            <div class="arrow3"><span class="rond_notif"><em>{{numnewmessage}}</em></span></div>
+            {% if numposts > 0 %}
+            <div class="arrow3"><span class="rond_notif"><em>{{numposts}}</em></span></div>
             {% endif %}
           </div>
           <div class="dropdown3">
-            {% if newmessages %}
-              {% for m in newmessages %}
-              <li class="position_notif"><a href="/{{m.id}}"><img class="photos_amis" src="images/Avatar/{{m.id}}.png"/> {{m.name}} {{m.lastname}}</br></a>
-                <p>{{m.content}}</p><hr></li>
+            {% if newposts %}
+              {% for p in newposts %}
+              <li class="position_notif"><a href="/profil/{{app.user.id}}"><img class="photos_amis" src="images/Avatar/{{p.id1}}.png"/> {{p.name}} {{p.lastname}}</br></a>
+                <p>{{p.content}}</p><hr></li>
               {% endfor %}
             {% else %}
-                <li class="position_notif"> Pas de nouveaux messages </li>
+                <li class="position_notif"> Pas de nouvelles notifications </li>
             {% endif %}
 
           </div>

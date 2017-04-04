@@ -47,4 +47,5 @@ AppBundle\Entity\TableTraining:
             options:
                 fixed: false
             column: description
+
     lifecycleCallbacks: {  }

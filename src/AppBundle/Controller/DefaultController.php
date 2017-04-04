@@ -26,7 +26,7 @@ class DefaultController extends Controller
       $formsearch->handleRequest($request);
       $a = $this->getUser()->getId();
 
-
+      // GET NEW MESSAGES
       $em = $this->getDoctrine()->getManager();
       $connectionMessage = $em->getConnection();
       $statementMessage = $connectionMessage->prepare("SELECT U.ID as id ,U.NAME as name, U.LASTNAME as lastname, M.CONTENT as content FROM USERS_CHAT M, USER U WHERE M.UID2 = :id AND M.UID1 = U.ID AND M.VU = '0'");
@@ -36,7 +36,7 @@ class DefaultController extends Controller
 
       $MessageCount = count($unreadmessages);
 
-
+      //GET NEW REQUEST
       $em = $this->getDoctrine()->getManager();
       $connectionRequest = $em->getConnection();
       $statementRequest = $connectionRequest->prepare("SELECT f.uid1 as id1, f.uid2 as id2, f.uid_rel as uidRel, u.name as name, u.lastname as lastname FROM users_friends f, user u WHERE f.uid2=:id AND f.statut = 0 AND f.uid1 = u.id ");
@@ -46,10 +46,19 @@ class DefaultController extends Controller
 
       $RequestCount = count($unreadRequest);
 
+      //GET NEW NOTIFICATIONS
+      $em = $this->getDoctrine()->getManager();
+      $connectionPosts = $em->getConnection();
+      $statementPosts = $connectionPosts->prepare("SELECT p.uid1 as id1, p.content as content, u.name as name, u.lastname as lastname FROM users_posts p, user u WHERE p.uid2 = :id AND p.vu = 0 AND p.uid1 = u.id");
+      $statementPosts->bindValue('id', $a);
+      $statementPosts->execute();
+      $unreadPosts = $statementPosts->fetchAll();
+
+      $PostsCount = count($unreadPosts);
 
 
       /* IF THERE IS A NEW SEARCH */
-      if ($formsearch->isSubmitted() && $formsearch->isValid()) {
+      if ($formsearch->isSubmitted()) {
         /* CREATING SEARCH FORM */
 
         $Search = new UsersSearch();
@@ -87,6 +96,8 @@ class DefaultController extends Controller
         'newmessages' => $unreadmessages,
         'numrequest' => $RequestCount,
         'request' => $unreadRequest,
+        'newposts' => $unreadPosts,
+        'numposts' => $PostsCount,
       ));
     }
 
@@ -147,9 +158,11 @@ class DefaultController extends Controller
     /* GET 5 LAST EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s WHERE s.id = t.sport LIMIT 5");
+    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s, users_training r WHERE s.id = t.sport LIMIT 5");
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
+
+
 
     /* RECUPERATION DES DONNEES POUR LE GRAPHE */
     $em = $this->getDoctrine()->getManager();
@@ -174,7 +187,7 @@ class DefaultController extends Controller
       'defis' => $defis,
       'steps' => $steps,
       'distance' => $distance,
-      'exercices' => $exercices
+      'exercices' => $exercices,
     ));
   }
 
@@ -212,18 +225,27 @@ class DefaultController extends Controller
   /**
   * @Route("/entrainements")
   */
-  public function DisplayBadges(Request $request){
+  public function DisplayTrainings(Request $request){
     $a=$this->getUser()->getId();
 
     /* GET ALL EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s WHERE s.id = t.sport");
+    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s WHERE s.id = t.sport");
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("SELECT t.tid as tid FROM users_training t WHERE t.uid = :id");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->execute();
+    $abonementexercices = $statementExercices->fetchAll();
+
     return $this->render('default/entrainements.html.twig', array(
       'exercices' => $exercices,
+      'abonnementexo' => $abonementexercices,
+
     ));
   }
 

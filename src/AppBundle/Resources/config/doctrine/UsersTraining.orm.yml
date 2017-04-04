@@ -1,0 +1,34 @@
+AppBundle\Entity\UsersTraining:
+    type: entity
+    table: users_training
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: UID_REL
+            generator:
+                strategy: IDENTITY
+    fields:
+        uid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: UID
+        tid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: TID
+
+        statut:
+            type: integer
+            nullable: false
+            options:
+                fixed: false
+            column: STATUT
+    lifecycleCallbacks: {  }

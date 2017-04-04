@@ -167,4 +167,33 @@ class TableTraining
     {
         return $this->description;
     }
+    /**
+     * @var string
+     */
+    private $etat;
+
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return TableTraining
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
 }
