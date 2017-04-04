@@ -1,0 +1,35 @@
+AppBundle\Entity\UsersJawboneSleeps:
+    type: entity
+    table: users_jawbone_sleeps
+    id:
+        sid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sid
+            generator:
+                strategy: IDENTITY
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: aid
+        date:
+            type: date
+            column: date
+        awakenings:
+            type: integer
+            column: awakenings
+        duration:
+            type: integer
+            column: duration

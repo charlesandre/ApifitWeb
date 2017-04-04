@@ -1,0 +1,45 @@
+AppBundle\Entity\UsersJawboneBodyEvents:
+    type: entity
+    table: users_jawbone_body_events
+    id:
+        sid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sid
+            generator:
+                strategy: IDENTITY
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: aid
+        date:
+            type: date
+            column: date
+        lean_mass:
+            type: integer
+            nullable: true
+            column: lean_mass
+        weight:
+            type: integer
+            nullable: true
+            column: weight
+        body_fat:
+            type: integer
+            nullable: true
+            column: body_fat
+        bmi:
+            type: integer
+            nullable: true
+            column: bmi

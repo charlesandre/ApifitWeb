@@ -1,0 +1,45 @@
+AppBundle\Entity\UsersJawboneMoves:
+    type: entity
+    table: users_jawbone_moves
+    id:
+        sid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sid
+            generator:
+                strategy: IDENTITY
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: aid
+        date:
+            type: date
+            column: date
+        distance:
+            type: integer
+            nullable: true
+            column: distance
+        calories:
+            type: integer
+            nullable: true
+            column: calories
+        steps:
+            type: integer
+            nullable: true
+            column: steps
+        active_time:
+            type: integer
+            nullable: true
+            column: active_time

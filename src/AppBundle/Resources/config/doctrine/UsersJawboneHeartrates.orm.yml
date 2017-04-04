@@ -1,0 +1,33 @@
+AppBundle\Entity\UsersJawboneHeartrates:
+    type: entity
+    table: users_jawbone_heartrates
+    id:
+        sid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sid
+            generator:
+                strategy: IDENTITY
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id
+        aid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: aid
+        date:
+            type: date
+            column: date
+        resting_heartrate:
+            type: integer
+            nullable: true
+            column: resting_heartrate
