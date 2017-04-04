@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{% include 'config/progress.html.twig' %}
-<li>test</li>
-<a href="/">Appliquer et terminer la configuration</a>
-<a href="/configure">Annuler</a>
+{{ render(controller('AppBundle:Default:menu')) }}
+<section style="margin-left:50px; margin-top:70px">
+  {% include 'config/progress.html.twig' %}
+  <h4>Objectif</h4>
+  <a href="/" class="btn btn-success" role="button">Appliquer et terminer la configuration</a>
+</section>
 {% endblock %}

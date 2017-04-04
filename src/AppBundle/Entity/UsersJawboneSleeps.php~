@@ -168,4 +168,3 @@ class UsersJawboneSleeps
         return $this->duration;
     }
 }
-

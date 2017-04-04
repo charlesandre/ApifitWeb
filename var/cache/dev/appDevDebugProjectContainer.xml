@@ -460,7 +460,7 @@
                 <tag name="cache.pool" clearer="cache.default_clearer"/>
                 <argument>aK9MhxmslZ</argument>
                 <argument>0</argument>
-                <argument>tQFv+5ntmFojSIGYD4-CYZ</argument>
+                <argument>Uoj+wRDoFbrOE3ofrv08G0</argument>
                 <argument>/mnt/c/Users/Samuel/Desktop/wamp64/www/Apifit/var/cache/dev/pools</argument>
                 <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                 <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -628,7 +628,7 @@
           <tag name="monolog.logger" channel="cache"/>
           <argument>-39uuhipLD</argument>
           <argument>null</argument>
-          <argument>tQFv+5ntmFojSIGYD4-CYZ</argument>
+          <argument>Uoj+wRDoFbrOE3ofrv08G0</argument>
           <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
           <factory class="Symfony\Component\PropertyAccess\PropertyAccessor" method="createCache"/>
         </service>
@@ -649,7 +649,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>P-n+lnOKb4</argument>
       <argument>0</argument>
-      <argument>tQFv+5ntmFojSIGYD4-CYZ</argument>
+      <argument>Uoj+wRDoFbrOE3ofrv08G0</argument>
       <argument>/mnt/c/Users/Samuel/Desktop/wamp64/www/Apifit/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -659,7 +659,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>yQiLOgkYcu</argument>
       <argument>0</argument>
-      <argument>tQFv+5ntmFojSIGYD4-CYZ</argument>
+      <argument>Uoj+wRDoFbrOE3ofrv08G0</argument>
       <argument>/mnt/c/Users/Samuel/Desktop/wamp64/www/Apifit/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1664,7 +1664,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>58e3d042491b23.03490767</argument>
+            <argument>58e400b1e0f014.94972582</argument>
           </service>
         </argument>
       </argument>
@@ -1867,7 +1867,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>58e3d042491b23.03490767</argument>
+            <argument>58e400b1e0f014.94972582</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>

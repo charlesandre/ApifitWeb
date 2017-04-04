@@ -127,6 +127,14 @@ class JawboneDataController extends Controller
 
       foreach($bodyevents['data']['items'] as $c)
       {
+        if($this->getDoctrine()->getRepository('AppBundle:UsersJawboneBodyEvents')->findBy(array(
+          'aid' => $account['aid'],
+          'weight' => $c['weight'],
+          'lean_mass' => $c['lean_mass'],
+          'body_fat' => $c['body_fat'],
+          'bmi' => $c['bmi'],
+        ) == null))
+        {
         $date = new \DateTime(\DateTime::createFromFormat('Ymd', $c['date'])->format('Y-m-d'));
 
         $be = new UsersJawboneBodyEvents();
@@ -141,6 +149,7 @@ class JawboneDataController extends Controller
         $be->setBmi($c['bmi']);
 
         $em->persist($be);
+        }
       }
 
 

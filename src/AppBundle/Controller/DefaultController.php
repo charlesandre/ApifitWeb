@@ -191,6 +191,7 @@ class DefaultController extends Controller
     ));
   }
 
+
   /*  AFFICHAGE DES DEFIS   */
   /**
   * @Route("/defis")
@@ -258,6 +259,24 @@ class DefaultController extends Controller
 
     ));
 
+  }
+
+
+  /**
+  * @Route("/friends")
+  */
+  public function DisplayFriends(Request $request){
+
+  $rel_friends = $this->getDoctrine()->getRepository('AppBundle:UsersFriends')->findByUid1($this->getUser()->getId());
+
+  $friends = array();
+  foreach($rel_friends as $r){
+    $friends += $this->getDoctrine()->getRepository('AppBundle:User')->findById($r->getUid2());
+  }
+
+  return $this->render('default/friends.html.twig', array(
+   'friends' => $friends
+  ));
   }
 
 }

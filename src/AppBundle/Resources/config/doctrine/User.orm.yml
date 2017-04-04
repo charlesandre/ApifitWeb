@@ -65,7 +65,10 @@ AppBundle\Entity\User:
             nullable: true
             options:
                 fixed: false
-
+        xp:
+            type: integer
+            nullable: true
+            column: xp
         obj:
             type: string
             nullable: true

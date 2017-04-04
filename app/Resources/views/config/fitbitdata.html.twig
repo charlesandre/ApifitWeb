@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+{{ render(controller('AppBundle:Default:menu')) }}
+<section style="margin-left:50px; margin-top:70px">
 {% set vars = {'progress' : progress} %}
 {% include 'config/progress.html.twig' with vars %}
 <h3>Félicitations {{app.user.name}}, <br/>Nous avons pu récupérer vos données !</h3>
@@ -43,43 +45,9 @@
       <button class="btn btn-success" role="button">Retrouver vos amis sur Apifit</button>
     </li>
   </ul>
-
-  {# <ul  style="padding:25px 0 15px 15px; line-height:2">
-    <li>
-      <h4> Activités d'aujourd'hui </h4>
-      {{response_activities|json_encode()}}
-    </li>
-    <hr>
-    <li>
-      <h4> Calories BMR : </h4>
-      {{response_calories_bmr|json_encode()}}
-    </li>
-    <hr>
-    <li>
-      <h4> Distances parcourues : </h4>
-      {{response_distance|json_encode()}}
-    </li>
-    <hr>
-    <li>
-      <h4> Tracker calories : </h4>
-      {{response_tracker_calories|json_encode()}}
-    </li>
-    <hr>
-    <li>
-      <h4> Tracker steps : </h4>
-      {{response_tracker_steps|json_encode()}}
-    </li>
-    <hr>
-    <li>
-      <h4> HeartRate : </h4>
-      {{response_heart|json_encode()}}
-    </li>
-  </ul>
-  <a href="/configure/data" class="btn  btn-success" role="button">Continuer</a>
-  <a href="/configure" class="btn btn-danger" role="button">Annuler</a>
+  <a href="/configure/sports" class="btn btn-success" role="button">C'est bien moi, continuer</a>
   <br/>
-  <a href="/" class="btn btn-primary" role="button">Revenir au tableau de bord</a>
-</div>#}
-
-
+  <br/>
+  <a href="/" class="btn btn-danger" role="button">Revenir au tableau de bord</a>
+</div>
 {% endblock %}

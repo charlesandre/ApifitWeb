@@ -79,9 +79,8 @@
         <div class="arrow"></div>
       </div>
       <div class="dropdown">
-        <p class="police_dropdown"><a href="{{ path('configure')}}">Vos montres <span class="fa fa-inbox"></span></a></p>
-        <p class="police_dropdown">Vos données <span class="fa fa-gear"></span></p>
-        <p class="police_dropdown">Votre profil <span class="fa fa-info"></span></p>
+        <p class="police_dropdown"><a href="{{ path('configure')}}">Vos appareils connectés <span class="fa fa-gear"></span></a></p>
+        <p class="police_dropdown"><a href="/profil/{{app.user.id}}">Votre profil </a><span class="fa fa-info"></span></p>
         <a href="/logout"><p class="police_dropdown">Déconnexion <span class="fa fa-sign-out"></span></p></a>
       </div>
     </div>
@@ -102,7 +101,7 @@
           <i class='fa fa-home'></i>
         </li>
         <li>
-          <a href="/profil/{{ app.user.id }}">Profil</a>
+          <a href="/datamanager" style="font-size:14px">Mes données</a>
           <i class="fa fa-suitcase"></i>
         </li>
         <li>
@@ -114,7 +113,7 @@
           <i class='fa fa-rocket'></i>
         </li>
         <li>
-          <a>Amis</a>
+          <a href="/friends">Amis</a>
           <i class='fa fa-users'></i>
         </li>
         <li>

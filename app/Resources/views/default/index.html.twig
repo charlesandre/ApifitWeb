@@ -13,8 +13,9 @@
               <i class="fa fa-bar-chart-o fsa-fw"></i> Courbe d'évolution
         </div>
         <div style="margin-top : 10px; margin-botton:10px;">
-        <button class="btn btn-default" id="steps">Steps</button>
-        <button class="btn btn-default" id="distance">Distance</button>
+        <a href="/datamanager" role="button" class="btn btn-success" style="float:left; margin-left:10px">Toutes mes données</a>
+        <button class="btn btn-info" style="float:right; margin-right:10px"id="steps">Pas</button>
+        <button class="btn btn-info" style="float:right; margin-right:10px"id="distance">Distances</button>
       </div>
 
         <canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>
@@ -24,13 +25,13 @@
     <div class="col-xs-4 col-lg-4 dashboard_users">
     <div class="widget">
       <div class="cover">
-        <img src="{{ asset ('images/fond_profil.jpg')}}">
+      
       </div>
         <img class="photo" src="images/Avatar/{{app.user.id}}.png" alt="{{app.user.name}} {{ app.user.lastname}}" id="pp"><br/><br/>
 
 
         {% for u in users %}
-          <li><h4>{{app.user.name}}</h4></li>
+          <li><h3>{{app.user.name}}</h3></li>
           <li><h4>Level : {{ u.level }} </h4></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
         {% endfor %}
         {% for data in lastdata %}
@@ -49,9 +50,16 @@
         <li><h6>Stride Length Running : {{ data.strideLengthRunning }}</h6></li>
         <li><h6>Stride Length Walking : {{ data.strideLengthWalking }}</h6></li>
           {% endfor %}
+          <p style="font-size:12px; margin-bottom:0"> Expérience </p>
 
+          <div class="progress" style="margin:20px;">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{app.user.xp}}"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{app.user.xp}}%">
+              {{app.user.xp}}% complété
+            </div>
+          </div>
           <ul>
-            <li><a href="{{ path('configure')}}"><i class="fa fa-inbox"></i></a></li>
+            <li><a href="{{ path('configure')}}"><i class="fa fa-gear"></i></a></li>
             <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
           </ul>
     </div>

@@ -226,4 +226,3 @@ class UsersJawboneBodyEvents
         return $this->bmi;
     }
 }
-

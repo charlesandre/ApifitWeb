@@ -381,4 +381,33 @@ class User implements UserInterface
     return null;
   }
 
+    /**
+     * @var integer
+     */
+    private $xp;
+
+
+    /**
+     * Set xp
+     *
+     * @param integer $xp
+     *
+     * @return User
+     */
+    public function setXp($xp)
+    {
+        $this->xp = $xp;
+    
+        return $this;
+    }
+
+    /**
+     * Get xp
+     *
+     * @return integer
+     */
+    public function getXp()
+    {
+        return $this->xp;
+    }
 }

@@ -1,23 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{% set vars = {'progress' : progress} %}
-{% include 'config/progress.html.twig' with vars %}
-<h3>Félicitations {{app.user.name}}, <br/>Nous avons pu récupérer vos données !</h3>
-<ul style="padding:25px 0 15px 15px; line-height:2">
-  <li>
-    <p> Votre nom sur la plateforme Jawbone : {{utilisateur}}</p>
-  </li>
-  <li>
-    <p> Votre nom sur la plateforme Jawbone : {{weight}}</p>
-  </li>
-  <li>
-    <p> Votre poids renseigné sur la plateforme Jawbone : {{height}}</p>
-  </li>
-</ul>
-<hr>
-<a href="/configure/sports" class="btn  btn-success" role="button">C'est bien moi, continuer</a>
-<br/>
-<br/>
-<a href="/" class="btn btn-danger" role="button">Revenir au tableau de bord</a>
-</div>
+{{ render(controller('AppBundle:Default:menu')) }}
+<section style="margin-left:50px; margin-top:70px">
+  {% set vars = {'progress' : progress} %}
+  {% include 'config/progress.html.twig' with vars %}
+  <h3>Félicitations {{app.user.name}}, <br/>Nous avons pu récupérer vos données !</h3>
+  <ul style="padding:25px 0 15px 15px; line-height:2">
+    <li>
+      <p> Votre nom sur la plateforme Jawbone : {{utilisateur}}</p>
+    </li>
+    <li>
+      <p> Votre nom sur la plateforme Jawbone : {{weight}}</p>
+    </li>
+    <li>
+      <p> Votre poids renseigné sur la plateforme Jawbone : {{height}}</p>
+    </li>
+  </ul>
+  <hr>
+  <a href="/configure/sports" class="btn btn-success" role="button">C'est bien moi, continuer</a>
+  <br/>
+  <br/>
+  <a href="/" class="btn btn-danger" role="button">Revenir au tableau de bord</a>
+  </div>
+</section>
 {% endblock %}

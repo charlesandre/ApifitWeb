@@ -1,6 +1,7 @@
 
 {% extends 'base.html.twig' %}
 {% block body %}
+{{ render(controller('AppBundle:Default:menu')) }}
 {% include 'config/progress.html.twig' %}
 
 <h1> Félicitations vous avez entièrement configuré votre compte Apifit ! </h1>
