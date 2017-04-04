@@ -17,17 +17,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 
+
 class ProfilController extends Controller
 {
 
   /**
-  * @Route("/{uid1}/{uid2}/{n}")
+  * @Route("profil/{uid1}/{uid2}/{n}/{accept}")
   */
   public function AddFriend(Request $request){
     $id1 = $request->attributes->get('uid1');
     $id2 = $request->attributes->get('uid2');
     $n = $request->attributes->get('n');
+    $accept = $request->attributes->get('accept');
 
+if($accept == 1){
     /* IF IT'S A NEW REQUEST OF FRIENDSHIP */
     if($n==-1){
       $relation = new UsersFriends();
@@ -61,8 +64,29 @@ class ProfilController extends Controller
       $statementRequest->execute();
     }
 
-    return $this->redirect("/$id1");
+    return $this->redirect("/profil/$id1");
   }
+  else if ($accept==0){
+    $em = $this->getDoctrine()->getManager();
+    $connectionRequest = $em->getConnection();
+    $statementRequest = $connectionRequest->prepare("UPDATE users_friends F SET F.STATUT= -1 WHERE F.UID_REL = :idrel ");
+    $statementRequest->bindValue('idrel', $n);
+    $statementRequest->execute();
+
+    return $this->redirect("/");
+
+
+  }
+  }
+
+  /**
+  * @Route("/profil")
+  */
+  public function Redirecttomyprofil(Request $request){
+    $a = $this->getUser()->getId();
+    return $this->redirect("profil/$a");
+  }
+
 
 
   /* SEE A USER'S PROFIL */

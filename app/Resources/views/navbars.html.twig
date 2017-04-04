@@ -30,21 +30,24 @@
       <!-- dropdown Amis-->
       <div class="menu2">
         <div class="title2" onclick="f_amis()"><span class="fa fa-user-plus"></span>
-          <!-- <div class="arrow2"><span class="rond_notif"><em>3</em></span></div> -->
+          {% if numrequest > 0 %}
+          <div class="arrow1"><span class="rond_notif"><em>{{numrequest}}</em></span></div>
+          {% endif %}
         </div>
         <div class="dropdown2">
-            <!-- <li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/.png"/> Charles Andre</br></a>
+          {% if request %}
+          {% for r in request %}
+             <li class="position_notif"><a href=""><img class="photos_amis" src=" {{ asset('images/Avatar/' ~ r.id1 ~ '.png') }}"/> {{r.name}} {{ r.lastname }}</br></a>
               <div class="bouton_accept">
-                <button class="btn btn-primary">Accepter</button>
-                <button class="btn btn-default">Rejeter</button>
+                <button class="btn btn-primary" onclick="window.location.href='/profil/{{r.id1}}/{{r.id2}}/{{r.uidRel}}/1'">Accepter</button>
+                <button class="btn btn-default" onclick="window.location.href='/profil/{{r.id1}}/{{r.id2}}/{{r.uidRel}}/0'">Rejeter</button>
               </div>
             </li>
-            <li class="position_notif"><a href=""><img class="photos_amis" src="images/Avatar/.png"/> Charles Andre</br></a>
-              <div class="bouton_accept">
-                <button class="btn btn-primary">Accepter</button>
-                <button class="btn btn-default">Rejeter</button>
-              </div>
-            </li> -->
+            {% endfor %}
+          {% else %}
+          <li class="position_notif"> Pas de nouvelles demandes d'amis </li>
+
+          {% endif %}
         </div>
       </div>
         <!-- dropdown notif-->
@@ -113,7 +116,7 @@
           <i class='fa fa-users'></i>
         </li>
         <li>
-          <a>Localisation</a>
+          <a href = "/localisation">Localisation</a>
           <i class='fa fa-map-marker'></i>
         </li>
       </ul>

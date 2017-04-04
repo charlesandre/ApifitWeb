@@ -13,9 +13,9 @@
             <img src="{{ asset('images/fond_profil.jpg') }}">
 
           </div>
-          <img class="photo" src="{{ asset('images/Avatar/{{app.user.id}}.png')}}" alt="{{app.user.name}} {{ app.user.lastname}}" id="pp"><br/><br/>
           {% for u in user %}
               <img src="{{ asset('images/Avatar/' ~ u.id ~ '.png') }}" class="photo" alt="{{u.name}} {{ u.lastname}}">
+              <br><br>
               <li><h4>{{ u.name }} {{ u.lastname }}</h4></li>
               <li><h4>Level : {{ u.level }}</h4></li>
               {% if u.id != app.user.id %}
@@ -27,7 +27,7 @@
                           {% elseif (f.STATUT == 0) %}
                                 {% set friendship = '0' %}
                                 {% if f.UID1 == u.id %}
-                                    <a href="{{ u.id }}/{{ app.user.id }}/{{f.UID_REL}}"><button type="button" class="btn btn-primary">Accepter la demande de {{ u.name }}</button></a>
+                                    <a href="profil/{{ u.id }}/{{ app.user.id }}/{{f.UID_REL}}"><button type="button" class="btn btn-primary">Accepter la demande de {{ u.name }}</button></a>
                                 {% elseif f.UID2 == u.id %}
                                   <li> Une invitation à été envoyée a {{ u.name }} ! </li>
                                 {% endif %}
@@ -81,18 +81,20 @@
                 {% for p in posts %}
                   <li>{{p.name}} {{p.lastname}}: "{{ p.content }}"</li>
                   {% if p.img %}
-                    <img src ="images/Posts/{{p.src}}" alt="post de {{ u.name }}">
+                    <img src =" {{ asset('images/Posts/{{p.src}}') }}" alt="Post de {{ u.name }}">
                   {% endif %}
 
                 {% endfor %}
               {% endif %}
               </div>
             </div>
+            {% if u.id != app.user.id %}
             <div class="panel panel-default">
+
               <div class="panel-heading">
                     <i class="fa fa-bookmark"></i> Discussion
               </div>
-            {% if u.id != app.user.id %}
+
               <h4> Ma discussion avec {{ u.name }}</h4>
               {% if messages %}
                 {% for m in messages %}

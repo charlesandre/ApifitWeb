@@ -37,6 +37,17 @@ class DefaultController extends Controller
       $MessageCount = count($unreadmessages);
 
 
+      $em = $this->getDoctrine()->getManager();
+      $connectionRequest = $em->getConnection();
+      $statementRequest = $connectionRequest->prepare("SELECT f.uid1 as id1, f.uid2 as id2, f.uid_rel as uidRel, u.name as name, u.lastname as lastname FROM users_friends f, user u WHERE f.uid2=:id AND f.statut = 0 AND f.uid1 = u.id ");
+      $statementRequest->bindValue('id', $a);
+      $statementRequest->execute();
+      $unreadRequest = $statementRequest->fetchAll();
+
+      $RequestCount = count($unreadRequest);
+
+
+
       /* IF THERE IS A NEW SEARCH */
       if ($formsearch->isSubmitted() && $formsearch->isValid()) {
         /* CREATING SEARCH FORM */
@@ -73,7 +84,9 @@ class DefaultController extends Controller
       return $this->render('navbars.html.twig', array(
         'formsearch' => $formsearch->createView(),
         'numnewmessage' => $MessageCount,
-        'newmessages' =>   $unreadmessages,
+        'newmessages' => $unreadmessages,
+        'numrequest' => $RequestCount,
+        'request' => $unreadRequest,
       ));
     }
 
@@ -141,13 +154,13 @@ class DefaultController extends Controller
     /* RECUPERATION DES DONNEES POUR LE GRAPHE */
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
-    $statementData = $connectionData->prepare("SELECT s.value as value, s.date as date FROM users_fitbit_steps s WHERE s.id = $a ORDER BY s.date DESC LIMIT 5");
+    $statementData = $connectionData->prepare("SELECT s.value as value, s.date as date FROM users_fitbit_steps s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
     $statementData->execute();
     $steps = $statementData->fetchAll();
 
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
-    $statementData = $connectionData->prepare("SELECT d.value as value, d.date as date FROM users_fitbit_distances d WHERE d.id = $a ORDER BY d.date DESC LIMIT 5");
+    $statementData = $connectionData->prepare("SELECT d.value as value, d.date as date FROM users_fitbit_distances d WHERE d.id = $a ORDER BY d.date ASC LIMIT 5");
     $statementData->execute();
     $distance = $statementData->fetchAll();
 
@@ -213,4 +226,16 @@ class DefaultController extends Controller
       'exercices' => $exercices,
     ));
   }
+
+  /*  AFFICHAGE DE LA LOC  */
+  /**
+  * @Route("/localisation")
+  */
+  public function DisplayLoc(Request $request){
+    return $this->render('default/localisation.html.twig', array(
+
+    ));
+
+  }
+
 }
