@@ -1,9 +1,10 @@
+
 @media screen and (min-width:1px) and (max-width: 768px){
 
 #buttonleft{
   display: none;
 }
-    
+
  #legende{
   display: none;
  }
@@ -128,13 +129,13 @@
 
   }
 
-.fondordi{
-  padding-top: 30px;
-}
 
 .fondordi img{
-  height: 100px;
-  width: 100px;
+  display:none;
+}
+.fondordi iframe{
+  width:200px;
+  height:112px;
 }
 
 .service {

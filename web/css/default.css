@@ -13,7 +13,6 @@
   src : url('../fonts/weblysleek_ui/weblysleekuisl.ttf');
 }
 
-
 html,
 body {
   height: 100%;
@@ -1008,22 +1007,13 @@ button .bouton_amis{
 float:right;
 }
 
-#inscription{
-
-}
-
 #contact{
 float:right;
 }
+
 .banner_links>h3{
   display:inline;
   text-shadow : 1px 1px #000;
-}
-
-.banner_links>
-
-.banner_links:last-child{
-
 }
 
 .navbar-inverse{
@@ -1035,22 +1025,21 @@ float:right;
 \       MENU        /
 \*****************/
 
-.navbar-header
-{
-  float:left;
+.navbar-vitrine{
+  width:100%;
+  border:#777777 solid 1px;
+  border-radius: 4px;
 }
-.navbar .navbar-nav {
-  display: inline-block;
-  float: none;
+.navbar-vitrine ul{
+  width:100%;
 }
-
-.navbar .navbar-collapse {
-  text-align: center;
-  padding:0;
-  margin:0;
+.navbar-vitrine ul li{
+  width:25%;
+  font-size:18px;
+  padding-right:10px;
+  padding-left:10px;
+  text-align:center;
 }
-
-
 #accueil>div>h3{
   color:#777777;
   padding-bottom:50px;
@@ -1069,14 +1058,45 @@ float:right;
 \     SERVICE       /
 \*****************/
 
-.process-step .btn:focus{outline:none}
-.process{display:table;width:100%;position:relative;margin-top:-20px;}
-.process-row{display:table-row}
-.process-step button[disabled]{opacity:1 !important;filter: alpha(opacity=100) !important}
-.process-row:before{top:40px;bottom:0;position:absolute;content:" ";width:100%;height:1px;background-color:#ccc;z-order:0}
-.process-step{display:table-cell;text-align:center;position:relative}
-.process-step p{margin-top:4px}
-.btn-circle{width:80px;height:80px;text-align:center;font-size:12px;border-radius:50%}
+.process-step .btn:focus{
+  outline:none;
+}
+.process{
+  display:table;
+  width:100%;
+  position:relative;
+  margin-top:-20px;
+}
+.process-row{
+  display:table-row;
+}
+.process-step button[disabled]{
+  opacity:1 !important;
+  filter: alpha(opacity=100) !important;
+}
+.process-row:before{
+  top:40px;bottom:0;
+  position:absolute;content:" ";
+  width:100%;
+  height:1px;
+  background-color:#ccc;
+  z-order:0
+}
+.process-step{
+  display:table-cell;
+  text-align:center;
+  position:relative
+}
+.process-step p{
+  margin-top:4px
+}
+.btn-circle{
+  width:80px;
+  height:80px;
+  text-align:center;
+  font-size:12px;
+  border-radius:50%
+}
 
 .btn-circle
 {
@@ -1096,7 +1116,7 @@ float:right;
 	color:#ffffff;
 	text-align:left;
 	padding-top: 10px;
-    padding-left: 70px;
+  padding-left: 70px;
 }
 
 .service
@@ -1195,13 +1215,6 @@ video{
 .padding-icon{
   padding-left:5px;
 }
-
-
-/*.char:hover{
-  border:3px solid #777777;
-}*/
-
-@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 
 .animate {
     -webkit-transition: all 0.3s ease-in-out;
@@ -1315,7 +1328,7 @@ video{
 
 .doc-img{
 	 /* Webkit for Chrome and Safari */
-  -webkit-transform: scale(1, 1); // This is the scale for the normal size of the image.
+  -webkit-transform: scale(1, 1);
   -webkit-transition-duration: 500ms;
   -webkit-transition-timing-function: ease-out;
 
@@ -1332,7 +1345,7 @@ video{
 
 .doc-item:hover .doc-img{
 	 /* Webkit for Chrome and Safari */
-  -webkit-transform: scale(1.2, 1.2); // This is the enlarged size scale of the image.
+  -webkit-transform: scale(1.2, 1.2);
   -webkit-transition-duration: 500ms;
   -webkit-transition-timing-function: ease-out;
 
@@ -1436,10 +1449,6 @@ video{
 /*******************\
 \      FOOTER       /
 \*****************/
-footer
-{
-
-}
 footer>p{
   margin-bottom: 20px;
 }
@@ -1457,7 +1466,7 @@ footer>p{
   padding:20px;
   width:60px;
   height:60px;
-  top:-55px;
+  top:-37px;
   left:0%;
   border: 2px solid #fff;
 }
@@ -1638,21 +1647,16 @@ a.socialIcon:hover, .socialHoverClass {
 
 .essai li {
   padding: 0px 5px 10px 5px;
-
 }
 
 .essai a{
   background: #b3b3b3;
-
 }
 
 textarea {
   resize: none;
 }
 
-.fondordi {
-  padding-top: 100px;
-}
 
 .formsubmit {
   text-align: center;
@@ -1662,7 +1666,6 @@ textarea {
 .list-inline a{
     background: grey;
     border-radius:10px;
-
 }
 
 #casemembres{
@@ -1712,13 +1715,9 @@ textarea {
 }
 
 .fondordi{
-  padding-top: 100px;
+  padding-top: 35px;
 }
 
-.fondordi img{
-  height: 200px;
-  width: 200px;
-}
 
 .service {
   background-image: url("../images/image-service.jpg");
@@ -1730,7 +1729,6 @@ textarea {
 
 #casemembres{
   display: inline-block;
-
 }
 
 
@@ -1855,36 +1853,26 @@ textarea {
 
 /*TRES PETITE RESOLUTION : SUPPRESION DE l'IMAGE DE L'IMAC*/
 
-  @media screen and (min-width:1px) and (max-width: 452px){
- .contenu-video{
+@media screen and (min-width:1px) and (max-width: 452px){
+
+.contenu-video{
    background-image: none;
    width: 100%;
  }
  video{width:90%;}
 
+  .service {
+    background-image: url("../images/image-service.jpg") no-repeats;
+  }
 
+  #casemembres{
+    display: inline-block;
+    margin: 10px 10px 10px 10px;
+  }
 
-.fondordi{
-  padding-top: 30px;
-}
-
-.fondordi img{
-  height: 100px;
-  width: 100px;
-}
-
-.service {
-  background-image: url("../images/image-service.jpg") no-repeats;
-}
-
-#casemembres{
-  display: inline-block;
-  margin: 10px 10px 10px 10px;
-
-}
-
-.equipe
-{
-  background-color: #ededed;
-  background-repeat: no-repeat;
+  .equipe
+  {
+    background-color: #ededed;
+    background-repeat: no-repeat;
+  }
 }
