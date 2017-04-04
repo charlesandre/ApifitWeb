@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * UsersJawboneSleeps
+ * UsersJawboneMoves
  */
-class UsersJawboneSleeps
+class UsersJawboneMoves
 {
     /**
      * @var integer
@@ -30,12 +30,22 @@ class UsersJawboneSleeps
     /**
      * @var integer
      */
-    private $awakenings;
+    private $distance;
 
     /**
      * @var integer
      */
-    private $duration;
+    private $calories;
+
+    /**
+     * @var integer
+     */
+    private $steps;
+
+    /**
+     * @var integer
+     */
+    private $active_time;
 
 
     /**
@@ -53,7 +63,7 @@ class UsersJawboneSleeps
      *
      * @param integer $id
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneMoves
      */
     public function setId($id)
     {
@@ -77,7 +87,7 @@ class UsersJawboneSleeps
      *
      * @param integer $aid
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneMoves
      */
     public function setAid($aid)
     {
@@ -101,7 +111,7 @@ class UsersJawboneSleeps
      *
      * @param \DateTime $date
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneMoves
      */
     public function setDate($date)
     {
@@ -121,50 +131,99 @@ class UsersJawboneSleeps
     }
 
     /**
-     * Set awakenings
+     * Set distance
      *
-     * @param integer $awakenings
+     * @param integer $distance
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneMoves
      */
-    public function setAwakenings($awakenings)
+    public function setDistance($distance)
     {
-        $this->awakenings = $awakenings;
+        $this->distance = $distance;
 
         return $this;
     }
 
     /**
-     * Get awakenings
+     * Get distance
      *
      * @return integer
      */
-    public function getAwakenings()
+    public function getDistance()
     {
-        return $this->awakenings;
+        return $this->distance;
     }
 
     /**
-     * Set duration
+     * Set calories
      *
-     * @param integer $duration
+     * @param integer $calories
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneMoves
      */
-    public function setDuration($duration)
+    public function setCalories($calories)
     {
-        $this->duration = $duration;
+        $this->calories = $calories;
 
         return $this;
     }
 
     /**
-     * Get duration
+     * Get calories
      *
      * @return integer
      */
-    public function getDuration()
+    public function getCalories()
     {
-        return $this->duration;
+        return $this->calories;
+    }
+
+    /**
+     * Set steps
+     *
+     * @param integer $steps
+     *
+     * @return UsersJawboneMoves
+     */
+    public function setSteps($steps)
+    {
+        $this->steps = $steps;
+
+        return $this;
+    }
+
+    /**
+     * Get steps
+     *
+     * @return integer
+     */
+    public function getSteps()
+    {
+        return $this->steps;
+    }
+
+    /**
+     * Set activeTime
+     *
+     * @param integer $activeTime
+     *
+     * @return UsersJawboneMoves
+     */
+    public function setActiveTime($activeTime)
+    {
+        $this->active_time = $activeTime;
+
+        return $this;
+    }
+
+    /**
+     * Get activeTime
+     *
+     * @return integer
+     */
+    public function getActiveTime()
+    {
+        return $this->active_time;
     }
 }
+

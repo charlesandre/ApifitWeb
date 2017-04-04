@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * UsersJawboneSleeps
+ * UsersJawboneHeartrates
  */
-class UsersJawboneSleeps
+class UsersJawboneHeartrates
 {
     /**
      * @var integer
@@ -30,12 +30,7 @@ class UsersJawboneSleeps
     /**
      * @var integer
      */
-    private $awakenings;
-
-    /**
-     * @var integer
-     */
-    private $duration;
+    private $resting_heartrate;
 
 
     /**
@@ -53,7 +48,7 @@ class UsersJawboneSleeps
      *
      * @param integer $id
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneHeartrates
      */
     public function setId($id)
     {
@@ -77,7 +72,7 @@ class UsersJawboneSleeps
      *
      * @param integer $aid
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneHeartrates
      */
     public function setAid($aid)
     {
@@ -101,7 +96,7 @@ class UsersJawboneSleeps
      *
      * @param \DateTime $date
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneHeartrates
      */
     public function setDate($date)
     {
@@ -121,50 +116,27 @@ class UsersJawboneSleeps
     }
 
     /**
-     * Set awakenings
+     * Set restingHeartrate
      *
-     * @param integer $awakenings
+     * @param integer $restingHeartrate
      *
-     * @return UsersJawboneSleeps
+     * @return UsersJawboneHeartrates
      */
-    public function setAwakenings($awakenings)
+    public function setRestingHeartrate($restingHeartrate)
     {
-        $this->awakenings = $awakenings;
+        $this->resting_heartrate = $restingHeartrate;
 
         return $this;
     }
 
     /**
-     * Get awakenings
+     * Get restingHeartrate
      *
      * @return integer
      */
-    public function getAwakenings()
+    public function getRestingHeartrate()
     {
-        return $this->awakenings;
-    }
-
-    /**
-     * Set duration
-     *
-     * @param integer $duration
-     *
-     * @return UsersJawboneSleeps
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return integer
-     */
-    public function getDuration()
-    {
-        return $this->duration;
+        return $this->resting_heartrate;
     }
 }
+

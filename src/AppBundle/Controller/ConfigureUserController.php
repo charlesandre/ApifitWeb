@@ -32,24 +32,24 @@ class ConfigureUserController extends Controller
 {
 
 
-  public function progressBar(){
+    public function progressBar(){
 
-    $progress = 0;
+      $progress = 0;
 
-    $apis = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
-    $sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
+      $apis = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
+      //$sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
 
-    if($sports_choose->getFootball() || $sports_choose->getNatation() || $sports_choose->getRunning() || $sports_choose->getTennis()  || $sports_choose->getRugby())
-    {
-      $progress += 20;
+      /*if($sports_choose->getFootball() || $sports_choose->getNatation() || $sports_choose->getRunning() || $sports_choose->getTennis()  || $sports_choose->getRugby())
+      {
+        $progress += 20;
+      }*/
+
+      if($apis != null){
+        $progress += 20;
+      }
+
+      return $progress;
     }
-
-    if($apis != null){
-      $progress += 20;
-    }
-
-    return $progress;
-  }
 
 
   /**
@@ -75,7 +75,7 @@ class ConfigureUserController extends Controller
     return $this->render('config/configure.html.twig', array(
       'progress' => $progress,
       'accounts' => $user_accounts,
-      'devices' => $user_devices,
+      'devices' => $devices,
     ));
   }
 
@@ -90,7 +90,7 @@ class ConfigureUserController extends Controller
     $user_id = $this->getUser()->getId();
 
     $em = $this->getDoctrine()->getManager();
-    $current_data = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($user_id);
+    /*$current_data = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($user_id);
 
     if($current_data == null){
       $sports = new UsersSports();
@@ -98,9 +98,9 @@ class ConfigureUserController extends Controller
       $em->persist($sports);
       $em->flush();
     }
-
+*/
     return $this->render('config/sports.html.twig', array(
-      'already_checked' => $current_data,
+  //    'already_checked' => $current_data,
       'progress' => $progress,
     ));
   }

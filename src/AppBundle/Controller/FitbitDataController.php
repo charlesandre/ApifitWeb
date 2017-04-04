@@ -152,7 +152,7 @@ class FitbitDataController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        if(!ConfigureUserController::checkExist('fitbit', $resourceOwner['encodedId'])) {
+        if(!self::checkExist('fitbit', $resourceOwner['encodedId'])) {
           $account = new UsersAccounts();
           $account->setUid($this->getUser()->getId());
           $account->setApiId($resourceOwner['encodedId']);
@@ -282,7 +282,7 @@ class FitbitDataController extends Controller
 
       $em->flush();
 
-      $progress = ConfigureUserController::progressBar();
+      $progress = self::progressBar();
 
       } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
         exit($e->getMessage());
@@ -303,4 +303,26 @@ class FitbitDataController extends Controller
       ));
       }
     }
+
+
+
+      public function progressBar(){
+
+        $progress = 0;
+
+        $apis = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
+        //$sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
+
+        /*if($sports_choose->getFootball() || $sports_choose->getNatation() || $sports_choose->getRunning() || $sports_choose->getTennis()  || $sports_choose->getRugby())
+        {
+          $progress += 20;
+        }*/
+
+        if($apis != null){
+          $progress += 20;
+        }
+
+        return $progress;
+      }
+
 }

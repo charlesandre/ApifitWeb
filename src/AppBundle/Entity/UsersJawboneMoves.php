@@ -226,4 +226,3 @@ class UsersJawboneMoves
         return $this->active_time;
     }
 }
-

@@ -27,7 +27,7 @@ class JawboneDataController extends Controller
   */
   public function getJawboneAPI(Request $request){
 
-    $progress = ConfigureUserController::progressBar();
+    $progress = self::progressBar();
 
     // $devices = new UsersDevices();
     // $devices->setId($this->getUser()->getId());
@@ -94,7 +94,7 @@ class JawboneDataController extends Controller
       $utilisateur = json_decode($response, true);
 
 
-      if(!ConfigureUserController::checkExist('jawbone', $utilisateur['meta']['user_xid'])) {
+      if(!self::checkExist('jawbone', $utilisateur['meta']['user_xid'])) {
 
         $em = $this->getDoctrine()->getManager();
         $account = new UsersAccounts();
@@ -256,4 +256,27 @@ class JawboneDataController extends Controller
       'height' => $utilisateur['data']['height']
     ));
   }
+
+
+
+
+    public function progressBar(){
+
+      $progress = 0;
+
+      $apis = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
+      //$sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
+
+      /*if($sports_choose->getFootball() || $sports_choose->getNatation() || $sports_choose->getRunning() || $sports_choose->getTennis()  || $sports_choose->getRugby())
+      {
+        $progress += 20;
+      }*/
+
+      if($apis != null){
+        $progress += 20;
+      }
+
+      return $progress;
+    }
+
 }

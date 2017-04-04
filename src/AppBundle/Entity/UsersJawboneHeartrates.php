@@ -139,4 +139,3 @@ class UsersJawboneHeartrates
         return $this->resting_heartrate;
     }
 }
-
