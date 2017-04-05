@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ render(controller('AppBundle:Default:menu')) }}
+
+<section style="margin-left:80px; margin-top:80px">
+<h3>Vos données</h3>
+<hr>
+<h5 style="display:inline">
+  {% if(deleted == true) %}
+  <img src="{{ asset('images/green_tick.png') }}" width=100 style="display:inline">Le compte et toutes ses données associées ont été supprimés des bases de données Apifit.
+  {% else %}
+    <img src="{{ asset('images/red_cross.png') }}" width=100 style="display:inline"> Le compte ne vous appartient pas ou n'existe pas.
+  {% endif %}
+</h5>
+<br/>
+<br/>
+<a role="button" href="/datamanager" class="btn btn-success"> Revenir à Mes données </a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js" type="text/javascript"></script>
+
+
+{% endblock %}

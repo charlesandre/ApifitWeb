@@ -29,21 +29,17 @@ class RegistrationController extends Controller
       $new_user->setPassword($password);
 
       $new_user->setRole('ROLE_USER');
+      $new_user->setLevel(1);
       $new_user->setXp(0);
+
+      $new_sports = new UsersSports();
+      $new_sports->setId($new_user->getId());
 
       $em = $this->getDoctrine()->getManager();
       $em->persist($new_user);
+      $em->persist($new_sports);
+
       $em->flush();
-
-      //  $new_field_data = new UsersData();
-      //  $new_field_data->setId($new_user->getId());
-      //  $new_field_sports = new UsersSports();
-      //  $new_field_sports->setId($new_user->getId());
-
-      //
-      //
-      //$em->persist($new_field_data);
-      //$em->persist($new_field_sports);
 
       return $this->redirectToRoute('login');
     }

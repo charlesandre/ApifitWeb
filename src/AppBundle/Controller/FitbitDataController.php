@@ -166,19 +166,13 @@ class FitbitDataController extends Controller
           return new Response("Compte déjà utilisé par un utilisateur d'Apifit. Désolé.");
         }
 
+        $u =  $this->getDoctrine()->getRepository('AppBundle:User')->find($this->getUser()->getId());
+        $u->setWeight($resourceOwner['weight']);
+        $u->setHeight($resourceOwner['height']);
+        $u->setGender($resourceOwner['gender']);
+        $u->setDateOfBirth(new \DateTime($resourceOwner['dateOfBirth']));
+        $em->persist($u);
 
-        if($response_devices != null){
-          foreach($response_device as $d)
-          {
-            $devices = new UsersDevices();
-
-            $devices->setId($this->getUser()->getId());
-            $devices->setDevice($d);
-            $devices->setAid($account->getAid());
-
-            $em->persist($devices);
-          }
-        }
 
 
         foreach($response_tracker_calories['activities-tracker-calories'] as $c)
@@ -311,15 +305,17 @@ class FitbitDataController extends Controller
         $progress = 0;
 
         $apis = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
-        //$sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
+        $sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
 
-        /*if($sports_choose->getFootball() || $sports_choose->getNatation() || $sports_choose->getRunning() || $sports_choose->getTennis()  || $sports_choose->getRugby())
+        if($sports_choose->getFootball() || $sports_choose->getAthletisme() || $sports_choose->getMusculation() || $sports_choose->getRugby()  || $sports_choose->getGolf()
+        || $sports_choose->getTennis()   || $sports_choose->getCyclisme()   || $sports_choose->getBasket()   || $sports_choose->getEscrime()   || $sports_choose->getKarate()
+          || $sports_choose->getVolley()   || $sports_choose->getFoot()   || $sports_choose->getBaseball()   || $sports_choose->getHockey())
         {
-          $progress += 20;
-        }*/
+          $progress += 33;
+        }
 
         if($apis != null){
-          $progress += 20;
+          $progress += 33;
         }
 
         return $progress;

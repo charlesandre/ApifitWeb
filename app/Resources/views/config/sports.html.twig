@@ -1,56 +1,79 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
+<style>
+label{
+  font-weight:normal !important;
+  font-family:Calibri;
+}
+li>a{
+  font-family:Calibri;
+}
+.panel-heading{
+  font-family:Calibri;
+  font-size:16px;
+}
+</style>
 <section style="margin-left:50px; margin-top:70px">
 {% set vars = {'progress' : progress} %}
 {% include 'config/progress.html.twig' with vars %}
   <h4>{{app.user.name|title}}, veuillez sélectionner les sports où vous souhaitez vous perfectionner :</h4>
     <form name="input" action="{{ path('configureSports') }}" method="post">
-      <ul>
-        <li>
-          <label><input type="checkbox" name="Football"
-         {% if(already_checked.Football is defined and already_checked.Football == 1) %}
-            checked="checked"
-         {% endif %}>
-            Football</label>
-        </li>
-        <li>
-        <label>
-        <input type="checkbox" name="Natation" value="Natation"
-        {% if(already_checked.Natation is defined and already_checked.Natation == 1) %}
-         checked="checked"
-         {% endif %}>
-        Natation
-        </label>
-        </li>
-         <li>
-        <label>
-        <input type="checkbox" name="Running" value="Running"
-        {% if(already_checked.Running is defined and already_checked.Running == 1) %}
-         checked="checked"
-         {% endif %}>
-        Running
-        </label>
-        </li>
-        <li>
-        <label>
-        <input type="checkbox" name="Rugby" value="Rugby"
-        {% if(already_checked.Rugby is defined and already_checked.Rugby == 1) %}
-         checked="checked"
-         {% endif %}>
-        Rugby
-        </label>
-        </li>
-        <li>
-        <label>
-        <input type="checkbox" name="Tennis" value="Tennis"
-        {% if(already_checked.Tennis is defined and already_checked.Tennis == 1) %}
-         checked="checked"
-         {% endif %}>
-        Tennis
-        </label>
-        </li>
-      </ul>
+      <div style="display:flex; flex-wrap: wrap">
+        <div style="width:60%; display:flex;flex-wrap: wrap">
+        {% for sport in sports %}
+          <div style="width:300px; padding: 20px; margin: 20px; border:1px solid #eee">
+          <label><input type="checkbox" name="{{sport.nom}}">
+            {{sport.nom}}
+          </label>
+          </div>
+        {% endfor %}
+      </div>
+      <div style="width:30%;  padding: 20px; margin: 20px; border:1px solid #eee">
+        <h4>Vous suivez actuellement :</h4>
+        <br/>
+        <br/>
+        {% if(already_checked.football == 1) %}
+        <p>Football       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.tennis == 1) %}
+        <p>Tennis       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.rugby == 1) %}
+        <p>Rugby       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.golf == 1) %}
+        <p>Golf       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.musculation == 1) %}
+        <p>Musculation       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.hockey == 1) %}
+        <p>Hockey       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.athletisme == 1) %}
+        <p>Athlétisme       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.cyclisme == 1) %}
+        <p>Cyclisme       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.escrime == 1) %}
+        <p>Escrime       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.karate == 1) %}
+        <p>Karaté       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.volley == 1) %}
+        <p>Volley     <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.basket == 1) %}
+        <p>Basket   <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+        {% if(already_checked.baseball == 1) %}
+        <p>Baseball   <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></p>
+        {% endif %}
+      </div>
+      </div>
       <button type="submit" class="btn btn-success">Appliquer et continuer la configuration</button>
     </form>
 <br/>

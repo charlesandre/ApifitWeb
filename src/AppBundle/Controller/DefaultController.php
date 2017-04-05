@@ -114,15 +114,29 @@ class DefaultController extends Controller
 
     /* GET USERS' DATA */
     $repository = $this->getDoctrine()
-    ->getRepository('AppBundle:UsersApiIdentity');
+    ->getRepository('AppBundle:User');
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
-
+    $query = $repository->createQueryBuilder('d')
+    ->where('d.id = :id')
+    ->setParameter('id', $a)
+    ->setMaxResults(1)
+    ->getQuery();
+    $lastdata = $query->getResult();
     $query = $repository->createQueryBuilder('d')
     ->where('d.id = :uid')
     ->setParameter('uid', $a)
     ->getQuery();
-
+    $lastdatamultiple = $query->getResult();
+    $query = $repository->createQueryBuilder('d')
+    ->where('d.id = :uid')
+    ->setParameter('uid', $a)
+    ->getQuery();
+    $queryUsers = $repositoryUsers->createQueryBuilder('u')
+    ->where('u.id = :uid')
+    ->setParameter('uid', $a)
+    ->getQuery();
+    $users = $queryUsers->getResult();
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
     $em = $this->getDoctrine()->getManager();
@@ -132,7 +146,7 @@ class DefaultController extends Controller
     $statement->execute();
     $friends = $statement->fetchAll();
 
-    /* GET DEFIS THAT ARE RELEVANT TO THE USER */
+    /* GET 5 LAST DEFIS */
     $em = $this->getDoctrine()->getManager();
     $connectionDefis = $em->getConnection();
     $statementDefis = $connectionDefis->prepare("SELECT DISTINCT u.statut as statut, d.nom as nom, d.type as type, d.description as description FROM defis d, users_defis u WHERE u.did = d.id");
@@ -140,7 +154,7 @@ class DefaultController extends Controller
     $statementDefis->execute();
     $defis = $statementDefis->fetchAll();
 
-    /* GET EXERCICES THAT ARE RELEVANT TO THE USER */
+    /* GET 5 LAST EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
     $statementExercices = $connectionExercices->prepare("SELECT r.statut as statut, s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport AND r.tid = t.id");
@@ -148,27 +162,36 @@ class DefaultController extends Controller
     $exercices = $statementExercices->fetchAll();
 
 
+
     /* RECUPERATION DES DONNEES POUR LE GRAPHE */
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
-    $statementData = $connectionData->prepare("SELECT DISTINCT s.steps as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
+    $statementData = $connectionData->prepare("SELECT s.value as value, s.date as date FROM users_fitbit_steps s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
     $statementData->execute();
     $steps = $statementData->fetchAll();
 
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
-    $statementData = $connectionData->prepare("SELECT DISTINCT s.distance as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
+    $statementData = $connectionData->prepare("SELECT d.value as value, d.date as date FROM users_fitbit_distances d WHERE d.id = $a ORDER BY d.date ASC LIMIT 5");
     $statementData->execute();
     $distance = $statementData->fetchAll();
 
 
+
+
+    $accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
+
     return $this->render('default/index.html.twig', array(
       'friends' => $friends,
+      'lastdata' => $lastdata,
+      'lastdatamultiple' => $lastdatamultiple,
       'id'=> $a,
+      'users' => $users,
       'defis' => $defis,
       'steps' => $steps,
       'distance' => $distance,
       'exercices' => $exercices,
+      'accounts' => $accounts
     ));
   }
 
@@ -333,16 +356,16 @@ class DefaultController extends Controller
   */
   public function DisplayFriends(Request $request){
 
-  $rel_friends = $this->getDoctrine()->getRepository('AppBundle:UsersFriends')->findByUid1($this->getUser()->getId());
+    $rel_friends = $this->getDoctrine()->getRepository('AppBundle:UsersFriends')->findByUid1($this->getUser()->getId());
 
-  $friends = array();
-  foreach($rel_friends as $r){
-    $friends += $this->getDoctrine()->getRepository('AppBundle:User')->findById($r->getUid2());
-  }
+    $friends = array();
+    foreach($rel_friends as $r){
+      $friends += $this->getDoctrine()->getRepository('AppBundle:User')->findById($r->getUid2());
+    }
 
-  return $this->render('default/friends.html.twig', array(
-   'friends' => $friends
-  ));
+    return $this->render('default/friends.html.twig', array(
+     'friends' => $friends
+    ));
   }
 
 }

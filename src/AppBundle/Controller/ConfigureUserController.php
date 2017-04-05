@@ -37,15 +37,17 @@ class ConfigureUserController extends Controller
       $progress = 0;
 
       $apis = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
-      //$sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
+      $sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
 
-      /*if($sports_choose->getFootball() || $sports_choose->getNatation() || $sports_choose->getRunning() || $sports_choose->getTennis()  || $sports_choose->getRugby())
+      if($sports_choose->getFootball() || $sports_choose->getAthletisme() || $sports_choose->getMusculation() || $sports_choose->getRugby()  || $sports_choose->getGolf()
+      || $sports_choose->getTennis()   || $sports_choose->getCyclisme()   || $sports_choose->getBasket()   || $sports_choose->getEscrime()   || $sports_choose->getKarate()
+        || $sports_choose->getVolley()   || $sports_choose->getFoot()   || $sports_choose->getBaseball()   || $sports_choose->getHockey())
       {
-        $progress += 20;
-      }*/
+        $progress += 33;
+      }
 
       if($apis != null){
-        $progress += 20;
+        $progress += 33;
       }
 
       return $progress;
@@ -61,21 +63,9 @@ class ConfigureUserController extends Controller
     $user_id = $this->getUser()->getId();
     $user_accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($user_id);
 
-    $devices = $this->getDoctrine()
-    ->getRepository('AppBundle:UsersDevices');
-
-    $query = $devices->createQueryBuilder('p')
-    ->where('p.uid = :uid')
-    ->setParameter('uid', $user_id)
-    ->getQuery();
-
-    $devices = $query->getResult();
-
-
     return $this->render('config/configure.html.twig', array(
       'progress' => $progress,
       'accounts' => $user_accounts,
-      'devices' => $devices,
     ));
   }
 
@@ -90,7 +80,7 @@ class ConfigureUserController extends Controller
     $user_id = $this->getUser()->getId();
 
     $em = $this->getDoctrine()->getManager();
-    /*$current_data = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($user_id);
+    $current_data = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($user_id);
 
     if($current_data == null){
       $sports = new UsersSports();
@@ -98,9 +88,12 @@ class ConfigureUserController extends Controller
       $em->persist($sports);
       $em->flush();
     }
-*/
+
+    $sports = $this->getDoctrine()->getRepository('AppBundle:Sports')->findAll();
+
     return $this->render('config/sports.html.twig', array(
-  //    'already_checked' => $current_data,
+      'already_checked' => $current_data,
+      'sports' => $sports,
       'progress' => $progress,
     ));
   }
@@ -114,10 +107,18 @@ class ConfigureUserController extends Controller
     $current_data = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
 
     $current_data->setFootball($request->request->has('Football'));
-    $current_data->setNatation($request->request->has('Natation'));
-    $current_data->setRunning($request->request->has('Running'));
+    $current_data->setFoot($request->request->has('Foot'));
+    $current_data->setAthletisme($request->request->has('Athlétisme'));
+    $current_data->setBaseball($request->request->has('Baseball'));
+    $current_data->setCyclisme($request->request->has('Cyclisme'));
+    $current_data->setEscrime($request->request->has('Escrime'));
+    $current_data->setGolf($request->request->has('Golf'));
+    $current_data->setMusculation($request->request->has('Musculation'));
+    $current_data->setHockey($request->request->has('Hockey'));
+    $current_data->setKarate($request->request->has('Karaté'));
     $current_data->setRugby($request->request->has('Rugby'));
     $current_data->setTennis($request->request->has('Tennis'));
+    $current_data->setVolley($request->request->has('Volley'));
 
     $em->persist($current_data);
     $em->flush();

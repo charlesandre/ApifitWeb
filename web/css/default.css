@@ -178,11 +178,6 @@ p
 \------End LOC------*/
 /*----------------*\
 \------USERS------*/
-.dashboard_users
-{
-  min-height: 600px;
-}
-
 .widget
 {
   position: relative;

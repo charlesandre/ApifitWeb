@@ -10,28 +10,87 @@ AppBundle\Entity\UsersSports:
             id: true
             column: ID
     fields:
+        athletisme:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : athletisme
+        baseball:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : baseball
+        basket:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : basket
+        cyclisme:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : cyclisme
+        escrime:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : escrime
+        foot:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : foot
         football:
             type: boolean
+            nullable: true
             options:
               default: 0
-            column : FOOTBALL
-        running:
+            column : football
+        golf:
             type: boolean
+            nullable: true
             options:
               default: 0
-            column : RUNNING
+            column : golf
+        musculation:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : musculation
+        hockey:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : hockey
+        karate:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : karate
         rugby:
             type: boolean
+            nullable: true
             options:
               default: 0
-            column : RUGBY
-        natation:
-            type: boolean
-            options:
-              default: 0
-            column : NATATION
+            column : rugby
         tennis:
             type: boolean
+            nullable: true
             options:
               default: 0
-            column : TENNIS
+            column : tennis
+        volley:
+            type: boolean
+            nullable: true
+            options:
+              default: 0
+            column : volley

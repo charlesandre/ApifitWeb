@@ -426,9 +426,9 @@ class User implements UserInterface
     private $gender;
 
     /**
-     * @var \DateTime
+     * @var integer
      */
-    private $dateOfBirth;
+    private $age;
 
 
     /**
@@ -441,7 +441,7 @@ class User implements UserInterface
     public function setWeight($weight)
     {
         $this->weight = $weight;
-
+    
         return $this;
     }
 
@@ -465,7 +465,7 @@ class User implements UserInterface
     public function setHeight($height)
     {
         $this->height = $height;
-
+    
         return $this;
     }
 
@@ -489,7 +489,7 @@ class User implements UserInterface
     public function setGender($gender)
     {
         $this->gender = $gender;
-
+    
         return $this;
     }
 
@@ -504,6 +504,35 @@ class User implements UserInterface
     }
 
     /**
+     * Set age
+     *
+     * @param integer $age
+     *
+     * @return User
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return integer
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $dateOfBirth;
+
+
+    /**
      * Set dateOfBirth
      *
      * @param \DateTime $dateOfBirth
@@ -513,7 +542,7 @@ class User implements UserInterface
     public function setDateOfBirth($dateOfBirth)
     {
         $this->dateOfBirth = $dateOfBirth;
-
+    
         return $this;
     }
 
