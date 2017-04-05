@@ -30,26 +30,20 @@
         <img class="photo" src="images/Avatar/{{app.user.id}}.png" alt="{{app.user.name}} {{ app.user.lastname}}" id="pp"><br/><br/>
 
 
-        {% for u in users %}
           <li><h3>{{app.user.name}}</h3></li>
-          <li><h4>Level : {{ u.level }} </h4></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
-        {% endfor %}
-        {% for data in lastdata %}
-        <li><h6>Taille : {{ data.height }} cm</h6></li>
-        <li><h6>Poids : {{ data.weight }} kg </h6></li>
+          <li><h4>Level : {{ app.user.level }} </h4></li> <!-- n'est plus dans user_data, il faut mettre le champ Level dans users. -->
+        <li><h6>Taille : {{ app.user.height }} cm</h6></li>
+        <li><h6>Poids : {{ app.user.weight }} kg </h6></li>
 
-        <li><h6 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h6></li>
+        <li><h6 id="imc">IMC : {{ (app.user.weight/((app.user.height/100)*(app.user.height/100)))| round(2, 'common') }}</h6></li>
 
         <script>
-        var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
+        var imc= {{ (app.user.weight/((app.user.height/100)*(app.user.height/100)))}};
         if(imc>25) document.getElementById('imc').className="red";
         else if(imc<18) document.getElementById('imc').className="red";
         else document.getElementById('imc').className="green";
         </script>
 
-        <li><h6>Stride Length Running : {{ data.strideLengthRunning }}</h6></li>
-        <li><h6>Stride Length Walking : {{ data.strideLengthWalking }}</h6></li>
-          {% endfor %}
           <p style="font-size:12px; margin-bottom:0"> Expérience </p>
 
           <div class="progress" style="margin:20px;">

@@ -6,10 +6,13 @@ use AppBundle\Entity\UsersSearch;
 use AppBundle\Entity\UsersFriends;
 use AppBundle\Entity\UsersChat;
 use AppBundle\Entity\UsersPosts;
+use AppBundle\Entity\User;
 
 use AppBundle\Form\Search;
 use AppBundle\Form\Post;
 use AppBundle\Form\Chat;
+use AppBundle\Form\PP;
+
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -124,6 +127,16 @@ if($accept == 1){
       $frienddemands = $queryFriendDemand->getResult();
 
 
+        //NEW FORM PP
+        $PP = new User();
+        $formpp = $this->createForm(PP::class, $PP);
+        $formpp->handleRequest($request);
+
+
+
+
+
+
       /* MARK ALL THE POSTS AS READ IF THE USERS GOES ON HIS OWN PROFIL */
 
       if($id == $a){
@@ -179,6 +192,17 @@ if($accept == 1){
         return $this->redirect("/profil/$id");
 
       }
+
+      // IF NEW PP
+      if ($formpp->isSubmitted() && $formpp->isValid()) {
+
+        $dir = "images/Avatar";
+        $filename = "".$a.".png";
+
+      $formpp['src']->getData()->move($dir, $filename);
+
+      }
+
 
       /* IF THE USERS ARE ALREADY FRIENDS OR IF AN IVITE HAS BEEN SENT */
       $em = $this->getDoctrine()->getManager();
@@ -245,6 +269,7 @@ if($accept == 1){
         'isfriend' => $isfriend,
         'formchat' => $formchat->createView(),
         'formpost' => $formpost->createView(),
+        'formpp' => $formpp->createView(),
         'messages' => $messages
       ));
     }
