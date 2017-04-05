@@ -101,15 +101,22 @@ li>a{
         <li>
           <label class="control control--checkbox">{{e.nomexo}} {{e.nom}}
             <input type="checkbox"/>
+            <button class="btne" id ="{{e.id}}" onclick="ValidateDefi();">Fini !</button>
             <div class="control__indicator"></div>
           </label>
         </li>
         <hr>
         {% endfor %}
+        <script>
+
+          $(".btne").click(function() {
+            var button = $("#"+this.id);
+            window.location.href = "/entrainementss/"+this.id;
+          });
+        </script>
         <a href="/entrainements" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les entraînements disponibles </a>
     </div>
   </div>
-
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -119,12 +126,20 @@ li>a{
         {% for d in defis %}
           <li>
             <label class="control control--checkbox">{{d.nom}} {{d.type}}
-              <input type="checkbox"/>
+              <input type="checkbox" onclick="ValidateDefi('~ {{d.id}} ~');"/>
+              <button class="btnd" id ="{{d.id}}" onclick="ValidateDefi();">Fini !</button>
               <div class="control__indicator"></div>
             </label>
           </li>
           <hr>
         {% endfor %}
+        <script>
+
+          $(".btnd").click(function() {
+            var button = $("#"+this.id);
+            window.location.href = "/defiss/"+this.id;
+          });
+        </script>
         <a href="/defis" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les défis </a>
     </div>
   </div>

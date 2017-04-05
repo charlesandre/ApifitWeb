@@ -117,7 +117,7 @@ class DefaultController extends Controller
     /* GET 5 LAST DEFIS */
     $em = $this->getDoctrine()->getManager();
     $connectionDefis = $em->getConnection();
-    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT u.statut as statut, d.nom as nom, d.type as type, d.description as description FROM defis d, users_defis u WHERE u.did = d.id LIMIT 5");
+    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT u.statut as statut, d.id as id, d.nom as nom, d.type as type, d.description as description FROM defis d, users_defis u WHERE u.did = d.id AND u.statut = 0 LIMIT 5");
     $statementDefis->bindValue('id', $a);
     $statementDefis->execute();
     $defis = $statementDefis->fetchAll();
@@ -125,7 +125,7 @@ class DefaultController extends Controller
     /* GET 5 LAST EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT r.statut as statut, s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport AND r.tid = t.id LIMIT 5");
+    $statementExercices = $connectionExercices->prepare("SELECT r.statut as statut, s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport AND r.tid = t.id AND r.statut = 0 LIMIT 5");
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
@@ -192,19 +192,40 @@ class DefaultController extends Controller
       'abonnementexo' => $abonementexercices,
     ));
   }
+  /**
+  * @Route("/defiss/{did}")
+  */
+  public function ValDefi(Request $request){
+    $did = $request->attributes->get('did');
+    $a=$this->getUser()->getId();
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionExercices = $em->getConnection();
+      $statementExercices = $connectionExercices->prepare("UPDATE users_defis SET statut = 1 WHERE did = $did AND uid = $a");
+      $statementExercices->execute();
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionExercices = $em->getConnection();
+      $statementExercices = $connectionExercices->prepare("UPDATE user SET xp = xp +10 WHERE id = $a");
+      $statementExercices->execute();
+
+      return $this->redirect("/");
+
+    }
 
   /**
   * @Route("/defis/{did}")
   */
   public function AddDefi(Request $request){
     $did = $request->attributes->get('did');
+    $s = $request->attributes->get('s');
     $a=$this->getUser()->getId();
+
 
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT * FROM users_defis WHERE uid = :id AND did = :deid");
+    $statementExercices = $connectionExercices->prepare("SELECT * FROM users_defis WHERE uid = $a AND did = $did");
     $statementExercices->bindValue('id', $a);
-    $statementExercices->bindValue('deid', $did);
     $statementExercices->execute();
     $linkexist = $statementExercices->fetchAll();
 
@@ -231,9 +252,9 @@ class DefaultController extends Controller
   }
 
     return $this->redirect("/defis");
+}
 
 
-  }
 
 
 
@@ -263,6 +284,29 @@ class DefaultController extends Controller
       'abonnementexo' => $abonementexercices,
 
     ));
+  }
+
+  /**
+  * @Route("/entrainementss/{tid}")
+  */
+  public function ValTraining(Request $request){
+
+    $tid = $request->attributes->get('tid');
+    $a=$this->getUser()->getId();
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionExercices = $em->getConnection();
+      $statementExercices = $connectionExercices->prepare("UPDATE users_training SET statut = 1 WHERE tid = $tid AND uid = $a");
+      $statementExercices->execute();
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionExercices = $em->getConnection();
+      $statementExercices = $connectionExercices->prepare("UPDATE user SET xp = xp +10 WHERE id = $a");
+      $statementExercices->execute();
+
+      return $this->redirect("/");
+
+
   }
 
   /**
