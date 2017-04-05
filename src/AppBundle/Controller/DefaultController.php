@@ -114,18 +114,17 @@ class DefaultController extends Controller
 
     /* GET USERS' DATA */
     $repository = $this->getDoctrine()
-    ->getRepository('AppBundle:UsersApiIdentity');
+    ->getRepository('AppBundle:User');
     $repositoryUsers = $this->getDoctrine()
     ->getRepository('AppBundle:User');
     $query = $repository->createQueryBuilder('d')
-    ->where('d.uid = :uid')
-    ->setParameter('uid', $a)
-    ->orderBy('d.date', 'DESC')
+    ->where('d.id = :id')
+    ->setParameter('id', $a)
     ->setMaxResults(1)
     ->getQuery();
     $lastdata = $query->getResult();
     $query = $repository->createQueryBuilder('d')
-    ->where('d.uid = :uid')
+    ->where('d.id = :uid')
     ->setParameter('uid', $a)
     ->getQuery();
     $lastdatamultiple = $query->getResult();
@@ -178,6 +177,10 @@ class DefaultController extends Controller
     $distance = $statementData->fetchAll();
 
 
+
+
+    $accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
+
     return $this->render('default/index.html.twig', array(
       'friends' => $friends,
       'lastdata' => $lastdata,
@@ -188,6 +191,7 @@ class DefaultController extends Controller
       'steps' => $steps,
       'distance' => $distance,
       'exercices' => $exercices,
+      'accounts' => $accounts
     ));
   }
 
@@ -267,16 +271,16 @@ class DefaultController extends Controller
   */
   public function DisplayFriends(Request $request){
 
-  $rel_friends = $this->getDoctrine()->getRepository('AppBundle:UsersFriends')->findByUid1($this->getUser()->getId());
+    $rel_friends = $this->getDoctrine()->getRepository('AppBundle:UsersFriends')->findByUid1($this->getUser()->getId());
 
-  $friends = array();
-  foreach($rel_friends as $r){
-    $friends += $this->getDoctrine()->getRepository('AppBundle:User')->findById($r->getUid2());
-  }
+    $friends = array();
+    foreach($rel_friends as $r){
+      $friends += $this->getDoctrine()->getRepository('AppBundle:User')->findById($r->getUid2());
+    }
 
-  return $this->render('default/friends.html.twig', array(
-   'friends' => $friends
-  ));
+    return $this->render('default/friends.html.twig', array(
+     'friends' => $friends
+    ));
   }
 
 }

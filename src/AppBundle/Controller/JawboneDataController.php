@@ -93,6 +93,10 @@ class JawboneDataController extends Controller
       $response = file_get_contents($url, false, $context);
       $utilisateur = json_decode($response, true);
 
+      $u =  $this->getDoctrine()->getRepository('AppBundle:User')->find($this->getUser()->getId());
+      $u->setWeight($utilisateur['data']['weight']);
+      $u->setHeight($utilisateur['data']['height']);
+      $em->persist($u);
 
       if(!self::checkExist('jawbone', $utilisateur['meta']['user_xid'])) {
 
@@ -251,6 +255,7 @@ class JawboneDataController extends Controller
         $em->persist($s);
 
       }
+
     }
 
 

@@ -69,18 +69,31 @@ AppBundle\Entity\User:
             type: integer
             nullable: true
             column: xp
-        obj:
-            type: string
-            nullable: true
-            length: 30
-            options:
-                fixed: false
-
-        src:
+        weight:
             type: integer
             nullable: true
             options:
+                unsigned: false
+            column: weight
+        height:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: height
+        gender:
+            type: string
+            nullable: true
+            length: 8
+            options:
                 fixed: false
+            column: gender
+        dateOfBirth:
+            type: date
+            nullable: true
+            options:
+                unsigned: false
+            column: date_of_birth
 
 
     lifecycleCallbacks: {  }

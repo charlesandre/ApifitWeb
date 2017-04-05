@@ -32,7 +32,7 @@
                         {% endif %}
 
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Adresse E-Mail :</label>
+                            <label for="email" class="control-label">Adresse E-Mail :</label>
 
                             <div class="">
                                 <input id="email" type="email" class="form-control" name="_email" value="{{ last_username }}">
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Mot de passe :</label>
+                            <label for="password" class="control-label">Mot de passe :</label>
 
                             <div class="">
                                 <input id="password" type="password" class="form-control" name="_password">
@@ -60,4 +60,11 @@
         </div>
     </div>
 </div>
+<style>
+label{
+	font-weight:normal !important;
+	font-family:Calibri;
+	    float: left;
+}
+</style>
 {% endblock %}

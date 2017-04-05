@@ -61,21 +61,9 @@ class ConfigureUserController extends Controller
     $user_id = $this->getUser()->getId();
     $user_accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($user_id);
 
-    $devices = $this->getDoctrine()
-    ->getRepository('AppBundle:UsersDevices');
-
-    $query = $devices->createQueryBuilder('p')
-    ->where('p.uid = :uid')
-    ->setParameter('uid', $user_id)
-    ->getQuery();
-
-    $devices = $query->getResult();
-
-
     return $this->render('config/configure.html.twig', array(
       'progress' => $progress,
       'accounts' => $user_accounts,
-      'devices' => $devices,
     ));
   }
 

@@ -1,8 +1,25 @@
+
+
 {% extends 'base.html.twig' %}
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
 {% if app.user != null %}
+<style>
+label{
+  font-weight:normal !important;
+  font-family:Calibri;
+}
 
+li>a{
+  font-family:Calibri;
+
+}
+
+.panel-heading{
+  font-family:Calibri;
+  font-size:16px;
+}
+</style>
 <div class="zone_affichage container centrer">
 
 <div class="row">
@@ -20,12 +37,68 @@
 
         <canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>
     </div>
+
+    <div class="col-lg-4 col-xs-4">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-bolt"></i> Entraînement
+          </div>
+          <br/>
+          {% for e in exercices %}
+          <li>
+            <label class="control control--checkbox">{{e.nomexo}} {{e.nom}}
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </li>
+          <hr>
+          {% endfor %}
+          <a href="/entrainements" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les entraînements disponibles </a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-xs-4">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-rocket"></i> Défis
+          </div>
+          <br/>
+          {% for d in defis %}
+            <li>
+              <label class="control control--checkbox">{{d.nom}} {{d.type}}
+                <input type="checkbox"/>
+                <div class="control__indicator"></div>
+              </label>
+            </li>
+            <hr>
+          {% endfor %}
+          <a href="/defis" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les défis </a>
+      </div>
+    </div>
+
+
+
+
+      <div class="col-lg-4 col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <i class="fa fa-users"></i> Amis
+            </div>
+            <div class="scroll">
+              {% for users in friends %}
+              <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn_bootstrap_modify btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+                {{ users.name }} {{ users.lastname}}</button></a></li>
+                {% endfor %}
+
+            </div>
+        </div>
+      </div>
   </div>
 
     <div class="col-xs-4 col-lg-4 dashboard_users">
     <div class="widget">
       <div class="cover">
-      
+
       </div>
         <img class="photo" src="images/Avatar/{{app.user.id}}.png" alt="{{app.user.name}} {{ app.user.lastname}}" id="pp"><br/><br/>
 
@@ -38,17 +111,14 @@
         <li><h6>Taille : {{ data.height }} cm</h6></li>
         <li><h6>Poids : {{ data.weight }} kg </h6></li>
 
-        <li><h6 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h6></li>
+      {% if(data.height != null) %}  <li><h6 id="imc">IMC : {{ (data.weight/((data.height/100)*(data.height/100)))| round(2, 'common') }}</h6></li> {% endif %}
 
         <script>
-        var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}};
+    {% if(data.height != null) %}       var imc= {{ (data.weight/((data.height/100)*(data.height/100)))}}; {% endif %}
         if(imc>25) document.getElementById('imc').className="red";
         else if(imc<18) document.getElementById('imc').className="red";
         else document.getElementById('imc').className="green";
         </script>
-
-        <li><h6>Stride Length Running : {{ data.strideLengthRunning }}</h6></li>
-        <li><h6>Stride Length Walking : {{ data.strideLengthWalking }}</h6></li>
           {% endfor %}
           <p style="font-size:12px; margin-bottom:0"> Expérience </p>
 
@@ -63,59 +133,46 @@
             <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
           </ul>
     </div>
-</div>
 
-<div class="row">
 
-  <div class="col-lg-4 col-xs-4">
-    <div class="panel panel-default">
+
+    <div class="panel panel-default" style="margin-top:20px">
         <div class="panel-heading">
-          <i class="fa fa-bolt"></i> Entraînement
+          <i class="fa fa-gear"></i>  Vos comptes
         </div>
         <br/>
-        {% for e in exercices %}
-        <li>
-          <label class="control control--checkbox">{{e.nomexo}} {{e.nom}}
-            <input type="checkbox"/>
-            <div class="control__indicator"></div>
-          </label>
-        </li>
+
+        {% for account in accounts %}
+
+            <div style=" padding: 20px; margin: 20px;display:flex; align-items:center; border:1px solid #eee">
+
+              <img  src="
+              {% if account.brand == "fitbit" %}
+              {{ asset('images/fitbit_logo.png') }}
+              {% endif %}
+              {% if account.brand == "jawbone" %}
+              {{ asset('images/jawbone_logo.png') }}
+              {% endif %}
+              {% if account.brand == "garmin" %}
+              {{ asset('images/garmin_logo.png') }}
+              {% endif %}
+              {% if account.brand == "samsung" %}
+              {{ asset('images/samsung_logo.png') }}
+              {% endif %}
+              " style="width: 100px; height:auto;">
+
+              <p style="margin:0 auto;"> {{account.nameAccount}} </p>
+              <p style="margin:0 auto; font-size:12px"> {{account.apiId}} </p>
+
+            </div>
+
+        {% endfor %}
         <hr>
-        {% endfor %}
+        <a href="/configure" class="btn btn-primary" role="button" style="margin-bottom:15px"> Configurer </a>
+
     </div>
   </div>
 
-  <div class="col-lg-4 col-xs-4">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-          <i class="fa fa-rocket"></i> Défis
-        </div>
-        <br/>
-        {% for d in defis %}
-          <li>
-            <label class="control control--checkbox">{{d.nom}} {{d.type}}
-              <input type="checkbox"/>
-              <div class="control__indicator"></div>
-            </label>
-          </li>
-          <hr>
-        {% endfor %}
-    </div>
-  </div>
-
-  <div class="friends col-lg-4 col-xs-4">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-          <i class="fa fa-users"></i> Amis
-        </div>
-        <div class="scroll">
-          {% for users in friends %}
-          <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn_bootstrap_modify btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
-            {{ users.name }} {{ users.lastname}}</button></a></li>
-            {% endfor %}
-        </div>
-    </div>
-  </div>
 </div>
 
 
@@ -297,4 +354,5 @@ $("#distance").click(function () {
   graphdistance();
 });
   </script>
+
   {% endblock %}

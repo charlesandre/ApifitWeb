@@ -166,19 +166,13 @@ class FitbitDataController extends Controller
           return new Response("Compte déjà utilisé par un utilisateur d'Apifit. Désolé.");
         }
 
+        $u =  $this->getDoctrine()->getRepository('AppBundle:User')->find($this->getUser()->getId());
+        $u->setWeight($resourceOwner['weight']);
+        $u->setHeight($resourceOwner['height']);
+        $u->setGender($resourceOwner['gender']);
+        $u->setDateOfBirth(new \DateTime($resourceOwner['dateOfBirth']));
+        $em->persist($u);
 
-        if($response_devices != null){
-          foreach($response_device as $d)
-          {
-            $devices = new UsersDevices();
-
-            $devices->setId($this->getUser()->getId());
-            $devices->setDevice($d);
-            $devices->setAid($account->getAid());
-
-            $em->persist($devices);
-          }
-        }
 
 
         foreach($response_tracker_calories['activities-tracker-calories'] as $c)
