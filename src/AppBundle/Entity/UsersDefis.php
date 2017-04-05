@@ -80,4 +80,33 @@ class UsersDefis
     {
         return $this->statut;
     }
+    /**
+     * @var integer
+     */
+    private $did;
+
+
+    /**
+     * Set did
+     *
+     * @param integer $did
+     *
+     * @return UsersDefis
+     */
+    public function setDid($did)
+    {
+        $this->did = $did;
+
+        return $this;
+    }
+
+    /**
+     * Get did
+     *
+     * @return integer
+     */
+    public function getDid()
+    {
+        return $this->did;
+    }
 }

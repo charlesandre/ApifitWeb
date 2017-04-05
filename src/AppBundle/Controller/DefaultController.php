@@ -158,7 +158,7 @@ class DefaultController extends Controller
     /* GET 5 LAST EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s, users_training r WHERE s.id = t.sport LIMIT 5");
+    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport LIMIT 5");
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
@@ -232,7 +232,7 @@ class DefaultController extends Controller
     /* GET ALL EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM table_training t, sports s WHERE s.id = t.sport");
+    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s WHERE s.id = t.sport");
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
@@ -248,6 +248,48 @@ class DefaultController extends Controller
       'abonnementexo' => $abonementexercices,
 
     ));
+  }
+
+  /**
+  * @Route("/entrainements/{tid}")
+  */
+  public function AddTraining(Request $request){
+    $tid = $request->attributes->get('tid');
+    $a=$this->getUser()->getId();
+
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("SELECT * FROM users_training WHERE uid = :id AND tid = :trid");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->bindValue('trid', $tid);
+    $statementExercices->execute();
+    $linkexist = $statementExercices->fetchAll();
+
+    $exist = count($linkexist);
+
+    if($exist == 0){
+
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("INSERT INTO users_training(uid, tid, statut) VALUES(:id, :tid, '0')");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->bindValue('tid', $tid);
+    $statementExercices->execute();
+
+  }
+  else if ($exist == 1){
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("DELETE FROM users_training WHERE tid = :trid AND uid = :id");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->bindValue('trid', $tid);
+    $statementExercices->execute();
+
+  }
+
+    return $this->redirect("/entrainements");
+
+
   }
 
   /*  AFFICHAGE DE LA LOC  */

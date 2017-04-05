@@ -1,42 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
-<div class=" menu_defis panel panel-default">
-    <div class="panel-heading">
-      <i class="fa fa-bars"></i> Tri
-    </div>
-    <div class="sub_defis">
-    Sport :<br/><br/>
-    <select class="form-control" id="sel1">
-      {% for s in sports %}
-      <<option>{{ s.nom }}</option>
-      {% endfor %}
-    </select><br/><br/>
-    Niveau :<br/><br/>
-    <div class="checkbox">
-      <label><input type="checkbox" value=""><i class="fa fa-star"></i></label>
-    </div>
 
-    <div class="checkbox">
-      <label><input type="checkbox" value=""><i class="fa fa-star"></i><i class="fa fa-star"></i></label>
-    </div>
-    <div class="checkbox disabled">
-      <label><input type="checkbox" value=""><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></label>
-    </div><br/><br/>
-    Point Xp :<br/><br/>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">10Xp</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">20Xp</label>
-    </div>
-    <div class="checkbox disabled">
-      <label><input type="checkbox" value="">30Xp</label>
-    </div>
-    <br/><br/>
-    </div>
-  </div>
-</div>
 
 <div class="zone_affichage container">
 
