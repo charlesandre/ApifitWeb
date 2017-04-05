@@ -26,6 +26,7 @@ class DataController extends Controller
     $lastdata = array();
     $accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
 
+    if($accounts == null) return new Response("Vous n'avez aucun compte configuré.");
     foreach($accounts as $account){
 
       $aid = $account->getAid();
@@ -121,7 +122,7 @@ class DataController extends Controller
   */
 
   public function exportAll(Request $request){
-    
+
   }
 
 

@@ -55,7 +55,7 @@ class ConfigureUserController extends Controller
       }
 
       if($obj != null){
-        $progress += 33;
+        if($obj->getObjectif() != null) $progress += 33;
       }
 
       if(($sports_choose->getFootball() || $sports_choose->getAthletisme() || $sports_choose->getMusculation() || $sports_choose->getRugby()  || $sports_choose->getGolf()
