@@ -52,7 +52,7 @@ var myChart = new Chart(ctx, {
       label: 'Fréquence max. Coeur',
       data : [
         {% for s in heartrates %}
-        "{{s.resting_heartrate}}",
+        "{{s.restingHeartrate}}",
         {% endfor %}
       ],
       backgroundColor: [

@@ -21,33 +21,47 @@ class DataController extends Controller
   */
   public function showAction(Request $request){
 
-
+    $jawbone_existed=false;
+    $fitbit_existed=false;
     $user = $this->getUser()->getId();
     $lastdata = array();
     $accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
 
+    if($accounts == null) return new Response("Vous n'avez aucun compte configuré.");
     foreach($accounts as $account){
 
       $aid = $account->getAid();
 
       if($account->getBrand() == "fitbit"){
         $lastdata_fitbit = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitSteps')->findOneBy(array('id' => ($this->getUser()->getId())), array('date' => 'desc'));
+        $fitbit_existed = true;
       }
 
       if($account->getBrand() == "jawbone"){
         $lastdata_jawbone = $this->getDoctrine()->getRepository('AppBundle:UsersJawboneBodyEvents')->findOneBy(array('id' => ($this->getUser()->getId())), array('date' => 'desc'));
-
+        $jawbone_existed = true;
       }
 
     }
 
+if($jawbone_existed && !$fitbit_existed){
+  return $this->render('datamanager/index.html.twig', array(
+    'lastdata_jawbone' => $lastdata_jawbone,
+    'accounts' => $accounts
+  ));
+}
+if(!$jawbone_existed && $fitbit_existed){
+  return $this->render('datamanager/index.html.twig', array(
+    'lastdata_fitbit' => $lastdata_fitbit,
+    'accounts' => $accounts
+  ));
+}
     return $this->render('datamanager/index.html.twig', array(
       'lastdata_fitbit' => $lastdata_fitbit,
       'lastdata_jawbone' => $lastdata_jawbone,
       'accounts' => $accounts
     ));
   }
-
 
 
   /**
@@ -121,7 +135,7 @@ class DataController extends Controller
   */
 
   public function exportAll(Request $request){
-    
+
   }
 
 

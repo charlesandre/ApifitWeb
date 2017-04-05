@@ -41,7 +41,9 @@ li
 a{
   text-decoration:none;
 }
-
+.affichage_search{
+  padding:5px 10px 0px 10px;
+}
 p
 {
 

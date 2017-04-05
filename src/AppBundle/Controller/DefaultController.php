@@ -204,10 +204,33 @@ class DefaultController extends Controller
       $statementExercices = $connectionExercices->prepare("UPDATE users_defis SET statut = 1 WHERE did = $did AND uid = $a");
       $statementExercices->execute();
 
+
+
+
+
       $em = $this->getDoctrine()->getManager();
       $connectionExercices = $em->getConnection();
       $statementExercices = $connectionExercices->prepare("UPDATE user SET xp = xp +10 WHERE id = $a");
       $statementExercices->execute();
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionExercices = $em->getConnection();
+      $statementExercices = $connectionExercices->prepare("SELECT xp FROM user WHERE id = $a");
+      $statementExercices->execute();
+      $xp = $statementExercices->fetchColumn();
+
+
+      if($xp >= 100){
+        $em = $this->getDoctrine()->getManager();
+        $connectionExercices = $em->getConnection();
+        $statementExercices = $connectionExercices->prepare("UPDATE user SET xp = xp -100 WHERE id = $a");
+        $statementExercices->execute();
+
+        $em = $this->getDoctrine()->getManager();
+        $connectionExercices = $em->getConnection();
+        $statementExercices = $connectionExercices->prepare("UPDATE user SET level = level+1 WHERE id = $a");
+        $statementExercices->execute();
+      }
 
       return $this->redirect("/");
 
