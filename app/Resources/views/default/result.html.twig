@@ -5,21 +5,101 @@
 <body>
   <div class="zone_affichage container">
     <div class="row">
-      <div class="col-lg-12 col-xs-12">
+      <div class="col-lg-4 col-xs-4 col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <i class="fa fa-users"></i> Résultat de la recherche
+            <i class="fa fa-users"></i> Personnes
           </div>
           <div class="scroll">
-              {% for users in users %}
-                      <a href="/profil/{{users.id}}"><button class="btn btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
-                      {{ users.name }} {{ users.lastname}}</button></a>
+              {% for f in friends %}
+                      <a href="/profil/{{f.id}}"><button class="btn btn-default btn-lg btn-block"><img src=" {{ asset('images/Avatar/' ~ f.id ~ '.png') }}" class="photos_amis" alt="{{ f.name }} {{ f.lastname}}" id="miniature"></img>
+                      {{ f.name }} {{ f.lastname}}</button></a>
               {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xs-4 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-users"></i> Defis
+          </div>
+          <div class="scroll">
+            {% for d in defis %}
+
+                      <li>
+                        {{d.nomdefi}}
+                        {% set tmp = 0 %}
+                        {% for a in abonnementdefi %}
+                          {% if a.did == d.id %}
+                            <span class=" open switch-button" id ="{{d.id}}">
+                          {% set tmp = 1 %}
+                          {% endif %}
+                        {% endfor %}
+                        {% if tmp == 0 %}
+                          <span class="switch-button defi" id ="{{d.id}}">
+                        {% endif %}
+                            <i class="switch"></i>
+                          </span>
+
+
+                      </li>
+                      <br>
+
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xs-4 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-users"></i> Exercices
+          </div>
+          <div class="scroll">
+            {% for e in exercices %}
+
+                      <li>
+                      {{e.nomexo}}
+                        {% set tmp = 0 %}
+                        {% for r in abonnementexo %}
+                          {% if e.id == r.tid %}
+                        <span class="open switch-button exo" id="{{ e.id }}">
+                          {% set tmp = 1 %}
+                          {% endif %}
+                        {% endfor %}
+                        {% if tmp == 0 %}
+                        <span class="switch-button" id="{{ e.id }}">
+                        {% endif %}
+                          <i class="switch"></i>
+                        </span>
+                    </li>
+                    <br>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script>
+  //EXO
+  $("span").click(function() {
+    var button = $("#"+this.id);
+    $(button).toggleClass('open');
+    window.location.href = "/entrainements/"+this.id;;
+  });
+
+  </script>
+//DEFI
+  <script>
+
+  $(".defi").click(function() {
+    var button = $("#"+this.id);
+    $(button).toggleClass('open');
+    window.location.href = "/defis/"+this.id;
+
+  });
+
+  </script>
 
 </body>
 
