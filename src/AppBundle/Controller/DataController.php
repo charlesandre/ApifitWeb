@@ -4,8 +4,14 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use djchen\OAuth2\Client\Provider\Fitbit;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Security\Http\Firewall\ListenerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class DataController extends Controller
 {
@@ -56,10 +62,10 @@ class DataController extends Controller
           foreach ($this->getDoctrine()->getRepository('AppBundle:UsersFitbitHeartrate')->findByAid($request->attributes->get('aid')) as $d) {
             $em->remove($d);
           }
-          foreach ($this->getDoctrine()->getRepository('AppBundle:UsersFitbitSteps')->findOneByAid($request->attributes->get('aid')) as $d) {
+          foreach ($this->getDoctrine()->getRepository('AppBundle:UsersFitbitSteps')->findByAid($request->attributes->get('aid')) as $d) {
             $em->remove($d);
           }
-          foreach ($this->getDoctrine()->getRepository('AppBundle:UsersFitbitWeight')->findOneByAid($request->attributes->get('aid')) as $d) {
+          foreach ($this->getDoctrine()->getRepository('AppBundle:UsersFitbitWeight')->findByAid($request->attributes->get('aid')) as $d) {
             $em->remove($d);
           }
 

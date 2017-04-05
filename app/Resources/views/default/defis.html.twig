@@ -19,9 +19,19 @@
             <article class="material-card ">
         {% endif %}
               <h2>
-                  <span class="switch-button">
+                {% set tmp = 0 %}
+                {% for a in abonnementexo %}
+                  {% if a.did == d.id %}
+                    <span class=" open switch-button" id ="{{d.id}}">
+                  {% set tmp = 1 %}
+                  {% endif %}
+                {% endfor %}
+                {% if tmp == 0 %}
+                  <span class="switch-button" id ="{{d.id}}">
+                {% endif %}
                     <i class="switch"></i>
                   </span>
+
                   <strong>
                     {% for i in 1.. d.level %}
                       <i class="fa fa-fw fa-star"></i>
@@ -93,16 +103,13 @@ $(function() {
   });
 </script>
 <script>
-window.onload = function() {
 
-var button = $('.switch-button');
-
-button.on('click', function(e) {
-  e.preventDefault();
+$("span").click(function() {
+  var button = $("#"+this.id);
   $(button).toggleClass('open');
+  window.location.href = "/defis/"+this.id;
 
 });
 
-}
 </script>
 {% endblock %}

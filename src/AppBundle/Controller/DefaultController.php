@@ -149,7 +149,7 @@ class DefaultController extends Controller
     /* GET 5 LAST DEFIS */
     $em = $this->getDoctrine()->getManager();
     $connectionDefis = $em->getConnection();
-    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT d.nom as nom, d.type as type, d.description as description FROM defis d LIMIT 5");
+    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT u.statut as statut, d.nom as nom, d.type as type, d.description as description FROM defis d, users_defis u WHERE u.did = d.id");
     $statementDefis->bindValue('id', $a);
     $statementDefis->execute();
     $defis = $statementDefis->fetchAll();
@@ -157,7 +157,7 @@ class DefaultController extends Controller
     /* GET 5 LAST EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport LIMIT 5");
+    $statementExercices = $connectionExercices->prepare("SELECT r.statut as statut, s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport AND r.tid = t.id");
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
@@ -203,25 +203,68 @@ class DefaultController extends Controller
   public function DisplayDefis(Request $request){
     $a=$this->getUser()->getId();
 
-    /* GET ALL SPORTS */
-    $em = $this->getDoctrine()->getManager();
-    $connectionSports = $em->getConnection();
-    $statementSports = $connectionSports->prepare("SELECT * FROM sports");
-    $statementSports->bindValue('id', $a);
-    $statementSports->execute();
-    $sports = $statementSports->fetchAll();
+
     /* GET ALL DEFIS */
     $em = $this->getDoctrine()->getManager();
     $connectionDefis = $em->getConnection();
-    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT s.nom as nom, d.nom as nomdefi, d.level as level, d.type as type, d.time as time, d.description as description FROM defis d, sports s WHERE d.sport = s.id");
+    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT s.nom as nom, d.id as id, d.nom as nomdefi, d.level as level, d.type as type, d.time as time, d.description as description FROM defis d, sports s WHERE d.sport = s.id ORDER BY ID ASC");
     $statementDefis->bindValue('id', $a);
     $statementDefis->execute();
     $defis = $statementDefis->fetchAll();
 
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("SELECT d.did as did FROM users_defis d WHERE d.uid = :id");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->execute();
+    $abonementexercices = $statementExercices->fetchAll();
+
     return $this->render('default/defis.html.twig', array(
-      'sports' => $sports,
       'defis' => $defis,
+      'abonnementexo' => $abonementexercices,
     ));
+  }
+
+  /**
+  * @Route("/defis/{did}")
+  */
+  public function AddDefi(Request $request){
+    $did = $request->attributes->get('did');
+    $a=$this->getUser()->getId();
+
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("SELECT * FROM users_defis WHERE uid = :id AND did = :deid");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->bindValue('deid', $did);
+    $statementExercices->execute();
+    $linkexist = $statementExercices->fetchAll();
+
+    $exist = count($linkexist);
+
+    if($exist == 0){
+
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("INSERT INTO users_defis(uid, did, statut) VALUES(:id, :did, '0')");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->bindValue('did', $did);
+    $statementExercices->execute();
+
+  }
+  else if ($exist == 1){
+    $em = $this->getDoctrine()->getManager();
+    $connectionExercices = $em->getConnection();
+    $statementExercices = $connectionExercices->prepare("DELETE FROM users_defis WHERE did = :deid AND uid = :id");
+    $statementExercices->bindValue('id', $a);
+    $statementExercices->bindValue('deid', $did);
+    $statementExercices->execute();
+
+  }
+
+    return $this->redirect("/defis");
+
+
   }
 
 
