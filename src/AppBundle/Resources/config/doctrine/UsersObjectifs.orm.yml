@@ -1,0 +1,18 @@
+AppBundle\Entity\UsersObjectifs:
+    type: entity
+    table: users_objectifs
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    fields:
+        objectif:
+          type: string
+          nullable: true
+          column: objectif

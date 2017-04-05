@@ -35,9 +35,13 @@ class RegistrationController extends Controller
       $new_sports = new UsersSports();
       $new_sports->setId($new_user->getId());
 
+      $new_obj = new UsersObjectifs();
+      $new_obj->setId($new_user->getId());
+
       $em = $this->getDoctrine()->getManager();
       $em->persist($new_user);
       $em->persist($new_sports);
+      $em->persist($new_obj);
 
       $em->flush();
 

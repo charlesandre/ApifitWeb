@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ render(controller('AppBundle:Default:menu')) }}
+<section style="margin-left:50px; margin-top:70px">
+{% set vars = {'progress' : progress} %}
+{% include 'config/progress.html.twig' with vars %}
+<h3><img src="{{asset('images/green_tick.png')}}" width=200> Félicitations {{app.user.name}}, votre profil est à 100% configuré !</h3>
+<a href="/" class="btn btn-primary" role="button">Revenir au Tableau de bord</a>
+
+{% endblock %}
