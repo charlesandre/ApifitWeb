@@ -122,6 +122,19 @@ if($accept == 1){
       ->getQuery();
       $frienddemands = $queryFriendDemand->getResult();
 
+      /* RECUPERATION DES DONNEES POUR LE GRAPHE Dashboard*/
+      $em = $this->getDoctrine()->getManager();
+      $connectionData = $em->getConnection();
+      $statementData = $connectionData->prepare("SELECT DISTINCT s.steps as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $id ORDER BY s.date ASC LIMIT 5");
+      $statementData->execute();
+      $steps = $statementData->fetchAll();
+
+      $em = $this->getDoctrine()->getManager();
+      $connectionData = $em->getConnection();
+      $statementData = $connectionData->prepare("SELECT DISTINCT s.distance as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $id ORDER BY s.date ASC LIMIT 5");
+      $statementData->execute();
+      $distance = $statementData->fetchAll();
+
 
         //NEW FORM PP
         $PP = new User();
@@ -266,7 +279,9 @@ if($accept == 1){
         'formchat' => $formchat->createView(),
         'formpost' => $formpost->createView(),
         'formpp' => $formpp->createView(),
-        'messages' => $messages
+        'messages' => $messages,
+        'steps' => $steps,
+        'distance' => $distance
       ));
     }
     else {

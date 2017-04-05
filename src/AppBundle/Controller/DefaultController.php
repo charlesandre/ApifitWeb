@@ -163,7 +163,7 @@ class DefaultController extends Controller
 
 
 
-    /* RECUPERATION DES DONNEES POUR LE GRAPHE */
+    /* RECUPERATION DES DONNEES POUR LE GRAPHE Dashboard*/
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
     $statementData = $connectionData->prepare("SELECT DISTINCT s.steps as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
