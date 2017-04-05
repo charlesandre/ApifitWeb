@@ -54,9 +54,76 @@ class DataController extends Controller
   * @Route("/datamanager/account/{aid}")
   */
   public function showAcccount(Request $request){
-    $account = $request->attributes->get('aid');
-    return $this->render('datamanager/account.html.twig');
+
+
+
+    $accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findOneByAid($request->attributes->get('aid'));
+
+    if($accounts == null){
+
+      return new Response ("Vous n'avez pas de compte n°" . $request->attributes->get('aid'));
+
+    }
+    if($accounts->getUid() != $this->getUser()->getId()){
+      return new Response ("Vous n'avez pas de compte n°" . $request->attributes->get('aid'));
+    }
+
+
+    else {
+
+        if($accounts->getBrand()=="fitbit"){
+
+          $steps = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitSteps')->findByAid($request->attributes->get('aid'));
+          $calories = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitCalories')->findByAid($request->attributes->get('aid'));
+          $caloriesbmr = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitCaloriesBmr')->findByAid($request->attributes->get('aid'));
+          $distances = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitDistances')->findByAid($request->attributes->get('aid'));
+          $heartrates = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitHeartrate')->findByAid($request->attributes->get('aid'));
+          $weight = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitWeight')->findByAid($request->attributes->get('aid'));
+
+        }
+
+        if($accounts->getbrand()=="jawbone"){
+
+          $steps = $this->getDoctrine()->getRepository('AppBundle:UsersJawboneMoves')->findByAid($request->attributes->get('aid'));
+          $sleeps = $this->getDoctrine()->getRepository('AppBundle:UsersJawboneSleeps')->findByAid($request->attributes->get('aid'));
+          $heartrates = $this->getDoctrine()->getRepository('AppBundle:UsersJawboneHeartrates')->findByAid($request->attributes->get('aid'));
+          $bodyevents = $this->getDoctrine()->getRepository('AppBundle:UsersJawboneBodyEvents')->findByAid($request->attributes->get('aid'));
+
+        }
+    }
+
+    if($accounts->getbrand()=="fitbit"){
+      return $this->render('datamanager/account-fitbit.html.twig', array(
+        'account' => $accounts,
+        'steps' => $steps,
+        'distances' => $distances,
+        'heartrates' => $heartrates,
+        'calories' => $calories,
+        'caloriesBMR' => $caloriesbmr,
+        'weight'=> $weight,
+      ));
+    }else{
+
+      return $this->render('datamanager/account-jawbone.html.twig', array(
+        'account' => $accounts,
+        'steps' => $steps,
+        'heartrates' => $heartrates,
+        'bodyevents' => $bodyevents,
+        'sleeps' => $sleeps,
+      ));
   }
+}
+
+
+
+  /**
+  * @Route("/datamanager/export/all")
+  */
+
+  public function exportAll(Request $request){
+    
+  }
+
 
   /**
   * @Route("/datamanager/remove/{aid}")

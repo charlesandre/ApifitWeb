@@ -9,8 +9,7 @@ AppBundle\Entity\UsersObjectifs:
                 unsigned: false
             id: true
             column: id
-            generator:
-                strategy: IDENTITY
+
     fields:
         objectif:
           type: string

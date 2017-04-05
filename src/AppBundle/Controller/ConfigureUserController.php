@@ -2,6 +2,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\UsersAccounts;
+use AppBundle\Entity\UsersSports;
+use AppBundle\Entity\UsersObjectifs;
+
 use AppBundle\Entity\UsersFitbitCalories;
 use AppBundle\Entity\UsersFitbitDistances;
 use AppBundle\Entity\UsersFitbitCaloriesBmr;
@@ -51,13 +54,13 @@ class ConfigureUserController extends Controller
         $progress += 33;
       }
 
-      if($obj->getObjectif()){
+      if($obj != null){
         $progress += 33;
       }
 
       if(($sports_choose->getFootball() || $sports_choose->getAthletisme() || $sports_choose->getMusculation() || $sports_choose->getRugby()  || $sports_choose->getGolf()
       || $sports_choose->getTennis()   || $sports_choose->getCyclisme()   || $sports_choose->getBasket()   || $sports_choose->getEscrime()   || $sports_choose->getKarate()
-        || $sports_choose->getVolley()   || $sports_choose->getFoot()   || $sports_choose->getBaseball()   || $sports_choose->getHockey()) &&  $apis != null && $obj->getObjectif()){
+        || $sports_choose->getVolley()   || $sports_choose->getFoot()   || $sports_choose->getBaseball()   || $sports_choose->getHockey()) &&  $apis != null && $obj!= null){
           $progress = 100;
         }
 
@@ -70,9 +73,30 @@ class ConfigureUserController extends Controller
   */
   public function showAction(Request $request)
   {
-    $progress = self::progressBar();
     $user_id = $this->getUser()->getId();
     $user_accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($user_id);
+    $em = $this->getDoctrine()->getManager();
+
+    $obj =  $this->getDoctrine()->getRepository('AppBundle:UsersObjectifs')->findOneById($user_id);
+    if($obj == null){
+      $obj = new UsersObjectifs();
+      $obj->setId($user_id);
+      $em->persist($obj);
+      $em->flush();
+    }
+
+    $current_data = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($user_id);
+
+    if($current_data == null){
+      $sports = new UsersSports();
+      $sports->setId($user_id);
+      $em->persist($sports);
+      $em->flush();
+    }
+
+
+    $progress = self::progressBar();
+
 
     return $this->render('config/configure.html.twig', array(
       'progress' => $progress,
@@ -86,6 +110,7 @@ class ConfigureUserController extends Controller
   public function finishConfigure(Request $request)
   {
     $user_id = $this->getUser()->getId();
+    $em = $this->getDoctrine()->getManager();
 
     $obj =  $this->getDoctrine()->getRepository('AppBundle:UsersObjectifs')->findOneById($user_id);
     $obj->setObjectif($request->attributes->get('obj'));
@@ -110,14 +135,6 @@ class ConfigureUserController extends Controller
 
     $em = $this->getDoctrine()->getManager();
     $current_data = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($user_id);
-
-    if($current_data == null){
-      $sports = new UsersSports();
-      $sports->setId($user_id);
-      $em->persist($sports);
-      $em->flush();
-    }
-
     $sports = $this->getDoctrine()->getRepository('AppBundle:Sports')->findAll();
 
     $progress=self::progressBar();
