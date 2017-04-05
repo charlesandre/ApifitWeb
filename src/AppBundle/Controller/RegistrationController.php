@@ -29,6 +29,7 @@ class RegistrationController extends Controller
       $new_user->setPassword($password);
 
       $new_user->setRole('ROLE_USER');
+      $new_user->setXp(0);
 
       $em = $this->getDoctrine()->getManager();
       $em->persist($new_user);

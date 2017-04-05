@@ -234,7 +234,7 @@ if($accept == 1){
 
         // $dir = "images/Posts";
         // $img = $formpost["src"]->getData->move($dir, $someNewFilename);
-        return $this->redirect("/$id");
+        return $this->redirect("profil/$id");
 
       }
 

@@ -1,7 +1,6 @@
 {% block head %}
 <head>
 		<link href="{{ asset('bootstrap/bootstrap.css')}}" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="favicon" href="{{ asset('images/logo-apifit.png') }}">
 		<link rel="stylesheet" href="{{ asset('css/default.css') }}"/>
@@ -31,19 +30,19 @@
 				<div class=banner_links>
 					<nav class="navbar navbar-inverse">
 						<div class="container-fluid">
-							<ul class="nav navbar-nav" id ="buttonleft">
-								<li><a href="#"><span class="glyphicon glyphicon-home padding-icon-right"></span>Accueil</a></li>
-								<li><a class="js-scrollTo" href="#contact"><span class="glyphicon glyphicon-earphone padding-icon-right"></span>Contact</a></li>
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-home"></i> Accueil</a></li>
+								<li><a class="js-scrollTo" href="#contact"><i class="fa fa-phone"></i> Contact</a></li>
 							</ul>
-							<ul class="nav navbar-nav navbar-right" id= "buttonright">
+							<ul class="nav navbar-nav">
 
 								{% if app.user == null %}
-								<li><a href="#" data-toggle="modal" data-target="#ModalInsc"><span class="glyphicon glyphicon-user padding-icon-right"></span><span id="legende">Inscription</span></a></li>
+								<li><a href="#" data-toggle="modal" data-target="#ModalInsc"><i class="fa fa-users"></i> Inscription</span></a></li>
 								{# <li><a href="#" data-toggle="modal" data-target="#ModalConn" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>#}
-								<li><a href="/login"><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Connexion</span></a></li>
+								<li><a href="/login"><i class="fa fa-sign-in"></i> Connexion</a></li>
 								{% endif %}
 								{% if app.user != null %}
-								<li><a href="{{ path('login') }}" ><span class="glyphicon glyphicon-log-in padding-icon-right"></span><span id="legende">Mon Tableau de bord</span></a></li>
+								<li><a href="{{ path('login') }}" ><i class="fa fa-address-card-o"></i> Mon Tableau de bord</a></li>
 								{% endif %}
 
 							</ul>
@@ -97,18 +96,9 @@
 
 
 		<!-- MENU-->
-		<nav class="navbar navbar-default menu container-fluid">
-			<!-- <div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="" alt="logo-apifit"></a>
-		</div> -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bar_menu" aria-expanded="false" aria-controls="navbar" style="margin-left:20px">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
+<nav class="navbar-vitrine navbar-default container-fluid">
+
+
 		<nav class="navbar-collapse collapse" id="bar_menu">
 			<ul class="nav navbar-nav">
 				<li><a class="js-scrollTo" href="#accueil" >Accueil</a></li>
@@ -225,7 +215,7 @@
 
 								</div>
 								<div id="menu3" class="tab-pane fade">
-									<h3>Coach & Programmes<br />personnalisés</h3>
+									<h3>Coach et Programmes<br />personnalisés</h3>
 									<h4>Algorithme intélligent qui génère<br/>
 										des programmes d'entraînements<br/>
 										et des exercices adaptées à l'utilisateur</h4>
@@ -271,26 +261,12 @@
 			<!--VIDEO-->
 			<section class="centrer video">
 				<h3>Vidéo de présentation</h3>
-<!-- 			<img src="images/ordi-video.png" alt="ordi-video">
--->		<div class="contenu-video">
-  <section class ="fondordi">
-	<img alt="LogoApifit" src="{{ asset('images/logo-apifit.png') }}" height="200" width="200">
-	<h3>Apifit</h3>
-</section>
-				<!-- <video   controls="controls">
-					<source src="" type="video/mp4" />
-					<object type="application/x-shockwave-flash" data="https://youtu.be/FlTCAqOcqbo">
-							<param name="movie" value="https://youtu.be/FlTCAqOcqbo" />
-							<param name="wmode" value="transparent" />
-							[if lte IE 6 ]>
-							<embed src="https://youtu.be/FlTCAqOcqbo" type="application/x-shockwave-flash"  allowscriptaccess="always" allowfullscreen="true" width="400" height="222">
-							</embed>
-						<![endif]
-						Vous n'avez pas de navigateur moderne, ni Flash installé... suivez les liens ci-dessous pour télécharger les vidéos.
-					</object>
-				</video> -->
-			</div>
-		</section>
+				<div class="contenu-video">
+	  			<section class ="fondordi">
+						<iframe width="650" height="365" src="https://www.youtube.com/embed/RIQ1j7Wg44o" frameborder="0" allowfullscreen></iframe>
+					</section>
+				</div>
+			</section>
 		<!--END VIDEO-->
 
 		<!--EQUIPE-->
@@ -313,7 +289,7 @@
 
 							<div class="text-content">
 								<h5>Vincent BAS</h5>
-								<h5><small>Objets connectés</small></h5>
+								<h5><small>Objets<br/>connectés</small></h5>
 							</div>
 						</div>
 					</article>
@@ -332,7 +308,7 @@
 
 							<div class="text-content">
 								<h5>Charles ANDRE</h5>
-								<h5><small>Systèmes d'information</small></h5>
+								<h5><small>Systèmes<br/>d'information</small></h5>
 							</div>
 						</div>
 					</article>
@@ -350,7 +326,7 @@
 
 							<div class="text-content">
 								<h5>Samuel BENAÏS</h5>
-								<h5><small>Systèmes d'information</small></h5>
+								<h5><small>Systèmes<br/>d'information</small></h5>
 							</div>
 						</div>
 					</article>
@@ -368,7 +344,7 @@
 
 							<div class="text-content">
 								<h5>Rémi ALABADAN</h5>
-								<h5><small>Energies Environnements</small></h5>
+								<h5><small>Energies<br/>Environnements</small></h5>
 							</div>
 						</div>
 					</article>
@@ -386,7 +362,7 @@
 
 							<div class="text-content">
 								<h5>Fatih BAYRAM</h5>
-								<h5><small>Systèmes Embarqués</small></h5>
+								<h5><small>Systèmes<br/>Embarqués</small></h5>
 							</div>
 						</div>
 					</article>
@@ -429,10 +405,7 @@
 			<form class="well form-horizontal" name="myFormCont" ng-controller="contactCtrl" id="register_form" action ="/">
 				<div class="form-group">
 					<div class="inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input type="text" class="form-control" name="first_name" placeholder="Prenom" ng-model="name" required>
-						</div>
 						<div ng-messages="myFormCont.first_name.$error" style="color:grey; margin-left: 17px;" role="alert">
 						</div>
 					</div>
@@ -440,10 +413,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 					<div class="inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input type="text" class="form-control" name="family_name" placeholder="Nom"  ng-model="lastname" required>
-						</div>
 						<div ng-messages="myFormCont.family_name.$error" style="color:grey; margin-left: 17px;" role="alert" required>
 						</div>
 					</div>
@@ -451,38 +421,28 @@
 				<!-- Text input-->
 				<div class="form-group">
 					<div class="inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 							<input type="email" class="form-control" name="email" placeholder="Adresse Email" ng-pattern="emailFormat" ng-model="email" required="">
-						</div>
 					</div>
 				</div>
 				<!-- Text input-->
 				<div class="form-group">
 					<div class="inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
 							<input type="text" class="form-control" name="phone" placeholder="+33"  ng-model="phone" required>
-						</div>
 						<div ng-messages="myFormCont.phone.$error" style="color:grey; margin-left: 17px;" role="alert" required>
-
 						</div>
 					</div>
 				</div>
 				<!-- Text area -->
 				<div class="form-group">
 					<div class="inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 							<textarea type="text" class="form-control" ng-minlength="30" name="com" placeholder="Commenter.."  ng-model="com" required></textarea>
-						</div>
 					</div>
 				</div>
 				<!-- Success message -->
 
 				<!-- Button -->
 				<div class="form-group">
-					<button ng-click="submit()" ng-disabled="myFormCont.$invalid" type="button" class="btn btn-primary">Envoyer<span class="glyphicon glyphicon-send padding-icon-left"></span></button>
+					<button ng-click="submit()" ng-disabled="myFormCont.$invalid" type="button" class="btn btn-primary">Envoyer <i class="fa fa-send"></i></button>
 				</div>
 			</form>
 		</section>
@@ -491,7 +451,7 @@
 
 	<footer class="centrer footer">
 		<a class="rect js-scrollTo" href=".carousel">
-			<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+			<i class="fa fa-arrow-up"></i>
 		</a>
 		<ul class="row" id="links">
 			<li><a href="#">Mentions Légales</a></li>
