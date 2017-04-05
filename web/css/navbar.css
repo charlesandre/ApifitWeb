@@ -24,6 +24,18 @@ body {
   margin-bottom:70px!important;
   width: 90%!important;
 }
+.position_btn_search{
+  position:absolute;
+  top:7px;
+  left:180px!important;
+}
+.position_search{
+  position:absolute;
+  top:7px;
+  border:1px solid #e8e8e8;
+  border-radius:4px;
+  height:35px;
+}
 .base{
   z-index:99!important;
 }
