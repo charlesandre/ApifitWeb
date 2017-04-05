@@ -1683,6 +1683,10 @@ textarea {
   display: inline-block;
 }
 
+.fondordi{
+  padding-top: 35px;
+}
+
 
 @media screen and (min-width:769px) and (max-width: 1279px){
 
@@ -1720,10 +1724,6 @@ textarea {
   }
 
 
-
-.fondordi{
-  padding-top: 35px;
-}
 
 
 .service {
