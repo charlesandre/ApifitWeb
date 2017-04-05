@@ -117,7 +117,7 @@ class DefaultController extends Controller
     /* GET 5 LAST DEFIS */
     $em = $this->getDoctrine()->getManager();
     $connectionDefis = $em->getConnection();
-    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT u.statut as statut, d.nom as nom, d.type as type, d.description as description FROM defis d, users_defis u WHERE u.did = d.id");
+    $statementDefis = $connectionDefis->prepare("SELECT DISTINCT u.statut as statut, d.nom as nom, d.type as type, d.description as description FROM defis d, users_defis u WHERE u.did = d.id LIMIT 5");
     $statementDefis->bindValue('id', $a);
     $statementDefis->execute();
     $defis = $statementDefis->fetchAll();
@@ -125,13 +125,13 @@ class DefaultController extends Controller
     /* GET 5 LAST EXERCICES */
     $em = $this->getDoctrine()->getManager();
     $connectionExercices = $em->getConnection();
-    $statementExercices = $connectionExercices->prepare("SELECT r.statut as statut, s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport AND r.tid = t.id");
+    $statementExercices = $connectionExercices->prepare("SELECT r.statut as statut, s.nom as nom, t.id as id, t.nom as nomexo, t.sport as sport, t.level as level, t.time as time, t.description as description FROM training t, sports s, users_training r WHERE s.id = t.sport AND r.tid = t.id LIMIT 5");
     $statementExercices->execute();
     $exercices = $statementExercices->fetchAll();
 
 
 
-    /* RECUPERATION DES DONNEES POUR LE GRAPHE */
+    /* RECUPERATION DES DONNEES POUR LE GRAPHE Dashboard*/
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
     $statementData = $connectionData->prepare("SELECT DISTINCT s.steps as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
@@ -341,7 +341,7 @@ class DefaultController extends Controller
 
     $em = $this->getDoctrine()->getManager();
     $connection = $em->getConnection();
-    $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname, U.level as level FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) AND STATUT = 1 ");
+    $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname, U.level as level FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) AND STATUT = 1");
     $statement->bindValue('id', $a);
     $statement->execute();
     $friends = $statement->fetchAll();

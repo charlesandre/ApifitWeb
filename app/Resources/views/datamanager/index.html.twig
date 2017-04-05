@@ -1,11 +1,61 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
-
+<style>
+a:hover{
+  text-decoration: none;
+}
+</style>
 <section style="margin-left:80px; margin-top:80px">
-<h3>Vos données</h3>
+  <h3>Vos données</h3>
+  <hr>
+  <h5 style="margin:20px">Vos comptes</h5>
+  {% for account in accounts %}
+  <a href="/datamanager/account/{{account.aid}}" style=" padding: 20px; margin: 20px;display:flex; align-items:center; justify-content:space-between; border:1px solid #eee">
+
+    <img  src="
+    {% if account.brand == "fitbit" %}
+    {{ asset('images/fitbit_logo.png') }}
+    {% endif %}
+    {% if account.brand == "jawbone" %}
+    {{ asset('images/jawbone_logo.png') }}
+    {% endif %}
+    {% if account.brand == "garmin" %}
+    {{ asset('images/garmin_logo.png') }}
+    {% endif %}
+    {% if account.brand == "samsung" %}
+    {{ asset('images/samsung_logo.png') }}
+    {% endif %}
+    " style="width: 100px; height:auto;">
+
+    <p style="margin:0 auto;"> {{account.nameAccount}} </p>
+    <p style="margin:0 auto; font-size:12px"> {{account.apiId}} </p>
+    <p style="margin:0 auto; font-size:12px"> Dernière données reçues :
+      {% if(account.brand == "fitbit" and lastdata_fitbit.date is defined) %}
+      {{lastdata_fitbit.date|date('d/m/Y')}}
+      {% elseif(account.brand == "jawbone" and lastdata_jawbone.date is defined)%}
+      {{lastdata_jawbone.date|date('d/m/Y')}}
+      {% else %}
+      Aucune donnée
+      {% endif %}
+
+    </p>
+
+  </a>
+
+{% endfor %}
+
 <hr>
-<canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>
+<h5 style="margin:20px">Opérations</h5>
+<a href="/configure" style="width:30%; padding: 20px; margin: 20px;display:flex; align-items:center; justify-content:space-between; border:1px solid #eee">
+  Ajouter/Supprimer un compte<span class="glyphicon glyphicon-plus" style="padding:0 5px 0 5px" aria-hidden="true"></span>
+</a>
+<a href='/datamanager/compare' style="width:30%; padding: 20px; margin: 20px;display:flex; align-items:center; justify-content:space-between; border:1px solid #eee">
+  Comparer<span class="glyphicon glyphicon-align-left" style="padding:0 5px 0 5px" aria-hidden="true"></span>
+</a>
+<a href=/datamanager/export/all style="width:30%; padding: 20px; margin: 20px;display:flex; align-items:center; justify-content:space-between; border:1px solid #eee">
+  Tout exporter en CSV <img src="{{asset('images/excel_logo.png')}}" width=32>
+</a>
 
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js" type="text/javascript"></script>
