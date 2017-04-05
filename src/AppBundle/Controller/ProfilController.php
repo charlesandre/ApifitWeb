@@ -59,28 +59,23 @@ if($accept == 1){
 
     /* IF THE USER WANTS TO ACCEPT AN INVITATION */
 
-    else{
-      $em = $this->getDoctrine()->getManager();
-      $connectionRequest = $em->getConnection();
-      $statementRequest = $connectionRequest->prepare("UPDATE users_friends F SET F.STATUT= 1 WHERE F.UID_REL = :idrel ");
-      $statementRequest->bindValue('idrel', $n);
-      $statementRequest->execute();
-    }
+
 
     return $this->redirect("/profil/$id1");
   }
-  else if ($accept==0){
+  else if ($accept == 0){
     $em = $this->getDoctrine()->getManager();
     $connectionRequest = $em->getConnection();
-    $statementRequest = $connectionRequest->prepare("UPDATE users_friends F SET F.STATUT= -1 WHERE F.UID_REL = :idrel ");
-    $statementRequest->bindValue('idrel', $n);
+    $statementRequest = $connectionRequest->prepare("DELETE FROM users_friends  WHERE (uid1 = $id1 AND uid2 = $id2) OR (uid1 = $id2 AND uid2 = $id1)");
     $statementRequest->execute();
 
-    return $this->redirect("/");
+    return $this->redirect("/friends");
 
 
   }
-  }
+
+}
+
 
   /**
   * @Route("/profil")
@@ -89,6 +84,7 @@ if($accept == 1){
     $a = $this->getUser()->getId();
     return $this->redirect("profil/$a");
   }
+
 
 
 

@@ -139,7 +139,7 @@ li>a{
               <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn_bootstrap_modify btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
                 {{ users.name }} {{ users.lastname}}</button></a></li>
                 {% endfor %}
-
+                <a href="/friends" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir tous mes amis </a>
             </div>
         </div>
       </div>
@@ -214,7 +214,7 @@ li>a{
 
       ],
       datasets: [{
-        label: '# of steps',
+        label: 'Nombre de Pas',
         data : [
           {% for s in steps %}
           "{{s.value}}",
@@ -263,7 +263,7 @@ li>a{
 
         ],
         datasets: [{
-          label: '# of steps',
+          label: 'Nombre de Pas',
           data : [
             {% for s in steps %}
             "{{s.value}}",
@@ -313,10 +313,10 @@ li>a{
 
         ],
         datasets: [{
-          label: '# of distance',
+          label: 'Distance en Km',
           data : [
             {% for s in distance %}
-            "{{s.value}}",
+            "{{s.value/1000}}",
             {% endfor %}
 
           ],

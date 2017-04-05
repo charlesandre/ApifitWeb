@@ -1,38 +1,40 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
-<style>
-a{
-  font-family: Calibri !important;
-}
-h4{
-  font-family: Calibri !important;
-
-}
-</style>
-<section style="margin-left:80px; margin-top:80px">
+<section style="margin-left:80px; margin-top:80px; margin-right:80px;">
   <h3>Vos Amis</h3>
   <hr>
+  <div class="row">
   {% for friend in friends %}
-    <div class=well style="display:flex; width:60%; justify-content:space-around; padding-bottom:50px">
+
+
+    <div class="col-md-4 col-sm-4 col-xs-4">
+    <div class=well style="display:flex; justify-content:space-around; padding-bottom:50px">
       <img style="
     margin: auto 0 auto 0;
     height: 150px;
     border: 5px solid #FFF;
-    border-radius: 50%;"src="images/Avatar/{{friend.id}}.png" style="width:200px;height:200px">
-      <div style="display:flex;flex-direction: column;margin-top:25px">
+    border-radius: 50%;" src=" {{ asset('images/Avatar/' ~ friend.id ~ '.png') }}" style="width:200px;height:200px">
+      <div style="display:flex;flex-direction: column;">
         <h4>  {{friend.name}} </h4>
         <h4>  {{friend.lastname}} </h4>
         <h4>  Level : {{friend.level}} </h4>
       </div>
       <div style="display:flex;flex-direction: column;">
-        <a role="button" class="btn btn-success" href="/profil/{{friend.id}}" style="margin:5px"> Lui lancer un défi ! </a>
+        <a role="button" class="btn btn-success" href="" style="margin:5px"> Lui lancer un défi ! </a>
         <a role="button" class="btn btn-primary" href="/profil/{{friend.id}}" style="margin:5px"> Envoyer un message </a>
-        <a role="button" class="btn btn-info" href="/profil/{{friend.id}}" style="margin:5px"> Voir son profil </a>
-        <a role="button" class="btn btn-danger" href="/profil/remove/{{friend.id}}" style="margin:5px"> Supprimier le lien d'amitié :( </a>
+        <a role="button" class="btn btn-info" href="profil/{{friend.id}}" style="margin:5px"> Voir son profil </a>
+        <a role="button" class="btn btn-danger" href="/profil/{{friend.id}}/{{app.user.id}}/0/0" style="margin:5px"> Supprimier le lien d'amitié :( </a>
         <a style="margin-bottom:18px"></a>
     </div>
     </div>
+<<<<<<< HEAD
+  </div>
+=======
+
+>>>>>>> 90921522f3319e899dbb12ef265b47b42fc7190d
+
   {% endfor %}
+  </div>
 </section>
 {% endblock %}
