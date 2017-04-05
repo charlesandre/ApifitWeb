@@ -24,22 +24,22 @@ li>a{
 
 <div class="row">
 
-  <div class="col-lg-8 col-xs-8">
+  <div class="col-lg-8 col-md-8 col-xs-8">
     <div class="panel panel-default">
         <div class="panel-heading">
               <i class="fa fa-bar-chart-o fsa-fw"></i> Courbe d'évolution
         </div>
         <div style="margin-top : 10px; margin-botton:10px;">
-        <a href="/datamanager" role="button" class="btn btn-success" style="float:left; margin-left:10px">Toutes mes données</a>
-        <button class="btn btn-info" style="float:right; margin-right:10px"id="steps">Pas</button>
-        <button class="btn btn-info" style="float:right; margin-right:10px"id="distance">Distances</button>
-      </div>
+          <a href="/datamanager" role="button" class="btn btn-success" style="float:left; margin-left:10px">Toutes mes données</a>
+          <button class="btn btn-info" style="float:right; margin-right:10px"id="steps">Pas</button>
+          <button class="btn btn-info" style="float:right; margin-right:10px"id="distance">Distances</button>
+        </div>
 
         <canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>
     </div>
   </div>
 
-  <div class="col-xs-4 col-lg-4 dashboard_users">
+  <div class="col-xs-4 col-md-4 col-xs-4">
     <div class="widget">
       <div class="cover">
 
@@ -91,7 +91,7 @@ li>a{
 
 
 <div class="row">
-  <div class="col-lg-3 col-xs-3">
+  <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-bolt"></i> Entraînement
@@ -110,7 +110,7 @@ li>a{
     </div>
   </div>
 
-  <div class="col-lg-3 col-xs-3">
+  <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-rocket"></i> Défis
@@ -129,7 +129,7 @@ li>a{
     </div>
   </div>
 
-      <div class="col-lg-3 col-xs-3">
+      <div class="col-lg-3 col-md-6 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
               <i class="fa fa-users"></i> Amis
@@ -139,15 +139,16 @@ li>a{
               <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn_bootstrap_modify btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
                 {{ users.name }} {{ users.lastname}}</button></a></li>
                 {% endfor %}
-                <a href="/friends" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir tous mes amis </a>
             </div>
+            <a href="/friends" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir tous mes amis </a>
+
         </div>
       </div>
 
 
 
 
-  <div class="col-xs-3 col-lg-3 dashboard_users">
+  <div class="col-md-6 col-xs-12 col-lg-3">
     <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-gear"></i>  Vos comptes
