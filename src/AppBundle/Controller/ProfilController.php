@@ -59,10 +59,10 @@ if($accept == 1){
 
     /* IF THE USER WANTS TO ACCEPT AN INVITATION */
 
-    else{
+    else if ($accept == 0){
       $em = $this->getDoctrine()->getManager();
       $connectionRequest = $em->getConnection();
-      $statementRequest = $connectionRequest->prepare("UPDATE users_friends F SET F.STATUT= 1 WHERE F.UID_REL = :idrel ");
+      $statementRequest = $connectionRequest->prepare("DELETE FROM users_friends u WHERE (u.id1 = $id1 AND u.id2 = $id2) OR (u.id1 = $id2 AND u.id2 = $id1)");
       $statementRequest->bindValue('idrel', $n);
       $statementRequest->execute();
     }

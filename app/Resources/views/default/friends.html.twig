@@ -12,7 +12,7 @@
     margin: auto 0 auto 0;
     height: 150px;
     border: 5px solid #FFF;
-    border-radius: 50%;"src="images/Avatar/1.png" style="width:200px;height:200px">
+    border-radius: 50%;"src=" {{ asset('images/Avatar/' ~ friend.id ~ '.png') }}" style="width:200px;height:200px">
       <div style="display:flex;flex-direction: column;">
         <h4>  {{friend.name}} </h4>
         <h4>  {{friend.lastname}} </h4>
@@ -20,9 +20,9 @@
       </div>
       <div style="display:flex;flex-direction: column;">
         <a role="button" class="btn btn-success" href="" style="margin:5px"> Lui lancer un défi ! </a>
-        <a role="button" class="btn btn-primary" href="" style="margin:5px"> Envoyer un message </a>
-        <a role="button" class="btn btn-info" href="" style="margin:5px"> Voir son profil </a>
-        <a role="button" class="btn btn-danger" href="" style="margin:5px"> Supprimier le lien d'amitié :( </a>
+        <a role="button" class="btn btn-primary" href="/profil/{{friend.id}}" style="margin:5px"> Envoyer un message </a>
+        <a role="button" class="btn btn-info" href="profil/{{friend.id}}" style="margin:5px"> Voir son profil </a>
+        <a role="button" class="btn btn-danger" href="/profil/{{friend.id}}/{{app.user.id}}/0/0" style="margin:5px"> Supprimier le lien d'amitié :( </a>
         <a style="margin-bottom:18px"></a>
     </div>
     </div>

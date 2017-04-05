@@ -166,13 +166,13 @@ class DefaultController extends Controller
     /* RECUPERATION DES DONNEES POUR LE GRAPHE */
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
-    $statementData = $connectionData->prepare("SELECT s.value as value, s.date as date FROM users_fitbit_steps s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
+    $statementData = $connectionData->prepare("SELECT DISTINCT s.steps as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
     $statementData->execute();
     $steps = $statementData->fetchAll();
 
     $em = $this->getDoctrine()->getManager();
     $connectionData = $em->getConnection();
-    $statementData = $connectionData->prepare("SELECT d.value as value, d.date as date FROM users_fitbit_distances d WHERE d.id = $a ORDER BY d.date ASC LIMIT 5");
+    $statementData = $connectionData->prepare("SELECT DISTINCT s.distance as value, s.date as date FROM users_jawbone_moves s WHERE s.id = $a ORDER BY s.date ASC LIMIT 5");
     $statementData->execute();
     $distance = $statementData->fetchAll();
 
@@ -356,12 +356,16 @@ class DefaultController extends Controller
   */
   public function DisplayFriends(Request $request){
 
-    $rel_friends = $this->getDoctrine()->getRepository('AppBundle:UsersFriends')->findByUid1($this->getUser()->getId());
+    $a = $this->getUser()->getId();
 
-    $friends = array();
-    foreach($rel_friends as $r){
-      $friends += $this->getDoctrine()->getRepository('AppBundle:User')->findById($r->getUid2());
-    }
+
+    $em = $this->getDoctrine()->getManager();
+    $connection = $em->getConnection();
+    $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.lastname as lastname, U.level as level FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) AND STATUT = 1 ");
+    $statement->bindValue('id', $a);
+    $statement->execute();
+    $friends = $statement->fetchAll();
+
 
     return $this->render('default/friends.html.twig', array(
      'friends' => $friends
