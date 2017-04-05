@@ -1200,6 +1200,7 @@ video{
   padding-bottom: 70px;
 }
 
+
 .equipe>h3{
   padding:40px;
   color:#fff;
@@ -1214,6 +1215,8 @@ video{
 .equipe img
 {
   width:100%;
+  -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 
 .padding-icon{
@@ -1680,6 +1683,10 @@ textarea {
   display: inline-block;
 }
 
+.fondordi{
+  padding-top: 35px;
+}
+
 
 @media screen and (min-width:769px) and (max-width: 1279px){
 
@@ -1717,10 +1724,6 @@ textarea {
   }
 
 
-
-.fondordi{
-  padding-top: 35px;
-}
 
 
 .service {
