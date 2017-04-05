@@ -17,17 +17,41 @@ class DataController extends Controller
 {
 
   /**
-  * @Route("/datamanager", name = "datamanager")
+  * @Route("/datamanager/", name = "datamanager")
   */
   public function showAction(Request $request){
 
-    return $this->render('datamanager/index.html.twig');
+
+    $user = $this->getUser()->getId();
+    $lastdata = array();
+    $accounts = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
+
+    foreach($accounts as $account){
+
+      $aid = $account->getAid();
+
+      if($account->getBrand() == "fitbit"){
+        $lastdata_fitbit = $this->getDoctrine()->getRepository('AppBundle:UsersFitbitSteps')->findOneBy(array('id' => ($this->getUser()->getId())), array('date' => 'desc'));
+      }
+
+      if($account->getBrand() == "jawbone"){
+        $lastdata_jawbone = $this->getDoctrine()->getRepository('AppBundle:UsersJawboneBodyEvents')->findOneBy(array('id' => ($this->getUser()->getId())), array('date' => 'desc'));
+
+      }
+
+    }
+
+    return $this->render('datamanager/index.html.twig', array(
+      'lastdata_fitbit' => $lastdata_fitbit,
+      'lastdata_jawbone' => $lastdata_jawbone,
+      'accounts' => $accounts
+    ));
   }
 
 
 
   /**
-  * @Route("/datamanager/account/{aid}", name = "datamanager")
+  * @Route("/datamanager/account/{aid}")
   */
   public function showAcccount(Request $request){
     $account = $request->attributes->get('aid');

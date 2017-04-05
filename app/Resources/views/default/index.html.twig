@@ -64,7 +64,8 @@ li>a{
         else document.getElementById('imc').className="green";
         </script>
           {% endfor %}
-          <p style="font-size:12px; margin-bottom:0"> Expérience </p>
+<br/>
+<p style="font-size:12px; margin-bottom:0; padding-bottom:0"> Expérience : </p>
 
           <div class="progress" style="margin:20px;">
             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{app.user.xp}}"
@@ -72,11 +73,16 @@ li>a{
               {{app.user.xp}}% complété
             </div>
           </div>
+<hr>
+          <a role="button" href="/getnewdata" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt" style="padding:0 5px 0 5px" aria-hidden="true"></span> Récupérer mes dernières données </a>
           <ul>
             <li><a href="{{ path('configure')}}"><i class="fa fa-gear"></i></a></li>
             <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
           </ul>
     </div>
+
+
+
   </div>
 
 
