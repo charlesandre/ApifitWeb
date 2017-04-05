@@ -356,12 +356,13 @@ class DefaultController extends Controller
   */
   public function DisplayFriends(Request $request){
 
-    $rel_friends = $this->getDoctrine()->getRepository('AppBundle:UsersFriends')->findByUid1($this->getUser()->getId());
+    $em = $this->getDoctrine()->getManager();
+    $connection = $em->getConnection();
+    $statement = $connection->prepare("SELECT U.ID as id, U.Name as name, U.level as level, U.lastname as lastname FROM user U, users_friends F WHERE (F.uid1 = :id AND U.ID = F.uid2) OR ( F.uid2 = :id AND U.ID = F.uid1 ) AND STATUT = 1 ");
+    $statement->bindValue('id', $this->getUser()->getId());
+    $statement->execute();
+    $friends = $statement->fetchAll();
 
-    $friends = array();
-    foreach($rel_friends as $r){
-      $friends += $this->getDoctrine()->getRepository('AppBundle:User')->findById($r->getUid2());
-    }
 
     return $this->render('default/friends.html.twig', array(
      'friends' => $friends

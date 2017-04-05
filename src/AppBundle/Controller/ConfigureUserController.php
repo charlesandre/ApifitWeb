@@ -38,6 +38,7 @@ class ConfigureUserController extends Controller
 
       $apis = $this->getDoctrine()->getRepository('AppBundle:UsersAccounts')->findByUid($this->getUser()->getId());
       $sports_choose = $this->getDoctrine()->getRepository('AppBundle:UsersSports')->find($this->getUser()->getId());
+      $obj = $this->getDoctrine()->getRepository('AppBundle:UsersObjectifs')->findOneById($this->getUser()->getId());
 
       if($sports_choose->getFootball() || $sports_choose->getAthletisme() || $sports_choose->getMusculation() || $sports_choose->getRugby()  || $sports_choose->getGolf()
       || $sports_choose->getTennis()   || $sports_choose->getCyclisme()   || $sports_choose->getBasket()   || $sports_choose->getEscrime()   || $sports_choose->getKarate()
@@ -49,6 +50,16 @@ class ConfigureUserController extends Controller
       if($apis != null){
         $progress += 33;
       }
+
+      if($obj->getObjectif()){
+        $progress += 33;
+      }
+
+      if(($sports_choose->getFootball() || $sports_choose->getAthletisme() || $sports_choose->getMusculation() || $sports_choose->getRugby()  || $sports_choose->getGolf()
+      || $sports_choose->getTennis()   || $sports_choose->getCyclisme()   || $sports_choose->getBasket()   || $sports_choose->getEscrime()   || $sports_choose->getKarate()
+        || $sports_choose->getVolley()   || $sports_choose->getFoot()   || $sports_choose->getBaseball()   || $sports_choose->getHockey()) &&  $apis != null && $obj->getObjectif()){
+          $progress = 100;
+        }
 
       return $progress;
     }
@@ -69,6 +80,25 @@ class ConfigureUserController extends Controller
     ));
   }
 
+  /**
+  * @Route("/configure/finish/{obj}", name = "finish")
+  */
+  public function finishConfigure(Request $request)
+  {
+    $user_id = $this->getUser()->getId();
+
+    $obj =  $this->getDoctrine()->getRepository('AppBundle:UsersObjectifs')->findOneById($user_id);
+    $obj->setObjectif($request->attributes->get('obj'));
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($obj);
+    $em->flush();
+
+    $progress = self::progressBar();
+
+    return $this->render('config/finish.html.twig', array(
+      'progress' => $progress,
+    ));
+  }
 
 
   /**
@@ -76,7 +106,6 @@ class ConfigureUserController extends Controller
   */
   public function setSports(Request $request){
 
-    $progress=self::progressBar();
     $user_id = $this->getUser()->getId();
 
     $em = $this->getDoctrine()->getManager();
@@ -90,6 +119,8 @@ class ConfigureUserController extends Controller
     }
 
     $sports = $this->getDoctrine()->getRepository('AppBundle:Sports')->findAll();
+
+    $progress=self::progressBar();
 
     return $this->render('config/sports.html.twig', array(
       'already_checked' => $current_data,

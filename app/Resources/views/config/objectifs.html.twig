@@ -1,27 +1,39 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {{ render(controller('AppBundle:Default:menu')) }}
-<section style="margin-left:50px; margin-top:70px">
+<style>
+p{
+  color:#ffffff;
+  margin:50px;
+  text-shadow:1px 1px #777777;
+}
+
+a:hover{
+  text-decoration: none;
+}
+</style>
+<section style="margin-left:50px; margin-top:70px; ">
   {% include 'config/progress.html.twig' %}
   <h4>Objectifs</h4>
-  <hr>
-  <div>
-    Marathon
-  </div>
+  <div style="display:flex; flex-wrap: wrap; justify-content:space-between;">
+    <a href="/configure/finish/amaigrissement" style="width:45%;  border:1px solid black; height:200px; margin-top:20px; background-image:url('{{asset('images/amaigrissement.jpg')}}')">
+      <p>Amaigrissement</p>
+    </a>
 
-  <div>
-    Préparation physique pré-saison
-  </div>
+    <a href="/configure/finish/amincissement"  style="width:45%;  border:1px solid black; height:200px; margin-top:20px; background-image:url('{{asset('images/amaincissement.jpg')}}')">
+      <p>Amincissement</p>
+    </a>
 
-  <div>
-    Amincissement
-  </div>
+    <a href="/configure/finish/marathon" style="width:45%;  border:1px solid black; height:200px; margin-top:20px; background-image:url('{{asset('images/marathon.jpg')}}')">
+      <p>Marathon</p>
+    </a>
 
-  <div>
-    Amaigrissement
+    <a href="/configure/finish/preparation-physique"  style="width:45%; border:1px solid black; height:200px; margin-top:20px; background-image:url('{{asset('images/preparation-physique.jpg')}}')">
+      <p>Préparation physique pré-saison</p>
+    </a>
   </div>
-
-  
+  <br/>
+  <br/>
   <a href="/" class="btn btn-success" role="button">Appliquer et terminer la configuration</a>
 </section>
 {% endblock %}
