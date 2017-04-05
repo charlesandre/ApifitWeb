@@ -19,7 +19,6 @@
               <li><h4>Level : {{ u.level }}</h4></li>
               {% if u.id != app.user.id %}
                 {% if isfriend %}
-
                       {% for f in isfriend %}
                           {% if (f.STATUT == 1) %}
                                 <li style="color:#e7e7e7; text-align:center"> Vous êtes amis avec {{u.name}}. </li>
@@ -40,11 +39,37 @@
               <ul>
                 <li>
                 {% if u.id == app.user.id  %}
-                  <a><i class="fa fa-photo"></i></a>
+                  <a href="#" data-toggle="modal" data-target="#ModalInsc"><i class="fa fa-photo"></i></a>
                 {% endif %}
                 </li>
               </ul>
         </div>
+
+        	<!-- Modal inscription-->
+        	<div class="modal fade" id="ModalInsc" role="dialog">
+        		<div class="modal-dialog">
+
+        			<!-- Modal content-->
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<button type="button" class="close" data-dismiss="modal">&times;</button>
+        					<h3 class="modal-title"><span class="glyphicon glyphicon-user padding-icon-right"></span>Changement Photo Profil</h3>
+        				</div>
+        				<div class="modal-body">
+        					<p>Choisissez votre nouvelle photo !</p>
+        				</div>
+                <div style="text-align:center; margin-bottom:30px;">
+                {{ form_start(formpp) }}
+                {{ form_widget(formpp) }}
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-btn fa-sign-in"></i> Changer sa photo !
+                </button>
+                {{ form_end(formpp) }}
+              </div>
+        			</div>
+
+        		</div>
+        	</div>
         <div style="margin-top:20px">
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -53,6 +78,7 @@
           </div>
         </div>
       </div>
+
 
       <div class="col-lg-8 col-xs-8">
         <div class="panel panel-default">

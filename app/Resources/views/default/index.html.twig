@@ -37,65 +37,9 @@ li>a{
 
         <canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>
     </div>
-
-    <div class="col-lg-4 col-xs-4">
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-bolt"></i> Entraînement
-          </div>
-          <br/>
-          {% for e in exercices %}
-          <li>
-            <label class="control control--checkbox">{{e.nomexo}} {{e.nom}}
-              <input type="checkbox"/>
-              <div class="control__indicator"></div>
-            </label>
-          </li>
-          <hr>
-          {% endfor %}
-          <a href="/entrainements" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les entraînements disponibles </a>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-xs-4">
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-rocket"></i> Défis
-          </div>
-          <br/>
-          {% for d in defis %}
-            <li>
-              <label class="control control--checkbox">{{d.nom}} {{d.type}}
-                <input type="checkbox"/>
-                <div class="control__indicator"></div>
-              </label>
-            </li>
-            <hr>
-          {% endfor %}
-          <a href="/defis" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les défis </a>
-      </div>
-    </div>
-
-
-
-
-      <div class="col-lg-4 col-xs-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-              <i class="fa fa-users"></i> Amis
-            </div>
-            <div class="scroll">
-              {% for users in friends %}
-              <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn_bootstrap_modify btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
-                {{ users.name }} {{ users.lastname}}</button></a></li>
-                {% endfor %}
-
-            </div>
-        </div>
-      </div>
   </div>
 
-    <div class="col-xs-4 col-lg-4 dashboard_users">
+  <div class="col-xs-4 col-lg-4 dashboard_users">
     <div class="widget">
       <div class="cover">
 
@@ -133,10 +77,72 @@ li>a{
             <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
           </ul>
     </div>
+  </div>
 
 
 
-    <div class="panel panel-default" style="margin-top:20px">
+</div>
+
+
+<div class="row">
+  <div class="col-lg-3 col-xs-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bolt"></i> Entraînement
+        </div>
+        <br/>
+        {% for e in exercices %}
+        <li>
+          <label class="control control--checkbox">{{e.nomexo}} {{e.nom}}
+            <input type="checkbox"/>
+            <div class="control__indicator"></div>
+          </label>
+        </li>
+        <hr>
+        {% endfor %}
+        <a href="/entrainements" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les entraînements disponibles </a>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-xs-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-rocket"></i> Défis
+        </div>
+        <br/>
+        {% for d in defis %}
+          <li>
+            <label class="control control--checkbox">{{d.nom}} {{d.type}}
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </li>
+          <hr>
+        {% endfor %}
+        <a href="/defis" class="btn btn-success" role="button" style="margin-bottom:15px"> Voir les défis </a>
+    </div>
+  </div>
+
+      <div class="col-lg-3 col-xs-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <i class="fa fa-users"></i> Amis
+            </div>
+            <div class="scroll">
+              {% for users in friends %}
+              <li><a href="/profil/{{users.id}}"><button class="bouton_amis btn btn_bootstrap_modify btn-default btn-lg btn-block"><img src="images/Avatar/{{users.id}}.png" class="photos_amis" alt="{{ users.name }} {{ users.lastname}}" id="miniature"></img>
+                {{ users.name }} {{ users.lastname}}</button></a></li>
+                {% endfor %}
+
+            </div>
+        </div>
+      </div>
+
+
+
+
+  <div class="col-xs-3 col-lg-3 dashboard_users">
+    <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-gear"></i>  Vos comptes
         </div>
@@ -173,6 +179,7 @@ li>a{
     </div>
   </div>
 
+</div>
 </div>
 
 
