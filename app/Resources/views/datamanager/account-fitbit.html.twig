@@ -1,0 +1,398 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ render(controller('AppBundle:Default:menu')) }}
+
+<section style="margin-left:80px; margin-top:80px;padding:20px;padding-bottom:70px">
+  <h3>Vos données</h3>
+  <hr>
+  <h3>Informations sur le Compte :</h3>
+  <div style="border:1px solid #eee; margin:20px; padding:20px">
+
+  <p> Fabricant :  <img  src="{{asset('images/fitbit_logo.png') }}" style="width: 100px; height:auto;">
+ </p>
+  <p> ID de votre compte auprès du Fabricant : {{account.apiId}}</p>
+  <p> Nom du compte auprès du fabricant : {{account.nameAccount}}</p>
+
+  <a href="/configure" role="button" class="btn btn-primary"> Configurer ce compte </a>
+</div>
+  <hr>
+  <h3> Fréquence Cardiaque </h3>
+  <canvas id="myChart-heartrate" style="padding-left:10px;" width="400" height="200"></canvas>
+  <hr>
+  <h3> Pas : </h3>
+  <canvas id="myChart-steps" style="padding-left:10px;" width="400" height="200"></canvas>
+  <hr>
+  <h3> Distances : </h3>
+  <canvas id="myChart-distances" style="padding-left:10px;" width="400" height="200"></canvas>
+  <hr>
+  <h3> Poids : </h3>
+  <canvas id="myChart-weight" style="padding-left:10px;" width="400" height="200"></canvas>
+  <hr>
+  <h3> Calories: </h3>
+  <canvas id="myChart-calories" style="padding-left:10px;" width="400" height="200"></canvas>
+  <hr>
+  <h3>Calories BMR :</h3>
+  <canvas id="myChart-caloriesbmr" style="padding-left:10px;" width="400" height="200"></canvas>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js" type="text/javascript"></script>
+<script>
+
+
+var ctx = document.getElementById("myChart-heartrate");
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : [
+      {% for s in heartrates %}
+      "{{s.date|date('d/m/Y') }}",
+      {% endfor %}
+
+
+    ],
+    datasets: [{
+      label: 'Fréquence max. Coeur',
+      data : [
+        {% for s in heartrates %}
+        "{{s.max}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    },
+    {
+      label: 'Fréquence min. Coeur',
+      data : [
+        {% for s in heartrates %}
+        "{{s.min}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }
+
+  ]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+
+
+var ctx = document.getElementById("myChart-steps");
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : [
+      {% for s in steps %}
+      "{{s.date|date('d/m/Y') }}",
+      {% endfor %}
+
+
+    ],
+    datasets: [{
+      label: 'Nombre de pas',
+      data : [
+        {% for s in steps %}
+        "{{s.value}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+
+
+var ctx = document.getElementById("myChart-distances");
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : [
+      {% for s in distances %}
+      "{{s.date|date('d/m/Y') }}",
+      {% endfor %}
+
+
+    ],
+    datasets: [{
+      label: 'Distances parcourues',
+      data : [
+        {% for s in distances %}
+        "{{s.value}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = document.getElementById("myChart-weight");
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : [
+      {% for s in weight %}
+      "{{s.date|date('d/m/Y') }}",
+      {% endfor %}
+
+
+    ],
+    datasets: [{
+      label: 'Courbe de poids',
+      data : [
+        {% for s in weight %}
+        "{{s.weight}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    },{
+      label: 'IMC',
+      data : [
+        {% for s in weight %}
+        "{{s.bmi}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }
+  ]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = document.getElementById("myChart-calories");
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : [
+      {% for s in calories %}
+      "{{s.date|date('d/m/Y') }}",
+      {% endfor %}
+
+
+    ],
+    datasets: [{
+      label: 'Calories brûlées',
+      data : [
+        {% for s in calories %}
+        "{{s.value}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = document.getElementById("myChart-caloriesbmr");
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : [
+      {% for s in caloriesBMR %}
+      "{{s.date|date('d/m/Y') }}",
+      {% endfor %}
+
+
+    ],
+    datasets: [{
+      label: 'Fréquence max. Coeur',
+      data : [
+        {% for s in caloriesBMR  %}
+        "{{s.value}}",
+        {% endfor %}
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+
+
+//$("#steps").click(function () {
+//$('#myChart').replaceWith('<canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>');
+
+/*
+graphsteps();
+});
+
+$("#distance").click(function () {
+$('#myChart').replaceWith('<canvas id="myChart" style="padding-left:10px;" width="400" height="200"></canvas>');
+myChart.destroy();
+graphdistance();
+});*/
+</script>
+
+{% endblock %}
