@@ -266,13 +266,10 @@ class DefaultController extends Controller
   }
 
   /**
-  * @Route("/entrainements/{tid}/{s}")
+  * @Route("/entrainements/{tid}")
   */
   public function AddTraining(Request $request){
     $tid = $request->attributes->get('tid');
-    $s = $request->attributes->get('s');
-
-
 
     $a=$this->getUser()->getId();
 
@@ -306,16 +303,9 @@ class DefaultController extends Controller
 
   }
 
-    if($s == 0){
 
     return $this->redirect("/entrainements");
 
-  }
-    else{
-
-    return $this->redirect("/search/$s");
-
-  }
 
 
   }
