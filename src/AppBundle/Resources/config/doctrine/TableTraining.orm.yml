@@ -1,6 +1,6 @@
 AppBundle\Entity\TableTraining:
     type: entity
-    table: table_training
+    table: training
     id:
         id:
             type: integer

@@ -18,6 +18,12 @@ AppBundle\Entity\UsersDefis:
             options:
                 unsigned: false
             column: UID
+        did:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: DID
 
         statut:
             type: integer
