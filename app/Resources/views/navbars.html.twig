@@ -3,9 +3,18 @@
     <ul class="nav navbar-nav navbar-left">
 
     <div class="col-sm-8 col-md-8">
+      <form>
+<input type="text" id="keyy"/>
+</form>
+<button class="btn btn-default" onclick="myFunction()">Chercher</button>
 
-            {{form_start(formsearch)}}
-            {{form_end(formsearch)}}
+
+            <script>
+            function myFunction() {
+              var key = document.getElementById("keyy").value;
+              window.location.href = "/search/"+key;
+            }
+            </script>
 
     </div>
 
